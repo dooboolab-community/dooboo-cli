@@ -10,6 +10,9 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.12.1",
+    "download-git-repo": "^1.0.1",
+    "ora": "^1.3.0",
+    "select-shell": "^1.0.0",
     "shelljs": "^0.7.8"
   }
 }
