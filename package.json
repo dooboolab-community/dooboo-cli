@@ -1,0 +1,15 @@
+{
+  "name": "cooni-cli",
+  "version": "1.0.0",
+  "description": "starting react express app with me!",
+  "bin": {
+    "cooni": "bin/hello.js"
+  },
+  "author": "hyochan",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.12.1",
+    "shelljs": "^0.7.8"
+  }
+}
