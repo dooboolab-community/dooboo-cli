@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+const pkg = require('./package.json');
 const { setTimeout } = require('timers');
 // const prompt = require('cli-prompt');
 const inquirer = require('inquirer');
@@ -11,28 +12,33 @@ const selectShell = require('select-shell');
 const chalk = require('chalk');
 const program = require('commander');
 const shell = require('shelljs');
+// const welcome = `
+// ______     ______     ______     __   __     __     
+// /\\  ___\\   /\\  __ \\   /\\  __ \\   /\\ "-.\\ \\   /\\ \\   
+// \\ \\ \\____  \\ \\ \\/\\ \\  \\ \\ \\/\\ \\  \\ \\ \\-.  \\  \\ \\ \\  
+//  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_\\\\"\\_\\  \\ \\_\\ 
+//   \\/_____/   \\/_____/   \\/_____/   \\/_/ \\/_/   \\/_/ 
+// `;
 const welcome = `
-______     ______     ______     __   __     __     
-/\\  ___\\   /\\  __ \\   /\\  __ \\   /\\ "-.\\ \\   /\\ \\   
-\\ \\ \\____  \\ \\ \\/\\ \\  \\ \\ \\/\\ \\  \\ \\ \\-.  \\  \\ \\ \\  
- \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_\\\\"\\_\\  \\ \\_\\ 
-  \\/_____/   \\/_____/   \\/_____/   \\/_/ \\/_/   \\/_/ 
+ _| _  _ |_  _  _ | _ |_ 
+(_|(_)(_)|_)(_)(_)|(_||_)
 `;
 
 const TYPE_OF_APP = {
   'REACT': 1,
   'REACT-NATIVE': 2,
-  'NODEJS': 3,
+  'NODE': 3,
 };
 
 program
+  .version(pkg.version)
   .command('init')
-  .description('Init boilerplate of cooni generate app.')
+  .description('Init boilerplate of dooboo generated app.')
   .action(function() {
     // sed -i 's/original/new/g' file.txt
     // https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
     console.log(chalk.cyanBright(welcome));
-    console.log(chalk.yellow('Select which app you want to generate from cooni.'));
+    console.log(chalk.yellow('Select which app you want to generate from dooboo.'));
     const list = selectShell(
       {
         pointer: ' ▸ ',
@@ -52,11 +58,20 @@ program
     
     list.option(' React App with typescript  ', TYPE_OF_APP['REACT'])
         .option(' React Native App with typescript  ', TYPE_OF_APP['REACT-NATIVE'])
-        .option(' Node.js app with typescript  ', TYPE_OF_APP['NODEJS'])
+        .option(' Node.js app with typescript  ', TYPE_OF_APP['NODE'])
         .list();
     
     list.on('select', function(options){
       console.log(chalk.yellow('Select the name of the app.'));
+      // console.log(options[0].value);
+      if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
+        console.log(chalk.red('Sorry we currently do not support react-native starter.'));
+        process.exit(0);
+      } else if (options[0].value === TYPE_OF_APP['NODE']) { // NODE
+        console.log(chalk.red('Sorry we currently do not support nodejs starter.'));
+        process.exit(0);
+      }
+
       inquirer.prompt([{
         name: 'value',
         message: 'Name of your app(camel-case): ',
@@ -97,7 +112,7 @@ program
         setTimeout(function() {
           spinner.stop();
           console.log(chalk.green(answer.value + ' created.'));
-          console.log(chalk.cyanBright('cd ' + answer.value + ' and cooni start.'));
+          console.log(chalk.cyanBright('cd ' + answer.value + ' and dooboo start.'));
           process.exit(0);
         }, 2000);
       });
@@ -111,7 +126,7 @@ program
 
 program
   .command('react-component <c>')
-  .description('create react-component. Must run command on root of cooni\'s react-app.')
+  .description('create react-component. Must run command on root of dooboo\'s react-app.')
   .action(function(c) {
     console.log('creating ' + c + ' react componet...');
   });

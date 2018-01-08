@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "starting react express app with me!",
   "bin": {
-    "cooni": "bin/hello.js"
+    "dooboo": "bin/hello.js"
   },
   "author": "hyochan",
   "license": "MIT",
