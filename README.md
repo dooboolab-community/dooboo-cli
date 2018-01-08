@@ -1,4 +1,4 @@
-# Cooni client tool
+# dooboolab client tool
 
 # Gain points
-1. Cooni developers do not need to suffer from boilderplate projects.
+1. Developers do not need to suffer from boilderplate projects.
