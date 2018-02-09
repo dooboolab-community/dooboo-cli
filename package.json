@@ -1,5 +1,5 @@
 {
-  "name": "cooni-cli",
+  "name": "dooboo-cli",
   "version": "0.0.1",
   "description": "starting react express app with me!",
   "bin": {
@@ -10,7 +10,7 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.12.1",
-    "download-git-repo": "^1.0.1",
+    "download-git-repo": "^1.0.2",
     "inquirer": "^4.0.0",
     "ora": "^1.3.0",
     "select-shell": "^1.0.0",

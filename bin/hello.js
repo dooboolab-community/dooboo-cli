@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const { setTimeout } = require('timers');
 // const prompt = require('cli-prompt');
 const inquirer = require('inquirer');
@@ -85,30 +85,44 @@ program
           process.exit(0);
         }
 
+        let template = '';
         // console.log(options[0].value);
         if (options[0].value === TYPE_OF_APP['REACT']) {
-  
+          template = 'http://github.com/dooboolab/react-typescript-webpack-starter.git';
         } else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
 
         } else { // NODEJS
 
         }
 
-        console.log(chalk.gray('Creating app ' + nameOfApp + '.'));
+        if (!template) {
+          console.log(chalk.redBright('There is no template for current choice. Please try again.'));
+          process.exit(0);
+        }
+
         const spinner = ora('creating app ' + nameOfApp + '...');
         spinner.start();
         shell.exec('mkdir ' + nameOfApp);
-        shell.exec('cd ' + nameOfApp);
-        // if (exists(tmp)) rm(tmp)
-        // download(template, tmp, { clone }, err => {
-        //   spinner.stop()
-        //   if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-        //   generate(name, tmp, to, err => {
-        //     if (err) logger.fatal(err)
-        //     console.log()
-        //     logger.success('Generated "%s".', name)
-        //   })
-        // })
+
+        download(template, `/${nameOfApp}`, { clone: true }, (err) => {
+          spinner.stop();
+          if (err) {
+            console.log(chalk.redBright(
+              'Failed to download repo ' + template + ': ' + err.message.trim()
+            ));
+            process.exit(0);
+          }
+          generate(name, tmp, to, err => {
+            if (err) {
+              console.log(chalk.redBright(
+                err,
+              ));
+              process.exit(0);
+            }
+            logger.success('Generated "%s".', name)
+          });
+        });
+
         setTimeout(function() {
           spinner.stop();
           console.log(chalk.green(answer.value + ' created.'));
