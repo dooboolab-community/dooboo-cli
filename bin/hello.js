@@ -88,7 +88,7 @@ program
         let template = '';
         // console.log(options[0].value);
         if (options[0].value === TYPE_OF_APP['REACT']) {
-          template = 'http://github.com/dooboolab/react-typescript-webpack-starter.git';
+          template = 'github.com:dooboolab/react-typescript-webpack-starter';
         } else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
 
         } else { // NODEJS
@@ -104,7 +104,7 @@ program
         spinner.start();
         shell.exec('mkdir ' + nameOfApp);
 
-        download(template, `/${nameOfApp}`, { clone: true }, (err) => {
+        download(template, `./${nameOfApp}`, null, (err) => {
           spinner.stop();
           if (err) {
             console.log(chalk.redBright(
@@ -112,23 +112,14 @@ program
             ));
             process.exit(0);
           }
-          generate(name, tmp, to, err => {
-            if (err) {
-              console.log(chalk.redBright(
-                err,
-              ));
-              process.exit(0);
-            }
-            logger.success('Generated "%s".', name)
-          });
-        });
 
-        setTimeout(function() {
-          spinner.stop();
-          console.log(chalk.green(answer.value + ' created.'));
-          console.log(chalk.cyanBright('cd ' + answer.value + ' and dooboo start.'));
-          process.exit(0);
-        }, 2000);
+          setTimeout(function() {
+            spinner.stop();
+            console.log(chalk.green(answer.value + ' created.'));
+            console.log(chalk.cyanBright('cd ' + answer.value + ' and dooboo start.'));
+            process.exit(0);
+          }, 2000);
+        });
       });
     });
     
