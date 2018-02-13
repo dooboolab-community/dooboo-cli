@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "starting react express app with me!",
   "bin": {
-    "dooboo": "bin/hello.js"
+    "dooboo": "bin/root.js"
   },
   "author": "hyochan",
   "license": "MIT",
@@ -11,8 +11,10 @@
     "chalk": "^2.3.0",
     "commander": "^2.12.1",
     "download-git-repo": "^1.0.2",
+    "fs": "0.0.1-security",
     "inquirer": "^4.0.0",
     "ora": "^1.3.0",
+    "path": "^0.12.7",
     "select-shell": "^1.0.0",
     "shelljs": "^0.7.8"
   }
