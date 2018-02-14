@@ -91,7 +91,7 @@ program
         let template = '';
         // console.log(options[0].value);
         if (options[0].value === TYPE_OF_APP['REACT']) {
-          template = 'github.com:dooboolab/react-typescript-webpack-starter';
+          template = 'github.com:dooboolab/dooboo-frontend';
         } else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
 
         }
