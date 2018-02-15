@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const camelCaseToDash = function(str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 };
@@ -41,9 +43,28 @@ function upperCamelize(str) {
   });
 }
 
+function fsExists(file) {
+  return new Promise((resolve, reject) => {
+    fs.exists(file, function(exists) {
+      resolve(exists);
+    });
+  });
+}
+
+function exec(command) {
+  return new Promise((resolve, reject) => shelljs.exec(command, {}, (code, value, error) => {
+    if (error) {
+      return reject(error);
+    }
+    resolve(value);
+  }))
+}
+
 module.exports = {
   camelCaseToDash,
   isCamelCase,
   camelize,
   upperCamelize,
+  fsExists,
+  exec,
 };
