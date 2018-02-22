@@ -4,11 +4,12 @@ dooboo-cli
 =========
 
 ## Installation
-
+```
   npm install -g dooboo-cli
+```
 
 ## Usage
-
+```
   Usage: react-cli [source file]
 
   Options:
@@ -21,3 +22,4 @@ dooboo-cli
     test                 run test for your project
     screen <c>           generate screen component.
     shared <c>           generate shared component.
+```
