@@ -1,5 +1,3 @@
-# dooboolab client tool
-
 dooboo-cli
 =========
 
