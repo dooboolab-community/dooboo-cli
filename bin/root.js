@@ -246,9 +246,10 @@ program
     }
 
     exists = await fsExists('.dooboo/react.js');
-    let tsx = path.resolve(__dirname, '..', 'templates/react/screen/Screen.tsx');
-    let tsxTest = path.resolve(__dirname, '..', 'templates/react/screen/Screen.test.tsx');
-    if (componentFile) {
+    let tsx, tsxTest;
+    if (exists) {
+      tsx = path.resolve(__dirname, '..', 'templates/react/screen/Screen.tsx');
+      tsxTest = path.resolve(__dirname, '..', 'templates/react/screen/Screen.test.tsx');
       console.log(chalk.cyanBright(`creating screen component...`));
       shell.cp(tsx, componentFile);
       shell.cp(tsxTest, testFile);
@@ -264,11 +265,24 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
 
     exists = await fsExists('.dooboo/react-native.js');
     if (exists) {
-      console.log(chalk.yellow(`dirname: ${__dirname}`));
+      tsx = path.resolve(__dirname, '..', 'templates/react-native/screen/Screen.tsx');
+      tsxTest = path.resolve(__dirname, '..', 'templates/react-native/screen/Screen.test.tsx');
+      console.log(chalk.cyanBright(`creating screen component...`));
+      shell.cp(tsx, componentFile);
+      shell.cp(tsxTest, testFile);
+      shell.sed('-i', 'Screen', `${camel}`, testFile);
+      console.log(
+        chalk.green(
+`generated: src/components/screen/${upperCamel}.tsx
+testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
+        ));
       process.exit(0);
-      return;
     }
-    console.log(chalk.redBright(`dirname: ${__dirname}`));
+
+    console.log(chalk.redBright(
+      '\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.',
+    ));
+    process.exit(0);
   });
 
 program
