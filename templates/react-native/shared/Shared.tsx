@@ -30,8 +30,8 @@ interface ItemProps {
 class Shared extends Component<ItemProps, any> {
   private static defaultProps: Partial<ItemProps> = {
     activeOpacity: 0.5,
-    style: styles.wrapper;
-    textStyle: styles.text;
+    style: styles.wrapper,
+    textStyle: styles.text,
   };
 
   constructor(props) {
