@@ -9,6 +9,15 @@ import {
 
 import { ratio } from '@utils/Styles';
 
+const styles: any = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+});
+
 class Screen extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -24,14 +33,5 @@ class Screen extends Component<any, any> {
     );
   }
 }
-
-const styles: any = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-});
 
 export default Screen;
