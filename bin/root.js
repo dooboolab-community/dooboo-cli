@@ -221,7 +221,7 @@ program
 
 program
   .command('screen <c>')
-  .description('generate screen component. For react and react-native app only.')
+  .description('generate screen component.')
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
@@ -273,7 +273,7 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
 
 program
   .command('shared <c>')
-  .description('generate shared component. For react and react-native app only.')
+  .description('generate shared component.')
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
@@ -334,6 +334,107 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.tsx`
     console.log(chalk.redBright(
       '\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.',
     ));
+    process.exit(0);
+  });
+
+program
+  .command('model <c>')
+  .description('generate model class.')
+  .action(async function(c) {
+    let exists = await fsExists('.dooboo');
+    if (!exists) {
+      console.log(chalk.redBright(
+        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+      ));
+      spinner.stop();
+      process.exit(0);
+      return;
+    }
+    const camel = camelize(c); // inside component is camelCase.
+    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
+
+    const modelFile = `./src/models/${upperCamel}.tsx`;
+
+    exists = await fsExists(modelFile);
+    if (exists) {
+      console.log(chalk.redBright(`${upperCamel} model already exists. Delete or rename existing file first.`));
+      process.exit(0);
+      return;
+    }
+    const tsx = path.resolve(__dirname, '..', 'templates/common/Model.tsx');
+    shell.cp(tsx, modelFile);
+    shell.sed('-i', 'Model', `${upperCamel}`, modelFile);
+    console.log(chalk.cyanBright(`creating model...`));
+    console.log(
+    chalk.green(`generated: src/models/${upperCamel}.tsx`));
+
+    process.exit(0);
+  });
+
+program
+  .command('store <c>')
+  .description('generate store class.')
+  .action(async function(c) {
+    let exists = await fsExists('.dooboo');
+    if (!exists) {
+      console.log(chalk.redBright(
+        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+      ));
+      spinner.stop();
+      process.exit(0);
+      return;
+    }
+    const camel = camelize(c); // inside component is camelCase.
+    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
+
+    const storeFile = `./src/stores/${camel}.tsx`;
+
+    exists = await fsExists(storeFile);
+    if (exists) {
+      console.log(chalk.redBright(`${camel} store already exists. Delete or rename existing file first.`));
+      process.exit(0);
+      return;
+    }
+    const tsx = path.resolve(__dirname, '..', 'templates/common/Store.tsx');
+    shell.cp(tsx, storeFile);
+    shell.sed('-i', 'Store', `${upperCamel}`, storeFile);
+    console.log(chalk.cyanBright(`creating store...`));
+    console.log(
+    chalk.green(`generated: src/stores/${camel}.tsx`));
+
+    process.exit(0);
+  });
+
+program
+  .command('api <c>')
+  .description('generate file for api call format.')
+  .action(async function(c) {
+    let exists = await fsExists('.dooboo');
+    if (!exists) {
+      console.log(chalk.redBright(
+        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+      ));
+      spinner.stop();
+      process.exit(0);
+      return;
+    }
+    const camel = camelize(c); // inside component is camelCase.
+    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
+
+    const apiFile = `./src/apis/${camel}.tsx`;
+
+    exists = await fsExists(apiFile);
+    if (exists) {
+      console.log(chalk.redBright(`${upperCamel} store already exists. Delete or rename existing file first.`));
+      process.exit(0);
+      return;
+    }
+    const tsx = path.resolve(__dirname, '..', 'templates/common/Api.tsx');
+    shell.cp(tsx, apiFile);
+    console.log(chalk.cyanBright(`creating api file...`));
+    console.log(
+    chalk.green(`generated: src/apis/${camel}.tsx`));
+
     process.exit(0);
   });
 
