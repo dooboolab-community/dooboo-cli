@@ -20,4 +20,7 @@ dooboo-cli
     test                 run test for your project
     screen <c>           generate screen component.
     shared <c>           generate shared component.
+    model <c>            generate model class.
+    store <c>            generate store class.
+    api <c>              generate file for api call format.
 ```
