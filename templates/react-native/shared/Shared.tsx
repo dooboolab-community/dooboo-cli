@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import { ratio, bgColor } from '@utils/Styles';
+import { ratio, colors } from '@utils/Styles';
 
 const styles: any = StyleSheet.create({
   wrapper: {
