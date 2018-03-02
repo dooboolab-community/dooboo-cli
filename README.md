@@ -1,4 +1,4 @@
-dooboo-cli
+# dooboo-cli
 <p align="left">
   <a href="https://npmjs.org/package/dooboo-cli"><img alt="npm version" src="http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square"></a>
   <a href="https://npmjs.org/package/dooboo-cli"><img alt="npm version" src="http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square"></a>
@@ -12,7 +12,7 @@ dooboo-cli
 
 ## Usage
 ```
-  Usage: react-cli [source file]
+  Usage: dooboo-cli [source file]
 
   Options:
     -V, --version        output the version number
