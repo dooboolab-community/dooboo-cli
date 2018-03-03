@@ -16,22 +16,15 @@ const styles: any = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    fontSize: 14 * ratio,
-  },
 });
 
 interface ItemProps {
   style?: View.propTypes.style;
-  textStyle?: Text.propTypes.style;
-  activeOpacity?: number;
 }
 
 class Shared extends Component<ItemProps, any> {
   private static defaultProps: Partial<ItemProps> = {
-    activeOpacity: 0.5,
     style: styles.wrapper,
-    textStyle: styles.text,
   };
 
   constructor(props) {
@@ -43,7 +36,7 @@ class Shared extends Component<ItemProps, any> {
   public render() {
     return (
       <View style={this.props.style}>
-        <Text style={this.props.textStyle}>{this.props.children}</Text>
+        <Text>Shared</Text>
       </View>
     );
   }
