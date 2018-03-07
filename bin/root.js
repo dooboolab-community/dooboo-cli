@@ -149,9 +149,7 @@ program
 
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
@@ -187,9 +185,7 @@ program
 
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
@@ -225,9 +221,7 @@ program
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
@@ -279,9 +273,7 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
       process.exit(0);
     }
 
-    console.log(chalk.redBright(
-      '\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.',
-    ));
+    console.log(chalk.redBright('\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.',));
     process.exit(0);
   });
 
@@ -345,9 +337,7 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.tsx`
       process.exit(0);
     }
 
-    console.log(chalk.redBright(
-      '\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.',
-    ));
+    console.log(chalk.redBright('\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.'));
     process.exit(0);
   });
 
@@ -357,9 +347,7 @@ program
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
@@ -391,9 +379,7 @@ program
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
@@ -425,9 +411,7 @@ program
   .action(async function(c) {
     let exists = await fsExists('.dooboo');
     if (!exists) {
-      console.log(chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
-      ));
+      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
       spinner.stop();
       process.exit(0);
       return;
