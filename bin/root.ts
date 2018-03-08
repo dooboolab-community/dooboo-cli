@@ -40,6 +40,7 @@ const welcome = `
 const TYPE_OF_APP = {
   'REACT': 1,
   'REACT-NATIVE': 2,
+  'EXPO': 3,
 };
 
 /**
@@ -73,6 +74,7 @@ program
     
     list.option(' React App with typescript  ', TYPE_OF_APP['REACT'])
         .option(' React Native App with typescript  ', TYPE_OF_APP['REACT-NATIVE'])
+        .option(' Expo App with typescript  ', TYPE_OF_APP['EXPO'])
         .list();
     
     list.on('select', function(options){
@@ -102,6 +104,8 @@ program
           template = 'github.com:dooboolab/dooboo-frontend';
         } else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
           template = 'github.com:dooboolab/dooboo-native';
+        } else if (options[0].value === TYPE_OF_APP['EXPO']) {
+          template = 'github.com:dooboolab/dooboo-expo';
         }
 
         if (!template) {

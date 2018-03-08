@@ -1,15 +1,18 @@
 {
   "name": "dooboo-cli",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
   },
+  "scripts": {
+    "tsc": "tsc"
+  },
   "author": "dooboolab",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.3.0",
-    "commander": "^2.12.1",
+    "chalk": "^2.3.2",
+    "commander": "^2.15.0",
     "download-git-repo": "^1.0.2",
     "fs": "0.0.1-security",
     "inquirer": "^5.1.0",
@@ -19,6 +22,7 @@
     "shelljs": "^0.8.1"
   },
   "devDependencies": {
-    "@types/node": "^9.4.6"
+    "@types/node": "^9.4.6",
+    "typescript": "^2.7.2"
   }
 }

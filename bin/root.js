@@ -35,6 +35,7 @@ const welcome = `
 const TYPE_OF_APP = {
     'REACT': 1,
     'REACT-NATIVE': 2,
+    'EXPO': 3,
 };
 /**
  * init
@@ -63,6 +64,7 @@ program
     var stream = process.stdin;
     list.option(' React App with typescript  ', TYPE_OF_APP['REACT'])
         .option(' React Native App with typescript  ', TYPE_OF_APP['REACT-NATIVE'])
+        .option(' Expo App with typescript  ', TYPE_OF_APP['EXPO'])
         .list();
     list.on('select', function (options) {
         console.log(chalk_1.default.yellow('select the name of the app.'));
@@ -91,6 +93,9 @@ program
             }
             else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
                 template = 'github.com:dooboolab/dooboo-native';
+            }
+            else if (options[0].value === TYPE_OF_APP['EXPO']) {
+                template = 'github.com:dooboolab/dooboo-expo';
             }
             if (!template) {
                 console.log(chalk_1.default.redBright('There is no template for current choice. Please try again.'));
