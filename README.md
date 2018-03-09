@@ -28,3 +28,5 @@
     store <c>            generate store class.
     api <c>              generate file for api call format.
 ```
+## Preview
+![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=81d08aa5-fd73-46bb-81e1-1d757007b520)
