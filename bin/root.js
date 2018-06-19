@@ -23,7 +23,10 @@ const program = require("commander");
 const childProcess = require("child_process");
 const updateNotifier = require("update-notifier");
 const pkg = require("../package.json");
-updateNotifier({ pkg }).notify();
+const notifier = updateNotifier({ pkg });
+if (notifier.update) {
+    console.log(chalk_1.default.blueBright(`Update available: ${notifier.update.latest}`));
+}
 // const welcome = `
 // ______     ______     ______     __   __     __     
 // /\\  ___\\   /\\  __ \\   /\\  __ \\   /\\ "-.\\ \\   /\\ \\   

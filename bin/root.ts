@@ -24,7 +24,11 @@ import fs = require('fs');
 import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
-updateNotifier({pkg}).notify();
+
+const notifier = updateNotifier({pkg});
+if (notifier.update) {
+  console.log(chalk.blueBright(`Update available: ${notifier.update.latest}`));
+}
 
 // const welcome = `
 // ______     ______     ______     __   __     __     
