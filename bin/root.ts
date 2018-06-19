@@ -7,7 +7,6 @@ import {
   upperCamelize,
   camelize,
   fsExists,
-  exec,
 } from '../utils/functions';
 
 import { setTimeout } from 'timers';
@@ -22,6 +21,7 @@ import shell = require('shelljs');
 import path = require('path');
 import program = require('commander');
 import fs = require('fs');
+import childProcess = require('child_process');
 import pkg = require('../package.json');
 
 // const welcome = `
@@ -115,7 +115,11 @@ program
 
         const spinner = ora('creating app ' + nameOfApp + '...');
         spinner.start();
-        shell.exec('mkdir ' + nameOfApp);
+        if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
+          shell.exec(`mkdir ${nameOfApp} && cd ${nameOfApp} && react-native init ${nameOfApp}`);
+        } else {
+          shell.exec(`mkdir ${nameOfApp}`);
+        }
 
         download(template, `./${nameOfApp}`, null, (err) => {
           spinner.stop();
@@ -127,12 +131,29 @@ program
           }
 
           setTimeout(function() {
-            // shell.exec(`rm -rf ./${nameOfApp}/.git`);
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-            spinner.stop();
-            console.log(chalk.green(answer.value + ' created.'));
-            console.log(chalk.cyanBright('cd ' + answer.value + ' and dooboo start.'));
+            if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
+              shell.rm('-rf', `${nameOfApp}/.git`);
+              shell.rm('-rf', `${nameOfApp}/android`);
+              shell.rm('-rf', `${nameOfApp}/ios`);
+              shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios`, `${nameOfApp}/ios`);
+              shell.cp('-R', `${nameOfApp}/${nameOfApp}/android`, `${nameOfApp}/android`);
+              shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
+              
+              shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
+              shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
+
+              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native link`, {stdio: 'inherit'});
+              spinner.stop();
+
+              console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
+              console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
+            } else {
+              console.log(chalk.greenBright(answer.value + ' created.'));
+              console.log(chalk.greenBright('cd ' + answer.value + ' and dooboo start.'));
+            }
             process.exit(0);
+            spinner.stop();
           }, 2000);
         });
       });
@@ -148,36 +169,46 @@ program
   .command('start')
   .description('start the project.')
   .action(async function() {
-    const spinner = ora('configuring project...');
+    const spinner = ora('configuring project...\n');
     spinner.start();
 
-    let exists = await fsExists('.dooboo');
-    if (!exists) {
-      console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
+    try {
+      let exists = await fsExists('.dooboo');
+      if (!exists) {
+        console.log(chalk.redBright('\nproject is not in dooboo repository. Are you sure you are in correct dir?'));
+        spinner.stop();
+        process.exit(0);
+        return;
+      }
+  
+      exists = await fsExists('node_modules');
+      if (!exists) {
+        console.log(chalk.cyanBright('installing dependencies...'));
+  
+        // childProcess.execSync(`npm install`, {stdio: 'inherit'})
+  
+        shell.exec(`npm install`, function(code) {
+          if (code === 0) {
+            console.log(chalk.cyanBright('running project...\n'));
+            shell.exec(`npm run dev`);
+            // childProcess.execSync(`npm run dev`, {stdio: 'inherit'});
+            return;
+          }
+          console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
+        });
+        return;
+      }
+      console.log(chalk.cyanBright('running project...'));
+      // shell.exec(`npm start`);
+      shell.exec(`npm run dev`);
+      // childProcess.execFileSync('npm', ['start'], {stdio: 'inherit'});
+    } catch (err) {
+      console.log(chalk.red(err));
+      console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
+    } finally {
       spinner.stop();
       process.exit(0);
-      return;
     }
-
-    exists = await fsExists('node_modules');
-    if (!exists) {
-      console.log(chalk.cyanBright('installing dependencies...'));
-      shell.exec(`npm install`, function(code) {
-        if (code === 0) {
-          console.log(chalk.cyanBright('running project...'));
-          shell.exec(`npm run dev`);
-          spinner.stop();
-          // process.exit(0);
-          return;
-        }
-        console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
-      });
-      return;
-    }
-    console.log(chalk.cyanBright('running project...'));
-    // shell.exec(`npm start`);
-    shell.exec(`npm run dev`);
-    spinner.stop();
   });
 
 program
