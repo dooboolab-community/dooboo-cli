@@ -22,10 +22,14 @@ const path = require("path");
 const program = require("commander");
 const childProcess = require("child_process");
 const updateNotifier = require("update-notifier");
+const boxen = require("boxen");
 const pkg = require("../package.json");
-const notifier = updateNotifier({ pkg });
+const notifier = updateNotifier({
+    pkg,
+    updateCheckInterval: 1000 * 60 * 60 * 24 // 1 day
+});
 if (notifier.update) {
-    console.log(chalk_1.default.blueBright(`Update available: ${notifier.update.latest}`));
+    console.log(chalk_1.default.blueBright(boxen(`Update available: ${notifier.update.latest}`, { padding: 1 })));
 }
 // const welcome = `
 // ______     ______     ______     __   __     __     

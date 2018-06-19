@@ -23,11 +23,20 @@ import program = require('commander');
 import fs = require('fs');
 import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
+import boxen = require('boxen');
 import pkg = require('../package.json');
 
-const notifier = updateNotifier({pkg});
+const notifier = updateNotifier({
+  pkg,
+  updateCheckInterval: 1000 * 60 * 60 * 24 // 1 day
+});
+
 if (notifier.update) {
-  console.log(chalk.blueBright(`Update available: ${notifier.update.latest}`));
+  console.log(
+    chalk.blueBright(
+      boxen(`Update available: ${notifier.update.latest}`, {padding: 1})
+    )
+  );
 }
 
 // const welcome = `
