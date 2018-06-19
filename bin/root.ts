@@ -22,7 +22,9 @@ import path = require('path');
 import program = require('commander');
 import fs = require('fs');
 import childProcess = require('child_process');
+import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
+updateNotifier({pkg}).notify();
 
 // const welcome = `
 // ______     ______     ______     __   __     __     

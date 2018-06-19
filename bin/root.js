@@ -21,7 +21,9 @@ const shell = require("shelljs");
 const path = require("path");
 const program = require("commander");
 const childProcess = require("child_process");
+const updateNotifier = require("update-notifier");
 const pkg = require("../package.json");
+updateNotifier({ pkg }).notify();
 // const welcome = `
 // ______     ______     ______     __   __     __     
 // /\\  ___\\   /\\  __ \\   /\\  __ \\   /\\ "-.\\ \\   /\\ \\   

@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -20,7 +20,8 @@
     "path": "^0.12.7",
     "react-native-cli": "^2.0.1",
     "select-shell": "^1.0.1",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "update-notifier": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^10.3.4",
