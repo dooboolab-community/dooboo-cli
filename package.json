@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -29,5 +29,9 @@
   },
   "peerDependencies": {
     "react-native-cli": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dooboolab/dooboo-cli.git"
   }
 }
