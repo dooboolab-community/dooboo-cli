@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
 
-import Store from '@stores/appStore';
+import appStore from '../../../stores/appStore';
 import { Screen } from '../Screen';
 
 // test for the container page in dom

@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -19,7 +19,7 @@
     "inquirer": "^6.0.0",
     "ora": "^2.1.0",
     "path": "^0.12.7",
-    "select-shell": "^1.0.1",
+    "select-shell": "^1.1.2",
     "shelljs": "^0.8.2",
     "update-notifier": "^2.5.0"
   },
