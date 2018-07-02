@@ -4,3 +4,5 @@ node_modules/
 # no compiled files
 bin/root.js
 bin/root.js.map
+utils/functions.js
+utils/functions.js.map
