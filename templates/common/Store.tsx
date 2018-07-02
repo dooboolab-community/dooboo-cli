@@ -1,14 +1,16 @@
 import { observable } from 'mobx';
 
-class Store {
-  @observable private _value: string;
-  public get value(): string {
-    return this._value;
+class ObservableListStore {
+  @observable private value: _number;
+
+  public get $value(): _number {
+    return this.value;
   }
 
-  public set value(value: string) {
-    this._value = value;
+  public set $value(value: _number) {
+    this.value = value;
   }
 }
 
-export default Model;
+const observableListStore = new ObservableListStore();
+export default observableListStore;

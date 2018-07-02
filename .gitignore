@@ -3,4 +3,4 @@ node_modules/
 
 # no compiled files
 bin/root.js
-bin/root.ts
+bin/root.js.map

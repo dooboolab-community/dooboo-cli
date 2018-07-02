@@ -39,14 +39,6 @@ if (notifier.update) {
   );
 }
 
-// const welcome = `
-// ______     ______     ______     __   __     __     
-// /\\  ___\\   /\\  __ \\   /\\  __ \\   /\\ "-.\\ \\   /\\ \\   
-// \\ \\ \\____  \\ \\ \\/\\ \\  \\ \\ \\/\\ \\  \\ \\ \\-.  \\  \\ \\ \\  
-//  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_\\\\"\\_\\  \\ \\_\\ 
-//   \\/_____/   \\/_____/   \\/_____/   \\/_/ \\/_/   \\/_/ 
-// `;
-
 const welcome = `
  _| _  _ |_  _  _ | _ |_ 
 (_|(_)(_)|_)(_)(_)|(_||_)
@@ -117,7 +109,7 @@ program
 
         let template = '';
         // console.log(options[0].value);
-        switch(option[0].value) {
+        switch(options[0].value) {
           case TYPE_OF_APP.REACT_TS:
             template = 'github.com:dooboolab/dooboo-frontend';
             break;
@@ -166,8 +158,12 @@ program
               shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios`, `${nameOfApp}/ios`);
               shell.cp('-R', `${nameOfApp}/${nameOfApp}/android`, `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
-              
-              shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
+
+              if (options[0].value == TYPE_OF_APP.REACT_NATIVE_TS) {
+                shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
+              } else { // REACT_NATIVE_JS
+                shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.js`);
+              }
               shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
 
               childProcess.execSync(`cd ${nameOfApp} && npm install && react-native link`, {stdio: 'inherit'});
@@ -290,8 +286,11 @@ program
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const componentFile = `./src/components/screen/${upperCamel}.tsx`;
-    const testFile = `./src/components/screen/__tests__/${upperCamel}.test.tsx`;
+    const isTypescript = await fsExists('.dooboo/typescript');
+    const fileExt = isTypescript ? 'tsx' : 'js';
+
+    const componentFile = `./src/components/screen/${upperCamel}.${fileExt}`;
+    const testFile = `./src/components/screen/__tests__/${upperCamel}.test.${fileExt}`;
 
     exists = await fsExists(componentFile);
     if (exists) {
@@ -300,37 +299,36 @@ program
       return;
     }
 
-    exists = await fsExists('.dooboo/react.js');
-    let tsx, tsxTest;
+    exists = await fsExists('.dooboo/react');
     if (exists) {
-      tsx = path.resolve(__dirname, '..', 'templates/react/screen/Screen.tsx');
-      tsxTest = path.resolve(__dirname, '..', 'templates/react/screen/Screen.test.tsx');
+      const template = path.resolve(__dirname, '..', `templates/react/screen/Screen.${fileExt}`);
+      const templateTest = path.resolve(__dirname, '..', `templates/react/screen/Screen.test.${fileExt}`);
       console.log(chalk.cyanBright(`creating screen component...`));
-      shell.cp(tsx, componentFile);
-      shell.cp(tsxTest, testFile);
-      shell.sed('-i', 'Screen', `${camel}`, testFile);
+      shell.cp(template, componentFile);
+      shell.cp(templateTest, testFile);
+      shell.sed('-i', '../Screen', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
-`generated: src/components/screen/${upperCamel}.tsx
-testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
+`generated: src/components/screen/${upperCamel}.${fileExt}
+testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
         ));
       process.exit(0);
       return;
     }
 
-    exists = await fsExists('.dooboo/react-native.js');
+    exists = await fsExists('.dooboo/react-native');
     if (exists) {
-      tsx = path.resolve(__dirname, '..', 'templates/react-native/screen/Screen.tsx');
-      tsxTest = path.resolve(__dirname, '..', 'templates/react-native/screen/Screen.test.tsx');
+      const template = path.resolve(__dirname, '..', `templates/react-native/screen/Screen.${fileExt}`);
+      const templateTest = path.resolve(__dirname, '..', `templates/react-native/screen/Screen.test.${fileExt}`);
       console.log(chalk.cyanBright(`creating screen component...`));
-      shell.cp(tsx, componentFile);
-      shell.cp(tsxTest, testFile);
-      shell.sed('-i', 'Screen', `${camel}`, testFile);
+      shell.cp(template, componentFile);
+      shell.cp(templateTest, testFile);
+      shell.sed('-i', '../Screen', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
-`generated: src/components/screen/${upperCamel}.tsx
-testFile: src/components/screen/__tests__/${upperCamel}.test.tsx`
-        ));
+    `generated: src/components/screen/${upperCamel}.${fileExt}
+testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
+      ));
       process.exit(0);
     }
 
@@ -351,8 +349,11 @@ program
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const componentFile = `./src/components/shared/${upperCamel}.tsx`;
-    const testFile = `./src/components/shared/__tests__/${upperCamel}.test.tsx`;
+    const isTypescript = await fsExists('.dooboo/typescript');
+    const fileExt = isTypescript ? 'tsx' : 'js';
+
+    const componentFile = `./src/components/shared/${upperCamel}.${fileExt}`;
+    const testFile = `./src/components/shared/__tests__/${upperCamel}.test.${fileExt}`;
 
     exists = await fsExists(componentFile);
     if (exists) {
@@ -361,38 +362,38 @@ program
       return;
     }
 
-    exists = await fsExists('.dooboo/react.js');
-    let tsx, tsxTest;
+    exists = await fsExists('.dooboo/react');
     if (exists) {
-      tsx = path.resolve(__dirname, '..', 'templates/react/shared/Shared.tsx');
-      tsxTest = path.resolve(__dirname, '..', 'templates/react/shared/Shared.test.tsx');
+      const template = path.resolve(__dirname, '..', `templates/react/shared/Shared.${fileExt}`);
+      const templateTest = path.resolve(__dirname, '..', `templates/react/shared/Shared.test.${fileExt}`);
       console.log(chalk.cyanBright(`creating shared component...`));
-      shell.cp(tsx, componentFile);
-      shell.cp(tsxTest, testFile);
-      shell.sed('-i', 'Shared', `${camel}`, testFile);
+      shell.cp(template, componentFile);
+      shell.cp(templateTest, testFile);
+      shell.sed('-i', '../Shared', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
-`generated: src/components/shared/${upperCamel}.tsx
-testFile: src/components/shared/__tests__/${upperCamel}.test.tsx`
+`generated: src/components/shared/${upperCamel}.${fileExt}
+testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
         ));
       process.exit(0);
       return;
     }
 
-    exists = await fsExists('.dooboo/react-native.js');
+    exists = await fsExists('.dooboo/react-native');
     if (exists) {
-      tsx = path.resolve(__dirname, '..', 'templates/react-native/shared/Shared.tsx');
-      tsxTest = path.resolve(__dirname, '..', 'templates/react-native/shared/Shared.test.tsx');
+      const template = path.resolve(__dirname, '..', `templates/react-native/shared/Shared.${fileExt}`);
+      const templateTest = path.resolve(__dirname, '..', `templates/react-native/shared/Shared.test.${fileExt}`);
       console.log(chalk.cyanBright(`creating shared component...`));
-      shell.cp(tsx, componentFile);
-      shell.cp(tsxTest, testFile);
-      shell.sed('-i', 'Shared', `${camel}`, testFile);
+      shell.cp(template, componentFile);
+      shell.cp(templateTest, testFile);
+      shell.sed('-i', '../Shared', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
-`generated: src/components/shared/${upperCamel}.tsx
-testFile: src/components/shared/__tests__/${upperCamel}.test.tsx`
+`generated: src/components/shared/${upperCamel}.${fileExt}
+testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
         ));
       process.exit(0);
+      return;
     }
 
     console.log(chalk.redBright('\nproject is not in dooboo repository. If you deleted any of file in .dooboo, you are not able to use dooboo-cli.'));
@@ -409,10 +410,14 @@ program
       process.exit(0);
       return;
     }
+
+    const isTypescript = await fsExists('.dooboo/typescript');
+    const fileExt = isTypescript ? 'tsx' : 'js';
+
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const modelFile = `./src/models/${upperCamel}.tsx`;
+    const modelFile = `./src/models/${upperCamel}.${fileExt}`;
 
     exists = await fsExists(modelFile);
     if (exists) {
@@ -420,12 +425,12 @@ program
       process.exit(0);
       return;
     }
-    const tsx = path.resolve(__dirname, '..', 'templates/common/Model.tsx');
+    const tsx = path.resolve(__dirname, '..', `templates/common/Model.${fileExt}`);
     shell.cp(tsx, modelFile);
     shell.sed('-i', 'Model', `${upperCamel}`, modelFile);
     console.log(chalk.cyanBright(`creating model...`));
     console.log(
-    chalk.green(`generated: src/models/${upperCamel}.tsx`));
+    chalk.green(`generated: src/models/${upperCamel}.${fileExt}`));
 
     process.exit(0);
   });
@@ -440,10 +445,14 @@ program
       process.exit(0);
       return;
     }
+
+    const isTypescript = await fsExists('.dooboo/typescript');
+    const fileExt = isTypescript ? 'tsx' : 'js';
+
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const storeFile = `./src/stores/${camel}.tsx`;
+    const storeFile = `./src/stores/${camel}.${fileExt}`;
 
     exists = await fsExists(storeFile);
     if (exists) {
@@ -451,12 +460,12 @@ program
       process.exit(0);
       return;
     }
-    const tsx = path.resolve(__dirname, '..', 'templates/common/Store.tsx');
-    shell.cp(tsx, storeFile);
+    const template = path.resolve(__dirname, '..', `templates/common/Store.${fileExt}`);
+    shell.cp(template, storeFile);
     shell.sed('-i', 'Store', `${upperCamel}`, storeFile);
     console.log(chalk.cyanBright(`creating store...`));
     console.log(
-    chalk.green(`generated: src/stores/${camel}.tsx`));
+    chalk.green(`generated: src/stores/${camel}.${fileExt}`));
 
     process.exit(0);
   });
@@ -471,10 +480,14 @@ program
       process.exit(0);
       return;
     }
+
+    const isTypescript = await fsExists('.dooboo/typescript');
+    const fileExt = isTypescript ? 'tsx' : 'js';
+
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const apiFile = `./src/apis/${camel}.tsx`;
+    const apiFile = `./src/apis/${camel}.${fileExt}`;
 
     exists = await fsExists(apiFile);
     if (exists) {
@@ -482,11 +495,11 @@ program
       process.exit(0);
       return;
     }
-    const tsx = path.resolve(__dirname, '..', 'templates/common/Api.tsx');
-    shell.cp(tsx, apiFile);
+    const template = path.resolve(__dirname, '..', `templates/common/Api.${fileExt}`);
+    shell.cp(template, apiFile);
     console.log(chalk.cyanBright(`creating api file...`));
     console.log(
-    chalk.green(`generated: src/apis/${camel}.tsx`));
+    chalk.green(`generated: src/apis/${camel}.${fileExt}`));
 
     process.exit(0);
   });
@@ -510,10 +523,10 @@ if (!program.args.length) {
     //if command executed it will be an object and not a string
     return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
   });
-  // if (invalidCommands.length) {
-  //   console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
-  //   process.exit(1);
-  // }
+  if (invalidCommands.length) {
+    console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
+    process.exit(1);
+  }
 }
 
 // program
