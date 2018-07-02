@@ -1,13 +1,12 @@
 {
   "name": "dooboo-cli",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
   },
   "scripts": {
-    "tsc": "tsc",
-    "publish": "tsc && npm publish"
+    "tsc": "tsc"
   },
   "author": "dooboolab",
   "license": "MIT",
