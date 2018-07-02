@@ -8,7 +8,10 @@ const styles = {
   },
 };
 
-export class Component extends Component<any, any> {
+interface IProps {};
+interface IState {};
+
+class Component extends Component<IProps, IState> {
   public render() {
     return (
       <div style={styles.wrapper}>

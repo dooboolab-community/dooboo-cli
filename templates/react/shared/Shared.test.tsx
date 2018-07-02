@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Shared } from '../shared';
+import Shared from '../shared';
 
 // const component = shallow(
 //     <Button white={true} btnTxt='Button 1st test' />
@@ -10,7 +10,7 @@ import { Shared } from '../shared';
 // test for the pure component
 describe('Shared component test', () => {
   const component = shallow(
-    <Shared test={true}/>,
+    <Shared />,
   );
 
   it('component and snapshot matches', () => {

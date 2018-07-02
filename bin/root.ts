@@ -530,10 +530,10 @@ if (!program.args.length) {
     //if command executed it will be an object and not a string
     return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
   });
-  if (invalidCommands.length) {
-    console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
-    process.exit(1);
-  }
+  // if (invalidCommands.length) {
+  //   console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
+  //   process.exit(1);
+  // }
 }
 
 // program

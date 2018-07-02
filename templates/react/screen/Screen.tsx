@@ -9,7 +9,11 @@ const styles = {
   },
 };
 
-export class Screen extends Component<any, any> {
+interface IProps {};
+interface IState {};
+
+@inject('store') @observer
+class Screen extends Component<IProps, IState> {
   public render() {
     const { getString } = this.props.store.locale;
     return (
@@ -20,4 +24,4 @@ export class Screen extends Component<any, any> {
   }
 }
 
-export default inject('store')(observer(Screen));
+export default Screen;
