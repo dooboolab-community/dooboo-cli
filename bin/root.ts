@@ -52,11 +52,12 @@ const welcome = `
 (_|(_)(_)|_)(_)(_)|(_||_)
 `;
 
-const TYPE_OF_APP = {
-  'REACT': 1,
-  'REACT-NATIVE': 2,
-  'EXPO': 3,
-};
+enum TYPE_OF_APP {
+  REACT_TS = 1,
+  REACT_NATIVE_JS = 2,
+  REACT_NATIVE_TS = 3,
+  EXPO_TS = 4,
+}
 
 /**
  * init
@@ -87,9 +88,10 @@ program
     
     var stream = process.stdin;
     
-    list.option(' React App with typescript  ', TYPE_OF_APP['REACT'])
-        .option(' React Native App with typescript  ', TYPE_OF_APP['REACT-NATIVE'])
-        .option(' Expo App with typescript  ', TYPE_OF_APP['EXPO'])
+    list.option(' React App with typescript  ', TYPE_OF_APP.REACT_TS)
+        .option(' React Native App with javascript  ', TYPE_OF_APP.REACT_NATIVE_JS)
+        .option(' React Native App with typescript  ', TYPE_OF_APP.REACT_NATIVE_TS)
+        .option(' Expo App with typescript  ', TYPE_OF_APP.EXPO_TS)
         .list();
     
     list.on('select', function(options){
@@ -115,12 +117,19 @@ program
 
         let template = '';
         // console.log(options[0].value);
-        if (options[0].value === TYPE_OF_APP['REACT']) {
-          template = 'github.com:dooboolab/dooboo-frontend';
-        } else if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
-          template = 'github.com:dooboolab/dooboo-native';
-        } else if (options[0].value === TYPE_OF_APP['EXPO']) {
-          template = 'github.com:dooboolab/dooboo-expo';
+        switch(option[0].value) {
+          case TYPE_OF_APP.REACT_TS:
+            template = 'github.com:dooboolab/dooboo-frontend';
+            break;
+          case TYPE_OF_APP.REACT_NATIVE_JS:
+            template = 'github.com:react-native-seoul/react-native-js-boilerplate.git';
+            break;
+          case TYPE_OF_APP.REACT_NATIVE_TS:
+            template = 'github.com:dooboolab/dooboo-native';
+            break;
+          case TYPE_OF_APP.EXPO_TS:
+            template = 'github.com:dooboolab/dooboo-expo';
+            break;
         }
 
         if (!template) {
@@ -130,7 +139,10 @@ program
 
         const spinner = ora('creating app ' + nameOfApp + '...');
         spinner.start();
-        if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
+        if ( // REACT-NATIVE APP
+          options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
+          || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
+        ) {
           shell.exec(`mkdir ${nameOfApp} && cd ${nameOfApp} && react-native init ${nameOfApp}`);
         } else {
           shell.exec(`mkdir ${nameOfApp}`);
@@ -147,7 +159,7 @@ program
 
           setTimeout(function() {
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-            if (options[0].value === TYPE_OF_APP['REACT-NATIVE']) {
+            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS) {
               shell.rm('-rf', `${nameOfApp}/.git`);
               shell.rm('-rf', `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/ios`);

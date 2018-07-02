@@ -6,7 +6,8 @@
     "dooboo": "bin/root.js"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "publish": "tsc && npm publish"
   },
   "author": "dooboolab",
   "license": "MIT",
