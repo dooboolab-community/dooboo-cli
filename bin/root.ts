@@ -82,8 +82,8 @@ program
     var stream = process.stdin;
     
     list
-      .option(' React App ', TYPE_OF_APP.REACT_JS)
-      .option(' React Native App ', TYPE_OF_APP.REACT_NATIVE_JS)
+      .option(' React App (Flow) ', TYPE_OF_APP.REACT_JS)
+      .option(' React Native App (Flow) ', TYPE_OF_APP.REACT_NATIVE_JS)
       .option(' React App (Typescript) ', TYPE_OF_APP.REACT_TS)
       .option(' React Native App (Typescript) ', TYPE_OF_APP.REACT_NATIVE_TS)
       // .option(' Expo App with typescript  ', TYPE_OF_APP.EXPO_TS)
