@@ -129,12 +129,19 @@ program
           process.exit(0);
         }
 
-        const spinner = ora('creating app ' + nameOfApp + '...');
+        const spinner = ora('creating app ' + nameOfApp + '...\n');
         spinner.start();
         if ( // REACT-NATIVE APP
           options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
           || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
         ) {
+          /**
+           * Check the installed package
+           */
+          if (!shell.which('react-native')) {
+            shell.echo(chalk.redBright('Sorry, this script requires react-native-cli to be installed.'));
+            shell.exit(1);
+          }
           shell.exec(`mkdir ${nameOfApp} && cd ${nameOfApp} && react-native init ${nameOfApp}`);
         } else {
           shell.exec(`mkdir ${nameOfApp}`);
@@ -151,7 +158,7 @@ program
 
           setTimeout(function() {
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS) {
+            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
               shell.rm('-rf', `${nameOfApp}/.git`);
               shell.rm('-rf', `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/ios`);
