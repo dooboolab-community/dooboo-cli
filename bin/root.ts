@@ -45,10 +45,11 @@ const welcome = `
 `;
 
 enum TYPE_OF_APP {
-  REACT_TS = 1,
+  REACT_JS = 1,
   REACT_NATIVE_JS = 2,
-  REACT_NATIVE_TS = 3,
-  EXPO_TS = 4,
+  REACT_TS = 3,
+  REACT_NATIVE_TS = 4,
+  // EXPO_TS = 5,
 }
 
 /**
@@ -80,11 +81,13 @@ program
     
     var stream = process.stdin;
     
-    list.option(' React App with typescript  ', TYPE_OF_APP.REACT_TS)
-        .option(' React Native App with javascript  ', TYPE_OF_APP.REACT_NATIVE_JS)
-        .option(' React Native App with typescript  ', TYPE_OF_APP.REACT_NATIVE_TS)
-        .option(' Expo App with typescript  ', TYPE_OF_APP.EXPO_TS)
-        .list();
+    list
+      .option(' React App ', TYPE_OF_APP.REACT_JS)
+      .option(' React Native App ', TYPE_OF_APP.REACT_NATIVE_JS)
+      .option(' React App (Typescript) ', TYPE_OF_APP.REACT_TS)
+      .option(' React Native App (Typescript) ', TYPE_OF_APP.REACT_NATIVE_TS)
+      // .option(' Expo App with typescript  ', TYPE_OF_APP.EXPO_TS)
+      .list();
     
     list.on('select', function(options){
       console.log(chalk.yellow('select the name of the app.'));
@@ -110,18 +113,21 @@ program
         let template = '';
         // console.log(options[0].value);
         switch(options[0].value) {
-          case TYPE_OF_APP.REACT_TS:
-            template = 'github.com:dooboolab/dooboo-frontend';
+          case TYPE_OF_APP.REACT_JS:
+            template = 'github.com:react-native-seoul/react-js-boilerplate';
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
             template = 'github.com:react-native-seoul/react-native-js-boilerplate';
             break;
+          case TYPE_OF_APP.REACT_TS:
+            template = 'github.com:dooboolab/dooboo-frontend';
+            break;
           case TYPE_OF_APP.REACT_NATIVE_TS:
             template = 'github.com:dooboolab/dooboo-native';
             break;
-          case TYPE_OF_APP.EXPO_TS:
-            template = 'github.com:dooboolab/dooboo-expo';
-            break;
+          // case TYPE_OF_APP.EXPO_TS:
+          //   template = 'github.com:dooboolab/dooboo-expo';
+          //   break;
         }
 
         if (!template) {
@@ -143,7 +149,7 @@ program
             shell.exit(1);
           }
           shell.exec(`mkdir ${nameOfApp} && cd ${nameOfApp} && react-native init ${nameOfApp}`);
-        } else {
+        } else { // REACT or EXPO APP
           shell.exec(`mkdir ${nameOfApp}`);
         }
 
