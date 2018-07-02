@@ -114,7 +114,7 @@ program
             template = 'github.com:dooboolab/dooboo-frontend';
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
-            template = 'github.com:react-native-seoul/react-native-js-boilerplate.git';
+            template = 'github.com:react-native-seoul/react-native-js-boilerplate';
             break;
           case TYPE_OF_APP.REACT_NATIVE_TS:
             template = 'github.com:dooboolab/dooboo-native';
