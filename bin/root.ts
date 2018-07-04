@@ -520,6 +520,8 @@ program
 
 program.parse(process.argv);
 
+console.log(process.argv);
+
 /**
  * RUN help when command is not valid.
  */
@@ -536,10 +538,35 @@ if (!program.args.length) {
     //if command executed it will be an object and not a string
     return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
   });
-  // if (invalidCommands.length) {
-  //   console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
-  //   process.exit(1);
-  // }
+  if (invalidCommands.length && process.argv[2]) {
+    console.log(process.argv[2]);
+    switch (process.argv[2]) {
+      case 'init':
+      case 'start':
+      case 'test':
+      case 'screen':
+      case 'shared':
+      case 'model':
+      case 'store':
+      case 'api':
+        break;
+      default:
+        //warn aboud invalid commands
+        const validCommands = program.commands.map(function(cmd){
+          return cmd.name;
+        });
+        const invalidCommands = program.args.filter(function(cmd){
+          //if command executed it will be an object and not a string
+          return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
+        });
+        console.log(invalidCommands);
+        if (invalidCommands.length) {
+          console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
+          process.exit(1);
+        }
+        break;
+    }
+  }
 }
 
 // program
