@@ -99,14 +99,14 @@ program
 
       inquirer.prompt([{
         name: 'value',
-        message: 'name of your app(camel-case): ',
+        message: 'name of your app(alphaNumeric): ',
       }]).then(answer => {
         const nameOfApp = answer.value;
         if (!nameOfApp) {
           console.log(chalk.redBright('please provide name of your app.'));
           process.exit(0);
-        } else if (!isCamelCase(nameOfApp)) {
-          console.log(chalk.redBright('app name should be camel-case.'));
+        } else if (!/^[a-z0-9]+$/i.test(nameOfApp)) {
+          console.log(chalk.redBright('app name should be alphaNumeric.'));
           process.exit(0);
         }
 
@@ -520,8 +520,6 @@ program
 
 program.parse(process.argv);
 
-console.log(process.argv);
-
 /**
  * RUN help when command is not valid.
  */
@@ -539,7 +537,6 @@ if (!program.args.length) {
     return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
   });
   if (invalidCommands.length && process.argv[2]) {
-    console.log(process.argv[2]);
     switch (process.argv[2]) {
       case 'init':
       case 'start':
@@ -559,7 +556,6 @@ if (!program.args.length) {
           //if command executed it will be an object and not a string
           return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
         });
-        console.log(invalidCommands);
         if (invalidCommands.length) {
           console.log('\n [ERROR] - Invalid command: "%s". See "-h or --help" for a list of available commands.\n', invalidCommands.join(', '));
           process.exit(1);
