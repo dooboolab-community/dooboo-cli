@@ -12,7 +12,7 @@
 
 ## Usage
 ```
-  Usage: dooboo-cli [source file]
+  Usage: dooboo [source file]
 
   Options:
     -V, --version        output the version number
