@@ -32,18 +32,24 @@
 ## Preview
 ![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=81d08aa5-fd73-46bb-81e1-1d757007b520)
 
+## Contribution
+* [React App with Jest](https://github.com/react-native-seoul/react-js-boilerplate)
+* [React Native App with Jest](https://github.com/react-native-seoul/react-native-js-boilerplate)
+* [React App with Typescript](https://github.com/dooboolab/dooboo-frontend)
+* [React Native App with Typescript](https://github.com/dooboolab/dooboo-native)
+
 ## Troubleshoot
 * If android build failed, apply below in `build.gradle` for `react-native-localization` module.
   ```gradle
   apply plugin: 'com.android.library'
 
   android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
