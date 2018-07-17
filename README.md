@@ -30,7 +30,7 @@
 ```
 
 ## Preview
-![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=81d08aa5-fd73-46bb-81e1-1d757007b520)
+![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
 
 ## Contribution
 * [React App with Jest](https://github.com/react-native-seoul/react-js-boilerplate)
