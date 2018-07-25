@@ -166,9 +166,11 @@ program
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
             if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
               shell.rm('-rf', `${nameOfApp}/.git`);
-              // copy android gradle file first to cover mobx@5 problem.
+              // ==> MOBX@5 fix: copy android gradle file first to cover mobx@5 problem.
               shell.cp(`${nameOfApp}/android/build.gradle`, `${nameOfApp}/${nameOfApp}/android/build.gradle`);
               shell.cp(`${nameOfApp}/android/app/build.gradle`, `${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
+              shell.sed('-i', 'dooboo', `${nameOfApp.toLowerCase()}`, `./${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
+              // <== MOBX@5 fix
               shell.rm('-rf', `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/ios`);
               shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios`, `${nameOfApp}/ios`);
@@ -182,7 +184,7 @@ program
               }
               shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
 
-              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native link`, {stdio: 'inherit'});
+              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native link react-native-localization`, {stdio: 'inherit'});
               spinner.stop();
 
               console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
