@@ -166,6 +166,9 @@ program
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
             if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
               shell.rm('-rf', `${nameOfApp}/.git`);
+              // copy android gradle file first to cover mobx@5 problem.
+              shell.cp(`${nameOfApp}/android/build.gradle`, `${nameOfApp}/${nameOfApp}/android/build.gradle`);
+              shell.cp(`${nameOfApp}/android/app/build.gradle`, `${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
               shell.rm('-rf', `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/ios`);
               shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios`, `${nameOfApp}/ios`);
