@@ -10,6 +10,9 @@
   npm install -g dooboo-cli
 ```
 
+## Post installation for android
+* Follow guide in [MOBX](https://github.com/react-community/jsc-android-buildscripts#how-to-use-it-with-my-react-native-app).
+
 ## Usage
 ```
   Usage: dooboo [source file]
