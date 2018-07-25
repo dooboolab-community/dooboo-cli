@@ -10,9 +10,6 @@
   npm install -g dooboo-cli
 ```
 
-## Post installation for android
-* Follow guide in [MOBX](https://github.com/react-community/jsc-android-buildscripts#how-to-use-it-with-my-react-native-app).
-
 ## Usage
 ```
   Usage: dooboo [source file]
@@ -62,11 +59,6 @@
   }
 
   dependencies { compile 'com.facebook.react:react-native:+' }
-  ```
-* Facing `Can't find variable Symbol` error in `window` or `ubuntu`.
-  ```
-  npm install --save mobx@3.6.2
-  npm install --save mobx-react@4.4.3
   ```
 
 ## TODO
