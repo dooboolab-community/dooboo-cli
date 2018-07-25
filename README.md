@@ -65,3 +65,8 @@
   npm install --save mobx@3.6.2
   npm install --save mobx-react@4.4.3
   ```
+
+## TODO
+- [ ] Support navigation templates for `react-native`
+- [ ] Support personal boilerplate option for `react-native`
+- [x] Upgrade template to `react-native@0.56`
