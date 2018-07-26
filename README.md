@@ -36,8 +36,8 @@
 ![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
 
 ## Contribution
-* [React App with Jest](https://github.com/react-native-seoul/react-js-boilerplate)
-* [React Native App with Jest](https://github.com/react-native-seoul/react-native-js-boilerplate)
+* [React App with Flow](https://github.com/react-native-seoul/react-js-boilerplate)
+* [React Native App with Flow](https://github.com/react-native-seoul/react-native-js-boilerplate)
 * [React App with Typescript](https://github.com/dooboolab/dooboo-frontend)
 * [React Native App with Typescript](https://github.com/dooboolab/dooboo-native)
 
