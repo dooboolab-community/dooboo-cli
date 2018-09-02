@@ -49,7 +49,7 @@ enum TYPE_OF_APP {
   REACT_NATIVE_JS = 2,
   REACT_TS = 3,
   REACT_NATIVE_TS = 4,
-  // EXPO_TS = 5,
+  EXPO_TS = 5,
 }
 
 /**
@@ -86,7 +86,7 @@ program
       .option(' React Native App (Flow) ', TYPE_OF_APP.REACT_NATIVE_JS)
       .option(' React App (Typescript) ', TYPE_OF_APP.REACT_TS)
       .option(' React Native App (Typescript) ', TYPE_OF_APP.REACT_NATIVE_TS)
-      // .option(' Expo App with typescript  ', TYPE_OF_APP.EXPO_TS)
+      .option(' Expo App (Typescript) ', TYPE_OF_APP.EXPO_TS)
       .list();
     
     list.on('select', function(options){
@@ -125,9 +125,9 @@ program
           case TYPE_OF_APP.REACT_NATIVE_TS:
             template = 'github.com:dooboolab/dooboo-native';
             break;
-          // case TYPE_OF_APP.EXPO_TS:
-          //   template = 'github.com:dooboolab/dooboo-expo';
-          //   break;
+          case TYPE_OF_APP.EXPO_TS:
+            template = 'github.com:dooboolab/dooboo-expo';
+            break;
         }
 
         if (!template) {
