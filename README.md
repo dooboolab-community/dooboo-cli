@@ -29,7 +29,7 @@
     api <c>              generate file for api call format.
 ```
 
-## Post Installation
+## Post Installation For React Native
 * Replace `/android/build.gradle` to [LINK](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/build.gradle)
 * Replace `/android/app/build.gradle` to [Link](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/app/build.gradle)
 
