@@ -28,9 +28,10 @@
     store <c>            generate store class.
     api <c>              generate file for api call format.
 ```
-## Changelogs
-**[0.8.0]**
-+ Fixed android to be build in one command along with ios.
+
+## Post Installation
+* Replace `/android/build.gradle` to [LINK](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/build.gradle)
+* Replace `/android/app/build.gradle` to [Link](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/app/build.gradle)
 
 ## Preview
 ![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
