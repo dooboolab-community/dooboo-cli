@@ -29,10 +29,6 @@
     api <c>              generate file for api call format.
 ```
 
-## Post Installation For React Native
-* Replace `/android/build.gradle` to [LINK](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/build.gradle)
-* Replace `/android/app/build.gradle` to [Link](https://github.com/react-native-seoul/react-native-js-boilerplate/blob/master/android/app/build.gradle)
-
 ## Preview
 ![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
 
@@ -41,29 +37,6 @@
 * [React Native App with Flow](https://github.com/react-native-seoul/react-native-js-boilerplate)
 * [React App with Typescript](https://github.com/dooboolab/dooboo-frontend)
 * [React Native App with Typescript](https://github.com/dooboolab/dooboo-native)
-
-## Troubleshoot
-* If android build failed, apply below in `build.gradle` for `react-native-localization` module.
-  ```gradle
-  apply plugin: 'com.android.library'
-
-  android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
-    defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
-    }
-  }
-
-  dependencies { compile 'com.facebook.react:react-native:+' }
-  ```
 
 ## TODO
 - [ ] Support navigation templates for `react-native`
