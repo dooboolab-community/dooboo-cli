@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -11,21 +11,21 @@
   "author": "dooboolab",
   "license": "MIT",
   "dependencies": {
-    "boxen": "^1.3.0",
+    "boxen": "^2.0.0",
     "chalk": "^2.4.1",
-    "commander": "^2.16.0",
-    "download-git-repo": "^1.0.2",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
     "fs": "0.0.1-security",
-    "inquirer": "^6.0.0",
-    "ora": "^2.1.0",
+    "inquirer": "^6.2.0",
+    "ora": "^3.0.0",
     "path": "^0.12.7",
     "select-shell": "^1.1.2",
-    "shelljs": "^0.8.2",
+    "shelljs": "^0.8.3",
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^10.5.1",
-    "typescript": "^2.9.2"
+    "@types/node": "^10.12.10",
+    "typescript": "^3.1.6"
   },
   "peerDependencies": {
     "react-native-cli": "*"
