@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -28,7 +28,6 @@
     "typescript": "^3.1.6"
   },
   "peerDependencies": {
-    "react-native-cli": "*"
   },
   "repository": {
     "type": "git",
