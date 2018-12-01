@@ -184,7 +184,7 @@ program
               }
               shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
 
-              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native link react-native-localization`, {stdio: 'inherit'});
+              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native unlink react-native-gesture-handler && react-native link react-native-localization && react-native link react-native-gesture-handler`, {stdio: 'inherit'});
               spinner.stop();
 
               console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
