@@ -114,19 +114,19 @@ program
         // console.log(options[0].value);
         switch(options[0].value) {
           case TYPE_OF_APP.REACT_JS:
-            template = 'github.com:react-native-seoul/dooboo-frontend-js';
+            template = 'github.com:dooboolab/dooboo-frontend-js';
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
-            template = 'github.com:react-native-seoul/dooboo-native-js';
+            template = 'github.com:dooboolab/dooboo-native-js';
             break;
           case TYPE_OF_APP.REACT_TS:
             template = 'github.com:dooboolab/dooboo-frontend-ts';
             break;
           case TYPE_OF_APP.REACT_NATIVE_TS:
-            template = 'github.com:react-native-seoul/dooboo-native-ts';
+            template = 'github.com:dooboolab/dooboo-native-ts';
             break;
           case TYPE_OF_APP.EXPO_TS:
-            template = 'github.com:react-native-seoul/dooboo-expo';
+            template = 'github.com:dooboolab/dooboo-expo';
             break;
         }
 

@@ -6,7 +6,7 @@
 =========
 
 ## Important
-You should use `dooboo-cli` from version `1.0.2` because there was a movement of codes in this version which won't work as expected in previous version.
+You should use `dooboo-cli` from version `1.1.0` because there was a movement of codes in this version which won't work as expected in previous version. This will be fixed for now.
 
 ## Installation
 ```
