@@ -324,6 +324,7 @@ program
       console.log(chalk.cyanBright(`creating screen component...`));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
+      shell.sed('-i', 'Screen', `${upperCamel}`, testFile);
       shell.sed('-i', '../Screen', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
@@ -341,6 +342,7 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
       console.log(chalk.cyanBright(`creating screen component...`));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
+      shell.sed('-i', 'Screen', `${upperCamel}`, testFile);
       shell.sed('-i', '../Screen', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
@@ -387,6 +389,7 @@ program
       console.log(chalk.cyanBright(`creating shared component...`));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
+      shell.sed('-i', 'Shared', `${upperCamel}`, testFile);
       shell.sed('-i', '../Shared', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
@@ -404,6 +407,7 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
       console.log(chalk.cyanBright(`creating shared component...`));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
+      shell.sed('-i', 'Shared', `${upperCamel}`, testFile);
       shell.sed('-i', '../Shared', `../${upperCamel}`, testFile);
       console.log(
         chalk.green(
@@ -480,7 +484,6 @@ program
     }
     const template = path.resolve(__dirname, '..', `templates/common/Store.${fileExt}`);
     shell.cp(template, storeFile);
-    shell.sed('-i', 'Store', `${upperCamel}`, storeFile);
     console.log(chalk.cyanBright(`creating store...`));
     console.log(
     chalk.green(`generated: src/stores/${camel}.${fileExt}`));
