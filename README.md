@@ -1,7 +1,14 @@
 # dooboo-cli
 <p align="left">
-  <a href="https://npmjs.org/package/dooboo-cli"><img alt="npm version" src="http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/dooboo-cli"><img alt="npm version" src="http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/dooboo-cli">
+    <img alt="npm version" src="http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square">
+  </a>
+  <a href="https://npmjs.org/package/dooboo-cli">
+    <img src="http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square">
+  </a>
+  <a href="https://npmjs.org/package/dooboo-cli">
+  <img src="http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square">
+  </a>
 </p>
 =========
 
