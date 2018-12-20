@@ -12,7 +12,7 @@
   "license": "MIT",
   "keywords": ["react", "react-native", "cli", "template", "boilerplate", "mobx", "flow", "typescript"],
   "dependencies": {
-    "boxen": "^2.0.0",
+    "boxen": "^2.1.0",
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "download-git-repo": "^1.1.0",
@@ -23,7 +23,7 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^10.12.15",
+    "@types/node": "^10.12.18",
     "typescript": "^3.2.2"
   },
   "peerDependencies": {},
