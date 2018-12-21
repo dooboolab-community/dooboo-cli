@@ -6,16 +6,28 @@ import {
   Image,
   Text,
   View,
+  ViewStyle,
+  TextStyle,
 } from 'react-native';
 
 import { ratio, colors } from '../../utils/Styles';
 
-const styles = StyleSheet.create({
+type Styles = {
+  container: ViewStyle;
+  text: TextStyle,
+};
+
+const styles: Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    color: 'black',
   },
 });
 
@@ -34,7 +46,7 @@ class Screen extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Screen</Text>
+        <Text style={styles.text}>Screen</Text>
       </View>
     );
   }

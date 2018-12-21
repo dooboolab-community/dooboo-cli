@@ -5,16 +5,26 @@ import {
   Image,
   Text,
   View,
+  ViewStyle,
+  TextStyle,
 } from 'react-native';
 
 import { ratio, colors } from '../../utils/Styles';
 
-const styles: any = StyleSheet.create({
+interface IStyles {
+  wrapper: ViewStyle;
+  text: TextStyle;
+}
+
+const styles: Styles = StyleSheet.create({
   wrapper: {
     backgroundColor: 'transparent',
-
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    color: 'black',
   },
 });
 
@@ -36,7 +46,7 @@ class Shared extends Component<ItemProps, any> {
   public render() {
     return (
       <View style={this.props.style}>
-        <Text>Shared</Text>
+        <Text style={styles.text}>Shared</Text>
       </View>
     );
   }
