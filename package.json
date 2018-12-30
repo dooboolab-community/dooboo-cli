@@ -10,7 +10,16 @@
   },
   "author": "dooboolab",
   "license": "MIT",
-  "keywords": ["react", "react-native", "cli", "template", "boilerplate", "mobx", "flow", "typescript"],
+  "keywords": [
+    "react",
+    "react-native",
+    "cli",
+    "template",
+    "boilerplate",
+    "mobx",
+    "flow",
+    "typescript"
+  ],
   "dependencies": {
     "boxen": "^2.1.0",
     "chalk": "^2.4.1",
