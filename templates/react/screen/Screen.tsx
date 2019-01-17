@@ -9,8 +9,10 @@ const styles = {
   },
 };
 
-interface IProps {};
-interface IState {};
+interface IProps {
+  store: any;
+}
+interface IState {}
 
 @inject('store') @observer
 class Screen extends Component<IProps, IState> {

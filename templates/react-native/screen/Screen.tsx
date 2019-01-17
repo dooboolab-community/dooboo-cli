@@ -30,6 +30,14 @@ const styles = StyleSheet.create<IStyle>({
   },
 });
 
+interface IProps {
+
+}
+
+interface IState {
+
+}
+
 class Screen extends Component<any, any> {
   static navigationOptions = {
     title: 'Title',

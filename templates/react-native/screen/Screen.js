@@ -33,7 +33,7 @@ const styles: Styles = StyleSheet.create({
 
 type Props = {
 
-};
+}
 type State = {
 
 }

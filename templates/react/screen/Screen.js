@@ -15,7 +15,7 @@ type Props = {
 
 type State = {
 
-}
+};
 
 @inject('store') @observer
 class Screen extends Component<Props, State> {
