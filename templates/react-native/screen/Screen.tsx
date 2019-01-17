@@ -38,7 +38,7 @@ interface IState {
 
 }
 
-class Screen extends Component<any, any> {
+class Screen extends Component<IProps, IState> {
   static navigationOptions = {
     title: 'Title',
   };
