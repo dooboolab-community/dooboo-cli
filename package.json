@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -32,7 +32,7 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^10.12.23",
+    "@types/node": "^10.12.24",
     "typescript": "^3.3.3"
   },
   "peerDependencies": {},
