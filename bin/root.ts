@@ -11,6 +11,7 @@ import {
 
 import { setTimeout } from 'timers';
 import chalk from 'chalk';
+import boxen from 'boxen';
 
 // const prompt = require('cli-prompt');
 import inquirer = require('inquirer');
@@ -23,7 +24,6 @@ import program = require('commander');
 import fs = require('fs');
 import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
-import boxen = require('boxen');
 import pkg = require('../package.json');
 
 const notifier = updateNotifier({

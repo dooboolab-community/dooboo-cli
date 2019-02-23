@@ -7,13 +7,13 @@ import Screen from '../Screen';
 import renderer from 'react-test-renderer';
 import { shallow, render } from 'enzyme';
 
-describe('rendering test', () => {
+describe('[Screen] rendering test', () => {
   const wrapper = shallow(
     <Screen/>,
     // <Screen store={appStore}/>,
   );
 
-  it('renders as expected', () => {
+  it('should render as expected', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
