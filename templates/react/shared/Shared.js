@@ -23,9 +23,9 @@ type State = {
 function Shared(props: Props, state: State) {
   return (
     <Container>
-      {this.props.children}
+      {props.children}
     </Container>
   );
 }
 
-export default component;
+export default Shared;
