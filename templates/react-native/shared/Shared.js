@@ -1,60 +1,33 @@
 // @flow
 import React, { Component } from 'react';
 import {
-  ActivityIndicator,
-  StyleSheet,
-  Image,
-  Text,
   View,
-  ViewStyle,
-  TextStyle,
+  Text,
 } from 'react-native';
 
-// import type {
-//   ____ViewStyleProp_Internal as ViewStyle,
-//   ____TextStyleProp_Internal as TextStyle,
-//   ____ImageStyleProp_Internal as ImageStyle,
-// } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+import styled from 'styled-components';
 
-import { ratio, colors } from '../../utils/Styles';
-
-type Styles = {
-  wrapper: ViewStyle,
-  text: TextStyle,
-};
-
-const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: 'transparent',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: 'black',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  background-color: transparent;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 type Props = {
-  style: ViewStyle;
-};
+  children?: any;
+}
 
 type State = {
+}
 
-};
-
-class Shared extends Component<Props, State> {
-  static defaultProps: Props = {
-    style: styles.wrapper,
-  };
-
-  render() {
-    return (
-      <View style={this.props.style}>
-        <Text style={styles.textStyle}>Shared</Text>
-      </View>
-    );
-  }
+function Shared(props: Props, state: State) {
+  return (
+    <Container>
+      {this.props.children}
+    </Container>
+  );
 }
 
 export default Shared;
