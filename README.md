@@ -52,5 +52,6 @@ You should use `dooboo-cli` from version `1.1.0` because there was a movement of
 ## TODO
 - [ ] Support navigation templates for `react-native`
 - [ ] Support personal boilerplate option for `react-native`
-- [x] Upgrade template to `react-native@0.57`
+- [x] Upgrade template to `react@16.8.+`
+- [x] Upgrade template to `react-native@0.59.+`
 - [x] Upgrade template to `react-navigation v3`
