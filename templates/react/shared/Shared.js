@@ -1,29 +1,31 @@
+// @flow
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const styles = {
-  wrapper: {
-    display: flex,
-    width: '100px',
-    height: '40px',
-  },
-};
+import {
+  IC_MASK,
+} from '../../utils/Icons';
+
+const Container = styled.div`
+  display: flex,
+  width: '100px',
+  height: '40px',
+`;
 
 type Props = {
-
+  children?: string;
 };
 
 type State = {
 
 };
 
-class Component extends Component<Props, State> {
-  render() {
-    return (
-      <div style={styles.wrapper}>
-        {this.props.test}
-      </div>
-    );
-  }
+function Shared(props: Props, state: State) {
+  return (
+    <Container>
+      {this.props.children}
+    </Container>
+  );
 }
 
 export default component;
