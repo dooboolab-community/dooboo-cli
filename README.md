@@ -43,10 +43,10 @@ You should use `dooboo-cli` from version `1.1.0` because there was a movement of
 ![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
 
 ## Contribution
-* [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js)
-* [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js)
-* [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts)
-* [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts)
+* [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-js)
+* [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-js)
+* [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-ts)
+* [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-ts)
 * [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo)
 
 ## TODO
