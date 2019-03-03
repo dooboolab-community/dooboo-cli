@@ -5,15 +5,11 @@ import Screen from '../Screen';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import { shallow, render } from 'enzyme';
 
-describe('[Screen] rendering test', () => {
-  const wrapper = shallow(
-    <Screen/>,
-    // <Screen store={appStore}/>,
-  );
-
-  it('should render as expected', () => {
-    expect(wrapper).toMatchSnapshot();
+describe('[Screen]', () => {
+  it('renders without crashing', () => {
+    const rendered = renderer.create(<Screen />).toJSON();
+    expect(rendered).toMatchSnapshot();
+    expect(rendered).toBeTruthy();
   });
 });
