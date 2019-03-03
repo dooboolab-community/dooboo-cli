@@ -47,8 +47,8 @@ const welcome = `
 enum TYPE_OF_APP {
   REACT_JS = 1,
   REACT_NATIVE_JS = 2,
-  REACT_TS = 3,
-  REACT_NATIVE_TS = 4,
+  REACT_TS_LEGACY = 3,
+  REACT_NATIVE_TS_LEGACY = 4,
   EXPO_TS = 5,
 }
 
@@ -84,9 +84,9 @@ program
     list
       .option(' React App (flow, context-api) ', TYPE_OF_APP.REACT_JS)
       .option(' React Native App (flow, context-api) ', TYPE_OF_APP.REACT_NATIVE_JS)
-      .option(' React App (typescript, mobx) ', TYPE_OF_APP.REACT_TS)
-      .option(' React Native App (typescript, mobx) ', TYPE_OF_APP.REACT_NATIVE_TS)
       .option(' Expo App (typescript, mobx) ', TYPE_OF_APP.EXPO_TS)
+      .option(' [LEGACY] React App (typescript, mobx) ', TYPE_OF_APP.REACT_TS_LEGACY)
+      .option(' [LEGACY] React Native App (typescript, mobx) ', TYPE_OF_APP.REACT_NATIVE_TS_LEGACY)
       .list();
     
     list.on('select', function(options){
@@ -99,7 +99,7 @@ program
 
       inquirer.prompt([{
         name: 'value',
-        message: 'name of your app(alphaNumeric): ',
+        message: 'name of your app (alphaNumeric): ',
       }]).then(answer => {
         const nameOfApp = answer.value;
         if (!nameOfApp) {
@@ -114,19 +114,19 @@ program
         // console.log(options[0].value);
         switch(options[0].value) {
           case TYPE_OF_APP.REACT_JS:
-            template = 'github.com:dooboolab/dooboo-frontend-js';
+            template = 'direct:https://github.com/dooboolab/dooboo-frontend-js.git';
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
-            template = 'github.com:dooboolab/dooboo-native-js';
-            break;
-          case TYPE_OF_APP.REACT_TS:
-            template = 'github.com:dooboolab/dooboo-frontend-ts';
-            break;
-          case TYPE_OF_APP.REACT_NATIVE_TS:
-            template = 'github.com:dooboolab/dooboo-native-ts';
+            template = 'direct:https://github.com/dooboolab/dooboo-native-js.git';
             break;
           case TYPE_OF_APP.EXPO_TS:
-            template = 'github.com:dooboolab/dooboo-expo';
+            template = 'direct:https://github.com/dooboolab/dooboo-expo.git';
+            break;
+          case TYPE_OF_APP.REACT_TS_LEGACY:
+            template = 'direct:https://github.com/dooboolab/dooboo-frontend-ts.git#mobx-legacy';
+            break;
+          case TYPE_OF_APP.REACT_NATIVE_TS_LEGACY:
+            template = 'direct:https://github.com/dooboolab/dooboo-native-ts.git#mobx-legacy';
             break;
         }
 
@@ -138,7 +138,7 @@ program
         const spinner = ora('creating app ' + nameOfApp + '...\n');
         spinner.start();
         if ( // REACT-NATIVE APP
-          options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
+          options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
           || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
         ) {
           /**
@@ -153,18 +153,18 @@ program
           shell.exec(`mkdir ${nameOfApp}`);
         }
 
-        download(template, `./${nameOfApp}`, null, (err) => {
+        download(template, `./${nameOfApp}`, { clone: true }, (err: Error ) => {
           spinner.stop();
           if (err) {
             console.log(chalk.redBright(
-              'failed to download repo ' + template + ': ' + err.message.trim()
+              `failed to download repo ${template}: ${err.message.trim()}`,
             ));
             process.exit(0);
           }
 
           setTimeout(function() {
             shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
+            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
               shell.rm('-rf', `${nameOfApp}/.git`);
               shell.rm('-rf', `${nameOfApp}/.circleci`);
               // ==> MOBX@5 fix: copy android gradle file first to cover mobx@5 problem.
@@ -178,7 +178,7 @@ program
               shell.cp('-R', `${nameOfApp}/${nameOfApp}/android`, `${nameOfApp}/android`);
               shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-              if (options[0].value == TYPE_OF_APP.REACT_NATIVE_TS) {
+              if (options[0].value == TYPE_OF_APP.REACT_NATIVE_TS_LEGACY) {
                 shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
               } else { // REACT_NATIVE_JS
                 shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.js`);
@@ -201,8 +201,8 @@ program
       });
     });
     
-    list.on('cancel', function(options){
-      console.log('cancel list, '+ options.length +' options selected');
+    list.on('cancel', function(options: string) {
+      console.log(`Operation has been canceled, ${options.length} option was selected.`);
       process.exit(0);
     });
   });
