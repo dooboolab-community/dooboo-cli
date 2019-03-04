@@ -12,6 +12,8 @@
 </p>
 =========
 
+> We decided to remove `mobx` from all major boilerplates in `dooboo-cli@1.4.+`. If you still want to use `mobx template`, you can choosing `legacy` template. However, `dooboo-cli` will not generate `mobx` template from `1.4.0`, so you may have to downgrade to `1.3.+`. The reason to remove `mobx` is that we thought this isn't suitable with what `react` brought up today as a design pattern. `Functional programming` has been powered by `react-hook` so we chose to remove work on `object-oriented programming` which was more suitable with `mobx`. We hope you enjoy what we've brought up today.
+
 ## Important
 You should use `dooboo-cli` from version `1.1.0` because there was a movement of codes in this version which won't work as expected in previous version. This will be fixed for now.
 
