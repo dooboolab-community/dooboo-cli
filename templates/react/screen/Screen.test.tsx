@@ -1,16 +1,33 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
-// import appStore from '../../../stores/appStore';
 import Screen from '../Screen';
+import { render, fireEvent, getByTestId } from 'react-testing-library';
 
-// test for the container page in dom
-describe('rendering test', () => {
-  const screen = shallow(
-    <Screen />,
-    // <Screen store={appStore} />,
-  );
-  it('Screen has to match the snapshot', () => {
-    expect(screen).toMatchSnapshot();
+const props = {
+  history: {
+    goBack: jest.fn(),
+  },
+};
+
+describe('[Screen] render', () => {
+  it('renders without crashing', () => {
+    const rendered = renderer.create(<Screen />).toJSON();
+    expect(rendered).toMatchSnapshot();
+    expect(rendered).toBeTruthy();
+  });
+});
+
+describe('[Screen] Interaction', () => {
+  const component = <Screen {...props} />;
+  let renderResult: any;
+
+  beforeEach(() => {
+    renderResult = render(component);
+  });
+
+  it('should simulate [onClick] when [btn] has been clicked', () => {
+    const textInstance: ReactTestInstance = renderResult.getByTestId('myText');
+    expect(textInstance.textContent).toEqual('dooboolab');
   });
 });

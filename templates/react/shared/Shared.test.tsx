@@ -1,23 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
-import Shared from '../shared';
+import Shared from '../Shared';
+import { render, fireEvent, getByTestId } from 'react-testing-library';
 
-// const component = shallow(
-//     <Button white={true} btnTxt='Button 1st test' />
-//   );
+const props = {
+  history: {
+    goBack: jest.fn(),
+  },
+};
 
-// test for the pure component
-describe('Shared component test', () => {
-  const component = shallow(
-    <Shared />,
-  );
-
-  it('component and snapshot matches', () => {
-    expect(component).toMatchSnapshot();
-  });
-
-  it('check child props', () => {
-    component.find('div').children.toBe(true);
+describe('[Shared] render', () => {
+  it('renders without crashing', () => {
+    const rendered: ReactTestRendererJSON = renderer.create(<Shared />).toJSON();
+    expect(rendered).toMatchSnapshot();
+    expect(rendered).toBeTruthy();
   });
 });

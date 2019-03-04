@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import styled from 'styled-components';
 
-const styles = {
-  wrapper: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-};
+import Button from '../shared/Button';
+import {
+  IC_MASK,
+} from '../../utils/Icons';
+
+const Container = styled.div`
+  flex: 1;
+  background-color: transparent;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 interface IProps {
-  store: any;
-}
-interface IState {}
-
-@inject('store') @observer
-class Screen extends Component<IProps, IState> {
-  public render() {
-    const { getString } = this.props.store.locale;
-    return (
-      <div style={styles.wrapper}>
-        Screen
-      </div>
-    );
-  }
+  history?: any;
 }
 
-export default Screen;
+function Page(props: IProps) {
+  return (
+    <Container>
+      <div
+        data-testid='myText'
+      >dooboolab</div>
+    </Container>
+  );
+}
+
+export default Page;
