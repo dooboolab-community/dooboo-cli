@@ -1,61 +1,36 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text,
   View,
-  ViewStyle,
-  TextStyle,
+  Text,
 } from 'react-native';
 
-import { ratio, colors } from '../../utils/Styles';
+import { NavigationScreenProp, NavigationStateRoute } from 'react-navigation';
+import styled from 'styled-components/native';
 
-interface IStyle {
-  container: ViewStyle;
-  text: TextStyle;
-}
+const Container = styled.View`
+  flex: 1;
+  background-color: transparent;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
-const styles = StyleSheet.create<IStyle>({
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: 'black',
-  },
-});
+const StyledText = styled.Text`
+  font-size: 16;
+  color: blue;
+`;
 
 interface IProps {
-
+  store?: any;
+  navigation?: NavigationScreenProp<NavigationStateRoute<any>>;
 }
 
-interface IState {
-
+function Page(props: IProps) {
+  return (
+    <Container>
+      <StyledText testID = 'myText'>dooboolab</StyledText>
+    </Container>
+  );
 }
 
-class Screen extends Component<IProps, IState> {
-  static navigationOptions = {
-    title: 'Title',
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  public render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Screen</Text>
-      </View>
-    );
-  }
-}
-
-export default Screen;
+export default Page;

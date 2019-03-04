@@ -16,13 +16,10 @@ const Container = styled.div`
 `;
 
 type Props = {
-  history: any;
+  history?: any;
 }
 
-type State = {
-}
-
-function Page(props: Props, state: State) {
+function Page(props: Props) {
   return (
     <Container>
       <div

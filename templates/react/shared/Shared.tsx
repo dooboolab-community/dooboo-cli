@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const styles = {
-  wrapper: {
-    display: flex,
-    width: '100px',
-    height: '40px',
-  },
+import {
+  IC_MASK,
+} from '../../utils/Icons';
+
+const Container = styled.div`
+  display: flex,
+  width: '100px',
+  height: '40px',
+`;
+
+type Props = {
+  children?: string;
 };
 
-interface IProps {};
-interface IState {};
-
-class Component extends Component<IProps, IState> {
-  public render() {
-    return (
-      <div style={styles.wrapper}>
-        {this.props.test}
-      </div>
-    );
-  }
+function Shared(props: Props) {
+  return (
+    <Container>
+      {props.children}
+    </Container>
+  );
 }
 
-export default component;
+export default Shared;

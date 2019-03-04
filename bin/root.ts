@@ -47,9 +47,11 @@ const welcome = `
 enum TYPE_OF_APP {
   REACT_JS = 1,
   REACT_NATIVE_JS = 2,
-  REACT_TS_LEGACY = 3,
-  REACT_NATIVE_TS_LEGACY = 4,
+  REACT_TS = 3,
+  REACT_NATIVE_TS = 4,
   EXPO_TS = 5,
+  REACT_TS_LEGACY = 6,
+  REACT_NATIVE_TS_LEGACY = 7,
 }
 
 /**
@@ -84,6 +86,8 @@ program
     list
       .option(' React App (flow, context-api) ', TYPE_OF_APP.REACT_JS)
       .option(' React Native App (flow, context-api) ', TYPE_OF_APP.REACT_NATIVE_JS)
+      .option(' React App (typescript, context-api) ', TYPE_OF_APP.REACT_TS)
+      .option(' React Native App (typescript, context-api) ', TYPE_OF_APP.REACT_NATIVE_TS)
       .option(' Expo App (typescript, mobx) ', TYPE_OF_APP.EXPO_TS)
       .option(' [LEGACY] React App (typescript, mobx) ', TYPE_OF_APP.REACT_TS_LEGACY)
       .option(' [LEGACY] React Native App (typescript, mobx) ', TYPE_OF_APP.REACT_NATIVE_TS_LEGACY)
@@ -118,6 +122,12 @@ program
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
             template = 'direct:https://github.com/dooboolab/dooboo-native-js.git';
+            break;
+          case TYPE_OF_APP.REACT_TS:
+            template = 'direct:https://github.com/dooboolab/dooboo-frontend-ts.git';
+            break;
+          case TYPE_OF_APP.REACT_NATIVE_TS:
+            template = 'direct:https://github.com/dooboolab/dooboo-native-ts.git';
             break;
           case TYPE_OF_APP.EXPO_TS:
             template = 'direct:https://github.com/dooboolab/dooboo-expo.git';

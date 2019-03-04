@@ -16,11 +16,7 @@ type Props = {
   children?: string;
 };
 
-type State = {
-
-};
-
-function Shared(props: Props, state: State) {
+function Shared(props: Props) {
   return (
     <Container>
       {props.children}

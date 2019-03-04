@@ -22,7 +22,7 @@ const StyledText = styled.Text`
 `;
 
 type Props = {
-  navigation: NavigationScreenProp<NavigationStateRoute>;
+  navigation?: NavigationScreenProp<NavigationStateRoute>;
 }
 
 type State = {
