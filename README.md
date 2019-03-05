@@ -1,21 +1,35 @@
 # dooboo-cli
-<p align="left">
-  <a href="https://npmjs.org/package/dooboo-cli">
-    <img alt="npm version" src="http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square">
-  </a>
-  <a href="https://npmjs.org/package/dooboo-cli">
-    <img src="http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square">
-  </a>
-  <a href="https://npmjs.org/package/dooboo-cli">
-  <img src="http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square">
-  </a>
-</p>
-=========
+[![npm version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
+[![downloads](http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
+![License](http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square)
 
+=========
 > We decided to remove `mobx` from all our major boilerplates in `dooboo-cli@1.4.+`. If you still want to use `mobx template`, you can choosing `legacy` template. However, `dooboo-cli` will not generate `mobx` template from `1.4.0`, so you may have to downgrade to `1.3.+`. The reason for removing `mobx` is that we thought this isn't suitable with what `react` brought up today as a design pattern. `Functional programming` has been powered by `react-hook` so we chose to remove work on `object-oriented programming` which was more suitable with `mobx`. We hope you enjoy what we've brought up today.
 
+## Stacks we use
+#### Web based project
+* [react](https://github.com/facebook/react)
+* [react-router](https://github.com/ReactTraining/react-router)
+* [flow](https://github.com/facebook/flow) - for `js` project
+* [styled-components](https://github.com/styled-components/styled-components)
+* [jest](https://github.com/facebook/jest)
+* [react-testing-library](https://github.com/kentcdodds/react-testing-library)
+* [typescript](https://github.com/Microsoft/TypeScript) - for `ts` project
+* [ts-jest](https://github.com/kulshekhar/ts-jest) - for `ts` project
+
+#### Native mobile based project
+* [react-native](https://github.com/facebook/react-native)
+* [react-navigation](https://github.com/react-navigation/react-navigation)
+* [localization](https://github.com/stefalda/ReactNativeLocalization)
+* [styled-components](https://github.com/styled-components/styled-components)
+* [flow](https://github.com/facebook/flow) - for `js` project
+* [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
+* [typescript](https://github.com/Microsoft/TypeScript) - for `ts` project
+* [ts-jest](https://github.com/kulshekhar/ts-jest) - for `ts` project
+
 ## Important
-You should use `dooboo-cli` from version `1.1.0` because there was a movement of codes in this version which won't work as expected in previous version. This will be fixed for now.
+- You should use `dooboo-cli` from version `1.1.0` because there was a movement of codes in this version which won't work as expected in previous version. This will be fixed for now.
+- Another major migration has been done in version `1.4.1`. With the release of `react-hook` we decided to make our major boilerplates into `functional` rather than `oop` style (which was most suitable with `mobx`).
 
 ## Installation
 ```

@@ -16,7 +16,6 @@ import boxen from 'boxen';
 // const prompt = require('cli-prompt');
 import inquirer = require('inquirer');
 import ora = require('ora');
-import download = require('download-git-repo');
 import selectShell = require('select-shell');
 import shell = require('shelljs');
 import path = require('path');
@@ -37,6 +36,64 @@ if (notifier.update) {
       boxen(`Update available: ${notifier.update.latest}`, {padding: 1})
     )
   );
+}
+
+const cbResult = (template: string, nameOfApp: string, answer: any, options: any, spinner: any) => {
+  shell.exec(`git clone ${template} ${nameOfApp}`, (code: number, stdout: string, stderr: string) => {
+    if (code !== 0) {
+      console.log(chalk.cyanBright(`code: ${code}`));
+      console.log(chalk.cyanBright(`Program output: ${stdout}`));
+      console.log(chalk.cyanBright(`Program stderr: ${stderr}`));
+    }
+    shell.exec(`cd ${nameOfApp} && react-native init ${nameOfApp}`);
+    spinner.stop();
+
+    setTimeout(function() {
+      shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
+      if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
+        || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
+        || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
+      ) {
+        shell.exec(`pwd`);
+        shell.rm('-rf', `${nameOfApp}/.git`);
+        shell.rm('-rf', `${nameOfApp}/.circleci`);
+        // // ==> Android config
+        shell.cp(`${nameOfApp}/metro.config.js`, `${nameOfApp}/${nameOfApp}/metro.config.js`);
+        shell.cp(`${nameOfApp}/android/build.gradle`, `${nameOfApp}/${nameOfApp}/android/build.gradle`);
+        shell.cp(`${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
+                 `${nameOfApp}/${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
+        );
+        // shell.cp(`${nameOfApp}/android/app/build.gradle`, `${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
+        shell.rm('-rf', `${nameOfApp}/android/*`);
+        shell.rm('-rf', `${nameOfApp}/ios/*`);
+        shell.sed('-i', 'dooboo', `${nameOfApp.toLowerCase()}`, `./${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
+        shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios/*`, `${nameOfApp}/ios`);
+        shell.cp('-R', `${nameOfApp}/${nameOfApp}/android/*`, `${nameOfApp}/android`);
+        // // <== Android config
+
+        if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
+          || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
+        ) {
+          shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
+        } else { // REACT_NATIVE_JS
+          shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.js`);
+        }
+        shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
+        shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
+
+        childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native unlink react-native-gesture-handler && react-native link react-native-localization && react-native link react-native-gesture-handler`, {stdio: 'inherit'});
+        spinner.stop();
+
+        console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
+        console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
+      } else {
+        console.log(chalk.greenBright(answer.value + ' created.'));
+        console.log(chalk.greenBright('cd ' + answer.value + ' and dooboo start.'));
+      }
+      process.exit(0);
+      spinner.stop();
+    }, 2000);
+  });
 }
 
 const welcome = `
@@ -118,25 +175,25 @@ program
         // console.log(options[0].value);
         switch(options[0].value) {
           case TYPE_OF_APP.REACT_JS:
-            template = 'direct:https://github.com/dooboolab/dooboo-frontend-js.git';
+            template = '-b master https://github.com/dooboolab/dooboo-frontend-js.git';
             break;
           case TYPE_OF_APP.REACT_NATIVE_JS:
-            template = 'direct:https://github.com/dooboolab/dooboo-native-js.git';
+            template = '-b master https://github.com/dooboolab/dooboo-native-js.git';
             break;
           case TYPE_OF_APP.REACT_TS:
-            template = 'direct:https://github.com/dooboolab/dooboo-frontend-ts.git';
+            template = '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
             break;
           case TYPE_OF_APP.REACT_NATIVE_TS:
-            template = 'direct:https://github.com/dooboolab/dooboo-native-ts.git';
+            template = '-b master https://github.com/dooboolab/dooboo-native-ts.git';
             break;
           case TYPE_OF_APP.EXPO_TS:
-            template = 'direct:https://github.com/dooboolab/dooboo-expo.git';
+            template = '-b master https://github.com/dooboolab/dooboo-expo.git';
             break;
           case TYPE_OF_APP.REACT_TS_LEGACY:
-            template = 'direct:https://github.com/dooboolab/dooboo-frontend-ts.git#mobx-legacy';
+            template = '-b mobx-legacy https://github.com/dooboolab/dooboo-frontend-ts.git';
             break;
           case TYPE_OF_APP.REACT_NATIVE_TS_LEGACY:
-            template = 'direct:https://github.com/dooboolab/dooboo-native-ts.git#mobx-legacy';
+            template = '-b mobx-legacy https://github.com/dooboolab/dooboo-native-ts.git';
             break;
         }
 
@@ -150,6 +207,7 @@ program
         if ( // REACT-NATIVE APP
           options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
           || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
+          || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
         ) {
           /**
            * Check the installed package
@@ -158,56 +216,17 @@ program
             shell.echo(chalk.redBright('Sorry, this script requires react-native-cli to be installed.'));
             shell.exit(1);
           }
-          shell.exec(`mkdir ${nameOfApp} && cd ${nameOfApp} && react-native init ${nameOfApp}`);
-        } else { // REACT or EXPO APP
-          shell.exec(`mkdir ${nameOfApp}`);
-        }
-
-        download(template, `./${nameOfApp}`, { clone: true }, (err: Error ) => {
-          spinner.stop();
-          if (err) {
-            console.log(chalk.redBright(
-              `failed to download repo ${template}: ${err.message.trim()}`,
-            ));
-            process.exit(0);
+          if (!shell.which('git')) {
+            shell.echo(chalk.redBright('Sorry, this script requires git to be installed.'));
+            shell.exit(1);
           }
 
-          setTimeout(function() {
-            shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-            if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS) {
-              shell.rm('-rf', `${nameOfApp}/.git`);
-              shell.rm('-rf', `${nameOfApp}/.circleci`);
-              // ==> MOBX@5 fix: copy android gradle file first to cover mobx@5 problem.
-              shell.cp(`${nameOfApp}/android/build.gradle`, `${nameOfApp}/${nameOfApp}/android/build.gradle`);
-              shell.cp(`${nameOfApp}/android/app/build.gradle`, `${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
-              shell.sed('-i', 'dooboo', `${nameOfApp.toLowerCase()}`, `./${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
-              // <== MOBX@5 fix
-              shell.rm('-rf', `${nameOfApp}/android`);
-              shell.rm('-rf', `${nameOfApp}/ios`);
-              shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios`, `${nameOfApp}/ios`);
-              shell.cp('-R', `${nameOfApp}/${nameOfApp}/android`, `${nameOfApp}/android`);
-              shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
-
-              if (options[0].value == TYPE_OF_APP.REACT_NATIVE_TS_LEGACY) {
-                shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
-              } else { // REACT_NATIVE_JS
-                shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.js`);
-              }
-              shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
-
-              childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native unlink react-native-gesture-handler && react-native link react-native-localization && react-native link react-native-gesture-handler`, {stdio: 'inherit'});
-              spinner.stop();
-
-              console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
-              console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
-            } else {
-              console.log(chalk.greenBright(answer.value + ' created.'));
-              console.log(chalk.greenBright('cd ' + answer.value + ' and dooboo start.'));
-            }
-            process.exit(0);
-            spinner.stop();
-          }, 2000);
-        });
+          cbResult(template, nameOfApp, answer, options, spinner)
+        } else { // REACT or EXPO APP
+          shell.exec(`mkdir ${nameOfApp}`,
+            cbResult(template, nameOfApp, answer, options, spinner)
+          );
+        }
       });
     });
     
