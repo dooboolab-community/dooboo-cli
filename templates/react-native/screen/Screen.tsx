@@ -21,14 +21,13 @@ const StyledText = styled.Text`
 `;
 
 interface IProps {
-  store?: any;
-  navigation?: NavigationScreenProp<NavigationStateRoute<any>>;
+  navigation?: any;
 }
 
 function Page(props: IProps) {
   return (
     <Container>
-      <StyledText testID = 'myText'>dooboolab</StyledText>
+      <StyledText testID='myText'>dooboolab</StyledText>
     </Container>
   );
 }

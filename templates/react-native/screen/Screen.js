@@ -22,7 +22,7 @@ const StyledText = styled.Text`
 `;
 
 type Props = {
-  navigation?: NavigationScreenProp<NavigationStateRoute>;
+  navigation?: any;
 }
 
 type State = {
@@ -31,7 +31,7 @@ type State = {
 function Page(props: Props, state: State) {
   return (
     <Container>
-      <StyledText testID = 'myText'>dooboolab</StyledText>
+      <StyledText testID='myText'>dooboolab</StyledText>
     </Container>
   );
 }

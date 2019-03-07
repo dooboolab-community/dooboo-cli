@@ -2,6 +2,7 @@
 **[1.4.+]**
 * Deprecate `mobx` template from boilerplates.
 * Renew all templates with `react-hook` with `context-api`.
+* Fixed small `types` when generating screen.
 **[1.2+]**
 * Get rid of `path` and `fs` as in [#5](https://github.com/dooboolab/dooboo-cli/issues/4);
 * Enhanced template for styling style props.
