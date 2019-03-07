@@ -3,7 +3,6 @@ import * as React from 'react';
 import Screen from '../Screen';
 
 import renderer from 'react-test-renderer';
-import { NavigationTestProp, NavigationStateRoute } from 'react-navigation';
 import { render, fireEvent } from 'react-native-testing-library';
 
 const props = {
