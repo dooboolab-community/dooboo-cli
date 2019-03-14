@@ -50,8 +50,7 @@ const cbResult = (template: string, nameOfApp: string, answer: any, options: any
 
     setTimeout(function() {
       shell.sed('-i', 'dooboo-starter', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
-      if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
-        || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
+      if (options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
         || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
       ) {
         shell.exec(`pwd`);
@@ -71,9 +70,7 @@ const cbResult = (template: string, nameOfApp: string, answer: any, options: any
         shell.cp('-R', `${nameOfApp}/${nameOfApp}/android/*`, `${nameOfApp}/android`);
         // // <== Android config
 
-        if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
-          || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
-        ) {
+        if (options[0].value === TYPE_OF_APP.REACT_NATIVE_TS) {
           shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
         } else { // REACT_NATIVE_JS
           shell.sed('-i', 'DOOBOO NATIVE', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.js`);
@@ -107,8 +104,6 @@ enum TYPE_OF_APP {
   REACT_TS = 3,
   REACT_NATIVE_TS = 4,
   EXPO_TS = 5,
-  REACT_TS_LEGACY = 6,
-  REACT_NATIVE_TS_LEGACY = 7,
 }
 
 /**
@@ -146,8 +141,6 @@ program
       .option(' React App (typescript, context-api) ', TYPE_OF_APP.REACT_TS)
       .option(' React Native App (typescript, context-api) ', TYPE_OF_APP.REACT_NATIVE_TS)
       .option(' Expo App (typescript, mobx) ', TYPE_OF_APP.EXPO_TS)
-      .option(' [LEGACY] React App (typescript, mobx) ', TYPE_OF_APP.REACT_TS_LEGACY)
-      .option(' [LEGACY] React Native App (typescript, mobx) ', TYPE_OF_APP.REACT_NATIVE_TS_LEGACY)
       .list();
     
     list.on('select', function(options){
@@ -189,12 +182,6 @@ program
           case TYPE_OF_APP.EXPO_TS:
             template = '-b master https://github.com/dooboolab/dooboo-expo.git';
             break;
-          case TYPE_OF_APP.REACT_TS_LEGACY:
-            template = '-b mobx-legacy https://github.com/dooboolab/dooboo-frontend-ts.git';
-            break;
-          case TYPE_OF_APP.REACT_NATIVE_TS_LEGACY:
-            template = '-b mobx-legacy https://github.com/dooboolab/dooboo-native-ts.git';
-            break;
         }
 
         if (!template) {
@@ -205,8 +192,7 @@ program
         const spinner = ora('creating app ' + nameOfApp + '...\n');
         spinner.start();
         if ( // REACT-NATIVE APP
-          options[0].value === TYPE_OF_APP.REACT_NATIVE_TS_LEGACY
-          || options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
+          options[0].value === TYPE_OF_APP.REACT_NATIVE_JS
           || options[0].value === TYPE_OF_APP.REACT_NATIVE_TS
         ) {
           /**

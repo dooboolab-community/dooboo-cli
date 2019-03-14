@@ -1,4 +1,7 @@
 ## Changelogs
+**[1.5.+]**
+* Completely removed `legacy` template.
+  - You should downgrade to `1.3.+` if you still want to use the template.
 **[1.4.+]**
 * Deprecate `mobx` template from boilerplates.
 * Fixed small `types` when generating screen.
