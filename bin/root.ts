@@ -136,11 +136,11 @@ program
     var stream = process.stdin;
     
     list
-      .option(' React App (flow, context-api) ', TYPE_OF_APP.REACT_JS)
-      .option(' React Native App (flow, context-api) ', TYPE_OF_APP.REACT_NATIVE_JS)
-      .option(' React App (typescript, context-api) ', TYPE_OF_APP.REACT_TS)
-      .option(' React Native App (typescript, context-api) ', TYPE_OF_APP.REACT_NATIVE_TS)
-      .option(' Expo App (typescript, mobx) ', TYPE_OF_APP.EXPO_TS)
+      .option(' React App (flow) ', TYPE_OF_APP.REACT_JS)
+      .option(' React Native App (flow) ', TYPE_OF_APP.REACT_NATIVE_JS)
+      .option(' React App (typescript) ', TYPE_OF_APP.REACT_TS)
+      .option(' React Native App (typescript) ', TYPE_OF_APP.REACT_NATIVE_TS)
+      .option(' Expo App (typescript) ', TYPE_OF_APP.EXPO_TS)
       .list();
     
     list.on('select', function(options){
