@@ -6,7 +6,8 @@
     "dooboo": "bin/root.js"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "lint": "tslint -c tslint.json **/*.ts"
   },
   "author": "dooboolab",
   "license": "MIT",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^11.9.5",
+    "tslint": "^5.14.0",
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {},

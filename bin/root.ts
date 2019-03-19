@@ -27,14 +27,14 @@ import pkg = require('../package.json');
 
 const notifier = updateNotifier({
   pkg,
-  updateCheckInterval: 1000 * 60 * 60 * 24 // 1 day
+  updateCheckInterval: 1000 * 60 * 60 * 24, // 1 day
 });
 
 if (notifier.update) {
   console.log(
     chalk.blueBright(
-      boxen(`Update available: ${notifier.update.latest}`, {padding: 1})
-    )
+      boxen(`Update available: ${notifier.update.latest}`, {padding: 1}),
+    ),
   );
 }
 
@@ -91,10 +91,10 @@ const cbResult = (template: string, nameOfApp: string, answer: any, options: any
       spinner.stop();
     }, 2000);
   });
-}
+};
 
 const welcome = `
- _| _  _ |_  _  _ | _ |_ 
+ _| _  _ |_  _  _ | _ |_
 (_|(_)(_)|_)(_)(_)|(_||_)
 `;
 
@@ -123,18 +123,18 @@ program
         pointer: ' ▸ ',
         pointerColor: 'yellow',
         checked: ' ◉  ',
-        unchecked:' ◎  ',
+        unchecked: ' ◎  ',
         checkedColor: 'blue',
         msgCancel: 'No selected options!',
         msgCancelColor: 'orange',
         multiSelect: false,
         inverse: true,
-        prepend: true
-      }
+        prepend: true,
+      },
     );
-    
-    var stream = process.stdin;
-    
+
+    const stream = process.stdin;
+
     list
       .option(' React App (flow) ', TYPE_OF_APP.REACT_JS)
       .option(' React Native App (flow) ', TYPE_OF_APP.REACT_NATIVE_JS)
@@ -142,19 +142,13 @@ program
       .option(' React Native App (typescript) ', TYPE_OF_APP.REACT_NATIVE_TS)
       .option(' Expo App (typescript) ', TYPE_OF_APP.EXPO_TS)
       .list();
-    
-    list.on('select', function(options){
-      console.log(chalk.yellow('select the name of the app.'));
-      // console.log(options[0].value);
-      if (options[0].value === TYPE_OF_APP['NODE']) {
-        console.log(chalk.red('sorry we currently do not support node express starter.'));
-        process.exit(0);
-      }
 
+    list.on('select', function(options) {
+      console.log(chalk.yellow('select the name of the app.'));
       inquirer.prompt([{
         name: 'value',
         message: 'name of your app (alphaNumeric): ',
-      }]).then(answer => {
+      }]).then((answer) => {
         const nameOfApp = answer.value;
         if (!nameOfApp) {
           console.log(chalk.redBright('please provide name of your app.'));
@@ -166,7 +160,7 @@ program
 
         let template = '';
         // console.log(options[0].value);
-        switch(options[0].value) {
+        switch (options[0].value) {
           case TYPE_OF_APP.REACT_JS:
             template = '-b master https://github.com/dooboolab/dooboo-frontend-js.git';
             break;
@@ -207,15 +201,15 @@ program
             shell.exit(1);
           }
 
-          cbResult(template, nameOfApp, answer, options, spinner)
+          cbResult(template, nameOfApp, answer, options, spinner);
         } else { // REACT or EXPO APP
           shell.exec(`mkdir ${nameOfApp}`,
-            cbResult(template, nameOfApp, answer, options, spinner)
+            cbResult(template, nameOfApp, answer, options, spinner),
           );
         }
       });
     });
-    
+
     list.on('cancel', function(options: string) {
       console.log(`Operation has been canceled, ${options.length} option was selected.`);
       process.exit(0);
@@ -237,13 +231,13 @@ program
         process.exit(0);
         return;
       }
-  
+
       exists = await fsExists('node_modules');
       if (!exists) {
         console.log(chalk.cyanBright('installing dependencies...'));
-  
+
         // childProcess.execSync(`npm install`, {stdio: 'inherit'})
-  
+
         shell.exec(`npm install`, function(code) {
           if (code === 0) {
             console.log(chalk.cyanBright('running project...\n'));
@@ -251,7 +245,7 @@ program
             // childProcess.execSync(`npm run dev`, {stdio: 'inherit'});
             return;
           }
-          console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
+          console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
         });
         return;
       }
@@ -261,7 +255,7 @@ program
       // childProcess.execFileSync('npm', ['start'], {stdio: 'inherit'});
     } catch (err) {
       console.log(chalk.red(err));
-      console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
+      console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
     } finally {
       spinner.stop();
       process.exit(0);
@@ -296,7 +290,7 @@ program
           // process.exit(0);
           return;
         }
-        console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'))
+        console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
       });
       return;
     }
@@ -345,7 +339,7 @@ program
       console.log(
         chalk.green(
 `generated: src/components/screen/${upperCamel}.${fileExt}
-testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
+testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`,
         ));
       process.exit(0);
       return;
@@ -363,7 +357,7 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
       console.log(
         chalk.green(
     `generated: src/components/screen/${upperCamel}.${fileExt}
-testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`
+testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`,
       ));
       process.exit(0);
     }
@@ -410,7 +404,7 @@ program
       console.log(
         chalk.green(
 `generated: src/components/shared/${upperCamel}.${fileExt}
-testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
+testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`,
         ));
       process.exit(0);
       return;
@@ -428,7 +422,7 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
       console.log(
         chalk.green(
 `generated: src/components/shared/${upperCamel}.${fileExt}
-testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`
+testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`,
         ));
       process.exit(0);
       return;
@@ -472,7 +466,6 @@ program
     process.exit(0);
   });
 
-
 program.parse(process.argv);
 
 /**
@@ -483,12 +476,12 @@ if (!program.args.length) {
   program.parse([process.argv[0], process.argv[1], '-h']);
   process.exit(0);
 } else {
-  //warn aboud invalid commands
-  const validCommands = program.commands.map(function(cmd){
+  // warn aboud invalid commands
+  let validCommands = program.commands.map(function(cmd) {
     return cmd.name;
   });
-  const invalidCommands = program.args.filter(function(cmd){
-    //if command executed it will be an object and not a string
+  let invalidCommands = program.args.filter(function(cmd) {
+    // if command executed it will be an object and not a string
     return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
   });
   if (invalidCommands.length && process.argv[2]) {
@@ -503,12 +496,12 @@ if (!program.args.length) {
       case 'api':
         break;
       default:
-        //warn aboud invalid commands
-        const validCommands = program.commands.map(function(cmd){
+        // warn about invalid commands
+        validCommands = program.commands.map(function(cmd) {
           return cmd.name;
         });
-        const invalidCommands = program.args.filter(function(cmd){
-          //if command executed it will be an object and not a string
+        invalidCommands = program.args.filter(function(cmd) {
+          // if command executed it will be an object and not a string
           return (typeof cmd === 'string' && validCommands.indexOf(cmd) === -1);
         });
         if (invalidCommands.length) {

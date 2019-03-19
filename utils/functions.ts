@@ -7,14 +7,14 @@ const toCamelCase = function(str, cap1st) {
   return ((cap1st ? '-' : '') + str).replace(/-+([^-])/g, function(a, b) {
     return b.toUpperCase();
   });
-}
+};
 
 export const isCamelCase = function(str) {
-  var strArr = str.split('');
-  var string = '';
-  for(var i in strArr){
+  const strArr = str.split('');
+  let string = '';
+  for (const i in strArr) {
     if (strArr[i].toUpperCase() === strArr[i]) {
-      string += '-'+strArr[i].toLowerCase();
+      string += '-' + strArr[i].toLowerCase();
     } else {
       string += strArr[i];
     }
@@ -22,42 +22,46 @@ export const isCamelCase = function(str) {
 
   if (toCamelCase(str, true) === str) {
     return true;
-  } else{
+  } else {
     return false;
   }
 };
 
 export const camelCaseToDash = function(str) {
-  return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
+  return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
 };
 
 export const camelize = function(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-    if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
-    return index == 0 ? match.toLowerCase() : match.toUpperCase();
+    if (+match === 0) {
+      return '';
+     } // or if (/\s+/.test(match)) for white spaces
+    return index === 0 ? match.toLowerCase() : match.toUpperCase();
   });
-}
+};
 
-export const upperCamelize = function (str) {
+export const upperCamelize = function(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-    if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+    if (+match === 0) {
+      return '';
+    } // or if (/\s+/.test(match)) for white spaces
     return match.toUpperCase();
   });
-}
+};
 
-export const fsExists = function (file) {
+export const fsExists = function(file) {
   return new Promise((resolve, reject) => {
     fs.exists(file, function(exists) {
       resolve(exists);
     });
   });
-}
+};
 
-export const exec = function (command) {
+export const exec = function(command) {
   return new Promise((resolve, reject) => shelljs.exec(command, {}, (code, value, error) => {
     if (error) {
       return reject(error);
     }
     resolve(value);
-  }))
-}
+  }));
+};
