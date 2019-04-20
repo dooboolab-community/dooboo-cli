@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.0]**
+* Seperated web + app generated script to avoid confusion.
 **[1.5.+]**
 * Completely removed `legacy` template.
 **[1.4.+]**

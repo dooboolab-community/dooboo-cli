@@ -1,13 +1,14 @@
 {
   "name": "dooboo-cli",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
   },
   "scripts": {
     "tsc": "tsc",
-    "lint": "tslint -c tslint.json **/*.ts"
+    "lint": "tslint -c tslint.json **/*.ts",
+    "build": "npm run tsc && npm run lint"
   },
   "author": "dooboolab",
   "license": "MIT",
