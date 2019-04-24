@@ -14,6 +14,8 @@ const createTestProps = (props: Object) => ({
 });
 
 let props: any;
+let testing: any;
+let component: any;
 
 describe('[Screen]', () => {
   beforeAll(() => {
@@ -28,14 +30,9 @@ describe('[Screen]', () => {
 });
 
 describe('[Screen] Interaction', () => {
-  beforeAll(() => {
-    props = createTestProps({});
-  });
-
-  const component: any = <Screen {...props} />;
-  let testing: any;
-
   beforeEach(() => {
+    props = createTestProps({});
+    component = <Screen {...props} />;
     testing = render(component);
   });
 

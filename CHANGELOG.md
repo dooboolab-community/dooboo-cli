@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.2]**
+* Enhanced test config in `react-native-ts` project.
 **[1.6.1]**
 * Enhanced types for`react-navigation` in `react-native-ts` project.
 **[1.6.0]**
