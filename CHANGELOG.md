@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.1]**
+* Enhanced types for`react-navigation` in `react-native-ts` project.
 **[1.6.0]**
 * Seperated web + app generated script to avoid confusion.
 **[1.5.+]**
