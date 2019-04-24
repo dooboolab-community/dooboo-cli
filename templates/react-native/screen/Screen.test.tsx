@@ -5,13 +5,21 @@ import Screen from '../Screen';
 import renderer from 'react-test-renderer';
 import { render, fireEvent } from 'react-native-testing-library';
 
-const props = {
+const createTestProps = (props: Object) => ({
   navigation: {
+    navigate: jest.fn(),
     goBack: jest.fn(),
   },
-};
+  ...props,
+});
+
+let props: any;
 
 describe('[Screen]', () => {
+  beforeAll(() => {
+    props = createTestProps({});
+  });
+
   it('renders without crashing', () => {
     const rendered: renderer.ReactTestRendererJSON = renderer.create(<Screen />).toJSON();
     expect(rendered).toMatchSnapshot();
@@ -20,6 +28,10 @@ describe('[Screen]', () => {
 });
 
 describe('[Screen] Interaction', () => {
+  beforeAll(() => {
+    props = createTestProps({});
+  });
+
   const component: any = <Screen {...props} />;
   let testing: any;
 
