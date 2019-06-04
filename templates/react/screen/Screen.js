@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Button from '../shared/Button';
-import {
-  IC_MASK,
-} from '../../utils/Icons';
 
 const Container = styled.div`
   flex: 1;

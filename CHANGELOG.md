@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.3]**
+* Update `template` for React app (*both `ts` and `js`*).
 **[1.6.2]**
 * Enhanced test config in `react-native-ts` project.
 **[1.6.1]**
