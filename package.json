@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "bin/root.js"
@@ -25,17 +25,17 @@
   "dependencies": {
     "boxen": "^4.0.0",
     "chalk": "^2.4.2",
-    "commander": "^2.19.0",
-    "inquirer": "^6.2.2",
-    "ora": "^3.1.0",
+    "commander": "^2.20.0",
+    "inquirer": "^6.3.1",
+    "ora": "^3.4.0",
     "select-shell": "^1.1.2",
     "shelljs": "^0.8.3",
     "update-notifier": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^12.0.0",
-    "tslint": "^5.14.0",
-    "typescript": "^3.3.3333"
+    "@types/node": "^12.0.4",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1"
   },
   "peerDependencies": {},
   "repository": {

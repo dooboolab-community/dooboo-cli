@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.4]**
+* Update template for `react-testing-library`. It has changed to `@testing-library/react`.
 **[1.6.3]**
 * Update `template` for React app (*both `ts` and `js`*).
 **[1.6.2]**
