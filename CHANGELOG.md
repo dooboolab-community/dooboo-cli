@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.6.6]**
+* Update template for `react-testing-library` for `shared` components.
 **[1.6.4]**
 * Update template for `react-testing-library`. It has changed to `@testing-library/react`.
 **[1.6.3]**
