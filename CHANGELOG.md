@@ -1,4 +1,7 @@
 ## Changelogs
+**[1.6.7]**
+* Update packages.
+* Require `yarn` to be installed.
 **[1.6.6]**
 * Update template for `react-testing-library` for `shared` components.
 **[1.6.4]**
