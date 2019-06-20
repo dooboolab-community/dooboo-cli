@@ -11,7 +11,6 @@ import {
 
 import { setTimeout } from 'timers';
 import chalk from 'chalk';
-import boxen from 'boxen';
 
 // const prompt = require('cli-prompt');
 import inquirer = require('inquirer');
@@ -20,6 +19,7 @@ import selectShell = require('select-shell');
 import shell = require('shelljs');
 import path = require('path');
 import program = require('commander');
+import boxen = require('boxen');
 import fs = require('fs');
 import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
@@ -98,7 +98,7 @@ const cbResultApp = (template: string, nameOfApp: string, answer: any, options: 
       shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
       shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-      childProcess.execSync(`cd ${nameOfApp} && npm install && react-native unlink react-native-localization && react-native unlink react-native-gesture-handler && react-native link react-native-localization && react-native link react-native-gesture-handler`, {stdio: 'inherit'});
+      childProcess.execSync(`cd ${nameOfApp} && yarn && react-native unlink react-native-localization && react-native unlink react-native-gesture-handler && react-native link react-native-localization && react-native link react-native-gesture-handler`, {stdio: 'inherit'});
       spinner.stop();
 
       console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
@@ -216,6 +216,10 @@ program
             shell.echo(chalk.redBright('Sorry, this script requires git to be installed.'));
             shell.exit(1);
           }
+          if (!shell.which('yarn')) {
+            shell.echo(chalk.redBright('Sorry, this script requires yarn to be installed.'));
+            shell.exit(1);
+          }
 
           cbResultApp(template, nameOfApp, answer, options, spinner);
         } else if (options[0].value === TYPE_OF_APP.EXPO_TS) {
@@ -252,16 +256,16 @@ program
       if (!exists) {
         console.log(chalk.cyanBright('installing dependencies...'));
 
-        // childProcess.execSync(`npm install`, {stdio: 'inherit'})
+        // childProcess.execSync(`yarn`, {stdio: 'inherit'})
 
-        shell.exec(`npm install`, function(code) {
+        shell.exec(`yarn`, function(code) {
           if (code === 0) {
             console.log(chalk.cyanBright('running project...\n'));
             shell.exec(`npm run dev`);
             // childProcess.execSync(`npm run dev`, {stdio: 'inherit'});
             return;
           }
-          console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
+          console.log(chalk.redBright('failed installing dependencies. Please try again with yarn.'));
         });
         return;
       }
@@ -271,7 +275,7 @@ program
       // childProcess.execFileSync('npm', ['start'], {stdio: 'inherit'});
     } catch (err) {
       console.log(chalk.red(err));
-      console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
+      console.log(chalk.redBright('failed installing dependencies. Please try again with yarn.'));
     } finally {
       spinner.stop();
       process.exit(0);
@@ -298,7 +302,7 @@ program
 
     if (!exists) {
       console.log(chalk.cyanBright('installing dependencies...'));
-      shell.exec(`npm install`, function(code) {
+      shell.exec(`yarn`, function(code) {
         if (code === 0) {
           console.log(chalk.cyanBright('running project...'));
           shell.exec(`npm test`);
@@ -306,7 +310,7 @@ program
           // process.exit(0);
           return;
         }
-        console.log(chalk.redBright('failed installing dependencies. Please try again with npm install.'));
+        console.log(chalk.redBright('failed installing dependencies. Please try again with yarn.'));
       });
       return;
     }
