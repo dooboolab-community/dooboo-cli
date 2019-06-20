@@ -1,5 +1,5 @@
 ## Changelogs
-**[1.6.7]**
+**[1.7.0]**
 * Update packages.
 * Require `yarn` to be installed.
 **[1.6.6]**
