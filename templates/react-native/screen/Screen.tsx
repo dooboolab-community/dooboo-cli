@@ -21,7 +21,7 @@ const StyledText = styled.Text`
 `;
 
 interface IProps {
-  navigation: NavigationScreenProp<any, any>;
+  navigation?: NavigationScreenProp<any, any>;
 }
 
 function Page(props: IProps) {
