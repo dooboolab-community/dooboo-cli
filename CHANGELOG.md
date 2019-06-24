@@ -1,4 +1,6 @@
 ## Changelogs
+**[1.7.2]**
+* Update `react-native` template for `shared` and `screen`.
 **[1.7.0]**
 * Update packages.
 * Require `yarn` to be installed.
