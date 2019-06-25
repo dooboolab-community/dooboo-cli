@@ -102,7 +102,7 @@ const cbResultApp = (template: string, nameOfApp: string, answer: any, options: 
       spinner.stop();
 
       console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
-      console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
+      console.log(chalk.greenBright(`cd ${nameOfApp} and yarn start. Open up another terminal and yarn run ios.`));
       process.exit(0);
       spinner.stop();
     }, 2000);
@@ -130,7 +130,7 @@ const cbResultExpo = (template: string, nameOfApp: string, answer: any, options:
       spinner.stop();
 
       console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
-      console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
+      console.log(chalk.greenBright(`cd ${nameOfApp} and yarn && yarn start. Open up another terminal and yarn run ios.`));
       process.exit(0);
       spinner.stop();
     }, 2000);
@@ -289,8 +289,8 @@ program
         shell.exec(`yarn`, function(code) {
           if (code === 0) {
             console.log(chalk.cyanBright('running project...\n'));
-            shell.exec(`npm run dev`);
-            // childProcess.execSync(`npm run dev`, {stdio: 'inherit'});
+            shell.exec(`yarn run dev`);
+            // childProcess.execSync(`yarn run dev`, {stdio: 'inherit'});
             return;
           }
           console.log(chalk.redBright('failed installing dependencies. Please try again with yarn.'));
@@ -298,9 +298,9 @@ program
         return;
       }
       console.log(chalk.cyanBright('running project...'));
-      // shell.exec(`npm start`);
-      shell.exec(`npm run dev`);
-      // childProcess.execFileSync('npm', ['start'], {stdio: 'inherit'});
+      // shell.exec(`yarn start`);
+      shell.exec(`yarn run dev`);
+      // childProcess.execFileSync('yarn', ['start'], {stdio: 'inherit'});
     } catch (err) {
       console.log(chalk.red(err));
       console.log(chalk.redBright('failed installing dependencies. Please try again with yarn.'));
@@ -333,7 +333,7 @@ program
       shell.exec(`yarn`, function(code) {
         if (code === 0) {
           console.log(chalk.cyanBright('running project...'));
-          shell.exec(`npm test`);
+          shell.exec(`yarn test`);
           spinner.stop();
           // process.exit(0);
           return;
@@ -343,8 +343,8 @@ program
       return;
     }
     console.log(chalk.cyanBright('testing project...'));
-    // shell.exec(`npm start`);
-    shell.exec(`npm test`);
+    // shell.exec(`yarn start`);
+    shell.exec(`yarn test`);
     spinner.stop();
     // process.exit(0);
   });
