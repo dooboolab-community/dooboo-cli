@@ -126,7 +126,6 @@ const cbResultExpo = (template: string, nameOfApp: string, answer: any, options:
       shell.rm('-rf', `${nameOfApp}/.git`);
       shell.rm('-rf', `${nameOfApp}/.circleci`);
 
-      shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
       spinner.stop();
 
       console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
