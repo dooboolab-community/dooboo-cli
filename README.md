@@ -63,7 +63,7 @@
 * [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-js)
 * [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-ts)
 * [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-ts)
-* [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo)
+* [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-expo.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-expo
 
 ## TODO
 - [ ] Support navigation templates for `react-native`
