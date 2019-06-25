@@ -6,3 +6,5 @@ bin/root.js
 bin/root.js.map
 utils/functions.js
 utils/functions.js.map
+
+package-lock.json
