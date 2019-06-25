@@ -56,7 +56,7 @@
 ```
 
 ## Preview
-![alt text](https://firebasestorage.googleapis.com/v0/b/bookoo-89f6c.appspot.com/o/dooboo.png?alt=media&token=e0317870-8525-4878-9f61-ab0fc6ab35ea)
+![image](https://user-images.githubusercontent.com/27461460/60101219-55177500-9796-11e9-9bfb-714a0f745d4c.png)
 
 ## Contribution
 * [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-js)
