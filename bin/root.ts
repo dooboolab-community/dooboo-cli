@@ -109,6 +109,34 @@ const cbResultApp = (template: string, nameOfApp: string, answer: any, options: 
   });
 };
 
+const cbResultExpo = (template: string, nameOfApp: string, answer: any, options: any, spinner: any) => {
+  shell.exec(`git clone ${template} ${nameOfApp}`, (code: number, stdout: string, stderr: string) => {
+    if (code !== 0) {
+      console.log(chalk.cyanBright(`code: ${code}`));
+      console.log(chalk.cyanBright(`Program output: ${stdout}`));
+      console.log(chalk.cyanBright(`Program stderr: ${stderr}`));
+    }
+    shell.exec(`cd ${nameOfApp}`);
+    spinner.stop();
+
+    setTimeout(function() {
+      shell.sed('-i', 'dooboo', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/package.json`);
+      shell.sed('-i', 'dooboo', camelCaseToDash(`${nameOfApp}`), `./${nameOfApp}/app.json`);
+      shell.exec(`pwd`);
+      shell.rm('-rf', `${nameOfApp}/.git`);
+      shell.rm('-rf', `${nameOfApp}/.circleci`);
+
+      shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/src/components/screen/Intro.tsx`);
+      spinner.stop();
+
+      console.log(chalk.greenBright(`Created ${nameOfApp} successfully.`));
+      console.log(chalk.greenBright(`cd ${nameOfApp} and npm start. Open up another terminal and npm run ios.`));
+      process.exit(0);
+      spinner.stop();
+    }, 2000);
+  });
+};
+
 const welcome = `
  _| _  _ |_  _  _ | _ |_
 (_|(_)(_)|_)(_)(_)|(_||_)
@@ -223,7 +251,7 @@ program
 
           cbResultApp(template, nameOfApp, answer, options, spinner);
         } else if (options[0].value === TYPE_OF_APP.EXPO_TS) {
-          cbResultApp(template, nameOfApp, answer, options, spinner);
+          cbResultExpo(template, nameOfApp, answer, options, spinner);
         } else {
           cbResultWeb(template, nameOfApp, answer, options, spinner);
         }
