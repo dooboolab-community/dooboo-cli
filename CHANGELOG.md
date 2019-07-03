@@ -1,4 +1,8 @@
 ## Changelogs
+**[1.8.+]**
+* Modify npm script to yarn
+* Include `expo` typescript project.
+* Fix more templates.
 **[1.7.2]**
 * Update `react-native` template for `shared` and `screen`.
 **[1.7.0]**
