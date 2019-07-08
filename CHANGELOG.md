@@ -1,6 +1,8 @@
 ## Changelogs
+**[1.9.+]**
+* Update template for `react-native`.
 **[1.8.+]**
-* Modify npm script to yarn
+* Modify npm script to yarn.
 * Include `expo` typescript project.
 * Fix more templates.
 **[1.7.2]**
