@@ -5,7 +5,7 @@ import Shared from '../Shared';
 import { render, fireEvent, getByTestId } from '@testing-library/react';
 
 
-let props: object;
+let props: any;
 let component: React.ReactElement;
 let testingLib: any;
 

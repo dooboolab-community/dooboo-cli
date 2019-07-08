@@ -6,21 +6,27 @@ import Shared from '../Shared';
 import renderer from 'react-test-renderer';
 import { fireEvent, render, RenderAPI } from 'react-native-testing-library';
 
-let props: object;
+let props: any;
 let component: React.ReactElement;
 let testingLib: any;
 
+const createTestProps = (obj: object) => ({
+  navigation: {
+    navigate: jest.fn(),
+  },
+  ...obj,
+});
+
 describe('[Shared] render', () => {
   beforeEach(() => {
-    props = {
-    };
+    props = createTestProps({ });
     component = (
       <Shared {...props} />
     );
   });
 
   it('renders without crashing', () => {
-    const rendered: ReactTestRendererJSON = renderer.create(component).toJSON();
+    const rendered: renderer.ReactTestRendererJSON = renderer.create(component).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });

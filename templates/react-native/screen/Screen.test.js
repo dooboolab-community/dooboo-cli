@@ -12,24 +12,43 @@ const props = {
   },
 };
 
-describe('[Screen]', () => {
-  it('renders without crashing', () => {
-    const rendered = renderer.create(<Screen />).toJSON();
-    expect(rendered).toMatchSnapshot();
-    expect(rendered).toBeTruthy();
-  });
+let component: React.ReactElement;
+let testingLib: RenderAPI;
+
+const createTestProps = (obj: object) => ({
+  navigation: {
+    navigate: jest.fn(),
+  },
+  ...obj,
 });
 
-describe('[Screen] Interaction', () => {
-  const component: React.Element<any> = <Screen {...props} />;
-  let testing: RenderResult;
-
+describe('[Screen] screen', () => {
   beforeEach(() => {
-    testing = render(component);
+    props = createTestProps({ });
+    component = (
+      <Screen {...props} />
+    );
+  });
+
+  it('renders without crashing', () => {
+    const rendered = renderer.create(component).toJSON();
+    expect(rendered).toMatchSnapshot();
+    expect(rendered).toBeTruthy();
   });
 
   it('should render [Text] with value "myText"', () => {
     const textInstance: ReactTestInstance = testing.getByTestId('myText');
     expect(textInstance.props.children).toEqual('dooboolab');
+  });
+
+  describe('interactions', () => {
+    beforeEach(() => {
+      testingLib = render(component);
+    });
+
+    it('should simulate onClick', () => {
+      // fireEvent(testingLib.getByTestId('btn'), 'click');
+      // expect(cnt).toBe(2);
+    });
   });
 });
