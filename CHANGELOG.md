@@ -1,6 +1,7 @@
 ## Changelogs
 **[1.9.+]**
 * Update template for `react-native`.
+* Migrated template to [@testing-library/react-native](https://www.native-testing-library.com/docs/install).
 **[1.8.+]**
 * Modify npm script to yarn.
 * Include `expo` typescript project.

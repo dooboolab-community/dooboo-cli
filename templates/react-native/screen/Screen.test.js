@@ -4,7 +4,7 @@ import Screen from '../Screen';
 
 import renderer from 'react-test-renderer';
 import { NavigationTestProp, NavigationStateRoute } from 'react-navigation';
-import { render, fireEvent } from 'react-native-testing-library';
+import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 const props = {
   navigation: {
@@ -13,7 +13,7 @@ const props = {
 };
 
 let component: React.ReactElement;
-let testingLib: RenderAPI;
+let testingLib: RenderResult;
 
 const createTestProps = (obj: object) => ({
   navigation: {
@@ -37,7 +37,7 @@ describe('[Screen] screen', () => {
   });
 
   it('should render [Text] with value "myText"', () => {
-    const textInstance: ReactTestInstance = testing.getByTestId('myText');
+    const textInstance: ReactTestInstance = testingLib.queryByTestId('myText');
     expect(textInstance.props.children).toEqual('dooboolab');
   });
 
@@ -47,8 +47,12 @@ describe('[Screen] screen', () => {
     });
 
     it('should simulate onClick', () => {
-      // fireEvent(testingLib.getByTestId('btn'), 'click');
-      // expect(cnt).toBe(2);
+      // const btn = testingLib.queryByTestId('btn');
+      // act(() => {
+      //   fireEvent.press(btn);
+      //   fireEvent.press(btn);
+      // });
+      // expect(cnt).toBe(3);
     });
   });
 });
