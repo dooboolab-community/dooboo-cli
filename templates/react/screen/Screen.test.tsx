@@ -27,7 +27,7 @@ describe('[Screen] Interaction', () => {
   });
 
   it('should simulate [onClick] when [btn] has been clicked', () => {
-    const textInstance: any = renderResult.getByTestId('myText');
+    const textInstance = renderResult.getByTestId('myText');
     expect(textInstance.textContent).toEqual('dooboolab');
   });
 });
