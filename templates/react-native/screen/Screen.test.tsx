@@ -31,7 +31,7 @@ describe('[Screen] screen', () => {
   });
 
   it('should render [Text] with value "myText"', () => {
-    const textInstance: renderer.ReactTestInstance = testingLib.queryByTestId('myText');
+    const textInstance = testingLib.getByTestId('myText');
     expect(textInstance.props.children).toEqual('dooboolab');
   });
 
