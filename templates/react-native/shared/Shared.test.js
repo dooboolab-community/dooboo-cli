@@ -4,11 +4,11 @@ import Shared from '../Shared';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import { fireEvent, render, RenderAPI } from 'react-native-testing-library';
+import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 let props: any;
 let component: React.ReactElement;
-let testingLib: any;
+let testingLib: RenderResult;
 
 const createTestProps = (obj: object) => ({
   navigation: {
@@ -37,8 +37,11 @@ describe('[Shared] render', () => {
     });
 
     it('should simulate onClick', () => {
-      // fireEvent(testingLib.getByTestId('btn'), 'click');
-      // expect(cnt).toBe(2);
+      // const btn = testingLib.queryByTestId('btn');
+      // act(() => {
+      //   fireEvent.press(btn);
+      // });
+      // expect(cnt).toBe(3);
     });
   });
 });

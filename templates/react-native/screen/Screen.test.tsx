@@ -3,11 +3,11 @@ import * as React from 'react';
 import Screen from '../Screen';
 
 import renderer from 'react-test-renderer';
-import { render, fireEvent, RenderAPI } from 'react-native-testing-library';
+import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 let props: any;
 let component: React.ReactElement;
-let testingLib: RenderAPI;
+let testingLib: RenderResult;
 
 const createTestProps = (obj: object) => ({
   navigation: {
@@ -31,7 +31,7 @@ describe('[Screen] screen', () => {
   });
 
   it('should render [Text] with value "myText"', () => {
-    const textInstance: renderer.ReactTestInstance = testingLib.getByTestId('myText');
+    const textInstance: renderer.ReactTestInstance = testingLib.queryByTestId('myText');
     expect(textInstance.props.children).toEqual('dooboolab');
   });
 
@@ -41,8 +41,12 @@ describe('[Screen] screen', () => {
     });
 
     it('should simulate onClick', () => {
-      // fireEvent(testingLib.getByTestId('btn'), 'click');
-      // expect(cnt).toBe(2);
+      // const btn = testingLib.queryByTestId('btn');
+      // act(() => {
+      //   fireEvent.press(btn);
+      //   fireEvent.press(btn);
+      // });
+      // expect(cnt).toBe(3);
     });
   });
 });
