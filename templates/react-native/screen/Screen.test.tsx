@@ -22,6 +22,7 @@ describe('[Screen] screen', () => {
     component = (
       <Screen {...props} />
     );
+    testingLib = render(component);
   });
 
   it('renders without crashing', () => {

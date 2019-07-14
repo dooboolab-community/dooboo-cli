@@ -28,6 +28,7 @@ describe('[Screen] screen', () => {
     component = (
       <Screen {...props} />
     );
+    testingLib = render(component);
   });
 
   it('renders without crashing', () => {
@@ -37,7 +38,7 @@ describe('[Screen] screen', () => {
   });
 
   it('should render [Text] with value "myText"', () => {
-    const textInstance = testing.getByTestId('myText');
+    const textInstance = testingLib.getByTestId('myText');
     expect(textInstance.props.children).toEqual('dooboolab');
   });
 
