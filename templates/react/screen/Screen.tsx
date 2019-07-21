@@ -11,11 +11,11 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-interface IProps {
+interface Props {
   history?: any;
 }
 
-function Page(props: IProps) {
+function Page(props: Props) {
   return (
     <Container>
       <div
