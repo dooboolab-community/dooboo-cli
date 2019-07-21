@@ -7,7 +7,7 @@ const Container = styled.div`
   height: '40px';
 `;
 
-type Props = {
+interface Props {
   children?: string;
 };
 
