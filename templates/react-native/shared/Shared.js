@@ -1,10 +1,5 @@
 // @flow
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-
+import React from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -19,10 +14,7 @@ type Props = {
   children?: any;
 }
 
-type State = {
-}
-
-function Shared(props: Props, state: State) {
+function Shared(props: Props) {
   return (
     <Container>
       {props.children}

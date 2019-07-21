@@ -1,11 +1,6 @@
 // @flow
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-
-import { NavigationScreenProp, NavigationStateRoute } from 'react-navigation';
+import React from 'react';
+import { NavigationScreenProp } from 'react-navigation';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -25,10 +20,7 @@ type Props = {
   navigation?: any;
 }
 
-type State = {
-}
-
-function Page(props: Props, state: State) {
+function Page(props: Props) {
   return (
     <Container>
       <StyledText testID='myText'>dooboolab</StyledText>

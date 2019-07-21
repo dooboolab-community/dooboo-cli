@@ -1,9 +1,4 @@
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-
+import React from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -14,7 +9,7 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-type Props = {
+interface Props {
   children?: any;
 }
 
