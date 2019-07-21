@@ -1,14 +1,14 @@
-import 'react-native';
 import * as React from 'react';
+import 'react-native';
 import Shared from '../Shared';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
+// import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 let props: any;
 let component: React.ReactElement;
-let testingLib: RenderResult;
+// let testingLib: RenderResult;
 
 const createTestProps = (obj: object) => ({
   navigation: {
@@ -26,22 +26,23 @@ describe('[Shared] render', () => {
   });
 
   it('renders without crashing', () => {
-    const rendered: renderer.ReactTestRendererJSON = renderer.create(component).toJSON();
+    const rendered: renderer.ReactTestRendererJSON | null
+      = renderer.create(component).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });
 
-  describe('interactions', () => {
-    beforeEach(() => {
-      testingLib = render(component);
-    });
+  // describe('interactions', () => {
+  //   beforeEach(() => {
+  //     testingLib = render(component);
+  //   });
 
-    it('should simulate onClick', () => {
-      // const btn = testingLib.queryByTestId('btn');
-      // act(() => {
-      //   fireEvent.press(btn);
-      // });
-      // expect(cnt).toBe(3);
-    });
-  });
+  //   it('should simulate onClick', () => {
+  //     const btn = testingLib.queryByTestId('btn');
+  //     act(() => {
+  //       fireEvent.press(btn);
+  //     });
+  //     expect(cnt).toBe(3);
+  //   });
+  // });
 });

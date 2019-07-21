@@ -1,9 +1,9 @@
-import 'react-native';
 import * as React from 'react';
+import 'react-native';
 import Screen from '../Screen';
 
+import { render, RenderResult } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
-import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 let props: any;
 let component: React.ReactElement;
