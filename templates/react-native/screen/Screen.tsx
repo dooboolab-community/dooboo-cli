@@ -20,11 +20,11 @@ const StyledText = styled.Text`
   color: blue;
 `;
 
-interface IProps {
+interface Props {
   navigation?: NavigationScreenProp<any, any>;
 }
 
-function Page(props: IProps) {
+function Page(props: Props) {
   return (
     <Container>
       <StyledText testID='myText'>dooboolab</StyledText>
