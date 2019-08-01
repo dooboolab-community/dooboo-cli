@@ -4,7 +4,6 @@ import Shared from '../Shared';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-// import { render, fireEvent, act, RenderResult } from '@testing-library/react-native';
 
 let props: any;
 let component: React.ReactElement;
@@ -26,8 +25,8 @@ describe('[Shared] render', () => {
   });
 
   it('renders without crashing', () => {
-    const rendered: renderer.ReactTestRendererJSON | null
-      = renderer.create(component).toJSON();
+    const rendered: renderer.ReactTestRendererJSON | null =
+      renderer.create(component).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });
