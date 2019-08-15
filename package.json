@@ -1,13 +1,13 @@
 {
   "name": "dooboo-cli",
-  "version": "1.9.7",
+  "version": "2.0.0",
   "description": "starting react express app with me!",
   "bin": {
-    "dooboo": "bin/root.js"
+    "dooboo": "lib/bin/root.js"
   },
   "scripts": {
     "tsc": "tsc",
-    "lint": "tslint -c tslint.json **/*.ts",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "build": "npm run tsc && npm run lint"
   },
   "author": "dooboolab",
@@ -26,15 +26,23 @@
     "boxen": "^4.1.0",
     "chalk": "^2.4.2",
     "commander": "^3.0.0",
-    "inquirer": "^6.4.1",
+    "inquirer": "^6.5.1",
     "ora": "^3.4.0",
-    "select-shell": "^1.1.2",
+    "select-shell": "^1.1.3",
     "shelljs": "^0.8.3",
     "update-notifier": "^3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^12.6.2",
-    "tslint": "^5.18.0",
+    "@types/node": "^12.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
     "typescript": "^3.5.3"
   },
   "peerDependencies": {},

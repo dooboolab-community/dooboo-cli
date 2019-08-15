@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 import Button from '../shared/Button';
+import styled from 'styled-components';
 
 const Container = styled.div`
   flex: 1;
@@ -18,9 +18,7 @@ interface Props {
 function Page(props: Props) {
   return (
     <Container>
-      <div
-        data-testid='myText'
-      >dooboolab</div>
+      <div data-testid='myText'>dooboolab</div>
     </Container>
   );
 }

@@ -1,7 +1,4 @@
-import {
-  serialize,
-  deserialize,
-} from 'serializr';
+import { deserialize, serialize } from 'serializr';
 
 const ROOT_URL = 'http://localhost:3000/api';
 
@@ -11,7 +8,7 @@ export const sample = async (body: object, signal?: AbortController.signal) => {
       signal,
       method: 'POST',
       headers: new Headers({
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       }),
       body: JSON.stringify(body),

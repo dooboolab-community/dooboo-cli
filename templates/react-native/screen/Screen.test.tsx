@@ -1,8 +1,10 @@
-import * as React from 'react';
 import 'react-native';
-import Screen from '../Screen';
 
-import { render, RenderResult } from '@testing-library/react-native';
+import * as React from 'react';
+
+import { RenderResult, render } from '@testing-library/react-native';
+
+import Screen from '../Screen';
 import renderer from 'react-test-renderer';
 
 let props: any;
@@ -18,10 +20,8 @@ const createTestProps = (obj: object) => ({
 
 describe('[Screen] screen', () => {
   beforeEach(() => {
-    props = createTestProps({ });
-    component = (
-      <Screen {...props} />
-    );
+    props = createTestProps({});
+    component = <Screen {...props} />;
     testingLib = render(component);
   });
 

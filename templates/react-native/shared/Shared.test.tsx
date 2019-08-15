@@ -1,7 +1,8 @@
-import * as React from 'react';
 import 'react-native';
-import Shared from '../Shared';
 
+import * as React from 'react';
+
+import Shared from '../Shared';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
 
@@ -18,15 +19,14 @@ const createTestProps = (obj: object) => ({
 
 describe('[Shared] render', () => {
   beforeEach(() => {
-    props = createTestProps({ });
-    component = (
-      <Shared {...props} />
-    );
+    props = createTestProps({});
+    component = <Shared {...props} />;
   });
 
   it('renders without crashing', () => {
-    const rendered: renderer.ReactTestRendererJSON | null =
-      renderer.create(component).toJSON();
+    const rendered: renderer.ReactTestRendererJSON | null = renderer
+      .create(component)
+      .toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });

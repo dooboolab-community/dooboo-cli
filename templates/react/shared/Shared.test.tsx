@@ -1,9 +1,8 @@
-import React from 'react';
+import { fireEvent, getByTestId, render } from '@testing-library/react';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
+import React from 'react';
 import Shared from '../Shared';
-import { render, fireEvent, getByTestId } from '@testing-library/react';
-
 
 let props: any;
 let component: React.ReactElement;
@@ -16,9 +15,7 @@ describe('[Shared] render', () => {
         goBack: jest.fn(),
       },
     };
-    component = (
-      <Shared />
-    );
+    component = <Shared />;
   });
 
   it('renders without crashing', () => {

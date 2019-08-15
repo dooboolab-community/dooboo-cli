@@ -2,16 +2,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "preserveConstEnums": true,
-    "outDir": ".",
-    "sourceMap": true,
+    "outDir": "lib",
+    "sourceMap": false,
     "target": "ES2015",
     "resolveJsonModule": true
   },
-  "include": [
-    "bin/**/*.ts",
-    "utils/**/*.ts",
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["bin/**/*.ts", "utils/**/*.ts"],
+  "exclude": ["node_modules"]
 }
