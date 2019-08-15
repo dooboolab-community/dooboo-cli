@@ -489,8 +489,9 @@ program
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const isTypescript = await fsExists('.dooboo/typescript');
-    const fileExt = isTypescript ? 'tsx' : 'js';
+    // const isTypescript = await fsExists('.dooboo/typescript');
+    // const fileExt = isTypescript ? 'tsx' : 'js';
+    const fileExt = 'tsx';
 
     const componentFile = `./src/components/screen/${upperCamel}.${fileExt}`;
     const testFile = `./src/components/screen/__tests__/${upperCamel}.test.${fileExt}`;
@@ -585,8 +586,9 @@ program
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
-    const isTypescript = await fsExists('.dooboo/typescript');
-    const fileExt = isTypescript ? 'tsx' : 'js';
+    // const isTypescript = await fsExists('.dooboo/typescript');
+    // const fileExt = isTypescript ? 'tsx' : 'js';
+    const fileExt = 'tsx';
 
     const componentFile = `./src/components/shared/${upperCamel}.${fileExt}`;
     const testFile = `./src/components/shared/__tests__/${upperCamel}.test.${fileExt}`;
