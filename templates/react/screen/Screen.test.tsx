@@ -1,8 +1,8 @@
-import React from 'react';
+import { fireEvent, getByTestId, render } from '@testing-library/react';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
+import React from 'react';
 import Screen from '../Screen';
-import { render, fireEvent, getByTestId } from '@testing-library/react';
 
 const props = {
   history: {
