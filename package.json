@@ -15,11 +15,10 @@
   "keywords": [
     "react",
     "react-native",
+    "expo",
     "cli",
     "template",
     "boilerplate",
-    "mobx",
-    "flow",
     "typescript"
   ],
   "dependencies": {

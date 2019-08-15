@@ -66,7 +66,7 @@
 
 ## Preview
 
-![image](https://user-images.githubusercontent.com/27461460/60101219-55177500-9796-11e9-9bfb-714a0f745d4c.png)
+![image](https://user-images.githubusercontent.com/27461460/63132984-1798d080-bffe-11e9-9b4d-672662b79540.png)
 
 ## Contribution
 
