@@ -20,8 +20,6 @@ export const sample = async (body: object, signal?: AbortController.signal) => {
     }
     return null;
   } catch (err) {
-    console.log('googleLogin err');
-    console.log(err);
     throw new Error(err);
   }
 };
