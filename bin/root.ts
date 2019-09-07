@@ -72,7 +72,7 @@ const cbResultWeb = (
           camelCaseToDash(`${nameOfApp}`),
           `./${nameOfApp}/package.json`,
         );
-        shell.exec(`pwd`);
+        shell.exec('pwd');
         shell.rm('-rf', `${nameOfApp}/.git`);
         shell.rm('-rf', `${nameOfApp}/.circleci`);
 
@@ -80,8 +80,8 @@ const cbResultWeb = (
         shell.echo(
           chalk.greenBright('cd ' + answer.value + ' and dooboo start.'),
         );
-        process.exit(0);
         spinner.stop();
+        process.exit(0);
       }, 2000);
     },
   );
@@ -112,7 +112,7 @@ const cbResultApp = (
           camelCaseToDash(`${nameOfApp}`),
           `./${nameOfApp}/package.json`,
         );
-        shell.exec(`pwd`);
+        shell.exec('pwd');
         shell.rm('-rf', `${nameOfApp}/.git`);
         shell.rm('-rf', `${nameOfApp}/.circleci`);
         // // ==> Android config
@@ -173,8 +173,8 @@ const cbResultApp = (
             `cd ${nameOfApp} and yarn start. Open up another terminal and yarn run ios.`,
           ),
         );
-        process.exit(0);
         spinner.stop();
+        process.exit(0);
       }, 2000);
     },
   );
@@ -211,7 +211,7 @@ const cbResultExpo = (
           camelCaseToDash(`${nameOfApp}`),
           `./${nameOfApp}/app.json`,
         );
-        shell.exec(`pwd`);
+        shell.exec('pwd');
         shell.rm('-rf', `${nameOfApp}/.git`);
         shell.rm('-rf', `${nameOfApp}/.circleci`);
 
@@ -223,8 +223,8 @@ const cbResultExpo = (
             `cd ${nameOfApp} and yarn && yarn start. Open up another terminal and yarn run ios.`,
           ),
         );
-        process.exit(0);
         spinner.stop();
+        process.exit(0);
       }, 2000);
     },
   );
@@ -384,7 +384,6 @@ program
         );
         spinner.stop();
         process.exit(0);
-        return;
       }
 
       exists = await fsExists('node_modules');
@@ -393,10 +392,10 @@ program
 
         // childProcess.execSync(`yarn`, {stdio: 'inherit'})
 
-        shell.exec(`yarn`, function(code) {
+        shell.exec('yarn', function(code) {
           if (code === 0) {
             shell.echo(chalk.cyanBright('running project...\n'));
-            shell.exec(`yarn run dev`);
+            shell.exec('yarn run dev');
             // childProcess.execSync(`yarn run dev`, {stdio: 'inherit'});
             return;
           }
@@ -410,7 +409,7 @@ program
       }
       shell.echo(chalk.cyanBright('running project...'));
       // shell.exec(`yarn start`);
-      shell.exec(`yarn run dev`);
+      shell.exec('yarn run dev');
       // childProcess.execFileSync('yarn', ['start'], {stdio: 'inherit'});
     } catch (err) {
       shell.echo(chalk.red(err));
@@ -441,7 +440,6 @@ program
       );
       spinner.stop();
       process.exit(0);
-      return;
     }
 
     exists = await fsExists('node_modules');
@@ -449,10 +447,10 @@ program
 
     if (!exists) {
       shell.echo(chalk.cyanBright('installing dependencies...'));
-      shell.exec(`yarn`, function(code) {
+      shell.exec('yarn', function(code) {
         if (code === 0) {
           shell.echo(chalk.cyanBright('running project...'));
-          shell.exec(`yarn test`);
+          shell.exec('yarn test');
           spinner.stop();
           // process.exit(0);
           return;
@@ -467,7 +465,7 @@ program
     }
     shell.echo(chalk.cyanBright('testing project...'));
     // shell.exec(`yarn start`);
-    shell.exec(`yarn test`);
+    shell.exec('yarn test');
     spinner.stop();
     // process.exit(0);
   });
@@ -484,7 +482,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
@@ -504,7 +501,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
 
     exists = await fsExists('.dooboo/react');
@@ -519,7 +515,7 @@ program
         '..',
         `templates/react/screen/Screen.test.${fileExt}`,
       );
-      shell.echo(chalk.cyanBright(`creating screen component...`));
+      shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
       shell.sed('-i', 'Screen', `${upperCamel}`, testFile);
@@ -531,7 +527,6 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`,
         ),
       );
       process.exit(0);
-      return;
     }
 
     exists = await fsExists('.dooboo/react-native');
@@ -546,7 +541,7 @@ testFile: src/components/screen/__tests__/${upperCamel}.test.${fileExt}`,
         '..',
         `templates/react-native/screen/Screen.test.${fileExt}`,
       );
-      shell.echo(chalk.cyanBright(`creating screen component...`));
+      shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
       shell.sed('-i', 'Screen', `${upperCamel}`, testFile);
@@ -581,7 +576,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
     const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
@@ -601,7 +595,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
 
     exists = await fsExists('.dooboo/react');
@@ -616,7 +609,7 @@ program
         '..',
         `templates/react/shared/Shared.test.${fileExt}`,
       );
-      shell.echo(chalk.cyanBright(`creating shared component...`));
+      shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
       shell.sed('-i', 'Shared', `${upperCamel}`, testFile);
@@ -628,7 +621,6 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`,
         ),
       );
       process.exit(0);
-      return;
     }
 
     exists = await fsExists('.dooboo/react-native');
@@ -643,7 +635,7 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`,
         '..',
         `templates/react-native/shared/Shared.test.${fileExt}`,
       );
-      shell.echo(chalk.cyanBright(`creating shared component...`));
+      shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template, componentFile);
       shell.cp(templateTest, testFile);
       shell.sed('-i', 'Shared', `${upperCamel}`, testFile);
@@ -655,7 +647,6 @@ testFile: src/components/shared/__tests__/${upperCamel}.test.${fileExt}`,
         ),
       );
       process.exit(0);
-      return;
     }
 
     shell.echo(
@@ -679,7 +670,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
 
     const isTypescript = await fsExists('.dooboo/typescript');
@@ -698,7 +688,6 @@ program
         ),
       );
       process.exit(0);
-      return;
     }
     const template = path.resolve(
       __dirname,
@@ -706,7 +695,7 @@ program
       `templates/common/Api.${fileExt}`,
     );
     shell.cp(template, apiFile);
-    shell.echo(chalk.cyanBright(`creating api file...`));
+    shell.echo(chalk.cyanBright('creating api file...'));
     shell.echo(chalk.green(`generated: src/apis/${camel}.${fileExt}`));
 
     process.exit(0);
