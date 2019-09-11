@@ -164,7 +164,10 @@ const cbResultApp = (
         shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        childProcess.execSync(`cd ${nameOfApp} && yarn`, { stdio: 'inherit' });
+        childProcess.execSync(
+          `cd ${nameOfApp} && yarn && cd ios && pod install`,
+          { stdio: 'inherit' },
+        );
         spinner.stop();
 
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));
