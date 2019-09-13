@@ -165,10 +165,17 @@ const cbResultApp = (
         shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        childProcess.execSync(
-          `cd ${nameOfApp} && yarn && cd ios && pod install`,
-          { stdio: 'inherit' },
-        );
+        if (os.type() === 'Darwin') {
+          childProcess.execSync(
+            `cd ${nameOfApp} && yarn && cd ios && pod install`,
+            { stdio: 'inherit' },
+          );
+        } else {
+          childProcess.execSync(`cd ${nameOfApp} && yarn`, {
+            stdio: 'inherit',
+          });
+        }
+
         spinner.stop();
 
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));

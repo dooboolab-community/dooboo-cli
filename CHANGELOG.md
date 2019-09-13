@@ -5,6 +5,7 @@
 - Compatible with RN >= 0.60.
 - Run pod installation after installation in rn.
 - Check pod installation when it is macos.
+- Run `pod install` when it is macos.
 - Update packages.
   **[1.9.+]**
 - Update ui/testing templates for `react-native`.
