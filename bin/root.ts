@@ -14,6 +14,7 @@ import { setTimeout } from 'timers';
 
 import inquirer = require('inquirer');
 import ora = require('ora');
+import os = require('os');
 import selectShell = require('select-shell');
 import shell = require('shelljs');
 import path = require('path');
@@ -164,10 +165,17 @@ const cbResultApp = (
         shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        childProcess.execSync(
-          `cd ${nameOfApp} && yarn && cd ios && pod install`,
-          { stdio: 'inherit' },
-        );
+        if (os.type() === 'Darwin') {
+          childProcess.execSync(
+            `cd ${nameOfApp} && yarn && cd ios && pod install`,
+            { stdio: 'inherit' },
+          );
+        } else {
+          childProcess.execSync(`cd ${nameOfApp} && yarn`, {
+            stdio: 'inherit',
+          });
+        }
+
         spinner.stop();
 
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));
@@ -343,14 +351,16 @@ program
               );
               shell.exit(1);
             }
-            if (!shell.which('pod')) {
-              shell.echo(
-                chalk.redBright(
-                  `Sorry, this script requires cocoapod to be installed.
-                   Are you on mac OS (darwin)?`,
-                ),
-              );
-              shell.exit(1);
+            if (os.type() === 'Darwin') {
+              if (!shell.which('pod')) {
+                shell.echo(
+                  chalk.redBright(
+                    `Sorry, this script requires cocoapod to be installed.
+                    Are you on mac OS (darwin)?`,
+                  ),
+                );
+                shell.exit(1);
+              }
             }
 
             cbResultApp(template, nameOfApp, answer, options, spinner);
