@@ -1,6 +1,9 @@
 ## Changelogs
 
-**[2.0.+]**
+**[2.1.0]**
+
+- Add missing templates folder.
+  **[2.0.+]**
 
 - Compatible with RN >= 0.60.
 - Run pod installation after installation in rn.
