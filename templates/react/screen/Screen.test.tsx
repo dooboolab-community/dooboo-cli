@@ -1,4 +1,9 @@
-import { fireEvent, getByTestId, render } from '@testing-library/react';
+import {
+  RenderResult,
+  fireEvent,
+  getByTestId,
+  render,
+} from '@testing-library/react';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import React from 'react';
@@ -20,7 +25,7 @@ describe('[Screen] render', () => {
 
 describe('[Screen] Interaction', () => {
   const component = <Screen {...props} />;
-  let renderResult: any;
+  let renderResult: RenderResult;
 
   beforeEach(() => {
     renderResult = render(component);

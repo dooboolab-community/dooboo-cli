@@ -1,4 +1,9 @@
-import { fireEvent, getByTestId, render } from '@testing-library/react';
+import {
+  RenderResult,
+  fireEvent,
+  getByTestId,
+  render,
+} from '@testing-library/react';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import React from 'react';
@@ -6,7 +11,7 @@ import Shared from '../Shared';
 
 let props: any;
 let component: React.ReactElement;
-let testingLib: any;
+let testingLib: RenderResult;
 
 describe('[Shared] render', () => {
   beforeEach(() => {

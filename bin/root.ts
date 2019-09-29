@@ -5,7 +5,6 @@ import {
   camelCaseToDash,
   camelize,
   fsExists,
-  isCamelCase,
   upperCamelize,
 } from '../utils/functions';
 
@@ -20,7 +19,6 @@ import shell = require('shelljs');
 import path = require('path');
 import program = require('commander');
 import boxen = require('boxen');
-import fs = require('fs');
 import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
@@ -54,8 +52,8 @@ const cbResultWeb = (
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: any,
-) => {
+  spinner: ora.Ora,
+): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,
     (code: number, stdout: string, stderr: string) => {
@@ -93,8 +91,8 @@ const cbResultApp = (
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: any,
-) => {
+  spinner: ora.Ora,
+): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,
     (code: number, stdout: string, stderr: string) => {
@@ -129,7 +127,6 @@ const cbResultApp = (
           `${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
           `${nameOfApp}/${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
         );
-        // shell.cp(`${nameOfApp}/android/app/build.gradle`, `${nameOfApp}/${nameOfApp}/android/app/build.gradle`);
         shell.rm('-rf', `${nameOfApp}/android/*`);
         shell.rm('-rf', `${nameOfApp}/ios/*`);
         shell.sed(
@@ -196,8 +193,8 @@ const cbResultExpo = (
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: any,
-) => {
+  spinner: ora.Ora,
+): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,
     (code: number, stdout: string, stderr: string) => {
@@ -268,7 +265,7 @@ program
       prepend: true,
     });
 
-    const stream = process.stdin;
+    // const stream = process.stdin;
 
     list
       .option(' React App (typescript) ', TYPE_OF_APP.REACT)
@@ -296,20 +293,20 @@ program
           }
 
           let template = '';
-          // shell.echo(options[0].value);
+          // prettier-ignore
           switch (options[0].value) {
-            case TYPE_OF_APP.REACT:
-              template =
-                '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
-              break;
-            case TYPE_OF_APP.REACT_NATIVE:
-              template =
-                '-b master https://github.com/dooboolab/dooboo-native-ts.git';
-              break;
-            case TYPE_OF_APP.EXPO:
-              template =
-                '-b master https://github.com/dooboolab/dooboo-expo.git';
-              break;
+          case TYPE_OF_APP.REACT:
+            template =
+              '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
+            break;
+          case TYPE_OF_APP.REACT_NATIVE:
+            template =
+              '-b master https://github.com/dooboolab/dooboo-native-ts.git';
+            break;
+          case TYPE_OF_APP.EXPO:
+            template =
+              '-b master https://github.com/dooboolab/dooboo-expo.git';
+            break;
           }
 
           if (!template) {
@@ -496,7 +493,7 @@ program
       );
       process.exit(0);
     }
-    const camel = camelize(c); // inside component is camelCase.
+    // const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
     // const isTypescript = await fsExists('.dooboo/typescript');
@@ -590,7 +587,7 @@ program
       );
       process.exit(0);
     }
-    const camel = camelize(c); // inside component is camelCase.
+    // const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
     // const isTypescript = await fsExists('.dooboo/typescript');
@@ -733,34 +730,35 @@ if (!program.args.length) {
     return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
   });
   if (invalidCommands.length && process.argv[2]) {
+    // prettier-ignore
     switch (process.argv[2]) {
-      case 'init':
-      case 'start':
-      case 'test':
-      case 'screen':
-      case 'shared':
-      case 'model':
-      case 'store':
-      case 'api':
-        break;
-      default:
-        // warn about invalid commands
-        validCommands = program.commands.map(function(cmd) {
-          return cmd.name;
-        });
-        invalidCommands = program.args.filter(function(cmd) {
-          // if command executed it will be an object and not a string
-          return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-        });
-        if (invalidCommands.length) {
-          shell.echo(
-            `\n [ERROR] - Invalid command:
-              "%s". See "-h or --help" for a list of available commands.\n`,
-            invalidCommands.join(', '),
-          );
-          process.exit(1);
-        }
-        break;
+    case 'init':
+    case 'start':
+    case 'test':
+    case 'screen':
+    case 'shared':
+    case 'model':
+    case 'store':
+    case 'api':
+      break;
+    default:
+      // warn about invalid commands
+      validCommands = program.commands.map(function(cmd) {
+        return cmd.name;
+      });
+      invalidCommands = program.args.filter(function(cmd) {
+        // if command executed it will be an object and not a string
+        return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
+      });
+      if (invalidCommands.length) {
+        shell.echo(
+          `\n [ERROR] - Invalid command:
+            "%s". See "-h or --help" for a list of available commands.\n`,
+          invalidCommands.join(', '),
+        );
+        process.exit(1);
+      }
+      break;
     }
   }
 }
