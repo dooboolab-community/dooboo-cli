@@ -3,23 +3,13 @@
 import shelljs = require('shelljs');
 import fs = require('fs');
 
-const toCamelCase = function(str, cap1st) {
+const toCamelCase = function(str: string, cap1st: boolean): string {
   return ((cap1st ? '-' : '') + str).replace(/-+([^-])/g, function(a, b) {
     return b.toUpperCase();
   });
 };
 
-export const isCamelCase = function(str) {
-  const strArr = str.split('');
-  let string = '';
-  for (const i in strArr) {
-    if (strArr[i].toUpperCase() === strArr[i]) {
-      string += '-' + strArr[i].toLowerCase();
-    } else {
-      string += strArr[i];
-    }
-  }
-
+export const isCamelCase = function(str: string): boolean {
   if (toCamelCase(str, true) === str) {
     return true;
   } else {
@@ -27,11 +17,11 @@ export const isCamelCase = function(str) {
   }
 };
 
-export const camelCaseToDash = function(str) {
+export const camelCaseToDash = function(str: string): string {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
 };
 
-export const camelize = function(str) {
+export const camelize = function(str: string): string {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
     if (+match === 0) {
       return '';
@@ -40,8 +30,8 @@ export const camelize = function(str) {
   });
 };
 
-export const upperCamelize = function(str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
+export const upperCamelize = function(str: string): string {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match) {
     if (+match === 0) {
       return '';
     } // or if (/\s+/.test(match)) for white spaces
@@ -49,19 +39,22 @@ export const upperCamelize = function(str) {
   });
 };
 
-export const fsExists = function(file) {
-  return new Promise((resolve, reject) => {
+export const fsExists = function(file: fs.PathLike): Promise<boolean> {
+  return new Promise((resolve): void => {
     fs.exists(file, function(exists) {
       resolve(exists);
     });
   });
 };
 
-export const exec = function(command) {
-  return new Promise((resolve, reject) => shelljs.exec(command, {}, (code, value, error) => {
-    if (error) {
-      return reject(error);
-    }
-    resolve(value);
-  }));
+export const exec = function(command: string): Promise<string> {
+  return new Promise((resolve, reject): unknown =>
+    shelljs.exec(command, {}, (code: number, value: string, error: string) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(value);
+    }),
+  );
 };
