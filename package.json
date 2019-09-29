@@ -7,7 +7,7 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "lint": "eslint -c eslint/index.js . --ext .ts,.tsx,.js,.jsx",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "build": "npm run lint && npm run tsc && cp -r templates lib/",
     "publish": "npm publish",
     "publish:eslint": "cd eslint && npm publisih"
@@ -34,19 +34,10 @@
     "update-notifier": "^3.0.1"
   },
   "devDependencies": {
+    "@dooboo/eslint-config": "^0.1.0",
     "@types/node": "^12.7.5",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.5",
-    "@typescript-eslint/eslint-plugin": "^2.2.0",
-    "@typescript-eslint/parser": "^2.2.0",
-    "eslint": "^6.3.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-standard": "^4.0.1",
     "typescript": "^3.6.3"
   },
   "peerDependencies": {},
