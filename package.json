@@ -8,7 +8,9 @@
   "scripts": {
     "tsc": "tsc",
     "lint": "eslint -c eslint/index.js . --ext .ts,.tsx,.js,.jsx",
-    "build": "npm run lint && npm run tsc && cp -r templates lib/"
+    "build": "npm run lint && npm run tsc && cp -r templates lib/",
+    "publish": "npm publish",
+    "publish:eslint": "cd eslint && npm publisih"
   },
   "author": "dooboolab",
   "license": "MIT",
