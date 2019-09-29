@@ -1,6 +1,6 @@
 {
   "name": "@dooboo/eslint-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ESLint config for React & React Native",
   "main": "index.js",
   "repository": {

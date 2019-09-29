@@ -2,7 +2,6 @@
 
 [![Npm Version](http://img.shields.io/npm/v/@dooboo/eslint-config.svg?style=flat-square)](https://npmjs.org/package/@dooboo/eslint-config)
 [![Downloads](http://img.shields.io/npm/dm/@dooboo/eslint-config.svg?style=flat-square)](https://npmjs.org/package/@dooboo/eslint-config)
-[![Build Status](https://travis-ci.com/dooboolab/@dooboo/eslint-config.svg?branch=master)](https://travis-ci.com/dooboolab/@dooboo/eslint-config)
 =========
 
 ## Installation
