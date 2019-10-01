@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "build": "npm run lint && npm run tsc && cp -r templates lib/",
-    "publish": "npm publish"
+    "deploy": "npm run build && npm publish"
   },
   "author": "dooboolab",
   "license": "MIT",
