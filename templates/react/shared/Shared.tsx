@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -9,14 +10,10 @@ const Container = styled.div`
 
 interface Props {
   children?: string;
-};
+}
 
-function Shared(props: Props) {
-  return (
-    <Container>
-      {props.children}
-    </Container>
-  );
+function Shared(props: Props): React.ReactElement {
+  return <Container>{props.children}</Container>;
 }
 
 export default Shared;
