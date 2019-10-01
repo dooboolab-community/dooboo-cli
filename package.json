@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "2.3.0",
+  "version": "2.3.2",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "build": "npm run lint && npm run tsc && cp -r templates lib/",
-    "publish": "npm publish"
+    "deploy": "npm run build && npm publish"
   },
   "author": "dooboolab",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "update-notifier": "^3.0.1"
   },
   "devDependencies": {
-    "@dooboo/eslint-config": "^0.1.1",
+    "@dooboo/eslint-config": "^0.1.3",
     "@types/node": "^12.7.5",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.5",

@@ -15,7 +15,7 @@ interface Props {
   history?: any;
 }
 
-function Page(props: Props) {
+function Page(props: Props): React.ReactElement {
   return (
     <Container>
       <div data-testid='myText'>dooboolab</div>
