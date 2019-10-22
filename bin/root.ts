@@ -293,20 +293,19 @@ program
           }
 
           let template = '';
-          // prettier-ignore
           switch (options[0].value) {
-          case TYPE_OF_APP.REACT:
-            template =
-              '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
-            break;
-          case TYPE_OF_APP.REACT_NATIVE:
-            template =
-              '-b master https://github.com/dooboolab/dooboo-native-ts.git';
-            break;
-          case TYPE_OF_APP.EXPO:
-            template =
-              '-b master https://github.com/dooboolab/dooboo-expo.git';
-            break;
+            case TYPE_OF_APP.REACT:
+              template =
+                '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
+              break;
+            case TYPE_OF_APP.REACT_NATIVE:
+              template =
+                '-b master https://github.com/dooboolab/dooboo-native-ts.git';
+              break;
+            case TYPE_OF_APP.EXPO:
+              template =
+                '-b master https://github.com/dooboolab/dooboo-expo.git';
+              break;
           }
 
           if (!template) {
@@ -730,35 +729,34 @@ if (!program.args.length) {
     return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
   });
   if (invalidCommands.length && process.argv[2]) {
-    // prettier-ignore
     switch (process.argv[2]) {
-    case 'init':
-    case 'start':
-    case 'test':
-    case 'screen':
-    case 'shared':
-    case 'model':
-    case 'store':
-    case 'api':
-      break;
-    default:
-      // warn about invalid commands
-      validCommands = program.commands.map(function(cmd) {
-        return cmd.name;
-      });
-      invalidCommands = program.args.filter(function(cmd) {
-        // if command executed it will be an object and not a string
-        return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-      });
-      if (invalidCommands.length) {
-        shell.echo(
-          `\n [ERROR] - Invalid command:
+      case 'init':
+      case 'start':
+      case 'test':
+      case 'screen':
+      case 'shared':
+      case 'model':
+      case 'store':
+      case 'api':
+        break;
+      default:
+        // warn about invalid commands
+        validCommands = program.commands.map(function(cmd) {
+          return cmd.name;
+        });
+        invalidCommands = program.args.filter(function(cmd) {
+          // if command executed it will be an object and not a string
+          return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
+        });
+        if (invalidCommands.length) {
+          shell.echo(
+            `\n [ERROR] - Invalid command:
             "%s". See "-h or --help" for a list of available commands.\n`,
-          invalidCommands.join(', '),
-        );
-        process.exit(1);
-      }
-      break;
+            invalidCommands.join(', '),
+          );
+          process.exit(1);
+        }
+        break;
     }
   }
 }

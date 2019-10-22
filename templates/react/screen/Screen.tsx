@@ -18,7 +18,7 @@ interface Props {
 function Page(props: Props): React.ReactElement {
   return (
     <Container>
-      <div data-testid='myText'>dooboolab</div>
+      <div data-testid="myText">dooboolab</div>
     </Container>
   );
 }
