@@ -42,9 +42,14 @@
 
 ## Installation
 
-```
-  npm install -g dooboo-cli
-```
+- with npm
+  ```
+    npm install -g dooboo-cli
+  ```
+- with yarn
+  ```
+    yarn global add dooboo-cli
+  ```
 
 ## Usage
 
