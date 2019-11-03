@@ -1,14 +1,13 @@
 import 'react-native';
 
-import * as React from 'react';
-
+import React, { ReactElement } from 'react';
 import { RenderResult, render } from '@testing-library/react-native';
 
 import Screen from '../Screen';
 import renderer from 'react-test-renderer';
 
 let props: any;
-let component: React.ReactElement;
+let component: ReactElement;
 let testingLib: RenderResult;
 
 const createTestProps = (obj: object): object => ({

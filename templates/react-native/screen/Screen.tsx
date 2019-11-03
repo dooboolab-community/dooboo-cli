@@ -1,10 +1,6 @@
-import {
-  NavigationParams,
-  NavigationScreenProp,
-  NavigationState,
-} from 'react-navigation';
+import React, { ReactElement } from 'react';
 
-import React from 'react';
+import { DefaultNavigationProps } from '../../types';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -21,10 +17,10 @@ const StyledText = styled.Text`
 `;
 
 interface Props {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+  navigation: DefaultNavigationProps;
 }
 
-function Page(props: Props): React.ReactElement {
+function Page(props: Props): ReactElement {
   return (
     <Container>
       <StyledText testID="myText">dooboolab</StyledText>
