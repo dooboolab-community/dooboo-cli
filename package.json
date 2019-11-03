@@ -25,7 +25,7 @@
   "dependencies": {
     "boxen": "^4.1.0",
     "chalk": "^2.4.2",
-    "commander": "^3.0.2",
+    "commander": "^4.0.0",
     "inquirer": "^7.0.0",
     "ora": "^4.0.2",
     "select-shell": "^1.1.3",
