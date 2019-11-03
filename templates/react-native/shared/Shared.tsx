@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { ReactChildren } from 'react';
+
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -13,7 +14,7 @@ interface Props {
   children?: any;
 }
 
-function Shared(props: Props): React.ReactElement {
+function Shared(props: Props): ReactChildren {
   return <Container>{props.children}</Container>;
 }
 
