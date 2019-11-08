@@ -209,7 +209,7 @@ const cbResultExpo = (
       setTimeout(function() {
         shell.sed(
           '-i',
-          'dooboo',
+          'dooboo-starter',
           camelCaseToDash(`${nameOfApp}`),
           `./${nameOfApp}/package.json`,
         );
