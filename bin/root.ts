@@ -715,51 +715,51 @@ program.parse(process.argv);
 /**
  * RUN help when command is not valid.
  */
-if (!program.args.length) {
-  // show help by default
-  program.parse([process.argv[0], process.argv[1], '-h']);
-  process.exit(0);
-} else {
-  // warn aboud invalid commands
-  let validCommands = program.commands.map(function(cmd) {
-    return cmd.name;
-  });
-  let invalidCommands = program.args.filter(function(cmd) {
-    // if command executed it will be an object and not a string
-    return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-  });
-  if (invalidCommands.length && process.argv[2]) {
-    switch (process.argv[2]) {
-      case 'init':
-      case 'start':
-      case 'test':
-      case 'screen':
-      case 'shared':
-      case 'model':
-      case 'store':
-      case 'api':
-        break;
-      default:
-        // warn about invalid commands
-        validCommands = program.commands.map(function(cmd) {
-          return cmd.name;
-        });
-        invalidCommands = program.args.filter(function(cmd) {
-          // if command executed it will be an object and not a string
-          return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-        });
-        if (invalidCommands.length) {
-          shell.echo(
-            `\n [ERROR] - Invalid command:
+// if (program.args && program.args.length === 0) {
+//   // show help by default
+//   program.parse([process.argv[0], process.argv[1], '-h']);
+//   process.exit(0);
+// } else {
+// warn aboud invalid commands
+let validCommands = program.commands.map(function(cmd) {
+  return cmd.name;
+});
+let invalidCommands = program.args.filter(function(cmd) {
+  // if command executed it will be an object and not a string
+  return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
+});
+if (invalidCommands.length && process.argv[2]) {
+  switch (process.argv[2]) {
+    case 'init':
+    case 'start':
+    case 'test':
+    case 'screen':
+    case 'shared':
+    case 'model':
+    case 'store':
+    case 'api':
+      break;
+    default:
+      // warn about invalid commands
+      validCommands = program.commands.map(function(cmd) {
+        return cmd.name;
+      });
+      invalidCommands = program.args.filter(function(cmd) {
+        // if command executed it will be an object and not a string
+        return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
+      });
+      if (invalidCommands.length) {
+        shell.echo(
+          `\n [ERROR] - Invalid command:
             "%s". See "-h or --help" for a list of available commands.\n`,
-            invalidCommands.join(', '),
-          );
-          process.exit(1);
-        }
-        break;
-    }
+          invalidCommands.join(', '),
+        );
+        process.exit(1);
+      }
+      break;
   }
 }
+// }
 
 // program
 //   .arguments('<file>')

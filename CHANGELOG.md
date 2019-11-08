@@ -1,5 +1,9 @@
 ## Changelogs
 
+**[2.5.1]**
+
+- Remove default `-h` since this isn't working as expected.
+
 **[2.5.0]**
 
 - Fixed expo project generate failure.
