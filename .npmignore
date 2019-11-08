@@ -2,3 +2,8 @@
 # bin/root.ts
 # utils/functions.js.map
 # utils/functions.ts
+
+utils/
+bin/
+package/
+node_modules/
