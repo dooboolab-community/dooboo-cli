@@ -3,7 +3,6 @@
 # utils/functions.js.map
 # utils/functions.ts
 
-utils/
-bin/
+utils/functions.ts
+bin/root.ts
 package/
-node_modules/

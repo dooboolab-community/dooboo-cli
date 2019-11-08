@@ -1,8 +1,13 @@
 ## Changelogs
 
+**[2.5.0]**
+
+- Fixed expo project generate failure.
+
 **[2.4.0]**
 
 - Upgraded templates to new `dooboo-native` templates which is compatible with `react-navigation@next` which will be `v5`.
+
   **[2.1.0]**
 
 - Add missing templates folder.
