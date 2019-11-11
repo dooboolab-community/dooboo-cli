@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@dooboo/eslint-config": "^0.2.0",
-    "@types/node": "^12.12.6",
+    "@types/node": "^12.12.7",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.6",
     "eslint": "^6.6.0",

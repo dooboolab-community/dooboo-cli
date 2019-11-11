@@ -4,34 +4,26 @@ import {
   getByTestId,
   render,
 } from '@testing-library/react';
+import { createTestElement, history } from '../../../../test/testUtils';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import React from 'react';
 import Shared from '../Shared';
 
-let props: any;
-let component: React.ReactElement;
+const props = {};
+const element = createTestElement(<Shared {...props} />);
 let testingLib: RenderResult;
 
 describe('[Shared] render', () => {
-  beforeEach(() => {
-    props = {
-      history: {
-        goBack: jest.fn(),
-      },
-    };
-    component = <Shared />;
-  });
-
   it('renders without crashing', () => {
-    const rendered: ReactTestRendererJSON = renderer.create(component).toJSON();
+    const rendered: ReactTestRendererJSON = renderer.create(element).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });
 
   describe('interactions', () => {
     beforeEach(() => {
-      testingLib = render(component);
+      testingLib = render(element);
     });
 
     it('should simulate onClick', () => {
