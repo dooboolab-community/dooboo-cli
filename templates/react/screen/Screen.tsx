@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { ReactElement } from 'react';
 
 import Button from '../shared/Button';
 import styled from 'styled-components';
@@ -11,11 +11,9 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-interface Props {
-  history?: any;
-}
+type Props = {};
 
-function Page(props: Props): React.ReactElement {
+function Page(): ReactElement {
   return (
     <Container>
       <div data-testid="myText">dooboolab</div>

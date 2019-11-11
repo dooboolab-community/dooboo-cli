@@ -1,37 +1,31 @@
-import {
-  RenderResult,
-  fireEvent,
-  getByTestId,
-  render,
-} from '@testing-library/react';
-import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+
+import { RenderResult, fireEvent, render } from '@testing-library/react';
+import { createTestElement, history } from '../../../../test/testUtils';
 
 import React from 'react';
 import Screen from '../Screen';
 
-const props = {
-  history: {
-    goBack: jest.fn(),
-  },
-};
+const props = {};
 
 describe('[Screen] render', () => {
+  const element = createTestElement(<Screen {...props} />);
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Screen />).toJSON();
+    const rendered = renderer.create(element).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });
 });
 
 describe('[Screen] Interaction', () => {
-  const component = <Screen {...props} />;
+  const element = createTestElement(<Screen {...props} />);
   let renderResult: RenderResult;
 
   beforeEach(() => {
-    renderResult = render(component);
+    renderResult = render(element);
   });
 
-  it('should simulate [onClick] when [btn] has been clicked', () => {
+  it('should render [myText]', () => {
     const textInstance = renderResult.getByTestId('myText');
     expect(textInstance.textContent).toEqual('dooboolab');
   });

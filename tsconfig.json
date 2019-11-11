@@ -3,6 +3,7 @@
     "module": "commonjs",
     "preserveConstEnums": true,
     "outDir": "lib",
+    "esModuleInterop": true,
     "sourceMap": false,
     "target": "ES2015",
     "resolveJsonModule": true
