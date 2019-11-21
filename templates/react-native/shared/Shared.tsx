@@ -1,4 +1,4 @@
-import React, { ReactChildren } from 'react';
+import React, { ReactElement } from 'react';
 
 import styled from 'styled-components/native';
 
@@ -14,7 +14,7 @@ interface Props {
   children?: any;
 }
 
-function Shared(props: Props): ReactChildren {
+function Shared(props: Props): ReactElement {
   return <Container>{props.children}</Container>;
 }
 
