@@ -17,7 +17,7 @@ const StyledText = styled.Text`
 `;
 
 interface Props {
-  navigation: DefaultNavigationProps;
+  navigation: DefaultNavigationProps<'default'>;
 }
 
 function Page(props: Props): ReactElement {
