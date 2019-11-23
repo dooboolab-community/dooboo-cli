@@ -2,6 +2,7 @@ import 'react-native';
 
 import React, { ReactElement } from 'react';
 import { RenderResult, render } from '@testing-library/react-native';
+import { createTestElement, createTestProps } from '../../../utils/testUtils';
 
 import Screen from '../Screen';
 import renderer from 'react-test-renderer';
@@ -10,17 +11,10 @@ let props: any;
 let component: ReactElement;
 let testingLib: RenderResult;
 
-const createTestProps = (obj: object): object => ({
-  navigation: {
-    navigate: jest.fn(),
-  },
-  ...obj,
-});
-
 describe('[Screen] screen', () => {
   beforeEach(() => {
-    props = createTestProps({});
-    component = <Screen {...props} />;
+    props = createTestProps();
+    component = createTestElement(<Screen {...props} />);
     testingLib = render(component);
   });
 

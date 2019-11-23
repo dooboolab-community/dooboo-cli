@@ -2,6 +2,8 @@ import 'react-native';
 
 import * as React from 'react';
 
+import { createTestElement, createTestProps } from '../../../utils/testUtils';
+
 import Shared from '../Shared';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
@@ -10,17 +12,10 @@ let props: any;
 let component: React.ReactElement;
 // let testingLib: RenderResult;
 
-const createTestProps = (obj: object): object => ({
-  navigation: {
-    navigate: jest.fn(),
-  },
-  ...obj,
-});
-
 describe('[Shared] render', () => {
   beforeEach(() => {
-    props = createTestProps({});
-    component = <Shared {...props} />;
+    props = createTestProps();
+    component = createTestElement(<Shared {...props} />);
   });
 
   it('renders without crashing', () => {
