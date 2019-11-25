@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "lib/bin/root.js"

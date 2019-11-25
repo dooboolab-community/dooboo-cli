@@ -2,7 +2,7 @@ import 'react-native';
 
 import React, { ReactElement } from 'react';
 import { RenderResult, render } from '@testing-library/react-native';
-import { createTestElement, createTestProps } from '../../../utils/testUtils';
+import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import Screen from '../Screen';
 import renderer from 'react-test-renderer';

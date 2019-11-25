@@ -2,7 +2,7 @@ import 'react-native';
 
 import * as React from 'react';
 
-import { createTestElement, createTestProps } from '../../../utils/testUtils';
+import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import Shared from '../Shared';
 // Note: test renderer must be required after react-native.
