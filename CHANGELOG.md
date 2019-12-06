@@ -1,4 +1,6 @@
 ## Changelogs
+**[3.1.0]**
+- Install all post installation step for `react-navigation` in `react-native` template.
 
 **[3.0.0]**
 

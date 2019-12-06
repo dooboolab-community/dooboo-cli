@@ -88,6 +88,10 @@ export const cbResultApp = (
           `${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
           `${nameOfApp}/${nameOfApp}/android/gradle/wrapper/gradle-wrapper.properties`,
         );
+        shell.cp(
+          `${nameOfApp}/android/app/src/main/java/com/dooboo/MainActivity.java`,
+          `${nameOfApp}/${nameOfApp}/android/app/src/main/java/com/${nameOfApp.toLocaleLowerCase()}/MainActivity.java`,
+        );
         shell.rm('-rf', `${nameOfApp}/android/*`);
         shell.rm('-rf', `${nameOfApp}/ios/*`);
         shell.sed(
@@ -95,6 +99,14 @@ export const cbResultApp = (
           'dooboo',
           `${nameOfApp.toLowerCase()}`,
           `./${nameOfApp}/${nameOfApp}/android/app/build.gradle`,
+        );
+        shell.sed(
+          '-i',
+          'com.dooboo',
+          `com.${nameOfApp.toLowerCase()}`,
+          /* eslint-disable */
+          `./${nameOfApp}/${nameOfApp}/android/app/src/main/java/com/${nameOfApp.toLocaleLowerCase()}/MainActivity.java`,
+          /* eslint-enable */
         );
         shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios/*`, `${nameOfApp}/ios`);
         shell.cp(
@@ -104,22 +116,13 @@ export const cbResultApp = (
         );
         // // <== Android config
 
-        if (options[0].value === TYPE_OF_APP.REACT_NATIVE) {
-          shell.sed(
-            '-i',
-            'DOOBOO NATIVE',
-            `${nameOfApp}`,
-            `./${nameOfApp}/src/components/screen/Intro.tsx`,
-          );
-        } else {
-          // REACT_NATIVE_JS
-          shell.sed(
-            '-i',
-            'DOOBOO NATIVE',
-            `${nameOfApp}`,
-            `./${nameOfApp}/src/components/screen/Intro.js`,
-          );
-        }
+        shell.sed(
+          '-i',
+          'DOOBOO NATIVE',
+          `${nameOfApp}`,
+          `./${nameOfApp}/src/components/screen/Intro.tsx`,
+        );
+
         shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
