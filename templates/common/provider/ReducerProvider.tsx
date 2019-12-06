@@ -10,7 +10,7 @@ interface User {
 
 interface Context {
   state: State;
-  setUser: (user: Partial<User>) => void;
+  setUser: (user: User) => void;
 }
 const [useCtx, Provider] = createCtx<Context>();
 

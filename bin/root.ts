@@ -46,6 +46,11 @@ export enum TYPE_OF_RN_NAVIGATION {
   StackNavigator = 'StackNavigator',
 }
 
+export enum TYPE_OF_PROVIDER {
+  ReducerProvider = 'ReducerProvider',
+  StateProvider = 'StateProvider',
+}
+
 const notifier = updateNotifier({
   pkg,
   updateCheckInterval: 1000 * 60 * 60 * 24, // 1 day
@@ -551,6 +556,68 @@ program
     shell.echo(chalk.green(`generated: src/apis/${camel}.${fileExt}`));
 
     process.exit(0);
+  });
+
+program
+  .command('provider <c>')
+  .description('generate provider file to use context api.')
+  .action(async function(c) {
+    exitIfNotDoobooRepo();
+
+    const camel = camelize(c);
+    const upperCamel = upperCamelize(c);
+
+    const providerFile = `./src/providers/${upperCamel}.tsx`;
+    const providerTestFile = `./src/providers/__tests__/${upperCamel}.tsx`;
+    const exists = await fsExists(providerFile);
+    if (exists) {
+      shell.echo(
+        chalk.redBright(
+          `${upperCamel} store already exists. Delete or rename existing file first.`,
+        ),
+      );
+      process.exit(0);
+    }
+
+    const list = selectShell({
+      pointer: ' ▸ ',
+      pointerColor: 'yellow',
+      checked: ' ◉  ',
+      unchecked: ' ◎  ',
+      checkedColor: 'blue',
+      msgCancel: 'No selected options!',
+      msgCancelColor: 'orange',
+      multiSelect: false,
+      inverse: true,
+      prepend: true,
+    });
+
+    list
+      .option(' Provider (Reducer Type) ', TYPE_OF_PROVIDER.ReducerProvider)
+      .option(' Provider (State Type) ', TYPE_OF_PROVIDER.StateProvider)
+      .list();
+
+    list.on('select', function(options) {
+      const providerType = options[0].value;
+      const template = path.resolve(
+        __dirname,
+        '..',
+        `templates/common/provider/${providerType}.tsx`,
+      );
+
+      shell.cp(template, providerFile);
+      shell.sed('-i', providerType, `${upperCamel}`, providerFile);
+      shell.sed(
+        '-i',
+        `../${providerType}`,
+        `../${upperCamel}`,
+        providerTestFile,
+      );
+
+      shell.echo(chalk.cyanBright('creating api file...'));
+      shell.echo(chalk.green(`generated: src/apis/${camel}.tsx`));
+      process.exit(0);
+    });
   });
 
 program.parse(process.argv);
