@@ -1,9 +1,73 @@
 'use strict';
 
+import chalk from 'chalk';
 import shelljs = require('shelljs');
 import fs = require('fs');
 
-const toCamelCase = function(str: string, cap1st: boolean): string {
+import path = require('path');
+
+export interface TemplateType {
+  file: string;
+  testFile: string;
+}
+
+export const fsExists = function(file: fs.PathLike): Promise<boolean> {
+  return new Promise((resolve): void => {
+    fs.exists(file, function(exists) {
+      resolve(exists);
+    });
+  });
+};
+
+export const resolveTemplate = (
+  componentType: string,
+  componentName: string,
+  fileExt = 'tsx',
+): TemplateType => {
+  const template = path.resolve(
+    __dirname,
+    '..',
+    `templates/react-native/${componentType}/${componentName}.${fileExt}`,
+  );
+  const testTemplate = path.resolve(
+    __dirname,
+    '..',
+    `templates/react-native/${componentType}/${componentName}.test.${fileExt}`,
+  );
+
+  return {
+    file: template,
+    testFile: testTemplate,
+  };
+};
+
+export const resolveComponent = (
+  componentType: string,
+  name: string,
+  fileExt = 'tsx',
+): TemplateType => {
+  const component = `./src/components/${componentType}/${name}.${fileExt}`;
+  const testComponent = `./src/components/${componentType}/${name}.test.${fileExt}`;
+
+  return {
+    file: component,
+    testFile: testComponent,
+  };
+};
+
+export const exitIfNotDoobooRepo = async (): Promise<void> => {
+  const exists = await fsExists('.dooboo');
+  if (!exists) {
+    shelljs.echo(
+      chalk.redBright(
+        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+      ),
+    );
+    process.exit(0);
+  }
+};
+
+export const toCamelCase = function(str: string, cap1st: boolean): string {
   return ((cap1st ? '-' : '') + str).replace(/-+([^-])/g, function(a, b) {
     return b.toUpperCase();
   });
@@ -36,14 +100,6 @@ export const upperCamelize = function(str: string): string {
       return '';
     } // or if (/\s+/.test(match)) for white spaces
     return match.toUpperCase();
-  });
-};
-
-export const fsExists = function(file: fs.PathLike): Promise<boolean> {
-  return new Promise((resolve): void => {
-    fs.exists(file, function(exists) {
-      resolve(exists);
-    });
   });
 };
 

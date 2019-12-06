@@ -34,11 +34,12 @@
   },
   "devDependencies": {
     "@dooboo/eslint-config": "^0.2.0",
+    "@types/inquirer": "^6.5.0",
     "@types/node": "^12.12.14",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.6",
     "eslint": "^6.7.2",
-    "typescript": "^3.7.3"
+    "typescript": "^3.6.4"
   },
   "peerDependencies": {},
   "repository": {
