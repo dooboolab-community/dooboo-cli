@@ -1,5 +1,12 @@
 ## Changelogs
 
+**[3.0.0]**
+
+- React Navigation V5 emplate.
+- Provider pattern template.
+- Refactor code base.
+- Clean code.
+
 **[2.5.1]**
 
 - Remove default `-h` since this isn't working as expected.
