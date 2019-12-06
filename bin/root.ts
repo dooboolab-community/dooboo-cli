@@ -622,15 +622,6 @@ program
 
 program.parse(process.argv);
 
-/**
- * RUN help when command is not valid.
- */
-// if (program.args && program.args.length === 0) {
-//   // show help by default
-//   program.parse([process.argv[0], process.argv[1], '-h']);
-//   process.exit(0);
-// } else {
-// warn aboud invalid commands
 let validCommands = program.commands.map(function(cmd) {
   return cmd.name;
 });
@@ -638,6 +629,7 @@ let invalidCommands = program.args.filter(function(cmd) {
   // if command executed it will be an object and not a string
   return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
 });
+
 if (invalidCommands.length && process.argv[2]) {
   switch (process.argv[2]) {
     case 'init':
@@ -668,15 +660,5 @@ if (invalidCommands.length && process.argv[2]) {
       }
       break;
   }
+  // program.parse([process.argv[0], process.argv[1], '-h']);
 }
-// }
-
-// program
-//   .arguments('<file>')
-//   .option('-u, --username <username>', 'The user to authenticate as')
-//   .option('-p, --password <password>', 'The user\'s password')
-//   .action(function(file) {
-//     shell.echo('user: %s pass: %s file: %s',
-//     program.username, program.password, file);
-//   })
-//   .parse(process.argv);
