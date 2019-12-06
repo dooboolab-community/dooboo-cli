@@ -47,7 +47,7 @@ export const resolveComponent = (
   fileExt = 'tsx',
 ): TemplateType => {
   const component = `./src/components/${componentType}/${name}.${fileExt}`;
-  const testComponent = `./src/components/${componentType}/${name}.test.${fileExt}`;
+  const testComponent = `./src/components/${componentType}/__tests__/${name}.test.${fileExt}`;
 
   return {
     file: component,

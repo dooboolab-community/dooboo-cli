@@ -38,12 +38,12 @@ export enum TYPE_OF_APP {
 }
 
 export enum TYPE_OF_RN_NAVIGATION {
-  BottomTabNavigator = 1,
-  DrawerNavigator = 2,
-  MaterialBottomTabNavigator = 3,
-  MaterialTopTabNavigator = 4,
-  NativeStackNavigator = 5,
-  StackNavigator = 6,
+  BottomTabNavigator = 'BottomTabNavigator',
+  DrawerNavigator = 'DrawerNavigator',
+  MaterialBottomTabNavigator = 'MaterialBottomTabNavigator',
+  MaterialTopTabNavigator = 'MaterialTopTabNavigator',
+  NativeStackNavigator = 'NativeStackNavigator',
+  StackNavigator = 'StackNavigator',
 }
 
 const notifier = updateNotifier({
@@ -370,35 +370,12 @@ program
       let template: TemplateType;
 
       list.on('select', function(options) {
-        switch (options[0].value) {
-          case TYPE_OF_RN_NAVIGATION.BottomTabNavigator:
-            template = resolveTemplate('navigation', 'BottomTabNavigator');
-            break;
-          case TYPE_OF_RN_NAVIGATION.DrawerNavigator:
-            template = resolveTemplate('navigation', 'DrawerNavigator');
-            break;
-          case TYPE_OF_RN_NAVIGATION.MaterialBottomTabNavigator:
-            template = resolveTemplate(
-              'navigation',
-              'MaterialBottomTabNavigator',
-            );
-            break;
-          case TYPE_OF_RN_NAVIGATION.MaterialTopTabNavigator:
-            template = resolveTemplate('navigation', 'MaterialTopTabNavigator');
-            break;
-          case TYPE_OF_RN_NAVIGATION.NativeStackNavigator:
-            template = resolveTemplate('navigation', 'NativeStackNavigator');
-            break;
-          case TYPE_OF_RN_NAVIGATION.StackNavigator:
-            template = resolveTemplate('navigation', 'StackNavigator');
-            break;
-        }
+        const navigationType = options[0].value;
+        template = resolveTemplate('navigation', navigationType);
 
-        shell.echo(chalk.cyanBright('creating screen component...'));
+        shell.echo(chalk.cyanBright('creating navigation component...'));
         shell.cp(template.file, component.file);
         shell.cp(template.testFile, component.testFile);
-        shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
-        shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
         shell.echo(
           chalk.green(
             `generated: ${component.file}${'\n'}testFile: ${
