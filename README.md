@@ -29,7 +29,7 @@
 - [react-navigation](https://github.com/react-navigation/react-navigation)
 - [localization](https://github.com/stefalda/ReactNativeLocalization)
 - [styled-components](https://github.com/styled-components/styled-components)
-- [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
+- [@testing-library/react-native](https://github.com/testing-library/native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
 - [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [prettier](https://prettier.io)
@@ -83,8 +83,8 @@
 
 ## TODO
 
-- [ ] Support navigation templates for `react` & `react-native`
-- [ ] Support personal boilerplate option for `react-native`
+- [x] Support navigation templates for `react` & `react-native`
 - [x] Upgrade template to `react@16.9.+`
 - [x] Upgrade template to `react-native@0.60.+`
 - [x] Upgrade template to `react-navigation v3`
+- [ ] Support personal boilerplate option for `react-native`
