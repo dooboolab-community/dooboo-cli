@@ -64,6 +64,19 @@ if (notifier.update) {
   );
 }
 
+const list = selectShell({
+  pointer: ' ▸ ',
+  pointerColor: 'yellow',
+  checked: ' ◉  ',
+  unchecked: ' ◎  ',
+  checkedColor: 'blue',
+  msgCancel: 'No selected options!',
+  msgCancelColor: 'orange',
+  multiSelect: false,
+  inverse: true,
+  prepend: true,
+});
+
 /**
  * init
  */
@@ -78,19 +91,6 @@ program
     shell.echo(
       chalk.yellow('Select which app you want to generate from dooboo.'),
     );
-    const list = selectShell({
-      pointer: ' ▸ ',
-      pointerColor: 'yellow',
-      checked: ' ◉  ',
-      unchecked: ' ◎  ',
-      checkedColor: 'blue',
-      msgCancel: 'No selected options!',
-      msgCancelColor: 'orange',
-      multiSelect: false,
-      inverse: true,
-      prepend: true,
-    });
-
     // const stream = process.stdin;
 
     list
@@ -338,19 +338,6 @@ program
 
     exists = await fsExists('.dooboo/react-native');
     if (exists) {
-      const list = selectShell({
-        pointer: ' ▸ ',
-        pointerColor: 'yellow',
-        checked: ' ◉  ',
-        unchecked: ' ◎  ',
-        checkedColor: 'blue',
-        msgCancel: 'No selected options!',
-        msgCancelColor: 'orange',
-        multiSelect: false,
-        inverse: true,
-        prepend: true,
-      });
-
       list
         .option(
           ' BottomTabNavigator ',
@@ -578,19 +565,6 @@ program
       );
       process.exit(0);
     }
-
-    const list = selectShell({
-      pointer: ' ▸ ',
-      pointerColor: 'yellow',
-      checked: ' ◉  ',
-      unchecked: ' ◎  ',
-      checkedColor: 'blue',
-      msgCancel: 'No selected options!',
-      msgCancelColor: 'orange',
-      multiSelect: false,
-      inverse: true,
-      prepend: true,
-    });
 
     list
       .option(' Provider (Reducer Type) ', TYPE_OF_PROVIDER.ReducerProvider)
