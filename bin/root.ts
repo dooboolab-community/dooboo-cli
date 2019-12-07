@@ -555,7 +555,7 @@ program
     const upperCamel = upperCamelize(c);
 
     const providerFile = `./src/providers/${upperCamel}.tsx`;
-    const providerTestFile = `./src/providers/__tests__/${upperCamel}.tsx`;
+    const providerTestFile = `./src/providers/__tests__/${upperCamel}.test.tsx`;
     const exists = await fsExists(providerFile);
     if (exists) {
       shell.echo(
@@ -578,8 +578,14 @@ program
         '..',
         `templates/common/provider/${providerType}.tsx`,
       );
+      const testTemplate = path.resolve(
+        __dirname,
+        '..',
+        `templates/common/provider/${providerType}.test.tsx`,
+      );
 
       shell.cp(template, providerFile);
+      shell.cp(testTemplate, providerTestFile);
       shell.sed('-i', providerType, `${upperCamel}`, providerFile);
       shell.sed(
         '-i',
@@ -588,8 +594,12 @@ program
         providerTestFile,
       );
 
-      shell.echo(chalk.cyanBright('creating api file...'));
-      shell.echo(chalk.green(`generated: src/apis/${camel}.tsx`));
+      shell.echo(chalk.cyanBright('creating provider file...'));
+      shell.echo(
+        chalk.green(
+          `generated: ${providerFile}${'\n'}testFile: ${providerTestFile}`,
+        ),
+      );
       process.exit(0);
     });
   });
