@@ -9,12 +9,15 @@
 > We decided to remove `mobx` from all our major boilerplates in `dooboo-cli@1.4.+`. If you still want to use `mobx template`, you can choosing `legacy` template. However, `dooboo-cli` will not generate `mobx` template from `1.4.0`, so you may have to downgrade to `1.3.+`. The reason for removing `mobx` is that we thought this isn't suitable with what `react` brought up today as a design pattern. `Functional programming` has been powered by `react-hook` so we chose to remove work on `object-oriented programming` which was more suitable with `mobx`. We hope you enjoy what we've brought up today.
 
 ## Quick News
-Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
+
+- Latest stable version is `3.1.2`.
+- Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
 ## Compatability
 
 - version 3
-  * React
+
+  - React
 
     | package           | necessary |
     | ----------------- | --------- |
@@ -22,14 +25,13 @@ Please install `3.1.0` if you'd like to cover the [post install step](https://re
     | styled-components | >= 4.0.0  |
     | react             | >= 16.9.0 |
 
-  * React Native
+  - React Native
 
     | package           | necessary |
     | ----------------- | --------- |
     | react-navigation  | >= 5.0.0  |
     | styled-components | >= 4.0.0  |
     | react-native      | >= 59.0.0 |
-
 
 ## Stacks we use
 

@@ -587,6 +587,7 @@ program
       shell.cp(template, providerFile);
       shell.cp(testTemplate, providerTestFile);
       shell.sed('-i', providerType, `${upperCamel}`, providerFile);
+      shell.sed('-i', `${providerType}`, `${upperCamel}`, providerTestFile);
       shell.sed(
         '-i',
         `../${providerType}`,

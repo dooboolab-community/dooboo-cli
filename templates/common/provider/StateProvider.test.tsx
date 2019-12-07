@@ -8,13 +8,18 @@ import { act, fireEvent, render } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 
 const FakeChild = (): React.ReactElement => {
+  const { setUser } = useStateContext();
   return (
     <View>
       <Button
         testID="BUTTON"
-        onPress={(): void => {
-          useStateContext();
-        }}
+        onPress={(): void =>
+          setUser({
+            displayName: 'displayName',
+            age: 12,
+            job: 'dev',
+          })
+        }
         title="Button"
       />
     </View>

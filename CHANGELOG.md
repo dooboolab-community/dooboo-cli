@@ -1,5 +1,9 @@
 ## Changelogs
 
+**[3.1.2]**
+
+- Fix shell script while generating [Provider] file.
+
 **[3.1.1]**
 
 - Fix typo while generating [Provider] file.

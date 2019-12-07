@@ -10,7 +10,7 @@ interface User {
 
 interface Context {
   state: State;
-  setUser: (user: User) => void;
+  setUser: (user: Partial<User>) => void;
 }
 const [useCtx, Provider] = createCtx<Context>();
 
@@ -44,7 +44,7 @@ interface Props {
 type Reducer = (state: State, action: Action) => State;
 
 const setUser = (dispatch: React.Dispatch<SetUserAction>) => (
-  user: User,
+  user: Partial<User>,
 ): void => {
   dispatch({
     type: ActionType.SetUser,
