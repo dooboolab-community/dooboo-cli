@@ -426,8 +426,8 @@ program
       const template = resolveTemplate('screen', 'Screen');
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
-      shell.cp(template.file, component.testFile);
-      shell.sed('-i', 'Screen', `${upperCamel}`, component.testFile);
+      shell.cp(template.testFile, component.testFile);
+      shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
       shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
       shell.echo(
         chalk.green(

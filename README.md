@@ -10,7 +10,7 @@
 
 ## Quick News
 
-- Latest stable version is `3.1.2`.
+- Latest stable version is `3.2.0`.
 - Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
 ## Compatability
