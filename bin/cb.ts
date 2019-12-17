@@ -102,8 +102,8 @@ export const cbResultApp = (
         );
         shell.sed(
           '-i',
-          'com.dooboo',
-          `com.${nameOfApp.toLowerCase()}`,
+          'dooboo',
+          `${nameOfApp.toLowerCase()}`,
           /* eslint-disable */
           `./${nameOfApp}/${nameOfApp}/android/app/src/main/java/com/${nameOfApp.toLocaleLowerCase()}/MainActivity.java`,
           /* eslint-enable */
