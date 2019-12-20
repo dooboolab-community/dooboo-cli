@@ -7,11 +7,12 @@ import { createTestElement, createTestProps } from '../../../../test/testUtils';
 import Screen from '../Screen';
 import renderer from 'react-test-renderer';
 
-let props: any;
-let component: ReactElement;
-let testingLib: RenderResult;
-
 describe('[Screen] screen', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let props: any;
+  let component: ReactElement;
+  let testingLib: RenderResult;
+
   beforeEach(() => {
     props = createTestProps();
     component = createTestElement(<Screen {...props} />);
@@ -35,6 +36,7 @@ describe('[Screen] screen', () => {
     });
 
     it('should simulate onClick', () => {
+      expect(testingLib.baseElement).toMatchSnapshot();
       // const btn = testingLib.queryByTestId('btn');
       // act(() => {
       //   fireEvent.press(btn);

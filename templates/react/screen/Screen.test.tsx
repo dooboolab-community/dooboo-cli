@@ -1,32 +1,33 @@
 import * as renderer from 'react-test-renderer';
 
+import React, { ReactElement } from 'react';
 import { RenderResult, fireEvent, render } from '@testing-library/react';
-import { createTestElement, history } from '../../../../test/testUtils';
+import { createTestElement, createTestProps, history } from '../../../../test/testUtils';
 
-import React from 'react';
 import Screen from '../Screen';
 
-const props = {};
-
 describe('[Screen] render', () => {
-  const element = createTestElement(<Screen {...props} />);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let props: any;
+  let component: ReactElement;
+  let testingLib: RenderResult;
+
+  beforeEach(() => {
+    props = createTestProps();
+    component = createTestElement(<Screen {...props} />);
+    testingLib = render(component);
+  });
+
   it('renders without crashing', () => {
-    const rendered = renderer.create(element).toJSON();
+    const rendered = renderer.create(component).toJSON();
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });
-});
 
-describe('[Screen] Interaction', () => {
-  const element = createTestElement(<Screen {...props} />);
-  let renderResult: RenderResult;
-
-  beforeEach(() => {
-    renderResult = render(element);
-  });
-
-  it('should render [myText]', () => {
-    const textInstance = renderResult.getByTestId('myText');
-    expect(textInstance.textContent).toEqual('dooboolab');
+  describe('Interaction', () => {
+    it('should render [myText]', () => {
+      const textInstance = testingLib.getByTestId('myText');
+      expect(textInstance.textContent).toEqual('dooboolab');
+    });
   });
 });
