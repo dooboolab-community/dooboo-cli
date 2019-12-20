@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 
-import Button from '../shared/Button';
 import styled from 'styled-components';
 
 const Container = styled.div`

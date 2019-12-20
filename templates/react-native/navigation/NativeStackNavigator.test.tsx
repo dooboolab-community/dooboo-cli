@@ -9,10 +9,11 @@ import { cleanup } from '@testing-library/react-native';
 import { enableScreens } from 'react-native-screens';
 import renderer from 'react-test-renderer';
 
-let props: any;
-let component: ReactElement;
-
 describe('[Stack] navigator', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let props: any;
+  let component: ReactElement;
+
   beforeEach(() => {
     enableScreens();
     props = createTestProps();
@@ -22,6 +23,8 @@ describe('[Stack] navigator', () => {
       </NavigationNativeContainer>,
     );
   });
+
+  afterEach(() => cleanup());
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();

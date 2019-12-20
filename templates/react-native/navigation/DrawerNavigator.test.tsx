@@ -8,10 +8,11 @@ import { NavigationNativeContainer } from '@react-navigation/native';
 import { cleanup } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 
-let props: any;
-let component: ReactElement;
-
 describe('[Drawer] navigator', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let props: any;
+  let component: ReactElement;
+
   beforeEach(() => {
     props = createTestProps();
     component = createTestElement(
@@ -20,6 +21,8 @@ describe('[Drawer] navigator', () => {
       </NavigationNativeContainer>,
     );
   });
+
+  afterEach(() => cleanup());
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();
