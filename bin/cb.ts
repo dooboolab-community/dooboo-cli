@@ -1,4 +1,3 @@
-import { TYPE_OF_APP } from './root';
 import { camelCaseToDash } from '../utils/functions';
 import chalk from 'chalk';
 import { setTimeout } from 'timers';

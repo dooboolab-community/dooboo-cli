@@ -1,8 +1,8 @@
 import * as renderer from 'react-test-renderer';
 
 import React, { ReactElement } from 'react';
-import { RenderResult, fireEvent, render } from '@testing-library/react';
-import { createTestElement, createTestProps, history } from '../../../../test/testUtils';
+import { RenderResult, render } from '@testing-library/react';
+import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import Screen from '../Screen';
 

@@ -4,8 +4,6 @@ import * as React from 'react';
 
 import {
   RenderResult,
-  act,
-  fireEvent,
   render,
 } from '@testing-library/react-native';
 import { createTestElement, createTestProps } from '../../../../test/testUtils';

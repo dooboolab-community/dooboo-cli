@@ -18,7 +18,7 @@ describe('[Shared] render', () => {
 
   beforeEach(() => {
     props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
+    component = createTestElement(<Shared {...props} />);
     testingLib = render(component);
   });
 
