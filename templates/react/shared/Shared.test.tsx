@@ -10,12 +10,12 @@ import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import Shared from '../Shared';
 
-describe('[Shared] render', () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let props: any;
-  let component: ReactElement;
-  let testingLib: RenderResult;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let props: any;
+let component: ReactElement;
+let testingLib: RenderResult;
 
+describe('Rendering', () => {
   beforeEach(() => {
     props = createTestProps();
     component = createTestElement(<Shared {...props} />);
@@ -23,16 +23,24 @@ describe('[Shared] render', () => {
   });
 
   it('renders without crashing', () => {
-    const rendered: ReactTestRendererJSON = renderer.create(component).toJSON();
-    expect(rendered).toMatchSnapshot();
-    expect(rendered).toBeTruthy();
+    const { baseElement } = testingLib;
+    expect(baseElement).toMatchSnapshot();
+    expect(baseElement).toBeTruthy();
+  });
+});
+
+describe('Interaction', () => {
+  beforeEach(() => {
+    props = createTestProps();
+    component = createTestElement(<Shared {...props} />);
+    testingLib = render(component);
   });
 
-  describe('interactions', () => {
-    it('should simulate onClick', () => {
-      expect(testingLib.baseElement).toMatchSnapshot();
-      // fireEvent(testingLib.getByTestId('btn'), 'click');
-      // expect(cnt).toBe(2);
-    });
+  it('should simulate onClick', () => {
+    const { baseElement } = testingLib;
+    expect(baseElement).toMatchSnapshot();
+    expect(baseElement).toBeTruthy();
+    // fireEvent(testingLib.getByTestId('btn'), 'click');
+    // expect(cnt).toBe(2);
   });
 });

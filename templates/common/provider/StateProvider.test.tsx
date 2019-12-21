@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { Button, View } from 'react-native';
+import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
 import { StateProvider, useStateContext } from '../StateProvider';
-import { act, fireEvent, render } from '@testing-library/react-native';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
@@ -26,23 +26,24 @@ const FakeChild = (): React.ReactElement => {
   );
 };
 
-describe('[StateProvider] rendering test', () => {
+describe('Rendering', () => {
   let json: renderer.ReactTestRendererJSON;
   const component = (
     <StateProvider>
       <FakeChild />
     </StateProvider>
   );
+  const testingLib: RenderResult = render(component);
 
   it('component and snapshot matches', () => {
-    json = renderer.create(component).toJSON();
-    expect(json).toMatchSnapshot();
-    expect(json).toBeTruthy();
+    const { baseElement } = testingLib;
+    expect(baseElement).toMatchSnapshot();
+    expect(baseElement).toBeTruthy();
   });
 });
 
-describe('[StateProvider] interactions', () => {
-  it('test setUser()', async () => {
+describe('Interactions', () => {
+  it('should setUser', async () => {
     const { getByTestId } = render(
       <StateProvider>
         <FakeChild />

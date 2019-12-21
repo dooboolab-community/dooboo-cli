@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Button, Text, View } from 'react-native';
 import { ReducerProvider, useReducerContext } from '../ReducerProvider';
+import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
@@ -32,11 +33,12 @@ describe('[ReducerProvider] rendering test', () => {
       <FakeChild />
     </ReducerProvider>
   );
+  const testingLib: RenderResult = render(component);
 
   it('component and snapshot matches', () => {
-    json = renderer.create(component).toJSON();
-    expect(json).toMatchSnapshot();
-    expect(json).toBeTruthy();
+    const { baseElement } = testingLib;
+    expect(baseElement).toMatchSnapshot();
+    expect(baseElement).toBeTruthy();
   });
 });
 

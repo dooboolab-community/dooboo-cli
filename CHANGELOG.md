@@ -1,5 +1,17 @@
 ## Changelogs
 
+**[3.2.3]**
+
+- Update templates for testing.
+
+**[3.2.2]**
+
+- Fix shell script while generating [Provider] file.
+  * sed all names in [MainActivity]
+- Fix wrong cp command when generating component.
+- Update templates.
+- Fix typings.
+
 **[3.1.2]**
 
 - Fix shell script while generating [Provider] file.
