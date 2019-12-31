@@ -1,8 +1,17 @@
+import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { useThemeContext } from '../../providers/ThemeProvider';
 
-const Stack = createStackNavigator();
+export type StackParamList = {
+  default: undefined;
+};
+
+export type StackNavigationProps<
+  T extends keyof StackParamList = 'default'
+> = StackNavigationProp<StackParamList, T>;
+
+const Stack = createStackNavigator<StackParamList>();
 
 function RootNavigator(): React.ReactElement {
   const { theme } = useThemeContext();

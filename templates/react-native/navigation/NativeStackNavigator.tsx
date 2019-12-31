@@ -1,8 +1,17 @@
+import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useThemeContext } from '../../providers/ThemeProvider';
 
-const Stack = createNativeStackNavigator();
+export type NativeStackParamList = {
+  default: undefined;
+};
+
+export type NativeStackNavigationProps<
+  T extends keyof NativeStackParamList = 'default'
+> = NativeStackNavigationProp<NativeStackParamList, T>;
+
+const Stack = createNativeStackNavigator<NativeStackParamList>();
 
 function RootNavigator(): React.ReactElement {
   const { theme } = useThemeContext();

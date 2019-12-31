@@ -1,10 +1,21 @@
+import {
+  MaterialBottomTabNavigationProp,
+  createMaterialBottomTabNavigator,
+} from '@react-navigation/material-bottom-tabs';
 import React, { ReactElement } from 'react';
 
 // import { IC_MASK } from '../../utils/Icons';
 import { Image } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Tab = createBottomTabNavigator();
+export type MaterialBottomTabParamList = {
+  default: undefined;
+};
+
+export type MaterialBottomTabNavigationProps<
+  T extends keyof MaterialBottomTabParamList = 'default'
+> = MaterialBottomTabNavigationProp<MaterialBottomTabParamList, T>;
+
+const Tab = createMaterialBottomTabNavigator<MaterialBottomTabParamList>();
 
 // const TabBarIcon = (focused: boolean): React.ReactElement => {
 //   return (

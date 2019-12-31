@@ -1,5 +1,9 @@
 ## Changelogs
 
+**[3.3.3]**
+- Enhanced navigation typings.
+- Compatible with `dooboo-native-ts` and `dooboo-expo` 0.1.+ templates.
+
 **[3.2.3]**
 
 - Update templates for testing.
