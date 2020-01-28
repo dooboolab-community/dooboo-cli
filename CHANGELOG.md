@@ -1,6 +1,9 @@
 ## Changelogs
 
-**[3.3.3]**
+**[3.3.1]**
+- Resolve template for `react`.
+
+**[3.3.0]**
 - Enhanced navigation typings.
 - Compatible with `dooboo-native-ts` and `dooboo-expo` 0.1.+ templates.
 

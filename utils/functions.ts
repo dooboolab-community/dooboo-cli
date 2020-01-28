@@ -20,6 +20,7 @@ export const fsExists = function(file: fs.PathLike): Promise<boolean> {
 };
 
 export const resolveTemplate = (
+  projectType: string,
   componentType: string,
   componentName: string,
   fileExt = 'tsx',
@@ -27,12 +28,12 @@ export const resolveTemplate = (
   const template = path.resolve(
     __dirname,
     '..',
-    `templates/react-native/${componentType}/${componentName}.${fileExt}`,
+    `templates/${projectType}/${componentType}/${componentName}.${fileExt}`,
   );
   const testTemplate = path.resolve(
     __dirname,
     '..',
-    `templates/react-native/${componentType}/${componentName}.test.${fileExt}`,
+    `templates/${projectType}/${componentType}/${componentName}.test.${fileExt}`,
   );
 
   return {

@@ -317,7 +317,7 @@ program
 
     exists = await fsExists('.dooboo/react');
     if (exists) {
-      const template = resolveTemplate('navigation', 'SwitchNavigator');
+      const template = resolveTemplate('react', 'navigation', 'SwitchNavigator');
       shell.echo(chalk.cyanBright('creating navigation component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
@@ -363,7 +363,7 @@ program
 
       list.on('select', function(options) {
         const navigationType = options[0].value;
-        template = resolveTemplate('navigation', navigationType);
+        template = resolveTemplate('react-native', 'navigation', navigationType);
 
         shell.echo(chalk.cyanBright('creating navigation component...'));
         shell.cp(template.file, component.file);
@@ -407,7 +407,7 @@ program
 
     exists = await fsExists('.dooboo/react');
     if (exists) {
-      const template = resolveTemplate('screen', 'Screen');
+      const template = resolveTemplate('react-native', 'screen', 'Screen');
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
@@ -423,7 +423,7 @@ program
 
     exists = await fsExists('.dooboo/react-native');
     if (exists) {
-      const template = resolveTemplate('screen', 'Screen');
+      const template = resolveTemplate('react-native', 'screen', 'Screen');
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
@@ -471,7 +471,7 @@ program
 
     exists = await fsExists('.dooboo/react');
     if (exists) {
-      const template = resolveTemplate('shared', upperCamel);
+      const template = resolveTemplate('react', 'shared', upperCamel);
       shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
@@ -487,7 +487,7 @@ program
 
     exists = await fsExists('.dooboo/react-native');
     if (exists) {
-      const template = resolveTemplate('shared', 'Shared');
+      const template = resolveTemplate('react-native', 'shared', 'Shared');
       shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
