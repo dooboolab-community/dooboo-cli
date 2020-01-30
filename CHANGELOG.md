@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.3.2]**
+- Remove `react-test-renderer` import from the templates.
+
 **[3.3.1]**
 - Resolve template for `react`.
 
