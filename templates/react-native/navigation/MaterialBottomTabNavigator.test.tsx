@@ -10,7 +10,6 @@ import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import BottomTabNavigator from '../BottomTabNavigator';
 import { NavigationNativeContainer } from '@react-navigation/native';
-import renderer from 'react-test-renderer';
 
 describe('[BottomTab] navigator', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

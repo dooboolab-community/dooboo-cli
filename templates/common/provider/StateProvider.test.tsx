@@ -4,9 +4,6 @@ import { Button, View } from 'react-native';
 import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
 import { StateProvider, useStateContext } from '../StateProvider';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
 const FakeChild = (): React.ReactElement => {
   const { setUser } = useStateContext();
   return (
@@ -27,7 +24,6 @@ const FakeChild = (): React.ReactElement => {
 };
 
 describe('Rendering', () => {
-  let json: renderer.ReactTestRendererJSON;
   const component = (
     <StateProvider>
       <FakeChild />

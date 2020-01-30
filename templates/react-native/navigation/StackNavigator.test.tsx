@@ -10,7 +10,6 @@ import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import { NavigationNativeContainer } from '@react-navigation/native';
 import StackNavigator from '../StackNavigator';
-import renderer from 'react-test-renderer';
 
 describe('[Stack] navigator', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

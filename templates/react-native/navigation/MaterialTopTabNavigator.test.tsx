@@ -10,7 +10,6 @@ import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import MaterialTopTabNavigator from '../MaterialTopTabNavigator';
 import { NavigationNativeContainer } from '@react-navigation/native';
-import renderer from 'react-test-renderer';
 
 describe('[MaterialTopTab] navigator', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

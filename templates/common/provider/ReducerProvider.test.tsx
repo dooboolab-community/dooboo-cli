@@ -4,9 +4,6 @@ import { Button, Text, View } from 'react-native';
 import { ReducerProvider, useReducerContext } from '../ReducerProvider';
 import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
 const FakeChild = (): React.ReactElement => {
   const { state, setUser } = useReducerContext();
 
@@ -27,7 +24,6 @@ const FakeChild = (): React.ReactElement => {
 };
 
 describe('[ReducerProvider] rendering test', () => {
-  let json: renderer.ReactTestRendererJSON;
   const component = (
     <ReducerProvider>
       <FakeChild />

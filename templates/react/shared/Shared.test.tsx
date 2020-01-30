@@ -6,7 +6,6 @@ import {
   render,
 } from '@testing-library/react';
 import { createTestElement, createTestProps, history } from '../../../../test/testUtils';
-import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 
 import Shared from '../Shared';
 
