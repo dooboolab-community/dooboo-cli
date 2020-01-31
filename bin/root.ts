@@ -407,7 +407,7 @@ program
 
     exists = await fsExists('.dooboo/react');
     if (exists) {
-      const template = resolveTemplate('react-native', 'screen', 'Screen');
+      const template = resolveTemplate('react', 'screen', 'Screen');
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);

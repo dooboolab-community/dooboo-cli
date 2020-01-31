@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.3.3]**
+- [HotFix] Resolve `screen` component for react correctly.
+
 **[3.3.2]**
 - Remove `react-test-renderer` import from the templates.
 
