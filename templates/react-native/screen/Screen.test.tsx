@@ -23,11 +23,6 @@ describe('Rendering', () => {
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });
-
-  it('should render [Text] with value "myText"', () => {
-    const textInstance = testingLib.getByTestId('myText');
-    expect(textInstance.props.children).toEqual('dooboolab');
-  });
 });
 
 describe('Interaction', () => {
