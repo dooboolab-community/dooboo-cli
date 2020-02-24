@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.3.5]**
+- Fix navigation template path from `@dooboo-ui/native-theme`.
+
 **[3.3.3]**
 - [HotFix] Resolve `screen` component for react correctly.
 
@@ -7,7 +10,7 @@
 - Remove `react-test-renderer` import from the templates.
 
 **[3.3.1]**
-- Resolve template for `react`.
+- Resolve templat`e for `react`.
 
 **[3.3.0]**
 - Enhanced navigation typings.

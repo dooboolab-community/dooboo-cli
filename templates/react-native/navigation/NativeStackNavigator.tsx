@@ -1,7 +1,7 @@
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React from 'react';
-import { useThemeContext } from '../../providers/ThemeProvider';
+import { useThemeContext } from '@dooboo-ui/native-theme';
 
 export type NativeStackParamList = {
   default: undefined;
