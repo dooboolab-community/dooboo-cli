@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react-native';
 import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from '../StackNavigator';
 
 describe('[Stack] navigator', () => {
@@ -20,9 +20,9 @@ describe('[Stack] navigator', () => {
   beforeEach(() => {
     props = createTestProps();
     component = createTestElement(
-      <NavigationNativeContainer>
+      <NavigationContainer>
         <StackNavigator {...props} />
-      </NavigationNativeContainer>,
+      </NavigationContainer>,
     );
     testingLib = render(component);
   });

@@ -8,7 +8,7 @@ import {
 import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
 import BottomTabNavigator from '../BottomTabNavigator';
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
@@ -19,9 +19,9 @@ describe('[BottomTab] navigator', () => {
   beforeEach(() => {
     props = createTestProps();
     component = createTestElement(
-      <NavigationNativeContainer>
+      <NavigationContainer>
         <BottomTabNavigator {...props} />
-      </NavigationNativeContainer>,
+      </NavigationContainer>,
     );
     testingLib = render(component);
   });

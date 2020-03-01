@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.3.6]**
+- Renamed `NavigationNativeContainer` to `NavigationContainer` react-native` test template.
+
 **[3.3.5]**
 - Fix navigation template path from `@dooboo-ui/native-theme`.
 

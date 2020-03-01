@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react-native';
 import { createTestElement, createTestProps } from '../../../../test/testUtils';
 
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from '../StackNavigator';
 import { enableScreens } from 'react-native-screens';
 
@@ -22,9 +22,9 @@ describe('[Stack] navigator', () => {
     enableScreens();
     props = createTestProps();
     component = createTestElement(
-      <NavigationNativeContainer>
+      <NavigationContainer>
         <StackNavigator {...props} />
-      </NavigationNativeContainer>,
+      </NavigationContainer>,
     );
     testingLib = render(component);
   });
