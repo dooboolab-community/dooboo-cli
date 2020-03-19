@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.3.7]**
+- Fix `react`'s shared component not generating properly.
+
 **[3.3.6]**
 - Renamed `NavigationNativeContainer` to `NavigationContainer` react-native` test template.
 

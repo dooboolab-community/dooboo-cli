@@ -471,7 +471,7 @@ program
 
     exists = await fsExists('.dooboo/react');
     if (exists) {
-      const template = resolveTemplate('react', 'shared', upperCamel);
+      const template = resolveTemplate('react', 'shared', 'Shared');
       shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
