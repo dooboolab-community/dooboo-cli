@@ -610,12 +610,8 @@ program.parse(process.argv);
 let validCommands = program.commands.map(function(cmd) {
   return cmd.name;
 });
-let invalidCommands = program.args.filter(function(cmd) {
-  // if command executed it will be an object and not a string
-  return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-});
 
-if (invalidCommands.length && process.argv[2]) {
+if (validCommands.length && process.argv[2]) {
   switch (process.argv[2]) {
     case 'init':
     case 'start':
@@ -627,22 +623,13 @@ if (invalidCommands.length && process.argv[2]) {
     case 'api':
       break;
     default:
-      // warn about invalid commands
       validCommands = program.commands.map(function(cmd) {
         return cmd.name;
       });
-      invalidCommands = program.args.filter(function(cmd) {
-        // if command executed it will be an object and not a string
-        return typeof cmd === 'string' && validCommands.indexOf(cmd) === -1;
-      });
-      if (invalidCommands.length) {
-        shell.echo(
-          `\n [ERROR] - Invalid command:
-            "%s". See "-h or --help" for a list of available commands.\n`,
-          invalidCommands.join(', '),
-        );
-        process.exit(1);
-      }
+      shell.echo(
+        `\n [ERROR] - Invalid command:
+          "%s". See "-h or --help" for a list of available commands.\n`,
+      );
       break;
   }
   // program.parse([process.argv[0], process.argv[1], '-h']);
