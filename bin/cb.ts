@@ -61,7 +61,7 @@ export const cbResultApp = (
         shell.echo(chalk.cyanBright(`Program output: ${stdout}`));
         shell.echo(chalk.cyanBright(`Program stderr: ${stderr}`));
       }
-      shell.exec(`cd ${nameOfApp} && react-native init ${nameOfApp}`);
+      shell.exec(`cd ${nameOfApp} && react-native init ${nameOfApp} --version 0.61`);
       spinner.stop();
 
       setTimeout(function() {
