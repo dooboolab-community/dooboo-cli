@@ -32,10 +32,10 @@
 
   - React Native Templates
 
-    | dooboo-cli        | RN template |
-    | ----------------- | ----------- |
-    | 3.3.9             | 0.61        |
-    | 3.4.0             | 0.62        |
+    | dooboo-cli         | RN template   |
+    | ------------------ | ------------- |
+    | 3.3.10             | 0.61.5        |
+    | 3.4.0              | 0.62.0        |
 
 ## Stacks we use
 
