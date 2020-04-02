@@ -30,12 +30,12 @@
     | styled-components | >= 4.0.0  |
     | react-native      | >= 59.0.0 |
 
-  - React Native Templates
+  - React Native & Expo Templates
 
-    | dooboo-cli         | RN template   |
-    | ------------------ | ------------- |
-    | 3.3.10             | 0.61.5        |
-    | 3.4.0              | 0.62.0        |
+    | dooboo-cli         | RN template   | Expo template   |
+    | ------------------ | ------------- | --------------- |
+    | 3.3.11             | 0.61.5        | 36              |
+    | 3.4.0              | 0.62.0        | 37              |
 
 ## Stacks we use
 

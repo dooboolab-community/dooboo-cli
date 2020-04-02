@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+import { EXPO_VERSION, RN_VERSION } from './const';
 import {
   TemplateType,
   camelize,
@@ -126,11 +127,11 @@ program
               break;
             case TYPE_OF_APP.REACT_NATIVE:
               template =
-                '-b master https://github.com/dooboolab/dooboo-native-ts.git';
+                `-b release/${RN_VERSION} https://github.com/dooboolab/dooboo-native-ts.git`;
               break;
             case TYPE_OF_APP.EXPO:
               template =
-                '-b master https://github.com/dooboolab/dooboo-expo.git';
+                `-b release/${EXPO_VERSION} https://github.com/dooboolab/dooboo-expo.git`;
               break;
           }
 
