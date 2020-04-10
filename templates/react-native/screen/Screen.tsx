@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
 import styled from 'styled-components/native';
@@ -20,12 +20,14 @@ interface Props {
   navigation: RootStackNavigationProps<'default'>;
 }
 
-function Page(props: Props): ReactElement {
+const Page: FC = ({
+  navigfation,
+}) => {
   return (
     <Container>
       <StyledText testID="myText">dooboolab</StyledText>
     </Container>
   );
-}
+};
 
 export default Page;

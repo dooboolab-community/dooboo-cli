@@ -1,4 +1,4 @@
-import React, { ReactChildren, ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import styled from 'styled-components/native';
 
@@ -10,12 +10,10 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-interface Props {
-  children?: ReactChildren;
-}
-
-function Shared(props: Props): ReactElement {
-  return <Container>{props.children}</Container>;
-}
+const Shared: FC = ({
+  children,
+}) => {
+  return <Container>{children}</Container>;
+};
 
 export default Shared;

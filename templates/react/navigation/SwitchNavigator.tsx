@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
-function SwitchNavigator(): ReactElement {
+const SwitchNavigator: FC = () => {
   return (
     <BrowserRouter>
       <div style={{ textAlign: 'center' }}>
@@ -15,6 +15,6 @@ function SwitchNavigator(): ReactElement {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default SwitchNavigator;

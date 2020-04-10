@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
@@ -10,14 +10,12 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-type Props = {};
-
-function Page(): ReactElement {
+const Page: FC = () => {
   return (
     <Container>
       <div data-testid="myText">dooboolab</div>
     </Container>
   );
-}
+};
 
 export default Page;

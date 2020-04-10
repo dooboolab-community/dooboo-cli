@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  width: '100px';
-  height: '40px';
+  width: 100px;
+  height: 40px;
 `;
 
-interface Props {
-  children?: string;
-}
-
-function Shared(props: Props): React.ReactElement {
-  return <Container>{props.children}</Container>;
-}
+const Shared: FC = ({
+  children,
+}) => {
+  return <Container>{children}</Container>;
+};
 
 export default Shared;

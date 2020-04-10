@@ -1,4 +1,10 @@
 ## Changelogs
+**[3.4.1]**
+- Update react-naitve template to 0.62.2
+- Default template to `FC` instead of `ReactElement`
+
+**[3.4.0]**
+- Update react-naitve template to 0.62.0
 
 **[3.3.7]**
 - Fix `react`'s shared component not generating properly.
