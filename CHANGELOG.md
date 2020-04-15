@@ -1,6 +1,9 @@
 ## Changelogs
+**[3.4.2]**
+- Add react-native project version for git branch sync
+
 **[3.4.1]**
-- Update react-naitve template to 0.62.2
+- Update react-native template to 0.62.2
 - Default template to `FC` instead of `ReactElement`
 
 **[3.4.0]**

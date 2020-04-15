@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "starting react express app with me!",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "boxen": "^4.2.0",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "commander": "^5.0.0",
     "inquirer": "^7.1.0",
     "ora": "^4.0.3",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@dooboo/eslint-config": "^0.3.8",
     "@types/inquirer": "^6.5.0",
-    "@types/node": "^13.7.4",
+    "@types/node": "^13.11.1",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.7",
     "eslint": "^6.8.0",

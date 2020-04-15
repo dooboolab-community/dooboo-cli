@@ -1,4 +1,4 @@
-import { RN_VERSION } from './const';
+import { RN_PROJECT_VERSION } from './const';
 import { camelCaseToDash } from '../utils/functions';
 import chalk from 'chalk';
 import { setTimeout } from 'timers';
@@ -62,7 +62,7 @@ export const cbResultApp = (
         shell.echo(chalk.cyanBright(`Program output: ${stdout}`));
         shell.echo(chalk.cyanBright(`Program stderr: ${stderr}`));
       }
-      shell.exec(`cd ${nameOfApp} && react-native init ${nameOfApp} --version ${RN_VERSION}`);
+      shell.exec(`cd ${nameOfApp} && react-native init ${nameOfApp} --version ${RN_PROJECT_VERSION}`);
       spinner.stop();
 
       setTimeout(function() {
