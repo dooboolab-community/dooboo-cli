@@ -1,4 +1,7 @@
 ## Changelogs
+**[3.4.4]**
+- Fix bug relying on `3.4.4`
+
 **[3.4.3]**
 - Fix bug relying on `3.4.2`
 
