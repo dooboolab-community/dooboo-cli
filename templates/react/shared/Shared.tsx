@@ -8,7 +8,11 @@ const Container = styled.div`
   height: 40px;
 `;
 
-const Shared: FC = ({
+interface Props {
+
+}
+
+const Shared: FC<Props> = ({
   children,
 }) => {
   return <Container>{children}</Container>;

@@ -1,4 +1,7 @@
 ## Changelogs
+**[3.4.5]**
+- Fix typo in template
+
 **[3.4.4]**
 - Fix bug relying on `3.4.4`
 

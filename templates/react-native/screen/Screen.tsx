@@ -20,8 +20,8 @@ interface Props {
   navigation: RootStackNavigationProps<'default'>;
 }
 
-const Page: FC = ({
-  navigfation,
+const Page: FC<Props> = ({
+  navigation,
 }) => {
   return (
     <Container>

@@ -10,7 +10,11 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Page: FC = () => {
+interface Props {
+
+}
+
+const Page: FC<Props> = () => {
   return (
     <Container>
       <div data-testid="myText">dooboolab</div>
