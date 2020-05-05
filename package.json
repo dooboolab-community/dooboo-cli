@@ -33,7 +33,7 @@
     "update-notifier": "^4.1.0"
   },
   "devDependencies": {
-    "@dooboo/eslint-config": "^0.3.8",
+    "@dooboo/eslint-config": "^0.4.0",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^13.13.4",
     "@types/ora": "^3.2.0",
