@@ -1,4 +1,7 @@
 ## Changelogs
+**[3.4.6]**
+- Remove `object` type and replace it with `Record<string, unknown>`
+
 **[3.4.5]**
 - Fix typo in template
 

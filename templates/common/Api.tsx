@@ -1,7 +1,7 @@
 const ROOT_URL = 'http://localhost:3000/api';
 
 export const sample = async (
-  body: object,
+  body: Record<string, unknown>,
   signal?: AbortController['signal'],
 ): Promise<Response> => {
   const fetchOption: RequestInit = {
