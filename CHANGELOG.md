@@ -1,4 +1,14 @@
 ## Changelogs
+**[3.4.7]**
+- Upgrade packages
+  ```
+  @dooboo/eslint-config   ^0.3.8  →   ^0.4.2
+  @types/node            ^14.0.1  →  ^14.0.9
+  @types/shelljs          ^0.8.7  →   ^0.8.8
+  eslint                  ^6.8.0  →   ^7.1.0
+  typescript              ^3.8.3  →   ^3.9.3
+  ```
+
 **[3.4.6]**
 - Remove `object` type and replace it with `Record<string, unknown>`
 
