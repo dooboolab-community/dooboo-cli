@@ -1,4 +1,8 @@
 ## Changelogs
+
+**[3.5.0]**
+- Upgrade expo to sdk 38
+
 **[3.4.7]**
 - Upgrade packages
   ```
