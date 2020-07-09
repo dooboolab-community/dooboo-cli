@@ -1,5 +1,8 @@
 ## Changelogs
 
+**[3.6.0]**
+- Upgrade reat-native to 0.63+
+
 **[3.5.1]**
 - Upgrade packages
   ```
