@@ -1,5 +1,15 @@
 ## Changelogs
 
+**[3.5.1]**
+- Upgrade packages
+  ```
+  inquirer                 ^7.2.0  →    ^7.3.0 
+  @dooboo/eslint-config    ^0.4.2  →    ^0.4.3 
+  @types/node            ^14.0.14  →  ^14.0.20 
+  eslint                   ^7.3.1  →    ^7.4.0 
+  typescript               ^3.9.5  →    ^3.9.6 
+  ```
+
 **[3.5.0]**
 - Upgrade expo to sdk 38
 
