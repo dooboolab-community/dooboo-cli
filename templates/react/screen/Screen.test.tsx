@@ -24,10 +24,3 @@ describe('Rendering', () => {
     expect(baseElement).toBeTruthy();
   });
 });
-
-describe('Interaction', () => {
-  it('should render [myText]', () => {
-    const textInstance = testingLib.getByTestId('myText');
-    expect(textInstance.textContent).toEqual('dooboolab');
-  });
-});

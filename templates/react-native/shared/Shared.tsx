@@ -10,7 +10,11 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const Shared: FC = ({
+type Props = {
+
+}
+
+const Shared: FC<Props> = ({
   children,
 }) => {
   return <Container>{children}</Container>;

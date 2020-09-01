@@ -10,14 +10,18 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-interface Props {
+const Text = styled.p`
+  color: ${({ theme }): string => theme.font};
+`;
+
+type Props = {
 
 }
 
 const Page: FC<Props> = () => {
   return (
     <Container>
-      <div data-testid="myText">dooboolab</div>
+      <Text>Screen</Text>
     </Container>
   );
 };

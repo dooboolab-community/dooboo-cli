@@ -1,5 +1,10 @@
 ## Changelogs
 
+**[3.6.1]**
+- Change some tempaltes.
+  - Set `Prop to type` instead of `interface` since it shouldn't be empty.
+  - Removed unnecessary tests.
+
 **[3.6.0]**
 - Upgrade reat-native to 0.63+
 

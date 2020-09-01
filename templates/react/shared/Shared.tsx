@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 40px;
 `;
 
-interface Props {
+type Props = {
 
 }
 
