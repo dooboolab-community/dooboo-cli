@@ -1,4 +1,6 @@
 ## Changelogs
+**[3.7.0]**
+- Upgrade expo to 39.
 
 **[3.6.1]**
 - Change some tempaltes.
