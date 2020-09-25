@@ -1,4 +1,7 @@
 ## Changelogs
+**[3.7.1]**
+- Migrate react-native test template.
+
 **[3.7.0]**
 - Upgrade expo to 39.
 
