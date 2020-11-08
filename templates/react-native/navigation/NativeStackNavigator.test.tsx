@@ -21,11 +21,13 @@ describe('[Stack] navigator', () => {
   beforeEach(() => {
     enableScreens();
     props = createTestProps();
+
     component = createTestElement(
       <NavigationContainer>
         <StackNavigator {...props} />
       </NavigationContainer>,
     );
+
     testingLib = render(component);
   });
 
@@ -33,7 +35,9 @@ describe('[Stack] navigator', () => {
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();
+
     const { baseElement } = testingLib;
+
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();

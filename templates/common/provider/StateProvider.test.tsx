@@ -6,6 +6,7 @@ import { StateProvider, useStateContext } from '../StateProvider';
 
 const FakeChild = (): React.ReactElement => {
   const { setUser } = useStateContext();
+
   return (
     <View>
       <Button
@@ -29,10 +30,12 @@ describe('Rendering', () => {
       <FakeChild />
     </StateProvider>
   );
+
   const testingLib: RenderResult = render(component);
 
   it('component and snapshot matches', () => {
     const { baseElement } = testingLib;
+
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });
@@ -45,6 +48,7 @@ describe('Interactions', () => {
         <FakeChild />
       </StateProvider>,
     );
+
     act(() => {
       fireEvent.press(getByTestId('BUTTON'));
     });

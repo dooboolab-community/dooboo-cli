@@ -18,6 +18,7 @@ describe('[SwitchNavigator] rendering', () => {
 
   it('should renders without crashing', () => {
     const rendered = renderer.create(component).toJSON();
+
     expect(rendered).toMatchSnapshot();
     expect(rendered).toBeTruthy();
   });

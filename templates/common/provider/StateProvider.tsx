@@ -12,6 +12,7 @@ interface Context {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
 }
+
 const [useCtx, Provider] = createCtx<Context>();
 
 interface Props {

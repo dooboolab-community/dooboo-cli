@@ -19,11 +19,13 @@ let testingLib: RenderResult;
 describe('[Drawer] navigator', () => {
   beforeEach(() => {
     props = createTestProps();
+
     component = createTestElement(
       <NavigationContainer>
         <DrawerNavigator {...props} />
       </NavigationContainer>,
     );
+
     testingLib = render(component);
   });
 
@@ -31,7 +33,9 @@ describe('[Drawer] navigator', () => {
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();
+
     const { baseElement } = testingLib;
+
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();

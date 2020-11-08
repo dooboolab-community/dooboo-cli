@@ -30,6 +30,7 @@ export const resolveTemplate = (
     '..',
     `templates/${projectType}/${componentType}/${componentName}.${fileExt}`,
   );
+
   const testTemplate = path.resolve(
     __dirname,
     '..',
@@ -58,12 +59,14 @@ export const resolveComponent = (
 
 export const exitIfNotDoobooRepo = async (): Promise<void> => {
   const exists = await fsExists('.dooboo');
+
   if (!exists) {
     shelljs.echo(
       chalk.redBright(
         '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
       ),
     );
+
     process.exit(0);
   }
 };
@@ -91,6 +94,7 @@ export const camelize = function(str: string): string {
     if (+match === 0) {
       return '';
     } // or if (/\s+/.test(match)) for white spaces
+
     return index === 0 ? match.toLowerCase() : match.toUpperCase();
   });
 };
@@ -100,6 +104,7 @@ export const upperCamelize = function(str: string): string {
     if (+match === 0) {
       return '';
     } // or if (/\s+/.test(match)) for white spaces
+
     return match.toUpperCase();
   });
 };
@@ -109,8 +114,10 @@ export const exec = function(command: string): Promise<string> {
     shelljs.exec(command, {}, (code: number, value: string, error: string) => {
       if (error) {
         reject(error);
+
         return;
       }
+
       resolve(value);
     }),
   );

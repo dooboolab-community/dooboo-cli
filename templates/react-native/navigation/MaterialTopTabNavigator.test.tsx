@@ -19,11 +19,13 @@ describe('[MaterialTopTab] navigator', () => {
 
   beforeEach(() => {
     props = createTestProps();
+
     component = createTestElement(
       <NavigationContainer>
         <MaterialTopTabNavigator {...props} />
       </NavigationContainer>,
     );
+
     testingLib = render(component);
   });
 
@@ -31,7 +33,9 @@ describe('[MaterialTopTab] navigator', () => {
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();
+
     const { baseElement } = testingLib;
+
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();

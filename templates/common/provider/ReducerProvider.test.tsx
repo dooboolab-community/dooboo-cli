@@ -29,10 +29,12 @@ describe('[ReducerProvider] rendering test', () => {
       <FakeChild />
     </ReducerProvider>
   );
+
   const testingLib: RenderResult = render(component);
 
   it('component and snapshot matches', () => {
     const { baseElement } = testingLib;
+
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });

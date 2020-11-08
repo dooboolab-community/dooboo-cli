@@ -12,6 +12,7 @@ interface Context {
   state: State;
   setUser: (user: Partial<User>) => void;
 }
+
 const [useCtx, Provider] = createCtx<Context>();
 
 export enum ActionType {

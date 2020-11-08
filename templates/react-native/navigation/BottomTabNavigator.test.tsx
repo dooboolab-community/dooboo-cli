@@ -18,17 +18,21 @@ let testingLib: RenderResult;
 describe('[BottomTab] navigator', () => {
   beforeEach(() => {
     props = createTestProps();
+
     component = createTestElement(
       <NavigationContainer>
         <BottomTabNavigator {...props} />
       </NavigationContainer>,
     );
+
     testingLib = render(component);
   });
 
   it('should renders without crashing', () => {
     jest.useFakeTimers();
+
     const { baseElement } = testingLib;
+
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();

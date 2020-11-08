@@ -15,6 +15,7 @@ const Stack = createStackNavigator<StackParamList>();
 
 function RootNavigator(): React.ReactElement {
   const { theme } = useThemeContext();
+
   return (
     <Stack.Navigator
       screenOptions={{

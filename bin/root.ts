@@ -89,6 +89,7 @@ program
     // sed -i 's/original/new/g' file.txt
     // https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
     shell.echo(chalk.cyanBright(welcome));
+
     shell.echo(
       chalk.yellow('Select which app you want to generate from dooboo.'),
     );
@@ -102,6 +103,7 @@ program
 
     list.on('select', function(options) {
       shell.echo(chalk.yellow('select the name of the app.'));
+
       inquirer
         .prompt([
           {
@@ -111,6 +113,7 @@ program
         ])
         .then((answer) => {
           const nameOfApp = answer.value;
+
           if (!nameOfApp) {
             shell.echo(chalk.redBright('please provide name of your app.'));
             process.exit(0);
@@ -120,18 +123,22 @@ program
           }
 
           let template = '';
+
           switch (options[0].value) {
             case TYPE_OF_APP.REACT:
               template =
                 '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
+
               break;
             case TYPE_OF_APP.REACT_NATIVE:
               template =
                 `-b release/${RN_PROJECT_VERSION} https://github.com/dooboolab/dooboo-native-ts.git`;
+
               break;
             case TYPE_OF_APP.EXPO:
               template =
                 `-b release/${EXPO_VERSION} https://github.com/dooboolab/dooboo-expo.git`;
+
               break;
           }
 
@@ -141,11 +148,14 @@ program
                 'There is no template for current choice. Please try again.',
               ),
             );
+
             process.exit(0);
           }
 
           const spinner = ora('creating app ' + nameOfApp + '...\n');
+
           spinner.start();
+
           if (options[0].value === TYPE_OF_APP.REACT_NATIVE) {
             /**
              * Check the installed package
@@ -156,24 +166,30 @@ program
                   'Sorry, this script requires react-native-cli to be installed.',
                 ),
               );
+
               shell.exit(1);
             }
+
             if (!shell.which('git')) {
               shell.echo(
                 chalk.redBright(
                   'Sorry, this script requires git to be installed.',
                 ),
               );
+
               shell.exit(1);
             }
+
             if (!shell.which('yarn')) {
               shell.echo(
                 chalk.redBright(
                   'Sorry, this script requires yarn to be installed.',
                 ),
               );
+
               shell.exit(1);
             }
+
             if (os.type() === 'Darwin') {
               if (!shell.which('pod')) {
                 shell.echo(
@@ -182,6 +198,7 @@ program
                     Are you on mac OS (darwin)?`,
                   ),
                 );
+
                 shell.exit(1);
               }
             }
@@ -199,6 +216,7 @@ program
       shell.echo(
         `Operation has been canceled, ${options.length} option was selected.`,
       );
+
       process.exit(0);
     });
   });
@@ -208,21 +226,25 @@ program
   .description('start the project.')
   .action(async function() {
     const spinner = ora('configuring project...\n');
+
     spinner.start();
 
     try {
       let exists = await fsExists('.dooboo');
+
       if (!exists) {
         shell.echo(
           chalk.redBright(
             '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
           ),
         );
+
         spinner.stop();
         process.exit(0);
       }
 
       exists = await fsExists('node_modules');
+
       if (!exists) {
         shell.echo(chalk.cyanBright('installing dependencies...'));
 
@@ -232,23 +254,28 @@ program
           if (code === 0) {
             shell.echo(chalk.cyanBright('running project...\n'));
             shell.exec('yarn run dev');
+
             // childProcess.execSync(`yarn run dev`, {stdio: 'inherit'});
             return;
           }
+
           shell.echo(
             chalk.redBright(
               'failed installing dependencies. Please try again with yarn.',
             ),
           );
         });
+
         return;
       }
+
       shell.echo(chalk.cyanBright('running project...'));
       // shell.exec(`yarn start`);
       shell.exec('yarn run dev');
       // childProcess.execFileSync('yarn', ['start'], {stdio: 'inherit'});
     } catch (err) {
       shell.echo(chalk.red(err));
+
       shell.echo(
         chalk.redBright(
           'failed installing dependencies. Please try again with yarn.',
@@ -265,31 +292,38 @@ program
   .description('run test for your project.')
   .action(async function() {
     const spinner = ora('configuring project...');
+
     spinner.start();
 
     exitIfNotDoobooRepo();
 
     shell.echo(chalk.cyanBright('\nchecking packages...'));
+
     const exists = await fsExists('node_modules');
 
     if (!exists) {
       shell.echo(chalk.cyanBright('installing dependencies...'));
+
       shell.exec('yarn', function(code) {
         if (code === 0) {
           shell.echo(chalk.cyanBright('running project...'));
           shell.exec('yarn test');
           spinner.stop();
+
           // process.exit(0);
           return;
         }
+
         shell.echo(
           chalk.redBright(
             'failed installing dependencies. Please try again with yarn.',
           ),
         );
       });
+
       return;
     }
+
     shell.echo(chalk.cyanBright('testing project...'));
     // shell.exec(`yarn start`);
     shell.exec('yarn test');
@@ -307,37 +341,45 @@ program
     const component = resolveComponent('navigation', upperCamel);
 
     let exists = await fsExists(component.file);
+
     if (exists) {
       shell.echo(
         chalk.redBright(
           `${upperCamel} navigation already exists. Delete or rename existing component first.`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react');
+
     if (exists) {
       const template = resolveTemplate('react', 'navigation', 'SwitchNavigator');
+
       shell.echo(chalk.cyanBright('creating navigation component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'SwitchNavigator', `${upperCamel}`, component.testFile);
+
       shell.sed(
         '-i',
         '../SwithNavigator',
         `../${upperCamel}`,
         component.testFile,
       );
+
       shell.echo(
         chalk.green(
           `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react-native');
+
     if (exists) {
       list
         .option(
@@ -364,11 +406,13 @@ program
 
       list.on('select', function(options) {
         const navigationType = options[0].value;
+
         template = resolveTemplate('react-native', 'navigation', navigationType);
 
         shell.echo(chalk.cyanBright('creating navigation component...'));
         shell.cp(template.file, component.file);
         shell.cp(template.testFile, component.testFile);
+
         shell.echo(
           chalk.green(
             `generated: ${component.file}${'\n'}testFile: ${
@@ -387,6 +431,7 @@ program
   .description('generate screen component.')
   .action(async function(c) {
     exitIfNotDoobooRepo();
+
     // const camel = camelize(c); // inside component is camelCase.
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
 
@@ -397,44 +442,54 @@ program
     const component = resolveComponent('screen', upperCamel, fileExt);
 
     let exists = await fsExists(component.file);
+
     if (exists) {
       shell.echo(
         chalk.redBright(
           `${upperCamel} screen already exists. Delete or rename existing component first.`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react');
+
     if (exists) {
       const template = resolveTemplate('react', 'screen', 'Screen');
+
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
       shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
+
       shell.echo(
         chalk.green(
           `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react-native');
+
     if (exists) {
       const template = resolveTemplate('react-native', 'screen', 'Screen');
+
       shell.echo(chalk.cyanBright('creating screen component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
       shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
+
       shell.echo(
         chalk.green(
           `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
         ),
       );
+
       process.exit(0);
     }
 
@@ -444,6 +499,7 @@ program
         If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
       ),
     );
+
     process.exit(0);
   });
 
@@ -461,44 +517,54 @@ program
     const component = resolveComponent('shared', upperCamel);
 
     let exists = await fsExists(component.file);
+
     if (exists) {
       shell.echo(
         chalk.redBright(
           `${upperCamel} shared already exists. Delete or rename existing component first.`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react');
+
     if (exists) {
       const template = resolveTemplate('react', 'shared', 'Shared');
+
       shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Shared', `${upperCamel}`, component.file);
       shell.sed('-i', '../Shared', `../${upperCamel}`, component.testFile);
+
       shell.echo(
         chalk.green(
           `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
         ),
       );
+
       process.exit(0);
     }
 
     exists = await fsExists('.dooboo/react-native');
+
     if (exists) {
       const template = resolveTemplate('react-native', 'shared', 'Shared');
+
       shell.echo(chalk.cyanBright('creating shared component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Shared', `${upperCamel}`, component.file);
       shell.sed('-i', '../Shared', `../${upperCamel}`, component.testFile);
+
       shell.echo(
         chalk.green(
           `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
         ),
       );
+
       process.exit(0);
     }
 
@@ -508,6 +574,7 @@ program
         If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
       ),
     );
+
     process.exit(0);
   });
 
@@ -526,19 +593,23 @@ program
     const apiFile = `./src/apis/${camel}.${fileExt}`;
 
     const exists = await fsExists(apiFile);
+
     if (exists) {
       shell.echo(
         chalk.redBright(
           `${upperCamel} store already exists. Delete or rename existing file first.`,
         ),
       );
+
       process.exit(0);
     }
+
     const template = path.resolve(
       __dirname,
       '..',
       `templates/common/Api.${fileExt}`,
     );
+
     shell.cp(template, apiFile);
     shell.echo(chalk.cyanBright('creating api file...'));
     shell.echo(chalk.green(`generated: src/apis/${camel}.${fileExt}`));
@@ -558,12 +629,14 @@ program
     const providerFile = `./src/providers/${upperCamel}.tsx`;
     const providerTestFile = `./src/providers/__tests__/${upperCamel}.test.tsx`;
     const exists = await fsExists(providerFile);
+
     if (exists) {
       shell.echo(
         chalk.redBright(
           `${upperCamel} store already exists. Delete or rename existing file first.`,
         ),
       );
+
       process.exit(0);
     }
 
@@ -574,11 +647,13 @@ program
 
     list.on('select', function(options) {
       const providerType = options[0].value;
+
       const template = path.resolve(
         __dirname,
         '..',
         `templates/common/provider/${providerType}.tsx`,
       );
+
       const testTemplate = path.resolve(
         __dirname,
         '..',
@@ -589,6 +664,7 @@ program
       shell.cp(testTemplate, providerTestFile);
       shell.sed('-i', providerType, `${upperCamel}`, providerFile);
       shell.sed('-i', `${providerType}`, `${upperCamel}`, providerTestFile);
+
       shell.sed(
         '-i',
         `../${providerType}`,
@@ -597,11 +673,13 @@ program
       );
 
       shell.echo(chalk.cyanBright('creating provider file...'));
+
       shell.echo(
         chalk.green(
           `generated: ${providerFile}${'\n'}testFile: ${providerTestFile}`,
         ),
       );
+
       process.exit(0);
     });
   });
@@ -627,10 +705,12 @@ if (validCommands.length && process.argv[2]) {
       validCommands = program.commands.map(function(cmd) {
         return cmd.name;
       });
+
       shell.echo(
         `\n [ERROR] - Invalid command:
           "%s". See "-h or --help" for a list of available commands.\n`,
       );
+
       break;
   }
   // program.parse([process.argv[0], process.argv[1], '-h']);

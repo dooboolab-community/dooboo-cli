@@ -23,6 +23,7 @@ describe('Rendering', () => {
 
   it('renders without crashing', () => {
     const { baseElement } = testingLib;
+
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });
@@ -37,6 +38,7 @@ describe('Interaction', () => {
 
   it('should simulate onClick', () => {
     const { baseElement } = testingLib;
+
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
     // fireEvent(testingLib.getByTestId('btn'), 'click');
