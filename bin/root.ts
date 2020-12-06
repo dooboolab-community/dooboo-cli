@@ -163,7 +163,7 @@ program
             if (!shell.which('react-native')) {
               shell.echo(
                 chalk.redBright(
-                  'Sorry, this script requires react-native-cli to be installed.',
+                  'Sorry, this script requires react-native to be installed. Are you in react-native project root?',
                 ),
               );
 
