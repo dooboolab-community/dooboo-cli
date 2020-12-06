@@ -1,5 +1,5 @@
 ## Changelogs
-**[3.7.2]**
+**[3.7.3]**
 - Remove react-native-cli peer dependencies since this is all in npx now.
 
 **[3.7.1]**
