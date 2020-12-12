@@ -1,7 +1,7 @@
 {
   "name": "dooboo-cli",
   "version": "4.0.0",
-  "description": "starting react express app with me!",
+  "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"
   },
