@@ -2,7 +2,7 @@ import 'react-native';
 
 import React, { ReactElement } from 'react';
 import {
-  RenderResult,
+  RenderAPI,
   cleanup,
   render,
 } from '@testing-library/react-native';
@@ -15,7 +15,7 @@ describe('[MaterialTopTab] navigator', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let props: any;
   let component: ReactElement;
-  let testingLib: RenderResult;
+  let testingLib: RenderAPI;
 
   beforeEach(() => {
     props = createTestProps();
@@ -34,7 +34,7 @@ describe('[MaterialTopTab] navigator', () => {
   it('should renders without crashing', () => {
     jest.useFakeTimers();
 
-    const { baseElement } = testingLib;
+    const baseElement = testingLib.toJSON();
 
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();

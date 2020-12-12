@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Button, View } from 'react-native';
-import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
+import { RenderAPI, act, fireEvent, render } from '@testing-library/react-native';
 import { StateProvider, useStateContext } from '../StateProvider';
 
 const FakeChild = (): React.ReactElement => {
@@ -31,10 +31,10 @@ describe('Rendering', () => {
     </StateProvider>
   );
 
-  const testingLib: RenderResult = render(component);
+  const testingLib: RenderAPI = render(component);
 
   it('component and snapshot matches', () => {
-    const { baseElement } = testingLib;
+    const baseElement = testingLib.toJSON();
 
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
