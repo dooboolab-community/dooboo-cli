@@ -157,19 +157,6 @@ program
           spinner.start();
 
           if (options[0].value === TYPE_OF_APP.REACT_NATIVE) {
-            /**
-             * Check the installed package
-             */
-            if (!shell.which('react-native')) {
-              shell.echo(
-                chalk.redBright(
-                  'Sorry, this script requires react-native to be installed. Are you in react-native project root?',
-                ),
-              );
-
-              shell.exit(1);
-            }
-
             if (!shell.which('git')) {
               shell.echo(
                 chalk.redBright(
