@@ -25,7 +25,7 @@ const Page: FC<Props> = ({
 }) => {
   return (
     <Container>
-      <StyledText testID="myText">dooboolab</StyledText>
+      <StyledText>Screen</StyledText>
     </Container>
   );
 };

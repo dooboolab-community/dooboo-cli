@@ -2,7 +2,7 @@ import 'react-native';
 
 import React, { ReactElement } from 'react';
 import {
-  RenderResult,
+  RenderAPI,
   cleanup,
   render,
 } from '@testing-library/react-native';
@@ -14,7 +14,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
 let component: ReactElement;
-let testingLib: RenderResult;
+let testingLib: RenderAPI;
 
 describe('[Drawer] navigator', () => {
   beforeEach(() => {
@@ -34,7 +34,7 @@ describe('[Drawer] navigator', () => {
   it('should renders without crashing', () => {
     jest.useFakeTimers();
 
-    const { baseElement } = testingLib;
+    const baseElement = testingLib.toJSON();
 
     jest.runAllTimers();
     expect(baseElement).toMatchSnapshot();

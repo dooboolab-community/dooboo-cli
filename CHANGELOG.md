@@ -1,4 +1,8 @@
 ## Changelogs
+
+**[4.0.0]**
+- Fixed templates for React Native and Expo.
+
 **[3.8.2]**
 - Remove `react-native-cli` dependency and use npx instead.
 

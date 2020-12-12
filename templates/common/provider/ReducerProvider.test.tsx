@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, Text, View } from 'react-native';
 import { ReducerProvider, useReducerContext } from '../ReducerProvider';
-import { RenderResult, act, fireEvent, render } from '@testing-library/react-native';
+import { RenderAPI, act, fireEvent, render } from '@testing-library/react-native';
 
 const FakeChild = (): React.ReactElement => {
   const { state, setUser } = useReducerContext();
@@ -30,10 +30,10 @@ describe('[ReducerProvider] rendering test', () => {
     </ReducerProvider>
   );
 
-  const testingLib: RenderResult = render(component);
+  const testingLib: RenderAPI = render(component);
 
   it('component and snapshot matches', () => {
-    const { baseElement } = testingLib;
+    const baseElement = testingLib.toJSON();
 
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
