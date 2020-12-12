@@ -157,6 +157,16 @@ program
           spinner.start();
 
           if (options[0].value === TYPE_OF_APP.REACT_NATIVE) {
+            if (!shell.which('npx')) {
+              shell.echo(
+                chalk.redBright(
+                  'Sorry, this script requires npx to be installed.',
+                ),
+              );
+
+              shell.exit(1);
+            }
+
             if (!shell.which('git')) {
               shell.echo(
                 chalk.redBright(

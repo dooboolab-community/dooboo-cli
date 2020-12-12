@@ -1,6 +1,6 @@
 ## Changelogs
-**[3.8.1]**
-- Remove `react-native-cli` dependency.
+**[3.8.2]**
+- Remove `react-native-cli` dependency and use npx instead.
 
 **[3.8.0]**
 - Upgrade expo project to sdk 40.
