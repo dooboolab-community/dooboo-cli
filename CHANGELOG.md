@@ -1,4 +1,7 @@
 ## Changelogs
+**[3.8.0]**
+- Upgrade expo project to sdk 40.
+
 **[3.7.3]**
 - Remove react-native-cli peer dependencies since this is all in npx now.
 
