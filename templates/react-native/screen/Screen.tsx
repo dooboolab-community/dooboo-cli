@@ -1,31 +1,31 @@
 import React, { FC } from 'react';
 
-import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
-import styled from 'styled-components/native';
+import Container from '../navigation/Container';
+import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
+import styled from 'styled-components';
 
-const Container = styled.View`
-  flex: 1;
-  background-color: transparent;
-  flex-direction: row;
+const Content = styled.View`
+  background-color: ${({theme}): string => theme.background};
+
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
 const StyledText = styled.Text`
-  font-size: 16px;
-  color: blue;
+  color: ${({ theme }): string => theme.font};
 `;
 
-interface Props {
-  navigation: RootStackNavigationProps<'default'>;
+type Props = {
+  navigation: RootStackNavigationProps<'Page'>;
 }
 
-const Page: FC<Props> = ({
-  navigation,
-}) => {
+const Page: FC<Props> = () => {
   return (
     <Container>
-      <StyledText>Screen</StyledText>
+      <Content>
+        <StyledText>Screen</StyledText>
+      </Content>
     </Container>
   );
 };
