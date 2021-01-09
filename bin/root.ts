@@ -6,6 +6,7 @@ import {
   TemplateType,
   camelize,
   exitIfNotDoobooRepo,
+  exitIfNotV5,
   resolveComponent,
   resolveTemplate,
   upperCamelize,
@@ -481,6 +482,8 @@ program
     exists = fs.existsSync('.dooboo/expo');
 
     if (exists) {
+      exitIfNotV5();
+
       const template = resolveTemplate('react-native-expo', 'screen', 'Screen');
 
       shell.echo(chalk.cyanBright('creating screen component...'));
@@ -501,6 +504,8 @@ program
     exists = fs.existsSync('.dooboo/react-native');
 
     if (exists) {
+      exitIfNotV5();
+
       const template = resolveTemplate('react-native', 'screen', 'Screen');
 
       shell.echo(chalk.cyanBright('creating screen component...'));

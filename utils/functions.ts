@@ -55,7 +55,23 @@ export const exitIfNotDoobooRepo = async (): Promise<void> => {
   if (!exists) {
     shelljs.echo(
       chalk.redBright(
-        '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+        '\nproject is not compatible with dooboo-cli v5. Are you sure you are in correct dir?',
+      ),
+    );
+
+    process.exit(0);
+  }
+};
+
+export const exitIfNotV5 = async (): Promise<void> => {
+  const exists = fs.existsSync('.dooboo/v5');
+
+  if (!exists) {
+    shelljs.echo(
+      chalk.redBright(
+        `\nproject is not compatible with dooboo-cli v5.
+        Maybe you are using older projects.
+        Then please install version lower than dooboo-cli@5`,
       ),
     );
 
