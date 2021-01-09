@@ -1,16 +1,12 @@
 import 'react-native';
 
-import React, { ReactElement } from 'react';
-import {
-  RenderAPI,
-  render,
-} from '@testing-library/react-native';
-import { createTestElement, createTestProps } from '../../../../test/testUtils';
+import React, {ReactElement} from 'react';
+import {RenderAPI, render} from '@testing-library/react-native';
+import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import BottomTabNavigator from '../BottomTabNavigator';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
 let component: ReactElement;
 let testingLib: RenderAPI;

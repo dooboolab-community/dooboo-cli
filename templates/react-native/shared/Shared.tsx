@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
 import styled from 'styled-components/native';
 
@@ -10,13 +10,9 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-type Props = {
+type Props = {};
 
-}
-
-const Shared: FC<Props> = ({
-  children,
-}) => {
+const Shared: FC<Props> = ({children}) => {
   return <Container>{children}</Container>;
 };
 

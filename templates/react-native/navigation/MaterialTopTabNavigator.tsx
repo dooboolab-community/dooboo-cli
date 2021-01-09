@@ -1,5 +1,8 @@
-import { MaterialTopTabNavigationProp, createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import React, { ReactElement } from 'react';
+import {
+  MaterialTopTabNavigationProp,
+  createMaterialTopTabNavigator,
+} from '@react-navigation/material-top-tabs';
+import React, {ReactElement} from 'react';
 
 export type MaterialTopTabParamList = {
   default: undefined;
@@ -15,10 +18,9 @@ function SwitchNavigator(): ReactElement {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        labelStyle: { fontSize: 12 },
-        style: { backgroundColor: 'blue' },
-      }}
-    >
+        labelStyle: {fontSize: 12},
+        style: {backgroundColor: 'blue'},
+      }}>
       {/* <Tab.Screen name="Screen" component={Screen} /> */}
     </Tab.Navigator>
   );

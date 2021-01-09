@@ -1,7 +1,10 @@
-import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 
 import React from 'react';
-import { useThemeContext } from '@dooboo-ui/native-theme';
+import {useThemeContext} from '@dooboo-ui/native-theme';
 
 export type NativeStackParamList = {
   default: undefined;
@@ -14,7 +17,7 @@ export type NativeStackNavigationProps<
 const Stack = createNativeStackNavigator<NativeStackParamList>();
 
 function RootNavigator(): React.ReactElement {
-  const { theme } = useThemeContext();
+  const {theme} = useThemeContext();
 
   return (
     <Stack.Navigator
@@ -22,10 +25,9 @@ function RootNavigator(): React.ReactElement {
         headerStyle: {
           backgroundColor: theme.background,
         },
-        headerTitleStyle: { color: theme.fontColor },
+        headerTitleStyle: {color: theme.fontColor},
         headerTintColor: theme.tintColor,
-      }}
-    >
+      }}>
       {/* <Stack.Screen name="Screen" component={Screen} /> */}
     </Stack.Navigator>
   );

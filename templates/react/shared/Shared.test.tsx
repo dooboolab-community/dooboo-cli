@@ -1,15 +1,9 @@
-import React, { ReactElement } from 'react';
-import {
-  RenderResult,
-  fireEvent,
-  getByTestId,
-  render,
-} from '@testing-library/react';
-import { createTestElement, createTestProps, history } from '../../../../test/testUtils';
+import React, {ReactElement} from 'react';
+import {RenderResult, render} from '@testing-library/react';
+import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import Shared from '../Shared';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
 let component: ReactElement;
 let testingLib: RenderResult;
@@ -22,7 +16,7 @@ describe('Rendering', () => {
   });
 
   it('renders without crashing', () => {
-    const { baseElement } = testingLib;
+    const {baseElement} = testingLib;
 
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
@@ -37,7 +31,7 @@ describe('Interaction', () => {
   });
 
   it('should simulate onClick', () => {
-    const { baseElement } = testingLib;
+    const {baseElement} = testingLib;
 
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();

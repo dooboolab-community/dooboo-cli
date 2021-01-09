@@ -1,14 +1,14 @@
-import { RN_VERSION } from './const';
-import { camelCaseToDash } from '../utils/functions';
+import {RN_VERSION} from './const';
+import {camelCaseToDash} from '../utils/functions';
 import chalk from 'chalk';
-import { setTimeout } from 'timers';
+import {setTimeout} from 'timers';
 
 import ora = require('ora');
 import os = require('os');
 import shell = require('shelljs');
 import childProcess = require('child_process');
 
-export const cbResultWeb = (
+export const cbResultReact = (
   template: string,
   nameOfApp: string,
   answer: any,
@@ -26,7 +26,7 @@ export const cbResultWeb = (
 
       spinner.stop();
 
-      setTimeout(function() {
+      setTimeout(() => {
         shell.sed(
           '-i',
           'dooboo-starter',
@@ -51,7 +51,7 @@ export const cbResultWeb = (
   );
 };
 
-export const cbResultApp = (
+export const cbResultReactNative = (
   template: string,
   nameOfApp: string,
   answer: any,
@@ -67,10 +67,13 @@ export const cbResultApp = (
         shell.echo(chalk.cyanBright(`Program stderr: ${stderr}`));
       }
 
-      shell.exec(`cd ${nameOfApp} && npx react-native init ${nameOfApp} --version ${RN_VERSION}`);
+      shell.exec(
+        `cd ${nameOfApp} && npx react-native init ${nameOfApp} --version ${RN_VERSION}`,
+      );
+
       spinner.stop();
 
-      setTimeout(function() {
+      setTimeout(() => {
         shell.sed(
           '-i',
           'dooboo-starter',
@@ -117,9 +120,7 @@ export const cbResultApp = (
           '-i',
           'dooboo',
           `${nameOfApp.toLowerCase()}`,
-          /* eslint-disable */
           `./${nameOfApp}/${nameOfApp}/android/app/src/main/java/com/${nameOfApp.toLocaleLowerCase()}/MainActivity.java`,
-          /* eslint-enable */
         );
 
         shell.cp('-R', `${nameOfApp}/${nameOfApp}/ios/*`, `${nameOfApp}/ios`);
@@ -140,16 +141,14 @@ export const cbResultApp = (
         shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        if (os.type() === 'Darwin') {
-          childProcess.execSync(
-            `cd ${nameOfApp} && yarn && cd ios && pod install`,
-            { stdio: 'inherit' },
-          );
-        } else {
+        if (os.type() === 'Darwin')
+          childProcess.execSync(`cd ${nameOfApp} && yarn && npx pod-install`, {
+            stdio: 'inherit',
+          });
+        else
           childProcess.execSync(`cd ${nameOfApp} && yarn`, {
             stdio: 'inherit',
           });
-        }
 
         spinner.stop();
 
@@ -187,7 +186,7 @@ export const cbResultExpo = (
       shell.exec(`cd ${nameOfApp}`);
       spinner.stop();
 
-      setTimeout(function() {
+      setTimeout(() => {
         shell.sed(
           '-i',
           'dooboo-starter',
