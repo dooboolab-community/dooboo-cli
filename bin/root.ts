@@ -11,7 +11,7 @@ import {
   resolveTemplate,
   upperCamelize,
 } from '../utils/functions';
-import { cbResultApp, cbResultExpo, cbResultWeb } from './cb';
+import { cbResultExpo, cbResultReact, cbResultReactNative } from './cb';
 
 import chalk from 'chalk';
 
@@ -200,11 +200,11 @@ program
               }
             }
 
-            cbResultApp(template, nameOfApp, answer, options, spinner);
+            cbResultReactNative(template, nameOfApp, answer, options, spinner);
           } else if (options[0].value === TYPE_OF_APP.EXPO) {
             cbResultExpo(template, nameOfApp, answer, options, spinner);
           } else {
-            cbResultWeb(template, nameOfApp, answer, options, spinner);
+            cbResultReact(template, nameOfApp, answer, options, spinner);
           }
         });
     });

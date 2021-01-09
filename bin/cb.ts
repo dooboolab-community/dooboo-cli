@@ -8,7 +8,7 @@ import os = require('os');
 import shell = require('shelljs');
 import childProcess = require('child_process');
 
-export const cbResultWeb = (
+export const cbResultReact = (
   template: string,
   nameOfApp: string,
   answer: any,
@@ -51,7 +51,7 @@ export const cbResultWeb = (
   );
 };
 
-export const cbResultApp = (
+export const cbResultReactNative = (
   template: string,
   nameOfApp: string,
   answer: any,
@@ -142,7 +142,7 @@ export const cbResultApp = (
 
         if (os.type() === 'Darwin') {
           childProcess.execSync(
-            `cd ${nameOfApp} && yarn && cd ios && pod install`,
+            `cd ${nameOfApp} && yarn && npx pod-install`,
             { stdio: 'inherit' },
           );
         } else {
