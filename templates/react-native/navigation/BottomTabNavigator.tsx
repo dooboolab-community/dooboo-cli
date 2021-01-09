@@ -1,8 +1,10 @@
-import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { ReactElement } from 'react';
+import {
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
+import React, {ReactElement} from 'react';
 
 // import { IC_MASK } from '../../utils/Icons';
-import { Image } from 'react-native';
 
 export type BottomTabParamList = {
   default: undefined;
@@ -33,8 +35,7 @@ function MaterialBottomTabNavigator(): ReactElement {
         {
           // tabBarIcon: ({ focused }): React.ReactElement => TabBarIcon(focused),
         }
-      }
-    >
+      }>
       {/* <Tab.Screen name="Screen" component={Screen} /> */}
     </Tab.Navigator>
   );

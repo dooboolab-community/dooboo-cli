@@ -11,14 +11,6 @@ export interface TemplateType {
   testFile: string;
 }
 
-export const fsExists = function(file: fs.PathLike): Promise<boolean> {
-  return new Promise((resolve): void => {
-    fs.exists(file, function(exists) {
-      resolve(exists);
-    });
-  });
-};
-
 export const resolveTemplate = (
   projectType: string,
   componentType: string,
@@ -58,7 +50,7 @@ export const resolveComponent = (
 };
 
 export const exitIfNotDoobooRepo = async (): Promise<void> => {
-  const exists = await fsExists('.dooboo');
+  const exists = fs.existsSync('.dooboo');
 
   if (!exists) {
     shelljs.echo(
@@ -71,45 +63,39 @@ export const exitIfNotDoobooRepo = async (): Promise<void> => {
   }
 };
 
-export const toCamelCase = function(str: string, cap1st: boolean): string {
-  return ((cap1st ? '-' : '') + str).replace(/-+([^-])/g, function(a, b) {
+export const toCamelCase = (str: string, cap1st: boolean): string => {
+  return ((cap1st ? '-' : '') + str).replace(/-+([^-])/g, (a, b) => {
     return b.toUpperCase();
   });
 };
 
-export const isCamelCase = function(str: string): boolean {
-  if (toCamelCase(str, true) === str) {
-    return true;
-  } else {
-    return false;
-  }
+export const isCamelCase = (str: string): boolean => {
+  if (toCamelCase(str, true) === str) return true;
+  else return false;
 };
 
-export const camelCaseToDash = function(str: string): string {
+export const camelCaseToDash = (str: string): string => {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
 };
 
-export const camelize = function(str: string): string {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-    if (+match === 0) {
-      return '';
-    } // or if (/\s+/.test(match)) for white spaces
+export const camelize = (str: string): string => {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+    // or if (/\s+/.test(match)) for white spaces
 
     return index === 0 ? match.toLowerCase() : match.toUpperCase();
   });
 };
 
-export const upperCamelize = function(str: string): string {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match) {
-    if (+match === 0) {
-      return '';
-    } // or if (/\s+/.test(match)) for white spaces
+export const upperCamelize = (str: string): string => {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match) => {
+    if (+match === 0) return '';
+    // or if (/\s+/.test(match)) for white spaces
 
     return match.toUpperCase();
   });
 };
 
-export const exec = function(command: string): Promise<string> {
+export const exec = (command: string): Promise<string> => {
   return new Promise((resolve, reject): unknown =>
     shelljs.exec(command, {}, (code: number, value: string, error: string) => {
       if (error) {

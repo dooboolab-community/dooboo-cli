@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
 import styled from 'styled-components';
 
@@ -11,12 +11,10 @@ const Container = styled.div`
 `;
 
 const Text = styled.p`
-  color: ${({ theme }): string => theme.font};
+  color: ${({theme}): string => theme.font};
 `;
 
-type Props = {
-
-}
+type Props = {};
 
 const Page: FC<Props> = () => {
   return (

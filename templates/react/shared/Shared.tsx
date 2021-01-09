@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
 import styled from 'styled-components';
 
@@ -8,13 +8,9 @@ const Container = styled.div`
   height: 40px;
 `;
 
-type Props = {
+type Props = {};
 
-}
-
-const Shared: FC<Props> = ({
-  children,
-}) => {
+const Shared: FC<Props> = ({children}) => {
   return <Container>{children}</Container>;
 };
 

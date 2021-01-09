@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
 import Container from '../navigation/Container';
 import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
@@ -13,12 +13,12 @@ const Content = styled.View`
 `;
 
 const StyledText = styled.Text`
-  color: ${({ theme }): string => theme.font};
+  color: ${({theme}): string => theme.font};
 `;
 
 type Props = {
   navigation: RootStackNavigationProps<'Page'>;
-}
+};
 
 const Page: FC<Props> = () => {
   return (

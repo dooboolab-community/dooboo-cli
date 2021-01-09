@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
-import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
+import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -20,9 +20,7 @@ interface Props {
   navigation: RootStackNavigationProps<'default'>;
 }
 
-const Page: FC<Props> = ({
-  navigation,
-}) => {
+const Page: FC<Props> = () => {
   return (
     <Container>
       <StyledText>Screen</StyledText>

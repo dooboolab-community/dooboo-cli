@@ -2,12 +2,11 @@ import 'react-native';
 
 import * as React from 'react';
 
-import { RenderAPI, render } from '@testing-library/react-native';
-import { createTestElement, createTestProps } from '../../../../test/testUtils';
+import {RenderAPI, render} from '@testing-library/react-native';
+import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import Shared from '../Shared';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
 let component: React.ReactElement;
 let testingLib: RenderAPI;

@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 'use strict';
 
-import { EXPO_PROJECT_BRANCH, RN_PROJECT_BRANCH } from './const';
+import {EXPO_PROJECT_BRANCH, RN_PROJECT_BRANCH} from './const';
 import {
   TemplateType,
   camelize,
   exitIfNotDoobooRepo,
-  fsExists,
   resolveComponent,
   resolveTemplate,
   upperCamelize,
 } from '../utils/functions';
-import { cbResultExpo, cbResultReact, cbResultReactNative } from './cb';
+import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
 import chalk from 'chalk';
 
+import fs = require('fs');
 import inquirer = require('inquirer');
 import ora = require('ora');
 import os = require('os');
@@ -23,7 +23,6 @@ import shell = require('shelljs');
 import path = require('path');
 import program = require('commander');
 import boxen = require('boxen');
-import childProcess = require('child_process');
 import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
 
@@ -57,13 +56,12 @@ const notifier = updateNotifier({
   updateCheckInterval: 1000 * 60 * 60 * 24, // 1 day
 });
 
-if (notifier.update) {
+if (notifier.update)
   shell.echo(
     chalk.blueBright(
-      boxen(`Update available: ${notifier.update.latest}`, { padding: 1 }),
+      boxen(`Update available: ${notifier.update.latest}`, {padding: 1}),
     ),
   );
-}
 
 const list = selectShell({
   pointer: ' ▸ ',
@@ -85,7 +83,7 @@ program
   .version(pkg.version)
   .command('init')
   .description('init boilerplate of dooboo generated app.')
-  .action(function() {
+  .action(() => {
     // sed -i 's/original/new/g' file.txt
     // https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
     shell.echo(chalk.cyanBright(welcome));
@@ -101,7 +99,7 @@ program
       .option(' Expo App (typescript) ', TYPE_OF_APP.EXPO)
       .list();
 
-    list.on('select', function(options) {
+    list.on('select', (options) => {
       shell.echo(chalk.yellow('select the name of the app.'));
 
       inquirer
@@ -131,13 +129,11 @@ program
 
               break;
             case TYPE_OF_APP.REACT_NATIVE:
-              template =
-                `-b ${RN_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-native-ts.git`;
+              template = `-b ${RN_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-native-ts.git`;
 
               break;
             case TYPE_OF_APP.EXPO:
-              template =
-                `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-expo.git`;
+              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-expo.git`;
 
               break;
           }
@@ -187,7 +183,7 @@ program
               shell.exit(1);
             }
 
-            if (os.type() === 'Darwin') {
+            if (os.type() === 'Darwin')
               if (!shell.which('pod')) {
                 shell.echo(
                   chalk.redBright(
@@ -198,18 +194,15 @@ program
 
                 shell.exit(1);
               }
-            }
 
             cbResultReactNative(template, nameOfApp, answer, options, spinner);
-          } else if (options[0].value === TYPE_OF_APP.EXPO) {
+          } else if (options[0].value === TYPE_OF_APP.EXPO)
             cbResultExpo(template, nameOfApp, answer, options, spinner);
-          } else {
-            cbResultReact(template, nameOfApp, answer, options, spinner);
-          }
+          else cbResultReact(template, nameOfApp, answer, options, spinner);
         });
     });
 
-    list.on('cancel', function(options: string) {
+    list.on('cancel', (options: string) => {
       shell.echo(
         `Operation has been canceled, ${options.length} option was selected.`,
       );
@@ -221,13 +214,13 @@ program
 program
   .command('start')
   .description('start the project.')
-  .action(async function() {
+  .action(async () => {
     const spinner = ora('configuring project...\n');
 
     spinner.start();
 
     try {
-      let exists = await fsExists('.dooboo');
+      let exists = fs.existsSync('.dooboo');
 
       if (!exists) {
         shell.echo(
@@ -240,14 +233,14 @@ program
         process.exit(0);
       }
 
-      exists = await fsExists('node_modules');
+      exists = fs.existsSync('node_modules');
 
       if (!exists) {
         shell.echo(chalk.cyanBright('installing dependencies...'));
 
         // childProcess.execSync(`yarn`, {stdio: 'inherit'})
 
-        shell.exec('yarn', function(code) {
+        shell.exec('yarn', (code) => {
           if (code === 0) {
             shell.echo(chalk.cyanBright('running project...\n'));
             shell.exec('yarn run dev');
@@ -287,7 +280,7 @@ program
 program
   .command('test')
   .description('run test for your project.')
-  .action(async function() {
+  .action(async () => {
     const spinner = ora('configuring project...');
 
     spinner.start();
@@ -296,12 +289,12 @@ program
 
     shell.echo(chalk.cyanBright('\nchecking packages...'));
 
-    const exists = await fsExists('node_modules');
+    const exists = fs.existsSync('node_modules');
 
     if (!exists) {
       shell.echo(chalk.cyanBright('installing dependencies...'));
 
-      shell.exec('yarn', function(code) {
+      shell.exec('yarn', (code) => {
         if (code === 0) {
           shell.echo(chalk.cyanBright('running project...'));
           shell.exec('yarn test');
@@ -331,13 +324,13 @@ program
 program
   .command('navigation <c>')
   .description('generate navigation component.')
-  .action(async function(c) {
+  .action(async (c) => {
     exitIfNotDoobooRepo();
 
     const upperCamel = upperCamelize(c); // file name is upperCamelCase.
     const component = resolveComponent('navigation', upperCamel);
 
-    let exists = await fsExists(component.file);
+    let exists = fs.existsSync(component.file);
 
     if (exists) {
       shell.echo(
@@ -349,10 +342,14 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react');
+    exists = fs.existsSync('.dooboo/react');
 
     if (exists) {
-      const template = resolveTemplate('react', 'navigation', 'SwitchNavigator');
+      const template = resolveTemplate(
+        'react',
+        'navigation',
+        'SwitchNavigator',
+      );
 
       shell.echo(chalk.cyanBright('creating navigation component...'));
       shell.cp(template.file, component.file);
@@ -375,7 +372,7 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react-native');
+    exists = fs.existsSync('.dooboo/react-native');
 
     if (exists) {
       list
@@ -401,10 +398,14 @@ program
 
       let template: TemplateType;
 
-      list.on('select', function(options) {
+      list.on('select', (options) => {
         const navigationType = options[0].value;
 
-        template = resolveTemplate('react-native', 'navigation', navigationType);
+        template = resolveTemplate(
+          'react-native',
+          'navigation',
+          navigationType,
+        );
 
         shell.echo(chalk.cyanBright('creating navigation component...'));
         shell.cp(template.file, component.file);
@@ -426,7 +427,7 @@ program
 program
   .command('screen <c>')
   .description('generate screen component.')
-  .action(async function(c) {
+  .action(async (c) => {
     exitIfNotDoobooRepo();
 
     // const camel = camelize(c); // inside component is camelCase.
@@ -438,7 +439,7 @@ program
 
     const component = resolveComponent('screen', upperCamel, fileExt);
 
-    let exists = await fsExists(component.file);
+    let exists = fs.existsSync(component.file);
 
     if (exists) {
       shell.echo(
@@ -450,7 +451,7 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react');
+    exists = fs.existsSync('.dooboo/react');
 
     if (exists) {
       const template = resolveTemplate('react', 'screen', 'Screen');
@@ -477,7 +478,7 @@ program
      * This should be checked beforehand if there is differences
      * since react-native overlaps all conditions.
      */
-    exists = await fsExists('.dooboo/expo');
+    exists = fs.existsSync('.dooboo/expo');
 
     if (exists) {
       const template = resolveTemplate('react-native-expo', 'screen', 'Screen');
@@ -497,7 +498,7 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react-native');
+    exists = fs.existsSync('.dooboo/react-native');
 
     if (exists) {
       const template = resolveTemplate('react-native', 'screen', 'Screen');
@@ -530,7 +531,7 @@ program
 program
   .command('shared <c>')
   .description('generate shared component.')
-  .action(async function(c) {
+  .action(async (c) => {
     exitIfNotDoobooRepo();
 
     // const camel = camelize(c); // inside component is camelCase.
@@ -540,7 +541,7 @@ program
     // const fileExt = isTypescript ? 'tsx' : 'js';
     const component = resolveComponent('shared', upperCamel);
 
-    let exists = await fsExists(component.file);
+    let exists = fs.existsSync(component.file);
 
     if (exists) {
       shell.echo(
@@ -552,7 +553,7 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react');
+    exists = fs.existsSync('.dooboo/react');
 
     if (exists) {
       const template = resolveTemplate('react', 'shared', 'Shared');
@@ -572,7 +573,7 @@ program
       process.exit(0);
     }
 
-    exists = await fsExists('.dooboo/react-native');
+    exists = fs.existsSync('.dooboo/react-native');
 
     if (exists) {
       const template = resolveTemplate('react-native', 'shared', 'Shared');
@@ -605,10 +606,10 @@ program
 program
   .command('api <c>')
   .description('generate file for api call format.')
-  .action(async function(c) {
+  .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    const isTypescript = await fsExists('.dooboo/typescript');
+    const isTypescript = fs.existsSync('.dooboo/typescript');
     const fileExt = isTypescript ? 'tsx' : 'js';
 
     const camel = camelize(c);
@@ -616,7 +617,7 @@ program
 
     const apiFile = `./src/apis/${camel}.${fileExt}`;
 
-    const exists = await fsExists(apiFile);
+    const exists = fs.existsSync(apiFile);
 
     if (exists) {
       shell.echo(
@@ -644,15 +645,14 @@ program
 program
   .command('provider <c>')
   .description('generate provider file to use context api.')
-  .action(async function(c) {
+  .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    const camel = camelize(c);
     const upperCamel = upperCamelize(c);
 
     const providerFile = `./src/providers/${upperCamel}.tsx`;
     const providerTestFile = `./src/providers/__tests__/${upperCamel}.test.tsx`;
-    const exists = await fsExists(providerFile);
+    const exists = fs.existsSync(providerFile);
 
     if (exists) {
       shell.echo(
@@ -669,7 +669,7 @@ program
       .option(' Provider (State Type) ', TYPE_OF_PROVIDER.StateProvider)
       .list();
 
-    list.on('select', function(options) {
+    list.on('select', (options) => {
       const providerType = options[0].value;
 
       const template = path.resolve(
@@ -710,11 +710,11 @@ program
 
 program.parse(process.argv);
 
-let validCommands = program.commands.map(function(cmd) {
+let validCommands = program.commands.map((cmd) => {
   return cmd.name;
 });
 
-if (validCommands.length && process.argv[2]) {
+if (validCommands.length && process.argv[2])
   switch (process.argv[2]) {
     case 'init':
     case 'start':
@@ -726,7 +726,7 @@ if (validCommands.length && process.argv[2]) {
     case 'api':
       break;
     default:
-      validCommands = program.commands.map(function(cmd) {
+      validCommands = program.commands.map((cmd) => {
         return cmd.name;
       });
 
@@ -737,5 +737,4 @@ if (validCommands.length && process.argv[2]) {
 
       break;
   }
-  // program.parse([process.argv[0], process.argv[1], '-h']);
-}
+// program.parse([process.argv[0], process.argv[1], '-h']);

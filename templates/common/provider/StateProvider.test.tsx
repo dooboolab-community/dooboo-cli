@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { Button, View } from 'react-native';
-import { RenderAPI, act, fireEvent, render } from '@testing-library/react-native';
-import { StateProvider, useStateContext } from '../StateProvider';
+import {Button, View} from 'react-native';
+import {RenderAPI, act, fireEvent, render} from '@testing-library/react-native';
+import {StateProvider, useStateContext} from '../StateProvider';
 
 const FakeChild = (): React.ReactElement => {
-  const { setUser } = useStateContext();
+  const {setUser} = useStateContext();
 
   return (
     <View>
@@ -43,7 +43,7 @@ describe('Rendering', () => {
 
 describe('Interactions', () => {
   it('should setUser', async () => {
-    const { getByTestId } = render(
+    const {getByTestId} = render(
       <StateProvider>
         <FakeChild />
       </StateProvider>,

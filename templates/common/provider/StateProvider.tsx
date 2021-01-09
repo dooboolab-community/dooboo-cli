@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import createCtx from '../utils/createCtx';
 
@@ -19,7 +19,7 @@ interface Props {
   children?: React.ReactElement;
 }
 
-function StateProvider({ children }: Props): React.ReactElement {
+function StateProvider({children}: Props): React.ReactElement {
   const [user, setUser] = useState<User>({
     displayName: '',
     age: 0,
@@ -31,11 +31,10 @@ function StateProvider({ children }: Props): React.ReactElement {
       value={{
         user,
         setUser,
-      }}
-    >
+      }}>
       {children}
     </Provider>
   );
 }
 
-export { useCtx as useStateContext, StateProvider };
+export {useCtx as useStateContext, StateProvider};

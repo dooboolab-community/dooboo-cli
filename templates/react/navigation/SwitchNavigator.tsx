@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import React, { FC } from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React, {FC} from 'react';
 
 const SwitchNavigator: FC = () => {
   return (
     <BrowserRouter>
-      <div style={{ textAlign: 'center' }}>
+      <div style={{textAlign: 'center'}}>
         <Switch>
           <Route
             exact={true}

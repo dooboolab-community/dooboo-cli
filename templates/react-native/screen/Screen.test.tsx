@@ -1,12 +1,11 @@
 import 'react-native';
 
-import React, { ReactElement } from 'react';
-import { RenderAPI, render } from '@testing-library/react-native';
-import { createTestElement, createTestProps } from '../../../../test/testUtils';
+import React, {ReactElement} from 'react';
+import {RenderAPI, render} from '@testing-library/react-native';
+import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import Screen from '../Screen';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let props: any;
 let component: ReactElement;
 let testingLib: RenderAPI;

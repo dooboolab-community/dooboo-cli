@@ -1,10 +1,10 @@
 import * as renderer from 'react-test-renderer';
 
-import { RenderResult, render } from '@testing-library/react';
+import {RenderResult, render} from '@testing-library/react';
 
 import React from 'react';
 import SwitchNavigator from '../SwitchNavigator';
-import { createTestElement } from '../../../../test/testUtils';
+import {createTestElement} from '../../../../test/testUtils';
 
 const props = {};
 const component = createTestElement(<SwitchNavigator {...props} />);

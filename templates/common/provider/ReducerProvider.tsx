@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, {useReducer} from 'react';
 
 import createCtx from '../utils/createCtx';
 
@@ -53,7 +53,7 @@ const setUser = (dispatch: React.Dispatch<SetUserAction>) => (
   });
 };
 
-// prettier-ignore
+// eslint-disable-next-line default-param-last
 const reducer: Reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set-user':
@@ -76,7 +76,7 @@ function ReducerProvider(props: Props): React.ReactElement {
     setUser: setUser(dispatch),
   };
 
-  return <Provider value={{ state, ...actions }}>{props.children}</Provider>;
+  return <Provider value={{state, ...actions}}>{props.children}</Provider>;
 }
 
-export { useCtx as useReducerContext, ReducerProvider };
+export {useCtx as useReducerContext, ReducerProvider};
