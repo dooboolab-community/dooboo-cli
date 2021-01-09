@@ -470,6 +470,33 @@ program
       process.exit(0);
     }
 
+    /**
+     * Below is the case where the templates are different between
+     * expo and react-native project.
+     *
+     * This should be checked beforehand if there is differences
+     * since react-native overlaps all conditions.
+     */
+    exists = await fsExists('.dooboo/expo');
+
+    if (exists) {
+      const template = resolveTemplate('react-native-expo', 'screen', 'Screen');
+
+      shell.echo(chalk.cyanBright('creating screen component...'));
+      shell.cp(template.file, component.file);
+      shell.cp(template.testFile, component.testFile);
+      shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
+      shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
+
+      shell.echo(
+        chalk.green(
+          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
+        ),
+      );
+
+      process.exit(0);
+    }
+
     exists = await fsExists('.dooboo/react-native');
 
     if (exists) {
@@ -492,7 +519,7 @@ program
 
     shell.echo(
       chalk.redBright(
-        `\nproject is not in dooboo repository.
+        `\nproject is not under dooboo repository.
         If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
       ),
     );
