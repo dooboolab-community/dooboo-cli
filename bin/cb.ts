@@ -138,7 +138,13 @@ export const cbResultReactNative = (
           `./${nameOfApp}/src/components/screen/Intro.tsx`,
         );
 
-        shell.sed('-i', 'dooboo', `${nameOfApp}`, `./${nameOfApp}/index.js`);
+        shell.sed(
+          '-i',
+          'dooboo',
+          `${nameOfApp}`,
+          `./${nameOfApp}/src/index.tsx`,
+        );
+
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
         if (os.type() === 'Darwin')
