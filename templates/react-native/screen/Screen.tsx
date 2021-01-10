@@ -5,6 +5,8 @@ import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
 import styled from 'styled-components';
 
 const Content = styled.View`
+  flex: 1;
+  align-self: stretch;
   background-color: ${({theme}): string => theme.background};
 
   flex-direction: column;

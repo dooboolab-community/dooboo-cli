@@ -1,188 +1,28 @@
-## Changelogs
+## 5.0.2
 
-**[4.0.0]**
-- Fixed templates for React Native and Expo.
+Added below style for `react-native` screen template to fulfil the screen.
 
-**[3.8.2]**
-- Remove `react-native-cli` dependency and use npx instead.
+```css
+flex: 1;
+align-self: stretch;
+```
 
-**[3.8.0]**
-- Upgrade expo project to sdk 40.
+## 5.0.0
 
-**[3.7.3]**
-- Remove react-native-cli peer dependencies since this is all in npx now.
+* React Native template now support web!
 
-**[3.7.1]**
-- Migrate react-native test template.
+* Renamed callback func more specifically
 
-**[3.7.0]**
-- Upgrade expo to 39.
+   - cbResultWeb to cbResultReact and cbResultApp to cbResultReactNative.
+   - Replaced `cd ios && pod install to npx pod-install`.
 
-**[3.6.1]**
-- Change some tempaltes.
-  - Set `Prop to type` instead of `interface` since it shouldn't be empty.
-  - Removed unnecessary tests.
+* Renamed templates dir to `expo`
+   Expo is the higher condition that overlap react-native. Since we now have some differences between react-native and expo templates, we separate them to expo
 
-**[3.6.0]**
-- Upgrade reat-native to 0.63+
+* Separated screen templates for rn and expo
 
-**[3.5.1]**
-- Upgrade packages
-  ```
-  inquirer                 ^7.2.0  →    ^7.3.0 
-  @dooboo/eslint-config    ^0.4.2  →    ^0.4.3 
-  @types/node            ^14.0.14  →  ^14.0.20 
-  eslint                   ^7.3.1  →    ^7.4.0 
-  typescript               ^3.9.5  →    ^3.9.6 
-  ```
+* Changed pointing RN and EXPO project branches
 
-**[3.5.0]**
-- Upgrade expo to sdk 38
+* Applied new linting rules and refactor the codebase
 
-**[3.4.7]**
-- Upgrade packages
-  ```
-  @dooboo/eslint-config   ^0.3.8  →   ^0.4.2
-  @types/node            ^14.0.1  →  ^14.0.9
-  @types/shelljs          ^0.8.7  →   ^0.8.8
-  eslint                  ^6.8.0  →   ^7.1.0
-  typescript              ^3.8.3  →   ^3.9.3
-  ```
-
-**[3.4.6]**
-- Remove `object` type and replace it with `Record<string, unknown>`
-
-**[3.4.5]**
-- Fix typo in template
-
-**[3.4.4]**
-- Fix bug relying on `3.4.4`
-
-**[3.4.3]**
-- Fix bug relying on `3.4.2`
-
-**[3.4.2]**
-- Add react-native project version for git branch sync
-
-**[3.4.1]**
-- Update react-native template to 0.62.2
-- Default template to `FC` instead of `ReactElement`
-
-**[3.4.0]**
-- Update react-naitve template to 0.62.0
-
-**[3.3.7]**
-- Fix `react`'s shared component not generating properly.
-
-**[3.3.6]**
-- Renamed `NavigationNativeContainer` to `NavigationContainer` react-native` test template.
-
-**[3.3.5]**
-- Fix navigation template path from `@dooboo-ui/native-theme`.
-
-**[3.3.3]**
-- [HotFix] Resolve `screen` component for react correctly.
-
-**[3.3.2]**
-- Remove `react-test-renderer` import from the templates.
-
-**[3.3.1]**
-- Resolve templat`e for `react`.
-
-**[3.3.0]**
-- Enhanced navigation typings.
-- Compatible with `dooboo-native-ts` and `dooboo-expo` 0.1.+ templates.
-
-**[3.2.3]**
-
-- Update templates for testing.
-
-**[3.2.2]**
-
-- Fix shell script while generating [Provider] file.
-  * sed all names in [MainActivity]
-- Fix wrong cp command when generating component.
-- Update templates.
-- Fix typings.
-
-**[3.1.2]**
-
-- Fix shell script while generating [Provider] file.
-
-**[3.1.1]**
-
-- Fix typo while generating [Provider] file.
-
-**[3.1.0]**
-
-- Install all post installation step for `react-navigation` in `react-native` template.
-
-**[3.0.0]**
-
-- React Navigation V5 emplate.
-- Provider pattern template.
-- Refactor code base.
-- Clean code.
-
-**[2.5.1]**
-
-- Remove default `-h` since this isn't working as expected.
-
-**[2.5.0]**
-
-- Fixed expo project generate failure.
-
-**[2.4.0]**
-
-- Upgraded templates to new `dooboo-native` templates which is compatible with `react-navigation@next` which will be `v5`.
-
-  **[2.1.0]**
-
-- Add missing templates folder.
-  **[2.0.+]**
-
-- Compatible with RN >= 0.60.
-- Run pod installation after installation in rn.
-- Check pod installation when it is macos.
-- Run `pod install` when it is macos.
-- Update packages.
-  **[1.9.+]**
-- Update ui/testing templates for `react-native`.
-- Migrated template to [@testing-library/react-native](https://www.native-testing-library.com/docs/install).
-  **[1.8.+]**
-- Modify npm script to yarn.
-- Include `expo` typescript project.
-- Fix more templates.
-  **[1.7.2]**
-- Update `react-native` template for `shared` and `screen`.
-  **[1.7.0]**
-- Update packages.
-- Require `yarn` to be installed.
-  **[1.6.6]**
-- Update template for `react-testing-library` for `shared` components.
-  **[1.6.4]**
-- Update template for `react-testing-library`. It has changed to `@testing-library/react`.
-  **[1.6.3]**
-- Update `template` for React app (_both `ts` and `js`_).
-  **[1.6.2]**
-- Enhanced test config in `react-native-ts` project.
-  **[1.6.1]**
-- Enhanced types for`react-navigation` in `react-native-ts` project.
-  **[1.6.0]**
-- Seperated web + app generated script to avoid confusion.
-  **[1.5.+]**
-- Completely removed `legacy` template.
-  **[1.4.+]**
-- Deprecate `mobx` template from boilerplates.
-- Fixed small `types` when generating screen.
-
-* Renew all templates with `react-hook` with `context-api`.
-* `1.4.1` has fixed regression issue.
-  **[1.2+]**
-* Get rid of `path` and `fs` as in [#5](https://github.com/dooboolab/dooboo-cli/issues/4);
-* Enhanced template for styling style props.
-  **[1.1+]**
-* React Native template added `react-native-gesture-handler` to be linked.
-* Removed all repositories to `dooboolab` repo.
-* Fixed wrong generation of `test` temaplate.
-* Fixed wrong generation of `store` template.
+* Added compatibility command for v5
