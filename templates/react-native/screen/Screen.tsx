@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 
-import Container from '../navigation/Container';
 import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+import {withScreen} from '../../utils/wrapper';
 
-const Content = styled.View`
+const Container = styled.View`
   flex: 1;
   align-self: stretch;
   background-color: ${({theme}): string => theme.background};
@@ -25,11 +25,9 @@ type Props = {
 const Page: FC<Props> = () => {
   return (
     <Container>
-      <Content>
-        <StyledText>Screen</StyledText>
-      </Content>
+      <StyledText>Screen</StyledText>
     </Container>
   );
 };
 
-export default Page;
+export default withScreen(Page);

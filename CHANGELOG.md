@@ -1,3 +1,7 @@
+## 5.1.0
+
+Added `withScreen` utility function imports rather than wrapping `Container` which is removed in `react-native` template.
+
 ## 5.0.2
 
 Added below style for `react-native` screen template to fulfil the screen.
