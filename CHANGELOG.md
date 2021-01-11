@@ -1,3 +1,7 @@
+## 5.1.1
+
+Changed react-native screen template text to `Page` from `Screen`. Because we now have `withScreen` wrapper in it which shouldn't be changed.
+
 ## 5.1.0
 
 Added `withScreen` utility function imports rather than wrapping `Container` which is removed in `react-native` template.

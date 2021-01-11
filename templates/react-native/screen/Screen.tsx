@@ -25,7 +25,7 @@ type Props = {
 const Page: FC<Props> = () => {
   return (
     <Container>
-      <StyledText>Screen</StyledText>
+      <StyledText>Page</StyledText>
     </Container>
   );
 };
