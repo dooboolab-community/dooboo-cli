@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
+import {RootStackNavigationProps} from '../navigations/RootStackNavigator';
 import styled from 'styled-components/native';
 import {withScreen} from '../../utils/wrapper';
 

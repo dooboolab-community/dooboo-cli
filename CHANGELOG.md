@@ -1,3 +1,7 @@
+## 6.0.5
+
+Fix typo in `react-native` page tempalte.
+
 ## 6.0.4
 
 Generate files in plural dir. Now the boilerplate has all plural folder name.
