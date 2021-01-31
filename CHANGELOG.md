@@ -1,4 +1,4 @@
-## 6.0.3
+## 6.0.4
 
 Generate files in plural dir. Now the boilerplate has all plural folder name.
 
