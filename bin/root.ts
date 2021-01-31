@@ -426,8 +426,8 @@ program
   });
 
 program
-  .command('screen <c>')
-  .description('generate screen component.')
+  .command('page <c>')
+  .description('generate page (aka screen) component.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
@@ -438,14 +438,14 @@ program
     // const fileExt = isTypescript ? 'tsx' : 'js';
     const fileExt = 'tsx';
 
-    const component = resolveComponent('screen', upperCamel, fileExt);
+    const component = resolveComponent('page', upperCamel, fileExt);
 
     let exists = fs.existsSync(component.file);
 
     if (exists) {
       shell.echo(
         chalk.redBright(
-          `${upperCamel} screen already exists. Delete or rename existing component first.`,
+          `${upperCamel} page already exists. Delete or rename existing component first.`,
         ),
       );
 
@@ -455,13 +455,13 @@ program
     exists = fs.existsSync('.dooboo/react');
 
     if (exists) {
-      const template = resolveTemplate('react', 'screen', 'Screen');
+      const template = resolveTemplate('react', 'page', 'Page');
 
-      shell.echo(chalk.cyanBright('creating screen component...'));
+      shell.echo(chalk.cyanBright('creating page component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', 'Page', `${upperCamel}`, component.file);
+      shell.sed('-i', '../Page', `../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -484,13 +484,13 @@ program
     if (exists) {
       exitIfNotV5();
 
-      const template = resolveTemplate('react-native-expo', 'screen', 'Screen');
+      const template = resolveTemplate('react-native-expo', 'page', 'Page');
 
-      shell.echo(chalk.cyanBright('creating screen component...'));
+      shell.echo(chalk.cyanBright('creating page component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Screen', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Screen', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', 'Page', `${upperCamel}`, component.file);
+      shell.sed('-i', '../Page', `../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -506,9 +506,9 @@ program
     if (exists) {
       exitIfNotV5();
 
-      const template = resolveTemplate('react-native', 'screen', 'Screen');
+      const template = resolveTemplate('react-native', 'page', 'Page');
 
-      shell.echo(chalk.cyanBright('creating screen component...'));
+      shell.echo(chalk.cyanBright('creating page component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Page', `${upperCamel}`, component.file);
@@ -534,8 +534,8 @@ program
   });
 
 program
-  .command('shared <c>')
-  .description('generate shared component.')
+  .command('template <c>')
+  .description('generate template component.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
@@ -544,14 +544,14 @@ program
 
     // const isTypescript = await fsExists('.dooboo/typescript');
     // const fileExt = isTypescript ? 'tsx' : 'js';
-    const component = resolveComponent('shared', upperCamel);
+    const component = resolveComponent('template', upperCamel);
 
     let exists = fs.existsSync(component.file);
 
     if (exists) {
       shell.echo(
         chalk.redBright(
-          `${upperCamel} shared already exists. Delete or rename existing component first.`,
+          `${upperCamel} template already exists. Delete or rename existing component first.`,
         ),
       );
 
@@ -561,13 +561,13 @@ program
     exists = fs.existsSync('.dooboo/react');
 
     if (exists) {
-      const template = resolveTemplate('react', 'shared', 'Shared');
+      const template = resolveTemplate('react', 'template', 'Template');
 
-      shell.echo(chalk.cyanBright('creating shared component...'));
+      shell.echo(chalk.cyanBright('creating template component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Shared', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Shared', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', 'Template', `${upperCamel}`, component.file);
+      shell.sed('-i', '../Template', `../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -581,13 +581,13 @@ program
     exists = fs.existsSync('.dooboo/react-native');
 
     if (exists) {
-      const template = resolveTemplate('react-native', 'shared', 'Shared');
+      const template = resolveTemplate('react-native', 'template', 'Template');
 
-      shell.echo(chalk.cyanBright('creating shared component...'));
+      shell.echo(chalk.cyanBright('creating template component...'));
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Shared', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Shared', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', 'Template', `${upperCamel}`, component.file);
+      shell.sed('-i', '../Template', `../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -725,8 +725,8 @@ if (validCommands.length && process.argv[2])
     case 'start':
     case 'test':
     case 'navigation':
-    case 'screen':
-    case 'shared':
+    case 'page':
+    case 'template':
     case 'provider':
     case 'api':
       break;

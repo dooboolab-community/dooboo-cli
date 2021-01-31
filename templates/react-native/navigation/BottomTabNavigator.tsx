@@ -36,7 +36,7 @@ function MaterialBottomTabNavigator(): ReactElement {
           // tabBarIcon: ({ focused }): React.ReactElement => TabBarIcon(focused),
         }
       }>
-      {/* <Tab.Screen name="Screen" component={Screen} /> */}
+      {/* <Tab.Screen name="Page" component={Page} /> */}
     </Tab.Navigator>
   );
 }

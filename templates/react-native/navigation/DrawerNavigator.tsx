@@ -39,9 +39,9 @@ function CustomDrawerContent({drawerPosition}): ReactElement {
       ]}
       style={styles.container}>
       <DrawerItem
-        label="Screen"
+        label="Page"
         onPress={(): void => {
-          // navigation.navigate('Screen');
+          // navigation.navigate('Page');
         }}
       />
     </ScrollView>
@@ -54,7 +54,7 @@ function Navigator(): ReactElement {
       drawerContent={(props: DrawerContentComponentProps): ReactElement => (
         <CustomDrawerContent {...props} />
       )}>
-      {/* <Drawer.Screen name="Screen" component={Screen} /> */}
+      {/* <Drawer.Screen name="Page" component={Page} /> */}
     </Drawer.Navigator>
   );
 }

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {RootStackNavigationProps} from '../navigation/RootStackNavigator';
+import {RootStackNavigationProps} from '../navigations/RootStackNavigator';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -23,7 +23,7 @@ interface Props {
 const Page: FC<Props> = () => {
   return (
     <Container>
-      <StyledText>Screen</StyledText>
+      <StyledText>Page</StyledText>
     </Container>
   );
 };

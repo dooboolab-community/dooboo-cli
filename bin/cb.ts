@@ -135,7 +135,7 @@ export const cbResultReactNative = (
           '-i',
           'DOOBOO NATIVE',
           `${nameOfApp}`,
-          `./${nameOfApp}/src/components/screen/Intro.tsx`,
+          `./${nameOfApp}/src/components/pages/Intro.tsx`,
         );
 
         shell.sed(

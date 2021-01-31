@@ -9,7 +9,7 @@ const SwitchNavigator: FC = () => {
           <Route
             exact={true}
             path="/"
-            // render={(): ReactElement => <Screen />}
+            // render={(): ReactElement => <Page />}
           />
         </Switch>
       </div>

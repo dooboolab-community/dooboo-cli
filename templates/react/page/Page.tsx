@@ -19,7 +19,7 @@ type Props = {};
 const Page: FC<Props> = () => {
   return (
     <Container>
-      <Text>Screen</Text>
+      <Text>Page</Text>
     </Container>
   );
 };

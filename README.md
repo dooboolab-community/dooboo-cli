@@ -32,12 +32,15 @@
 
   - React Native & Expo Templates
 
-    | dooboo-cli         | RN template   | Expo template   |
-    | ------------------ | ------------- | --------------- |
-    | 3.3.11             | 0.61.5        | 36              |
-    | 3.4.+              | 0.62.+        | 37              |
-    | 3.5.+              | 0.62.+        | 38              |
-    | 3.6.+              | 0.63.+        | 38              |
+    | dooboo-cli     | RN template             | Expo template   |
+    | -------------- | ----------------------- | --------------- |
+    | 3.3.11         | 0.61.5                  | 36              |
+    | 3.4.+          | 0.62.+                  | 37              |
+    | 3.5.+          | 0.62.+                  | 38              |
+    | 3.6.+          | 0.63.+                  | 38              |
+    | 4.0.+          | 0.63.+                  | 39              |
+    | 5.0.+          | 0.63.+ (web support)    | 40              |
+    | 6.0.+          | 0.63.+ (atomic design)  | 40              |
 
 ## Stacks we use
 
@@ -51,23 +54,30 @@
 - [typescript](https://github.com/Microsoft/TypeScript)
 - [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [prettier](https://prettier.io)
+- [localization (fbt)](https://github.com/facebook/fbt)
 
 #### Native mobile based project
 
 - [react-native](https://github.com/facebook/react-native)
 - [react-navigation](https://github.com/react-navigation/react-navigation)
-- [localization](https://github.com/stefalda/ReactNativeLocalization)
 - [styled-components](https://github.com/styled-components/styled-components)
-- [@testing-library/react-native](https://github.com/testing-library/native-testing-library)
+- [jest](https://github.com/facebook/jest)
+- [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
 - [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [prettier](https://prettier.io)
+- [react-native-web](https://github.com/necolas/react-native-web)
+- [localization (fbt)](https://github.com/facebook/fbt)
 
-## Important
+## Quick News
 
-- You should use `dooboo-cli` from version `1.1.0` because there was a movement of codes in this version which won't work as expected in previous version. This will be fixed for now.
-- Another major migration has been done in version `1.4.1`. With the release of `react-hook` we decided to make our major boilerplates into `functional` rather than `oop` style (which was most suitable with `mobx`).
-- From `dooboo-cli@2.0.0` we decided to remove `flow` projects since, those aren't maintained well enough as `ts` projects since we focus on `typescript`. Therefore, flow projects are currently deprecated.
+- In `v5`, we drive `react-native` project to support `react-native-web`.
+  * Main changes in react-native project
+    - The `screen` component should be wrapped with `withScreen` provided in `wrapper.tsx`.
+- Starting from `v6`, we manage our boilerplate in [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2)
+  * Main changes in all projects
+    - `screen` dir moved to `pages`.
+    - `shared` dir moved to `templates`.
 
 ## Installation
 
@@ -93,8 +103,8 @@
     init                 init boilerplate of dooboo generated app.
     start                start the project
     test                 run test for your project
-    screen <c>           generate screen component.
-    shared <c>           generate shared component.
+    page <c>             generate page (aka screen) component.
+    template <c>         generate template (aka shared) component.
     api <c>              generate file for api call format.
 ```
 
@@ -114,6 +124,7 @@
 
 - [x] Support navigation templates for `react` & `react-native`
 - [x] Upgrade template to `react@16.9.+`
-- [x] Upgrade template to `react-native@0.60.+`
-- [x] Upgrade template to `react-navigation v3`
+- [x] Upgrade template to `react-native@0.63.+`
+- [x] Support react-native-web in both `react-native` and `expo` projects
+- [x] Upgrade template to `react-navigation v5`
 - [ ] Support personal boilerplate option for `react-native`

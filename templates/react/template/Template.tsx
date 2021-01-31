@@ -10,8 +10,8 @@ const Container = styled.div`
 
 type Props = {};
 
-const Shared: FC<Props> = ({children}) => {
+const Template: FC<Props> = ({children}) => {
   return <Container>{children}</Container>;
 };
 
-export default Shared;
+export default Template;

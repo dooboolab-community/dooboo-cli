@@ -1,24 +1,22 @@
-import 'react-native';
-
 import React, {ReactElement} from 'react';
-import {RenderAPI, render} from '@testing-library/react-native';
+import {RenderResult, render} from '@testing-library/react';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
-import Screen from '../Screen';
+import Template from './Template';
 
 let props: any;
 let component: ReactElement;
-let testingLib: RenderAPI;
+let testingLib: RenderResult;
 
 describe('Rendering', () => {
   beforeEach(() => {
     props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
+    component = createTestElement(<Template {...props} />);
     testingLib = render(component);
   });
 
   it('renders without crashing', () => {
-    const baseElement = testingLib.toJSON();
+    const {baseElement} = testingLib;
 
     expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
@@ -28,17 +26,16 @@ describe('Rendering', () => {
 describe('Interaction', () => {
   beforeEach(() => {
     props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
+    component = createTestElement(<Template {...props} />);
     testingLib = render(component);
   });
 
   it('should simulate onClick', () => {
-    expect(testingLib.toJSON()).toMatchSnapshot();
-    // const btn = testingLib.queryByTestId('btn');
-    // act(() => {
-    //   fireEvent.press(btn);
-    //   fireEvent.press(btn);
-    // });
-    // expect(cnt).toBe(3);
+    const {baseElement} = testingLib;
+
+    expect(baseElement).toMatchSnapshot();
+    expect(baseElement).toBeTruthy();
+    // fireEvent(testingLib.getByTestId('btn'), 'click');
+    // expect(cnt).toBe(2);
   });
 });

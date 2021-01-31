@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import {RenderResult, render} from '@testing-library/react';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
-import Screen from '../Screen';
+import Page from './Page';
 
 let props: any;
 let component: ReactElement;
@@ -11,7 +11,7 @@ let testingLib: RenderResult;
 describe('Rendering', () => {
   beforeEach(() => {
     props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
+    component = createTestElement(<Page {...props} />);
     testingLib = render(component);
   });
 

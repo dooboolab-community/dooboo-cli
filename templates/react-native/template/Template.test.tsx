@@ -1,19 +1,20 @@
 import 'react-native';
 
-import React, {ReactElement} from 'react';
+import * as React from 'react';
+
 import {RenderAPI, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
-import Screen from '../Page';
+import Template from './Template';
 
 let props: any;
-let component: ReactElement;
+let component: React.ReactElement;
 let testingLib: RenderAPI;
 
 describe('Rendering', () => {
   beforeEach(() => {
     props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
+    component = createTestElement(<Template {...props} />);
     testingLib = render(component);
   });
 
@@ -27,8 +28,6 @@ describe('Rendering', () => {
 
 describe('Interaction', () => {
   beforeEach(() => {
-    props = createTestProps();
-    component = createTestElement(<Screen {...props} />);
     testingLib = render(component);
   });
 
@@ -36,7 +35,6 @@ describe('Interaction', () => {
     expect(testingLib.toJSON()).toMatchSnapshot();
     // const btn = testingLib.queryByTestId('btn');
     // act(() => {
-    //   fireEvent.press(btn);
     //   fireEvent.press(btn);
     // });
     // expect(cnt).toBe(3);
