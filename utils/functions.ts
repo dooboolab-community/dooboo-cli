@@ -20,13 +20,13 @@ export const resolveTemplate = (
   const template = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}/${componentName}.${fileExt}`,
+    `templates/${projectType}/${componentType}s/${componentName}.${fileExt}`,
   );
 
   const testTemplate = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}/${componentName}.test.${fileExt}`,
+    `templates/${projectType}/${componentType}s/${componentName}.test.${fileExt}`,
   );
 
   return {
@@ -40,8 +40,8 @@ export const resolveComponent = (
   name: string,
   fileExt = 'tsx',
 ): TemplateType => {
-  const component = `./src/components/${componentType}/${name}.${fileExt}`;
-  const testComponent = `./src/components/${componentType}/__tests__/${name}.test.${fileExt}`;
+  const component = `./src/components/${componentType}s/${name}.${fileExt}`;
+  const testComponent = `./src/components/${componentType}s/__tests__/${name}.test.${fileExt}`;
 
   return {
     file: component,

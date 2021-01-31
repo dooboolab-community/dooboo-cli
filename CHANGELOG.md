@@ -1,3 +1,7 @@
+## 6.0.3
+
+Generate files in plural dir. Now the boilerplate has all plural folder name.
+
 ## 6.0.2
 
 Boilerplates are not configured in atomic design pattern.
