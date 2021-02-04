@@ -15,7 +15,7 @@ const Container = styled.View`
 `;
 
 const StyledText = styled.Text`
-  color: ${({theme}): string => theme.font};
+  color: ${({theme}): string => theme.text};
 `;
 
 type Props = {

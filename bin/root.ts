@@ -461,7 +461,7 @@ program
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -490,7 +490,7 @@ program
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -512,7 +512,7 @@ program
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -567,7 +567,7 @@ program
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Template', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Template', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', '../Template', `'../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(
@@ -587,7 +587,7 @@ program
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Template', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Template', `../${upperCamel}`, component.testFile);
+      shell.sed('-i', '../Template', `'../${upperCamel}`, component.testFile);
 
       shell.echo(
         chalk.green(

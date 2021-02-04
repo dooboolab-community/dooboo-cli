@@ -1,3 +1,9 @@
+## 6.0.6
+
+Fix `sed` script during test file creation.
+Changed `theme.font` => `theme.text` in template files.
+
+
 ## 6.0.5
 
 Fix typo in `react-native` page tempalte.

@@ -25,7 +25,7 @@ function RootNavigator(): React.ReactElement {
         headerStyle: {
           backgroundColor: theme.background,
         },
-        headerTitleStyle: {color: theme.fontColor},
+        headerTitleStyle: {color: theme.text},
         headerTintColor: theme.tintColor,
       }}>
       {/* <Stack.Screen name="Page" component={Page} /> */}
