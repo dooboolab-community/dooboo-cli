@@ -680,13 +680,13 @@ program
       const template = path.resolve(
         __dirname,
         '..',
-        `templates/common/provider/${providerType}.tsx`,
+        `templates/common/providers/${providerType}.tsx`,
       );
 
       const testTemplate = path.resolve(
         __dirname,
         '..',
-        `templates/common/provider/${providerType}.test.tsx`,
+        `templates/common/providers/${providerType}.test.tsx`,
       );
 
       shell.cp(template, providerFile);

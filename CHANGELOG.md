@@ -1,3 +1,7 @@
+## 6.0.7
+
+Fixed provider template paths.
+
 ## 6.0.6
 
 Fix `sed` script during test file creation.
