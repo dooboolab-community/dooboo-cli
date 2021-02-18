@@ -41,6 +41,7 @@
     | 4.0.+          | 0.63.+                  | 39              |
     | 5.0.+          | 0.63.+ (web support)    | 40              |
     | 6.0.+          | 0.63.+ (atomic design)  | 40              |
+    | 6.1.1+         | 0.63.+ (Removed atomic) | 40              |
 
 ## Stacks we use
 

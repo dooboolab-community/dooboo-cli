@@ -1,3 +1,7 @@
+## 6.1.0
+
+Changed generate component path: `templates` => `uis`
+
 ## 6.0.7
 
 Fixed provider template paths.

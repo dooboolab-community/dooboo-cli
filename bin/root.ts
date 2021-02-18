@@ -534,8 +534,8 @@ program
   });
 
 program
-  .command('template <c>')
-  .description('generate template component.')
+  .command('ui <c>')
+  .description('generate ui component.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
@@ -544,7 +544,7 @@ program
 
     // const isTypescript = await fsExists('.dooboo/typescript');
     // const fileExt = isTypescript ? 'tsx' : 'js';
-    const component = resolveComponent('template', upperCamel);
+    const component = resolveComponent('ui', upperCamel);
 
     let exists = fs.existsSync(component.file);
 
