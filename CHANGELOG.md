@@ -1,6 +1,6 @@
 ## 6.1.0
 
-Change generate component path: `templates` => `uis`.
+Changed generate component path: `templates` => `uis`
 
 ## 6.0.7
 
