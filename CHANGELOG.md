@@ -1,3 +1,7 @@
+## 6.2.0
+
+React Native project is now based on `0.64.+`.
+
 ## 6.1.0
 
 Changed generate component path: `templates` => `uis`
