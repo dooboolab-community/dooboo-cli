@@ -1,3 +1,7 @@
+## 6.2.1
+
+Android app registry name to original.
+
 ## 6.2.0
 
 React Native project is now based on `0.64.+`.

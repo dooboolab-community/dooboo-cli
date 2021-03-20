@@ -119,7 +119,7 @@ export const cbResultReactNative = (
         shell.sed(
           '-i',
           'dooboo',
-          `${nameOfApp.toLowerCase()}`,
+          `${nameOfApp}`,
           `./${nameOfApp}/${nameOfApp}/android/app/src/main/java/com/${nameOfApp.toLocaleLowerCase()}/MainActivity.java`,
         );
 
