@@ -12,25 +12,7 @@
 - Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
 ## Compatability
-- version 3
-
-  - React
-
-    | package           | necessary |
-    | ----------------- | --------- |
-    | react-router-dom  | >= 5.0.0  |
-    | styled-components | >= 4.0.0  |
-    | react             | >= 16.9.0 |
-
-  - React Native
-
-    | package           | necessary |
-    | ----------------- | --------- |
-    | react-navigation  | >= 5.0.0  |
-    | styled-components | >= 4.0.0  |
-    | react-native      | >= 59.0.0 |
-
-  - React Native & Expo Templates
+- React Native & Expo Templates
 
     | dooboo-cli     | RN template             | Expo template   |
     | -------------- | ----------------------- | --------------- |
@@ -43,6 +25,7 @@
     | 6.0.+          | 0.63.+ (atomic design)  | 40              |
     | 6.1.1+         | 0.63.+ (Removed atomic) | 40              |
     | 6.2.+          | 0.64.+                  | 40              |
+    | 6.3.+ (Emotion)| 0.64.+ (Emotion)        | 41              |
 
 ## Stacks we use
 
@@ -50,7 +33,7 @@
 
 - [react](https://github.com/facebook/react)
 - [react-router](https://github.com/ReactTraining/react-router)
-- [styled-components](https://github.com/styled-components/styled-components)
+- [emotion](https://emotion.sh)
 - [jest](https://github.com/facebook/jest)
 - [react-testing-library](https://github.com/kentcdodds/react-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
@@ -62,7 +45,7 @@
 
 - [react-native](https://github.com/facebook/react-native)
 - [react-navigation](https://github.com/react-navigation/react-navigation)
-- [styled-components](https://github.com/styled-components/styled-components)
+- [emotion](https://emotion.sh)
 - [jest](https://github.com/facebook/jest)
 - [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)

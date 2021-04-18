@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import {RootStackNavigationProps} from '../navigations/RootStackNavigator';
-import styled from 'styled-components/native';
+import styled from '@emotion/native';
 import {withScreen} from '../../utils/wrapper';
 
 const Container = styled.View`

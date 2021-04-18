@@ -1,3 +1,8 @@
+## 6.3.0
+
+Update `react` and `react-native` templates to [emotion](https://emotion.sh)
+Update `expo` project template to `sdk 41`.
+
 ## 6.2.1
 
 Android app registry name to original.
