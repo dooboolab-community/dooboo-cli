@@ -46,7 +46,7 @@
 - [react-native](https://github.com/facebook/react-native)
 - [react-navigation](https://github.com/react-navigation/react-navigation)
 - [emotion](https://emotion.sh)
-- [dooboo-ui](github.com/dooboolab/dooboo-ui)
+- [dooboo-ui](https://github.com/dooboolab/dooboo-ui)
 - [jest](https://github.com/facebook/jest)
 - [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
