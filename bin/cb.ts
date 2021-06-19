@@ -204,7 +204,7 @@ export const cbResultExpo = (
           '-i',
           'dooboo',
           camelCaseToDash(`${nameOfApp}`),
-          `./${nameOfApp}/app.json`,
+          `./${nameOfApp}/app.config.ts`,
         );
 
         shell.exec('pwd');
