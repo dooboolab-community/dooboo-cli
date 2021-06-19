@@ -7,10 +7,10 @@ export const sample = async (
   const fetchOption: RequestInit = {
     signal,
     method: 'POST',
-    headers: new Headers({
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-    }),
+    },
     body: JSON.stringify(body),
   };
 

@@ -46,6 +46,7 @@
 - [react-native](https://github.com/facebook/react-native)
 - [react-navigation](https://github.com/react-navigation/react-navigation)
 - [emotion](https://emotion.sh)
+- [dooboo-ui](github.com/dooboolab/dooboo-ui)
 - [jest](https://github.com/facebook/jest)
 - [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
@@ -104,12 +105,3 @@
 - [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-ts)
 - [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-ts)
 - [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-expo.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-expo)
-
-## TODO
-
-- [x] Support navigation templates for `react` & `react-native`
-- [x] Upgrade template to `react@16.9.+`
-- [x] Upgrade template to `react-native@0.63.+`
-- [x] Support react-native-web in both `react-native` and `expo` projects
-- [x] Upgrade template to `react-navigation v5`
-- [ ] Support personal boilerplate option for `react-native`
