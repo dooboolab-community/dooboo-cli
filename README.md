@@ -60,10 +60,10 @@
 - In `v5`, we drive `react-native` project to support `react-native-web`.
   * Main changes in react-native project
     - The `screen` component should be wrapped with `withScreen` provided in `wrapper.tsx`.
-- Starting from `v6`, we manage our boilerplate in [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2)
+- Starting from `v6`, we manage our boilerplate folder name similar to [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2) but not exactly.
   * Main changes in all projects
     - `screen` dir moved to `pages`.
-    - `shared` dir moved to `templates`.
+    - `shared` dir moved to `uis`.
 
 ## Installation
 
