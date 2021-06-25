@@ -1,3 +1,6 @@
+## 6.4.3
+- Add `react-native link` command at the end. It now includes [dooboo-ui](https://dooboo-ui.dooboolab.com).
+
 ## 6.4.2
 [Bugfix]
 - Rename `package` in `MainActivity` to lowercase.

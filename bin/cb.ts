@@ -156,6 +156,10 @@ export const cbResultReactNative = (
             stdio: 'inherit',
           });
 
+        childProcess.execSync(`cd ${nameOfApp} && npx react-native link`, {
+          stdio: 'inherit',
+        });
+
         spinner.stop();
 
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));
