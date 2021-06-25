@@ -1,3 +1,10 @@
+## 6.4.2
+[Bugfix]
+- Rename `package` in `MainActivity` to lowercase.
+
+## 6.4.1
+Fix file search from `app.json` to `app.config.ts`.
+
 ## 6.4.0
 Integrate [dooboo-ui](https://github.com/dooboolab/dooboo-ui) to `react-native` and `expo` projects.
 

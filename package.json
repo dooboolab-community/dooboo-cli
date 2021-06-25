@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "6.4.1",
+  "version": "6.4.2",
   "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@dooboo/eslint-config": "^0.7.4",
-    "@types/inquirer": "^7.3.1",
+    "@types/inquirer": "^7.3.2",
     "@types/node": "^15.12.4",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.8",
