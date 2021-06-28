@@ -1,3 +1,6 @@
+## 6.5.0
+- Migrate `react` template to `emotion v11` and `react-router-dom v6`.
+
 ## 6.4.3
 - Add `react-native link` command at the end. It now includes [dooboo-ui](https://dooboo-ui.dooboolab.com).
 
