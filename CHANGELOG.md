@@ -1,3 +1,6 @@
+## 6.6.0
+- Update expo project to sdk 42.
+
 ## 6.5.0
 - Migrate `react` template to `emotion v11` and `react-router-dom v6`.
 
