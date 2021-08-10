@@ -4,20 +4,20 @@ import {
 } from '@react-navigation/native-stack';
 
 import React from 'react';
-import {useThemeContext} from '@dooboo-ui/native-theme';
+import {useTheme} from 'dooboo-ui';
 
 export type NativeStackParamList = {
   default: undefined;
 };
 
 export type NativeStackNavigationProps<
-  T extends keyof NativeStackParamList = 'default'
+  T extends keyof NativeStackParamList = 'default',
 > = NativeStackNavigationProp<NativeStackParamList, T>;
 
 const Stack = createNativeStackNavigator<NativeStackParamList>();
 
 function RootNavigator(): React.ReactElement {
-  const {theme} = useThemeContext();
+  const {theme} = useTheme();
 
   return (
     <Stack.Navigator

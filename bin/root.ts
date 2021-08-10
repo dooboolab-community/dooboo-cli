@@ -22,7 +22,7 @@ import os = require('os');
 import selectShell = require('select-shell');
 import shell = require('shelljs');
 import path = require('path');
-import program = require('commander');
+import commander = require('commander');
 import boxen = require('boxen');
 import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
@@ -51,6 +51,8 @@ export enum TYPE_OF_PROVIDER {
   ReducerProvider = 'ReducerProvider',
   StateProvider = 'StateProvider',
 }
+
+const program = new commander.Command();
 
 const notifier = updateNotifier({
   pkg,
