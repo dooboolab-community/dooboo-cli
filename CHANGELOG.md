@@ -1,20 +1,31 @@
+## 6.7.0
+
+- Upgrade RN project to 0.65.1
+
 ## 6.6.0
+
 - Update expo project to sdk 42.
 
 ## 6.5.0
+
 - Migrate `react` template to `emotion v11` and `react-router-dom v6`.
 
 ## 6.4.3
+
 - Add `react-native link` command at the end. It now includes [dooboo-ui](https://dooboo-ui.dooboolab.com).
 
 ## 6.4.2
+
 [Bugfix]
+
 - Rename `package` in `MainActivity` to lowercase.
 
 ## 6.4.1
+
 Fix file search from `app.json` to `app.config.ts`.
 
 ## 6.4.0
+
 Integrate [dooboo-ui](https://github.com/dooboolab/dooboo-ui) to `react-native` and `expo` projects.
 
 ## 6.3.0
@@ -42,7 +53,6 @@ Fixed provider template paths.
 
 Fix `sed` script during test file creation.
 Changed `theme.font` => `theme.text` in template files.
-
 
 ## 6.0.5
 
@@ -75,20 +85,20 @@ align-self: stretch;
 
 ## 5.0.0
 
-* React Native template now support web!
+- React Native template now support web!
 
-* Renamed callback func more specifically
+- Renamed callback func more specifically
 
-   - cbResultWeb to cbResultReact and cbResultApp to cbResultReactNative.
-   - Replaced `cd ios && pod install to npx pod-install`.
+  - cbResultWeb to cbResultReact and cbResultApp to cbResultReactNative.
+  - Replaced `cd ios && pod install to npx pod-install`.
 
-* Renamed templates dir to `expo`
-   Expo is the higher condition that overlap react-native. Since we now have some differences between react-native and expo templates, we separate them to expo
+- Renamed templates dir to `expo`
+  Expo is the higher condition that overlap react-native. Since we now have some differences between react-native and expo templates, we separate them to expo
 
-* Separated screen templates for rn and expo
+- Separated screen templates for rn and expo
 
-* Changed pointing RN and EXPO project branches
+- Changed pointing RN and EXPO project branches
 
-* Applied new linting rules and refactor the codebase
+- Applied new linting rules and refactor the codebase
 
-* Added compatibility command for v5
+- Added compatibility command for v5
