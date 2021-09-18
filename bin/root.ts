@@ -14,10 +14,10 @@ import {
 import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
 import chalk from 'chalk';
+import ora from 'ora';
 
 import fs = require('fs');
 import inquirer = require('inquirer');
-import ora = require('ora');
 import os = require('os');
 import selectShell = require('select-shell');
 import shell = require('shelljs');

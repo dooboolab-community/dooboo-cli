@@ -1,3 +1,18 @@
+## 6.7.1
+
+- Update packages
+
+  ```
+  @dooboo/eslint-config    ^0.8.2  →   ^0.8.5
+  @types/inquirer          ^7.3.3  →   ^8.1.1
+  @types/node            ^16.4.13  →  ^16.9.2
+  typescript               ^4.3.5  →   ^4.4.3
+  boxen                    ^5.0.1  →   ^5.1.2
+  commander                ^8.1.0  →   ^8.2.0
+  inquirer                 ^8.1.2  →   ^8.1.5
+  ora                      ^5.4.1  →   ^6.0.1
+  ```
+
 ## 6.7.0
 
 - Upgrade RN project to 0.65.1
