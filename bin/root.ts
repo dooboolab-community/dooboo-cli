@@ -14,8 +14,8 @@ import {
 import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
 import chalk from 'chalk';
-import ora from 'ora';
 
+import ora = require('ora');
 import fs = require('fs');
 import inquirer = require('inquirer');
 import os = require('os');
