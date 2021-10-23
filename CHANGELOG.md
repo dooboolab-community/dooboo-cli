@@ -1,3 +1,9 @@
+## 7.0.0
+
+- Upgrade react-native project to `0.66+` with [dooboo-ui](https://github.com/dooboolab/dooboo-ui) preinstalled.
+
+- Upgrade expo project to sdk 43 with [dooboo-ui](https://github.com/dooboolab/dooboo-ui) preinstalled.
+
 ## 6.7.1
 
 - Update packages

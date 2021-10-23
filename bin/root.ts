@@ -13,9 +13,10 @@ import {
 } from '../utils/functions';
 import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
+import boxen from 'boxen';
 import chalk from 'chalk';
+import ora from 'ora';
 
-import ora = require('ora');
 import fs = require('fs');
 import inquirer = require('inquirer');
 import os = require('os');
@@ -23,7 +24,6 @@ import selectShell = require('select-shell');
 import shell = require('shelljs');
 import path = require('path');
 import commander = require('commander');
-import boxen = require('boxen');
 import updateNotifier = require('update-notifier');
 import pkg = require('../package.json');
 
