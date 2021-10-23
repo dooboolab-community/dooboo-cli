@@ -7,25 +7,27 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab/dooboo-cli.svg)](https://greenkeeper.io/)
 
 ## Quick News
+
 - [v3 release announcement](https://medium.com/dooboolab/announcing-dooboo-cli-v3-5c9fceeb2ac4)
 - Latest stable version is `3.2.0`.
 - Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
 ## Compatability
+
 - React Native & Expo Templates
 
-    | dooboo-cli     | RN template             | Expo template   |
-    | -------------- | ----------------------- | --------------- |
-    | 3.3.11         | 0.61.5                  | 36              |
-    | 3.4.+          | 0.62.+                  | 37              |
-    | 3.5.+          | 0.62.+                  | 38              |
-    | 3.6.+          | 0.63.+                  | 38              |
-    | 4.0.+          | 0.63.+                  | 39              |
-    | 5.0.+          | 0.63.+ (web support)    | 40              |
-    | 6.0.+          | 0.63.+ (atomic design)  | 40              |
-    | 6.1.1+         | 0.63.+ (Removed atomic) | 40              |
-    | 6.2.+          | 0.64.+                  | 40              |
-    | 6.3.+ (Emotion)| 0.64.+ (Emotion)        | 41              |
+  | dooboo-cli      | RN template             | Expo template |
+  | --------------- | ----------------------- | ------------- |
+  | 3.3.11          | 0.61.5                  | 36            |
+  | 3.4.+           | 0.62.+                  | 37            |
+  | 3.5.+           | 0.62.+                  | 38            |
+  | 3.6.+           | 0.63.+                  | 38            |
+  | 4.0.+           | 0.63.+                  | 39            |
+  | 5.0.+           | 0.63.+ (web support)    | 40            |
+  | 6.0.+           | 0.63.+ (atomic design)  | 40            |
+  | 6.1.1+          | 0.63.+ (Removed atomic) | 40            |
+  | 6.2.+           | 0.64.+                  | 40            |
+  | 6.3.+ (Emotion) | 0.64.+ (Emotion)        | 41            |
 
 ## Stacks we use
 
@@ -57,13 +59,17 @@
 
 ## Quick News
 
-- In `v5`, we drive `react-native` project to support `react-native-web`.
-  * Main changes in react-native project
-    - The `screen` component should be wrapped with `withScreen` provided in `wrapper.tsx`.
+- In `v7`, [dooboo-ui](https://github.com/dooboolab/dooboo-ui) ui framework is preinstalled in `react-native` and `expo` project. Hope you like it 🧡.
+
 - Starting from `v6`, we manage our boilerplate folder name similar to [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2) but not exactly.
-  * Main changes in all projects
+
+  - Main changes in all projects
     - `screen` dir moved to `pages`.
     - `shared` dir moved to `uis`.
+
+- In `v5`, we drive `react-native` project to support `react-native-web`.
+  - Main changes in react-native project
+    - The `screen` component should be wrapped with `withScreen` provided in `wrapper.tsx`.
 
 ## Installation
 
