@@ -1,5 +1,6 @@
 {
   "name": "dooboo-cli",
+  "packageManager": "yarn@3.1.1",
   "version": "7.0.1",
   "description": "React and react-native starter kit",
   "bin": {
