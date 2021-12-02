@@ -86,8 +86,11 @@ export const toCamelCase = (str: string, cap1st: boolean): string => {
 };
 
 export const isCamelCase = (str: string): boolean => {
-  if (toCamelCase(str, true) === str) return true;
-  else return false;
+  if (toCamelCase(str, true) === str) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export const camelCaseToDash = (str: string): string => {
@@ -104,7 +107,9 @@ export const camelize = (str: string): string => {
 
 export const upperCamelize = (str: string): string => {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match) => {
-    if (+match === 0) return '';
+    if (+match === 0) {
+      return '';
+    }
     // or if (/\s+/.test(match)) for white spaces
 
     return match.toUpperCase();

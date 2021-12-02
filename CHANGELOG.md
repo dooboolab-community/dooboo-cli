@@ -1,3 +1,7 @@
+## 7.0.1
+
+- Upgrade react-native-project to `0.66.3`.
+
 ## 7.0.0
 
 - Upgrade react-native project to `0.66+` with [dooboo-ui](https://github.com/dooboolab/dooboo-ui) preinstalled.

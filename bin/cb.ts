@@ -147,14 +147,15 @@ export const cbResultReactNative = (
 
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        if (os.type() === 'Darwin')
+        if (os.type() === 'Darwin') {
           childProcess.execSync(`cd ${nameOfApp} && yarn && npx pod-install`, {
             stdio: 'inherit',
           });
-        else
+        } else {
           childProcess.execSync(`cd ${nameOfApp} && yarn`, {
             stdio: 'inherit',
           });
+        }
 
         childProcess.execSync(`cd ${nameOfApp} && npx react-native link`, {
           stdio: 'inherit',

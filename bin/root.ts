@@ -59,12 +59,13 @@ const notifier = updateNotifier({
   updateCheckInterval: 1000 * 60 * 60 * 24, // 1 day
 });
 
-if (notifier.update)
+if (notifier.update) {
   shell.echo(
     chalk.blueBright(
       boxen(`Update available: ${notifier.update.latest}`, {padding: 1}),
     ),
   );
+}
 
 const list = selectShell({
   pointer: ' ▸ ',
@@ -186,7 +187,7 @@ program
               shell.exit(1);
             }
 
-            if (os.type() === 'Darwin')
+            if (os.type() === 'Darwin') {
               if (!shell.which('pod')) {
                 shell.echo(
                   chalk.redBright(
@@ -197,11 +198,14 @@ program
 
                 shell.exit(1);
               }
+            }
 
             cbResultReactNative(template, nameOfApp, answer, options, spinner);
-          } else if (options[0].value === TYPE_OF_APP.EXPO)
+          } else if (options[0].value === TYPE_OF_APP.EXPO) {
             cbResultExpo(template, nameOfApp, answer, options, spinner);
-          else cbResultReact(template, nameOfApp, answer, options, spinner);
+          } else {
+            cbResultReact(template, nameOfApp, answer, options, spinner);
+          }
         });
     });
 
@@ -721,7 +725,7 @@ let validCommands = program.commands.map((cmd) => {
   return cmd.name;
 });
 
-if (validCommands.length && process.argv[2])
+if (validCommands.length && process.argv[2]) {
   switch (process.argv[2]) {
     case 'init':
     case 'start':
@@ -744,4 +748,5 @@ if (validCommands.length && process.argv[2])
 
       break;
   }
+}
 // program.parse([process.argv[0], process.argv[1], '-h']);
