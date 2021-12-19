@@ -1,5 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import React, {FC} from 'react';
+
+import {FC} from 'react';
 
 const SwitchNavigator: FC = () => {
   return (

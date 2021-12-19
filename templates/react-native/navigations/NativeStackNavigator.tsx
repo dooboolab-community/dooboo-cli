@@ -3,7 +3,6 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import React from 'react';
 import {useTheme} from 'dooboo-ui';
 
 export type NativeStackParamList = {
@@ -27,7 +26,8 @@ function RootNavigator(): React.ReactElement {
         },
         headerTitleStyle: {color: theme.text},
         headerTintColor: theme.tintColor,
-      }}>
+      }}
+    >
       {/* <Stack.Screen name="Page" component={Page} /> */}
     </Stack.Navigator>
   );

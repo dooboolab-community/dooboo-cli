@@ -1,10 +1,10 @@
 import 'react-native';
 
-import React, {ReactElement} from 'react';
 import {RenderAPI, cleanup, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import {NavigationContainer} from '@react-navigation/native';
+import {ReactElement} from 'react';
 import StackNavigator from '../StackNavigator';
 import {enableScreens} from 'react-native-screens';
 

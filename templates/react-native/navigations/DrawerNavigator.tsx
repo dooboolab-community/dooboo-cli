@@ -4,18 +4,17 @@ import {
   DrawerNavigationProp,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
-import React, {ReactElement} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 
+import {ReactElement} from 'react';
 import {useSafeArea} from 'react-native-safe-area-context';
 
 export type DrawerParamList = {
   default: undefined;
 };
 
-export type DrawerNavigationProps<
-  T extends keyof DrawerParamList = 'default'
-> = DrawerNavigationProp<DrawerParamList, T>;
+export type DrawerNavigationProps<T extends keyof DrawerParamList = 'default'> =
+  DrawerNavigationProp<DrawerParamList, T>;
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -37,7 +36,8 @@ function CustomDrawerContent({drawerPosition}): ReactElement {
           paddingRight: drawerPosition === 'right' ? insets.right : 0,
         },
       ]}
-      style={styles.container}>
+      style={styles.container}
+    >
       <DrawerItem
         label="Page"
         onPress={(): void => {
@@ -53,7 +53,8 @@ function Navigator(): ReactElement {
     <Drawer.Navigator
       drawerContent={(props: DrawerContentComponentProps): ReactElement => (
         <CustomDrawerContent {...props} />
-      )}>
+      )}
+    >
       {/* <Drawer.Screen name="Page" component={Page} /> */}
     </Drawer.Navigator>
   );

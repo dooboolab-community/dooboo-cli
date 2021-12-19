@@ -1,11 +1,11 @@
 import 'react-native';
 
-import React, {ReactElement} from 'react';
 import {RenderAPI, cleanup, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import MaterialTopTabNavigator from '../MaterialTopTabNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import {ReactElement} from 'react';
 
 describe('[MaterialTopTab] navigator', () => {
   let props: any;

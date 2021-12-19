@@ -1,3 +1,7 @@
+## 7.1.1
+
+- Remove `import React` from all templates. From `Expo 44`, this can be removed.
+
 ## 7.1.0
 
 - Upgrade expo project to sdk `44`.

@@ -1,7 +1,7 @@
-import React, {ReactElement} from 'react';
 import {RenderResult, render} from '@testing-library/react';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
+import {ReactElement} from 'react';
 import Template from './Template';
 
 let props: any;

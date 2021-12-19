@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-
 import createCtx from '../utils/createCtx';
+import {useState} from 'react';
 
 interface User {
   displayName: string;
@@ -31,7 +30,8 @@ function StateProvider({children}: Props): React.ReactElement {
       value={{
         user,
         setUser,
-      }}>
+      }}
+    >
       {children}
     </Provider>
   );

@@ -1,11 +1,11 @@
 import 'react-native';
 
-import React, {ReactElement} from 'react';
 import {RenderAPI, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import BottomTabNavigator from '../BottomTabNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import {ReactElement} from 'react';
 
 let props: any;
 let component: ReactElement;

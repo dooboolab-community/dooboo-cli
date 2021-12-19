@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import {useReducer} from 'react';
 
 import createCtx from '../utils/createCtx';
 
@@ -44,14 +44,14 @@ interface Props {
 
 type Reducer = (state: State, action: Action) => State;
 
-const setUser = (dispatch: React.Dispatch<SetUserAction>) => (
-  user: Partial<User>,
-): void => {
-  dispatch({
-    type: ActionType.SetUser,
-    payload: user,
-  });
-};
+const setUser =
+  (dispatch: React.Dispatch<SetUserAction>) =>
+  (user: Partial<User>): void => {
+    dispatch({
+      type: ActionType.SetUser,
+      payload: user,
+    });
+  };
 
 // eslint-disable-next-line default-param-last
 const reducer: Reducer = (state = initialState, action) => {
