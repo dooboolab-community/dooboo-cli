@@ -1,4 +1,4 @@
-## 7.1.1
+## 7.1.2
 
 - Remove `import React` from all templates. From `Expo 44`, this can be removed.
 
