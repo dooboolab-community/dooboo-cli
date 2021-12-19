@@ -1,3 +1,7 @@
+## 7.1.0
+
+- Upgrade expo project to sdk `44`.
+
 ## 7.0.1
 
 - Upgrade react-native-project to `0.66.3`.
