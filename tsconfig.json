@@ -1,11 +1,25 @@
 {
   "compilerOptions": {
+    "target": "es2018",
+    "outDir": "lib",
+    "incremental": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true,
+
+    "strict": true,
+    "noImplicitAny": false,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
+    "skipDefaultLibCheck": true,
+
+    "moduleResolution": "Node",
+    "importHelpers": true,
     "module": "commonjs",
     "preserveConstEnums": true,
-    "outDir": "lib",
-    "esModuleInterop": true,
-    "sourceMap": false,
-    "target": "ES2015",
     "resolveJsonModule": true
   },
   "include": ["bin/**/*.ts", "utils/**/*.ts"],
