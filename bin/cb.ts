@@ -148,18 +148,16 @@ export const cbResultReactNative = (
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
         if (os.type() === 'Darwin') {
-          childProcess.execSync(`cd ${nameOfApp} && yarn && npx pod-install`, {
-            stdio: 'inherit',
-          });
+          childProcess.execSync(
+            `cd ${nameOfApp} && yarn && npx install-expo-modules && npx pod-install`,
+            {stdio: 'inherit'},
+          );
         } else {
-          childProcess.execSync(`cd ${nameOfApp} && yarn`, {
-            stdio: 'inherit',
-          });
+          childProcess.execSync(
+            `cd ${nameOfApp} && yarn && npx install-expo-modules`,
+            {stdio: 'inherit'},
+          );
         }
-
-        childProcess.execSync(`npx install-expo-modules`, {
-          stdio: 'inherit',
-        });
 
         spinner.stop();
 

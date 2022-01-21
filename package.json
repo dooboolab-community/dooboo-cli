@@ -1,7 +1,7 @@
 {
   "name": "dooboo-cli",
   "packageManager": "yarn@3.1.1",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@dooboo/eslint-config": "^1.2.2",
     "@types/inquirer": "^8.1.3",
+    "@types/keyv": "^3.1.3",
     "@types/node": "^16.11.11",
     "@types/ora": "^3.2.0",
     "@types/shelljs": "^0.8.9",

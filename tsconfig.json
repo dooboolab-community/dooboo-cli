@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2018",
+    "skipLibCheck": true,
     "outDir": "lib",
     "incremental": true,
     "lib": ["esnext"],
@@ -23,5 +24,9 @@
     "resolveJsonModule": true
   },
   "include": ["bin/**/*.ts", "utils/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typeRoots": [
+    "node_modules/@types",
+    "src/typings"
+  ]
 }
