@@ -85,7 +85,7 @@ export const cbResultReactNative = (
         shell.rm('-rf', `${nameOfApp}/.git`);
         shell.rm('-rf', `${nameOfApp}/.circleci`);
 
-        // // ==> Android config
+        // ==> Android config
         shell.cp(
           `${nameOfApp}/metro.config.js`,
           `${nameOfApp}/${nameOfApp}/metro.config.js`,
@@ -157,7 +157,7 @@ export const cbResultReactNative = (
           });
         }
 
-        childProcess.execSync(`cd ${nameOfApp} && npx react-native link`, {
+        childProcess.execSync(`npx install-expo-modules`, {
           stdio: 'inherit',
         });
 

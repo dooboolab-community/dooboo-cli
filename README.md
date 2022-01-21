@@ -25,9 +25,15 @@
   | 4.0.+           | 0.63.+                  | 39            |
   | 5.0.+           | 0.63.+ (web support)    | 40            |
   | 6.0.+           | 0.63.+ (atomic design)  | 40            |
-  | 6.1.1+          | 0.63.+ (Removed atomic) | 40            |
+  | 6.1.1+          | 0.63.+ (removed atomic) | 40            |
   | 6.2.+           | 0.64.+                  | 40            |
-  | 6.3.+ (Emotion) | 0.64.+ (Emotion)        | 41            |
+  | 6.3.+ (Emotion) | 0.64.+ (emotion)        | 41            |
+  | 6.3.+           | 0.64.+                  | 41            |
+  | 6.6.+           | 0.64.+                  | 42            |
+  | 6.7.+           | 0.65.+                  | 42            |
+  | 7.0.+           | 0.66.+                  | 43            |
+  | 7.2.+           | 0.66.+                  | 44            |
+  | 7.3.+           | 0.66.+ (expo modules)   | 44            |
 
 ## Stacks we use
 
@@ -54,6 +60,7 @@
 - [typescript](https://github.com/Microsoft/TypeScript)
 - [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [prettier](https://prettier.io)
+- [expo-modules](https://docs.expo.dev/bare/installing-expo-modules)
 - [react-native-web](https://github.com/necolas/react-native-web)
 - [localization (fbt)](https://github.com/facebook/fbt)
 

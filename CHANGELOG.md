@@ -1,3 +1,11 @@
+## 7.3.0
+
+- React Native Project with [expo modules](https://docs.expo.dev/bare/installing-expo-modules)
+
+## 7.2.0
+
+- TS config fixes and organize packages
+
 ## 7.1.2
 
 - Remove `import React` from all templates. From `Expo 44`, this can be removed.
