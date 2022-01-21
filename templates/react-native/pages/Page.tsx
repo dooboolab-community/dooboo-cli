@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import {RootStackNavigationProps} from '../navigations/RootStack';
 import styled from '@emotion/native';
-import {withScreen} from '../../utils/wrapper';
 
 const Container = styled.View`
   flex: 1;
@@ -29,4 +28,4 @@ const Page: FC<Props> = () => {
   );
 };
 
-export default withScreen(Page);
+export default Page;

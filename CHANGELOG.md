@@ -1,3 +1,7 @@
+## 7.3.2
+
+- Remove `withScreen` wrapper from the RN template.
+
 ## 7.3.0
 
 - React Native Project with [expo modules](https://docs.expo.dev/bare/installing-expo-modules)
