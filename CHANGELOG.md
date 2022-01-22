@@ -1,3 +1,7 @@
+## 7.3.3
+
+- React Native template 0.66.4.
+
 ## 7.3.2
 
 - Remove `withScreen` wrapper from the RN template.
