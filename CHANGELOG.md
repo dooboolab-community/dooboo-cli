@@ -1,3 +1,7 @@
+## 7.4.0
+
+- Upgrade RN project to 0.67.2.
+
 ## 7.3.3
 
 - React Native template 0.66.4.
