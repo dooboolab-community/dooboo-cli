@@ -34,7 +34,6 @@ describe('[Stack] navigator', () => {
     const baseElement = testingLib.toJSON();
 
     jest.runAllTimers();
-    expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });
 });

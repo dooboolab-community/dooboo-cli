@@ -21,22 +21,6 @@ describe('Rendering', () => {
   it('renders without crashing', () => {
     const baseElement = testingLib.toJSON();
 
-    expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
-  });
-});
-
-describe('Interaction', () => {
-  beforeEach(() => {
-    testingLib = render(component);
-  });
-
-  it('should simulate onClick', () => {
-    expect(testingLib.toJSON()).toMatchSnapshot();
-    // const btn = testingLib.queryByTestId('btn');
-    // act(() => {
-    //   fireEvent.press(btn);
-    // });
-    // expect(cnt).toBe(3);
   });
 });

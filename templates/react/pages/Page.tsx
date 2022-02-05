@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.p`
-  color: ${({theme}): string => theme.text};
+  color: ${({theme}) => theme.text};
 `;
 
 type Props = {};

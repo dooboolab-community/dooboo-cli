@@ -5,7 +5,7 @@ import styled from '@emotion/native';
 const Container = styled.View`
   flex: 1;
   align-self: stretch;
-  background-color: ${({theme}): string => theme.background};
+  background-color: ${({theme}) => theme.background};
 
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@ const Container = styled.View`
 `;
 
 const StyledText = styled.Text`
-  color: ${({theme}): string => theme.text};
+  color: ${({theme}) => theme.text};
 `;
 
 type Props = {

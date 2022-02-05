@@ -12,7 +12,7 @@ const Container = styled.View`
 
 const StyledText = styled.Text`
   font-size: 16px;
-  color: ${({theme}): string => theme.text};
+  color: ${({theme}) => theme.text};
 `;
 
 interface Props {
