@@ -129,7 +129,7 @@ program
           switch (options[0].value) {
             case TYPE_OF_APP.REACT:
               template =
-                '-b master https://github.com/dooboolab/dooboo-frontend-ts.git';
+                '-b main https://github.com/dooboolab/dooboo-frontend-ts.git';
 
               break;
             case TYPE_OF_APP.REACT_NATIVE:

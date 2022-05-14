@@ -2,7 +2,7 @@
 
 [![Npm Version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
 [![Downloads](http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
-[![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=master)](https://travis-ci.com/dooboolab/dooboo-cli)
+[![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab/dooboo-cli)
 ![License](http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab/dooboo-cli.svg)](https://greenkeeper.io/)
 
