@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {type ReactElement} from 'react';
 import {RootStackNavigationProps} from '../navigations/RootStack';
 import styled from '@emotion/native';
 
@@ -19,7 +19,7 @@ interface Props {
   navigation: RootStackNavigationProps<'default'>;
 }
 
-const Page: FC<Props> = () => {
+const Page = (): ReactElement => {
   return (
     <Container>
       <StyledText>Page</StyledText>

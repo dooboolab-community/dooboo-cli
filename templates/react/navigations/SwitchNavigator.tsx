@@ -1,8 +1,8 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {FC} from 'react';
+import {type ReactElement} from 'react';
 
-const SwitchNavigator: FC = () => {
+const SwitchNavigator = (): ReactElement => {
   return (
     <BrowserRouter>
       <div style={{textAlign: 'center', flex: 1, width: '100vw'}}>

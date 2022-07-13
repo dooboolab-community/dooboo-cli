@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {type ReactElement} from 'react';
 import styled from '@emotion/native';
 
 const Container = styled.View`
@@ -11,7 +11,7 @@ const Container = styled.View`
 
 type Props = {};
 
-const Template: FC<Props> = ({children}) => {
+const Template = (): ReactElement => {
   return <Container>{children}</Container>;
 };
 

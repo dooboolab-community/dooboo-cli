@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {type ReactElement} from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -15,7 +15,7 @@ const Text = styled.p`
 
 type Props = {};
 
-const Page: FC<Props> = () => {
+const Page = (): ReactElement => {
   return (
     <Container>
       <Text>Page</Text>
