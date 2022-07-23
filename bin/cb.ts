@@ -1,19 +1,18 @@
+import {Ora} from 'ora';
 import {RN_VERSION} from './const';
 import {camelCaseToDash} from '../utils/functions';
 import chalk from 'chalk';
+import childProcess from 'child_process';
+import os from 'os';
 import {setTimeout} from 'timers';
-
-import ora = require('ora');
-import os = require('os');
-import shell = require('shelljs');
-import childProcess = require('child_process');
+import shell from 'shelljs';
 
 export const cbResultReact = (
   template: string,
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: ora.Ora,
+  spinner: Ora,
 ): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,
@@ -56,7 +55,7 @@ export const cbResultReactNative = (
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: ora.Ora,
+  spinner: Ora,
 ): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,
@@ -188,7 +187,7 @@ export const cbResultExpo = (
   nameOfApp: string,
   answer: any,
   options: any,
-  spinner: ora.Ora,
+  spinner: Ora,
 ): void => {
   shell.exec(
     `git clone ${template} ${nameOfApp}`,

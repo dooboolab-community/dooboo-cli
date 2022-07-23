@@ -1,10 +1,9 @@
 'use strict';
 
 import chalk from 'chalk';
-import shelljs = require('shelljs');
-import fs = require('fs');
-
-import path = require('path');
+import fs from 'fs';
+import path from 'path';
+import shelljs from 'shelljs';
 
 export interface TemplateType {
   file: string;

@@ -15,17 +15,18 @@ import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
 import boxen from 'boxen';
 import chalk from 'chalk';
+import commander from 'commander';
+import fs from 'fs';
+import inquirer from 'inquirer';
 import ora from 'ora';
-
-import fs = require('fs');
-import inquirer = require('inquirer');
-import os = require('os');
-import selectShell = require('select-shell');
-import shell = require('shelljs');
-import path = require('path');
-import commander = require('commander');
-import updateNotifier = require('update-notifier');
-import pkg = require('../package.json');
+import os from 'os';
+import path from 'path';
+import pkg from '../package.json';
+// @ts-ignore
+import selectShell from 'select-shell';
+import shell from 'shelljs';
+// @ts-ignore
+import updateNotifier from 'update-notifier';
 
 const welcome = `
  _| _  _ |_  _  _ | _ |_
@@ -103,7 +104,7 @@ program
       .option(' Expo App (typescript) ', TYPE_OF_APP.EXPO)
       .list();
 
-    list.on('select', (options) => {
+    list.on('select', (options: any[]) => {
       shell.echo(chalk.yellow('select the name of the app.'));
 
       inquirer
@@ -405,7 +406,7 @@ program
 
       let template: TemplateType;
 
-      list.on('select', (options) => {
+      list.on('select', (options: any[]) => {
         const navigationType = options[0].value;
 
         template = resolveTemplate(
@@ -680,7 +681,7 @@ program
       .option(' Provider (State Type) ', TYPE_OF_PROVIDER.StateProvider)
       .list();
 
-    list.on('select', (options) => {
+    list.on('select', (options: any[]) => {
       const providerType = options[0].value;
 
       const template = path.resolve(
