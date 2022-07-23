@@ -18,11 +18,11 @@ jobs:
 
     - name: Sed build files
       run: |
-        sed -i "s/.\/const/.\/const.js/gi" root.js
-        sed -i "s/.\/functions/.\/functions.js/gi" root.js
-        sed -i "s/.\/cb/.\/cb.js/gi" root.js
-        sed -i "s/.\/const/.\/const.js/gi" cb.js
-        sed -i "s/.\/functions/.\/functions.js/gi" cb.js
+        sed -i "s/.\/const/.\/const.js/gi" lib/bin/root.js
+        sed -i "s/.\/functions/.\/functions.js/gi" lib/bin/root.js
+        sed -i "s/.\/cb/.\/cb.js/gi" lib/bin/root.js
+        sed -i "s/.\/const/.\/const.js/gi" lib/bin/cb.js
+        sed -i "s/.\/functions/.\/functions.js/gi" lib/bin/cb.js
 
     - run: npm publish
       env:
