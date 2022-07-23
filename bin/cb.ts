@@ -147,15 +147,22 @@ export const cbResultReactNative = (
 
         shell.rm('-rf', `${nameOfApp}/${nameOfApp}`);
 
-        if (os.type() === 'Darwin') {
-          childProcess.execSync(
-            `cd ${nameOfApp} && yarn && npx install-expo-modules && npx pod-install`,
-            {stdio: 'inherit'},
-          );
-        } else {
-          childProcess.execSync(
-            `cd ${nameOfApp} && yarn && npx install-expo-modules`,
-            {stdio: 'inherit'},
+        try {
+          if (os.type() === 'Darwin') {
+            childProcess.execSync(
+              `cd ${nameOfApp} && yarn && npx install-expo-modules && npx pod-install`,
+              {stdio: 'inherit'},
+            );
+          } else {
+            childProcess.execSync(
+              `cd ${nameOfApp} && yarn && npx install-expo-modules`,
+              {stdio: 'inherit'},
+            );
+          }
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.error(
+            'The error occurred during installation.\nPlease follow installing expo modules manually in https://docs.expo.dev/bare/installing-expo-modules/',
           );
         }
 
