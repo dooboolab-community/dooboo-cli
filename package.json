@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "8.1.1",
+  "version": "8.1.2",
   "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -8,6 +8,7 @@
   "scripts": {
     "tsc": "tsc",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "link": "npm run build && npm unlink -g && npm link",
     "build": "rm -rf lib/ && npm run lint && npm run tsc && cp -r templates lib/",
     "deploy": "npm run build && npm publish"
   },
