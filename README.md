@@ -1,5 +1,7 @@
 # dooboo-cli
 
+[![CI](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml)
+[![deploy pkg](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml)
 [![Npm Version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
 [![Downloads](http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
 [![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab/dooboo-cli)
