@@ -13,8 +13,17 @@ jobs:
       with:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
-    - run: yarn
-    - run: yarn build
+    - run: npm install
+    - run: npm run build
+
+    - name: Sed build files
+      run: |
+        sed -i "s/.\/const/.\/const.js/gi" root.js
+        sed -i "s/.\/functions/.\/functions.js/gi" root.js
+        sed -i "s/.\/cb/.\/cb.js/gi" root.js
+        sed -i "s/.\/const/.\/const.js/gi" cb.js
+        sed -i "s/.\/functions/.\/functions.js/gi" cb.js
+
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

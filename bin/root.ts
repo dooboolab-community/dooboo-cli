@@ -13,15 +13,15 @@ import {
 } from '../utils/functions';
 import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
 
+import {Command} from 'commander';
 import boxen from 'boxen';
 import chalk from 'chalk';
-import commander from 'commander';
 import fs from 'fs';
 import inquirer from 'inquirer';
 import ora from 'ora';
 import os from 'os';
 import path from 'path';
-import pkg from '../package.json';
+import pkg from '../package.json' assert {type: 'json'};
 // @ts-ignore
 import selectShell from 'select-shell';
 import shell from 'shelljs';
@@ -53,7 +53,7 @@ export enum TYPE_OF_PROVIDER {
   StateProvider = 'StateProvider',
 }
 
-const program = new commander.Command();
+const program = new Command();
 
 const notifier = updateNotifier({
   pkg,

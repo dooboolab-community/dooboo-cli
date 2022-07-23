@@ -6,4 +6,3 @@
 utils/functions.ts
 bin/root.ts
 package/
-.yarn/cache

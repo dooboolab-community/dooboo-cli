@@ -1,7 +1,7 @@
 {
   "name": "dooboo-cli",
   "packageManager": "yarn@3.2.1",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"
@@ -23,6 +23,7 @@
     "boilerplate",
     "typescript"
   ],
+  "type": "module",
   "dependencies": {
     "boxen": "^7.0.0",
     "chalk": "^5.0.1",
