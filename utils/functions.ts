@@ -1,5 +1,6 @@
 'use strict';
 
+import {__dirname} from '../bin/root';
 import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';

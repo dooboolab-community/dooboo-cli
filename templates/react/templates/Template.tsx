@@ -9,7 +9,7 @@ const Container = styled.div`
 type Props = {};
 
 const Template = (): ReactElement => {
-  return <Container/>;
+  return <Container />;
 };
 
 export default Template;

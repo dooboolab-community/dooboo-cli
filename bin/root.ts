@@ -28,6 +28,11 @@ import shell from 'shelljs';
 // @ts-ignore
 import updateNotifier from 'update-notifier';
 
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.dirname(__filename);
+
 const welcome = `
  _| _  _ |_  _  _ | _ |_
 (_|(_)(_)|_)(_)(_)|(_||_)
