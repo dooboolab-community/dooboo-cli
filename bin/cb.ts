@@ -149,12 +149,12 @@ export const cbResultReactNative = (
         try {
           if (os.type() === 'Darwin') {
             childProcess.execSync(
-              `cd ${nameOfApp} && yarn && npx install-expo-modules && npx pod-install`,
+              `cd ${nameOfApp} && yarn && npx install-expo-modules@latest && npx pod-install`,
               {stdio: 'inherit'},
             );
           } else {
             childProcess.execSync(
-              `cd ${nameOfApp} && yarn && npx install-expo-modules`,
+              `cd ${nameOfApp} && yarn && npx install-expo-modules@latest`,
               {stdio: 'inherit'},
             );
           }
