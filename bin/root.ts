@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
+
 'use strict';
 
 import {EXPO_PROJECT_BRANCH, RN_PROJECT_BRANCH} from './const';
