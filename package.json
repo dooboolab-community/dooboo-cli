@@ -1,6 +1,6 @@
 {
   "name": "dooboo-cli",
-  "version": "8.4.1",
+  "version": "8.4.2",
   "description": "React and react-native starter kit",
   "bin": {
     "dooboo": "lib/bin/root.js"

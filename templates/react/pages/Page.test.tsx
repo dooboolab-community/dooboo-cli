@@ -1,8 +1,11 @@
-import {RenderResult, render} from '@testing-library/react';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import Page from './Page';
-import {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
+import type {RenderResult} from '@testing-library/react';
+import Template from './Template';
+import {render} from '@testing-library/react';
 
 let props: any;
 let component: ReactElement;
