@@ -1,4 +1,4 @@
-import {Ora} from 'ora';
+import type {Ora} from 'ora';
 import {RN_VERSION} from './const';
 import {camelCaseToDash} from '../utils/functions';
 import chalk from 'chalk';

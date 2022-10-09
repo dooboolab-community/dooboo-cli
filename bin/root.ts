@@ -3,8 +3,8 @@
 'use strict';
 
 import {EXPO_PROJECT_BRANCH, RN_PROJECT_BRANCH} from './const';
+import type {TemplateType} from '../utils/functions';
 import {
-  TemplateType,
   camelize,
   exitIfNotDoobooRepo,
   exitIfNotV5,
