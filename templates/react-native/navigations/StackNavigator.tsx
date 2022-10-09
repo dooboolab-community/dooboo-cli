@@ -3,6 +3,7 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 
+import type {ReactElement} from 'react';
 import {useTheme} from 'dooboo-ui';
 
 export type StackParamList = {
@@ -14,7 +15,7 @@ export type StackNavigationProps<T extends keyof StackParamList = 'default'> =
 
 const Stack = createStackNavigator<StackParamList>();
 
-function RootNavigator(): React.ReactElement {
+function RootNavigator(): ReactElement {
   const {theme} = useTheme();
 
   return (

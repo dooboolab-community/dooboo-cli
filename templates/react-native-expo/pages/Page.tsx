@@ -19,7 +19,7 @@ interface Props {
   navigation: RootStackNavigationProps<'default'>;
 }
 
-const Page = (): ReactElement => {
+function Page({}: Props): ReactElement {
   return (
     <Container>
       <StyledText>Page</StyledText>

@@ -1,9 +1,8 @@
+import type {MaterialTopTabNavigationProp} from '@react-navigation/material-top-tabs';
+import type {ReactElement} from 'react';
 import {
-  MaterialTopTabNavigationProp,
-  createMaterialTopTabNavigator,
+createMaterialTopTabNavigator,
 } from '@react-navigation/material-top-tabs';
-
-import {ReactElement} from 'react';
 
 export type MaterialTopTabParamList = {
   default: undefined;

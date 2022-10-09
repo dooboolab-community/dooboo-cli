@@ -3,6 +3,7 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
+import type {ReactElement} from 'react';
 import {useTheme} from 'dooboo-ui';
 
 export type NativeStackParamList = {
@@ -15,7 +16,7 @@ export type NativeStackNavigationProps<
 
 const Stack = createNativeStackNavigator<NativeStackParamList>();
 
-function RootNavigator(): React.ReactElement {
+function RootNavigator(): ReactElement {
   const {theme} = useTheme();
 
   return (

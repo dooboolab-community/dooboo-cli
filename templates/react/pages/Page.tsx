@@ -15,7 +15,7 @@ const Text = styled.p`
 
 type Props = {};
 
-const Page = (): ReactElement => {
+function Page({}: Props): ReactElement {
   return (
     <Container>
       <Text>Page</Text>

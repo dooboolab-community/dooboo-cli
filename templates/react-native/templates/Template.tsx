@@ -4,6 +4,7 @@ import styled from '@emotion/native';
 const Container = styled.View`
   flex: 1;
   background-color: transparent;
+
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -11,7 +12,7 @@ const Container = styled.View`
 
 type Props = {};
 
-const Template = (): ReactElement => {
+function Template({}: Props): ReactElement {
   return <Container>{children}</Container>;
 };
 

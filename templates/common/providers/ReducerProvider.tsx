@@ -1,6 +1,6 @@
-import {useReducer} from 'react';
-
+import type {ReactElement} from 'react';
 import createCtx from '../utils/createCtx';
+import {useReducer} from 'react';
 
 interface User {
   displayName: string;
@@ -69,7 +69,7 @@ const reducer: Reducer = (state = initialState, action) => {
   }
 };
 
-function ReducerProvider(props: Props): React.ReactElement {
+function ReducerProvider(props: Props): ReactElement {
   const [state, dispatch] = useReducer<Reducer>(reducer, initialState);
 
   const actions = {

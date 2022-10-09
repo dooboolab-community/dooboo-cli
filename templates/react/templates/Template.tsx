@@ -1,4 +1,4 @@
-import {type ReactElement} from 'react';
+import type {ReactElement} from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
 
 type Props = {};
 
-const Template = (): ReactElement => {
+function Template({}: Props): ReactElement {
   return <Container />;
 };
 

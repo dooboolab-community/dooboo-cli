@@ -1,10 +1,11 @@
 import 'react-native';
 
-import {RenderAPI, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../../test/testUtils';
 
 import Page from './Page';
-import {ReactElement} from 'react';
+import type {ReactElement} from 'react';
+import type {RenderAPI} from '@testing-library/react-native';
+import {render} from '@testing-library/react-native';
 
 let props: any;
 let component: ReactElement;
