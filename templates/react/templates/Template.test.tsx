@@ -1,9 +1,9 @@
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
 import React from 'react';
 import type {ReactElement} from 'react';
 import type {RenderResult} from '@testing-library/react';
-import Template from './Template';
+import Template from '../../../src/components/uis/Template';
 import {render} from '@testing-library/react';
 
 let props: any;

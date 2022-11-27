@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Button, Text, View} from 'react-native';
-import {ReducerProvider, useReducerContext} from '../ReducerProvider';
+import {ReducerProvider, useReducerContext} from '../../../src/providers/ReducerProvider';
 import {RenderAPI, render} from '@testing-library/react-native';
 
 const FakeChild = (): React.ReactElement => {

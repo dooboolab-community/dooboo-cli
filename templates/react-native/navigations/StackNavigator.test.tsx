@@ -1,11 +1,11 @@
 import 'react-native';
 
 import {RenderAPI, cleanup, render} from '@testing-library/react-native';
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {ReactElement} from 'react';
-import StackNavigator from '../StackNavigator';
+import StackNavigator from '../../../src/components/navigations/StackNavigator';
 
 describe('[Stack] navigator', () => {
   let props: any;

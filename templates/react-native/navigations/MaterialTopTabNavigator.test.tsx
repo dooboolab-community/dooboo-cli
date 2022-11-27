@@ -1,9 +1,9 @@
 import 'react-native';
 
 import {cleanup, render} from '@testing-library/react-native';
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
-import MaterialTopTabNavigator from '../MaterialTopTabNavigator';
+import MaterialTopTabNavigator from '../../../src/components/navigations/MaterialTopTabNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import type {ReactElement} from 'react';
 import type {RenderAPI} from '@testing-library/react-native';

@@ -1,6 +1,6 @@
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
-import Page from './Page';
+import Page from '../../../src/components/pages/Page';
 import React from 'react';
 import type {ReactElement} from 'react';
 import type {RenderResult} from '@testing-library/react';

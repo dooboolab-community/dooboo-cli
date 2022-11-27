@@ -3,9 +3,9 @@ import 'react-native';
 import React, {type ReactElement} from 'react';
 
 import {RenderAPI, render} from '@testing-library/react-native';
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
-import Template from './Template';
+import Template from '../../../src/components/uis/Template';
 
 let props: any;
 let component: React.ReactElement;

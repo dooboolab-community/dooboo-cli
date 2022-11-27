@@ -669,7 +669,7 @@ program
     const upperCamel = upperCamelize(c);
 
     const providerFile = `./src/providers/${upperCamel}.tsx`;
-    const providerTestFile = `./src/providers/__tests__/${upperCamel}.test.tsx`;
+    const providerTestFile = `./test/providers/__tests__/${upperCamel}.test.tsx`;
     const exists = fs.existsSync(providerFile);
 
     if (exists) {

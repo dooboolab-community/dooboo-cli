@@ -1,6 +1,6 @@
 import {FetchMock} from 'jest-fetch-mock';
-import {ROOT_URL} from '../urls';
-import {sample} from '../sample';
+import {ROOT_URL} from '../../../src/apis/urls';
+import {sample} from '../../../src/apis/sample';
 
 const fetchMock = fetch as FetchMock;
 

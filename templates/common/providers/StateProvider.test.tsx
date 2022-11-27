@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Button, View} from 'react-native';
-import {StateProvider, useStateContext} from '../StateProvider';
+import {StateProvider, useStateContext} from '../../../src/providers/StateProvider';
 import {act, fireEvent, render} from '@testing-library/react-native';
 
 import type {RenderAPI} from '@testing-library/react-native';
