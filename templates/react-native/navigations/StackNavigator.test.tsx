@@ -1,5 +1,3 @@
-import 'react-native';
-
 import {RenderAPI, cleanup, render} from '@testing-library/react-native';
 import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 

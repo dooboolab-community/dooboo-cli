@@ -1,10 +1,10 @@
-import * as React from 'react';
-
 import {Button, Text, View} from 'react-native';
 import {ReducerProvider, useReducerContext} from '../../../src/providers/ReducerProvider';
 import {RenderAPI, render} from '@testing-library/react-native';
 
-const FakeChild = (): React.ReactElement => {
+import type {ReactElement} from 'react';
+
+const FakeChild = (): ReactElement => {
   const {state, setUser} = useReducerContext();
 
   return (

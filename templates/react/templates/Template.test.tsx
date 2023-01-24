@@ -1,6 +1,5 @@
 import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
-import React from 'react';
 import type {ReactElement} from 'react';
 import type {RenderResult} from '@testing-library/react';
 import Template from '../../../src/components/uis/Template';

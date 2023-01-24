@@ -1,5 +1,3 @@
-import 'react-native';
-
 import {createTestElement, createTestProps} from '../../../test/utils/testUtils';
 
 import BottomTabNavigator from '../../../src/components/navigations/BottomTabNavigator';

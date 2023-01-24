@@ -1,4 +1,4 @@
-import {type ReactElement} from 'react';
+import type {ReactElement} from 'react';
 import {RootStackNavigationProps} from '../navigations/RootStack';
 import styled from '@emotion/native';
 
