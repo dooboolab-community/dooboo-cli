@@ -1,16 +1,16 @@
 # dooboo-cli
 
-[![CI](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml)
-[![deploy pkg](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml)
+[![CI](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml)
+[![deploy pkg](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml)
 [![Npm Version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
 [![Downloads](http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
-[![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab/dooboo-cli)
+[![Build Status](https://travis-ci.com/dooboolab-community/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab-community/dooboo-cli)
 ![License](http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab/dooboo-cli.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab-community/dooboo-cli.svg)](https://greenkeeper.io/)
 
 ## Quick News
 
-- [v3 release announcement](https://medium.com/dooboolab/announcing-dooboo-cli-v3-5c9fceeb2ac4)
+- [v3 release announcement](https://medium.com/dooboolab-community/announcing-dooboo-cli-v3-5c9fceeb2ac4)
 - Latest stable version is `3.2.0`.
 - Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
@@ -57,7 +57,7 @@
 - [react-native](https://github.com/facebook/react-native)
 - [react-navigation](https://github.com/react-navigation/react-navigation)
 - [emotion](https://emotion.sh)
-- [dooboo-ui](https://github.com/dooboolab/dooboo-ui)
+- [dooboo-ui](https://github.com/dooboolab-community/dooboo-ui)
 - [jest](https://github.com/facebook/jest)
 - [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
 - [typescript](https://github.com/Microsoft/TypeScript)
@@ -69,7 +69,7 @@
 
 ## Quick News
 
-- In `v7`, [dooboo-ui](https://github.com/dooboolab/dooboo-ui) ui framework is preinstalled in `react-native` and `expo` project. Hope you like it 🧡.
+- In `v7`, [dooboo-ui](https://github.com/dooboolab-community/dooboo-ui) ui framework is preinstalled in `react-native` and `expo` project. Hope you like it 🧡.
 
 - Starting from `v6`, we manage our boilerplate folder name similar to [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2) but not exactly.
 
@@ -116,8 +116,8 @@
 
 ## Contribution
 
-- [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-js) `Deprecated`
-- [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-js) `Deprecated`
-- [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-frontend-ts)
-- [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-native-ts)
-- [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo) [![CircleCI](https://circleci.com/gh/dooboolab/dooboo-expo.svg?style=shield)](https://circleci.com/gh/dooboolab/dooboo-expo)
+- [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js) `Deprecated`
+- [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-native-js) `Deprecated`
+- [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-frontend-ts)
+- [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-native-ts)
+- [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-expo.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-expo)

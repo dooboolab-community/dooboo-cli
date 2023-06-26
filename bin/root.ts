@@ -136,15 +136,15 @@ program
           switch (options[0].value) {
             case TYPE_OF_APP.REACT:
               template =
-                '-b main https://github.com/dooboolab/dooboo-frontend-ts.git';
+                '-b main https://github.com/dooboolab-community/dooboo-frontend-ts.git';
 
               break;
             case TYPE_OF_APP.REACT_NATIVE:
-              template = `-b ${RN_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-native-ts.git`;
+              template = `-b ${RN_PROJECT_BRANCH} https://github.com/dooboolab-community/dooboo-native-ts.git`;
 
               break;
             case TYPE_OF_APP.EXPO:
-              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab/dooboo-expo.git`;
+              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab-community/dooboo-expo.git`;
 
               break;
           }

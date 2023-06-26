@@ -1,3 +1,3 @@
 # CHANGELOG
 
-All in [release notes](https://github.com/dooboolab/dooboo-cli/releases).
+All in [release notes](https://github.com/dooboolab-community/dooboo-cli/releases).
