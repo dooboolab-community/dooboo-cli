@@ -1,5 +1,9 @@
 # dooboo-cli
 
+## Deprecation Notice
+We're updating the way you access dooboo-cli! The global package has been deprecated and we've moved to npx for a more streamlined experience. To use dooboo-cli now, simply run `npx dooboo`. We kindly suggest that you uninstall the previous global package. This change is part of our continuous effort to make your developer experience more efficient and convenient.
+
+
 [![CI](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml)
 [![deploy pkg](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml)
 [![Npm Version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
@@ -14,7 +18,7 @@
 - Latest stable version is `3.2.0`.
 - Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
 
-## Compatability
+## Compatibility
 
 - React Native & Expo Templates
 
