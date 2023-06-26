@@ -68,4 +68,4 @@ npx dooboo init
 
 ## Contribution
 
-- [Expo Router Starter](https://github.com/hyochan/expo-router-starter)
+- [Expo Router Starter](https://github.com/dooboolab-community/expo-router-starter)

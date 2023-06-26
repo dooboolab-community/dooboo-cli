@@ -17,7 +17,7 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "Node",
     "importHelpers": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "preserveConstEnums": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
