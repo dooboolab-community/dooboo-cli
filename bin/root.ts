@@ -139,7 +139,7 @@ program
             process.exit(0);
           }
 
-          const spinner = ora('creating app ' + nameOfApp + '...\n');
+          const spinner = ora('Creating app ' + nameOfApp + '...\n');
 
           spinner.start();
 
@@ -318,7 +318,6 @@ program
 
     if (exists) {
       const template = resolveTemplate({
-        componentName: upperCamel,
         projectType: 'expo',
         componentType,
       });
@@ -326,9 +325,11 @@ program
       shell.echo(
         chalk.cyanBright('Creating page component in app directory...'),
       );
+
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
       shell.sed('-i', 'Page', `${upperCamel}`, component.testFile);
+
       shell.sed(
         '-i',
         `../../${componentType}/Page`,
@@ -375,10 +376,28 @@ program
       process.exit(0);
     }
 
+    const template = resolveTemplate({
+      componentType,
+      projectType: 'expo',
+    });
+
+    shell.echo(chalk.cyanBright('Creating template component...'));
+    shell.cp(template.file, component.file);
+    shell.cp(template.testFile, component.testFile);
+
+    shell.sed('-i', 'Component', `${upperCamel}`, component.file);
+    shell.sed(
+      '-i',
+      '../../../src/uis/UI',
+      `../../../src/uis/${upperCamel}`,
+      component.testFile,
+    );
+
     shell.echo(
-      chalk.redBright(
-        `\nProject is not in dooboo repository.
-        If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
+      chalk.green(
+        `Generated:${'\n'}File: ${component.file}${'\n'}testFile: ${
+          component.testFile
+        }`,
       ),
     );
 
@@ -438,7 +457,7 @@ program
     const upperCamel = toPascalCase(c);
 
     const providerFile = `./src/${componentType}/${upperCamel}.tsx`;
-    const providerTestFile = `./test/${componentType}/${upperCamel}.test.tsx`;
+    const providerTestFile = `./test/src/${componentType}/${upperCamel}.test.tsx`;
     const exists = fs.existsSync(providerFile);
 
     if (exists) {

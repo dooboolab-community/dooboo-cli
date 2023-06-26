@@ -25,24 +25,25 @@ export type ProjectType = 'expo';
 export const resolveTemplate = ({
   projectType,
   componentType,
-  componentName,
   fileExt = 'tsx',
 }: {
   projectType: ProjectType;
   componentType: ComponentType;
-  componentName: string;
   fileExt?: string;
 }): TemplateFileType => {
+  const filePrefix =
+    componentType === 'uis' ? 'UI' : componentType === 'app' ? 'Page' : '';
+
   const template = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}/${componentName}.${fileExt}`,
+    `templates/${projectType}/${componentType}/${filePrefix}.${fileExt}`,
   );
 
   const testTemplate = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}/${componentName}.test.${fileExt}`,
+    `templates/${projectType}/${componentType}/${filePrefix}.test.${fileExt}`,
   );
 
   return {
@@ -104,8 +105,8 @@ export const toPascalCase = (str: string): string => {
 
 export function pascalToKebabCase(str: string): string {
   return str
-    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // split before uppercase letters
-    .toLowerCase(); // convert to lower case
+    .replace(/\.?([A-Z]+)/g, (x, y) => '-' + y.toLowerCase())
+    .replace(/^-/, '');
 }
 
 export const exec = (command: string): Promise<string> => {
@@ -143,7 +144,7 @@ export const resolveComponent = ({
   }
 
   const component = `./src/${type}/${name}.${fileExt}`;
-  const testComponent = `./test/${type}/${name}.test.${fileExt}`;
+  const testComponent = `./test/src/${type}/${name}.test.${fileExt}`;
 
   return {
     file: component,

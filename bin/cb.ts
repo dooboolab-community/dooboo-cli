@@ -46,9 +46,7 @@ export const cbResultExpo = (
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));
 
         shell.echo(
-          chalk.greenBright(
-            `cd ${nameOfApp} and yarn && yarn start. Open up another terminal and yarn run ios.`,
-          ),
+          chalk.greenBright(`Run cd ${nameOfApp} and yarn && yarn start.`),
         );
 
         spinner.stop();
