@@ -6,7 +6,6 @@ The cli tool for building faster app with [Expo](http://expo.io) and [Expo Route
 [![deploy pkg](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml)
 [![Npm Version](http://img.shields.io/npm/v/dooboo.svg?style=flat-square)](https://npmjs.org/package/dooboo)
 [![Downloads](http://img.shields.io/npm/dm/dooboo.svg?style=flat-square)](https://npmjs.org/package/dooboo)
-[![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab/dooboo-cli)
 ![License](http://img.shields.io/npm/l/dooboo.svg?style=flat-square)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab-community/dooboo-cli.svg)](https://greenkeeper.io/)
 
@@ -17,7 +16,9 @@ The new CLI tool, dooboo, is now available and can be used with the [npx](https:
 npx dooboo init
 ```
 
-We planned to deprecate [`dooboo-cli`](https://www.npmjs.com/package/dooboo-cli) :wrench:, a tool for speeding up React Native, React, and Expo development. Since Expo :rocket: supports development across Android, iOS, and web, we decided to concentrate our efforts on a single codebase and tool within this ecosystem, and we chose [Expo](https://expo.io) :tada:!
+We've decided to streamline our project development and focus our efforts on a single codebase and tool, Expo :rocket:. Given that Expo provides extensive support for Android, iOS, and web platforms, we see it as the most effective solution for our requirements. As a result, we're planning to deprecate our React Native and React projects :tada:. You can learn more about Expo [here](https://expo.io).
+
+In addition, we're shifting our approach with the [`dooboo-cli`](https://www.npmjs.com/package/dooboo-cli). We're no longer maintaining the global installation of `dooboo-cli` and are instead focusing solely on its package accessible through `npx`. This move ensures more streamlined code execution and reduces potential compatibility issues.
 
 ## Stacks used
 
@@ -64,7 +65,7 @@ npx dooboo init
 
 ## Preview
 
-![image](https://user-images.githubusercontent.com/27461460/63132984-1798d080-bffe-11e9-9b4d-672662b79540.png)
+![image](https://user-images.githubusercontent.com/27461460/248854241-87b90313-2527-4975-aa3b-3b0858977ae6.png)
 
 ## Contribution
 

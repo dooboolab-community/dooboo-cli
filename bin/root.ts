@@ -89,7 +89,7 @@ const list = selectShell({
 program
   .version(pkg.version)
   .command('init')
-  .description('init boilerplate of dooboo generated app.')
+  .description('Create project from dooboo boilerplate.')
   .action(() => {
     // sed -i 's/original/new/g' file.txt
     // https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
@@ -289,7 +289,7 @@ program
 program
   .command('page <c>')
   .description(
-    'Generate page component in `app` directory. The file name is converted to kebab-case from PascalCase which is user input.',
+    'Generate page component in `app` directory. The file name is converted to kebab-case from PascalCase which is the user input.',
   )
   .action(async (c) => {
     exitIfNotDoobooRepo();
@@ -449,7 +449,7 @@ program
 
 program
   .command('provider <c>')
-  .description('generate provider file to use context api.')
+  .description('Generate provider file to use context api.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
