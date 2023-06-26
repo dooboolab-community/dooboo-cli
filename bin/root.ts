@@ -15,17 +15,17 @@ import updateNotifier from 'update-notifier';
 import {fileURLToPath} from 'url';
 
 import pkg from '../package.json' assert {type: 'json'};
-import type {ComponentType} from '../utils/functions';
+import type {ComponentType} from '../utils/functions.js';
 import {
   camelize,
   exitIfNotDoobooRepo,
   resolveComponent,
   resolveTemplate,
   toPascalCase,
-} from '../utils/functions';
+} from '../utils/functions.js';
 
-import {cbResultExpo} from './cb';
-import {EXPO_PROJECT_BRANCH} from './const';
+import {cbResultExpo} from './cb.js';
+import {EXPO_PROJECT_BRANCH} from './const.js';
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);

@@ -3,7 +3,7 @@ import type {Ora} from 'ora';
 import shell from 'shelljs';
 import {setTimeout} from 'timers';
 
-import {camelCaseToDash} from '../utils/functions';
+import {camelCaseToDash} from '../utils/functions.js';
 
 export const cbResultExpo = (
   template: string,

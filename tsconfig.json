@@ -15,9 +15,9 @@
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": false,
     "skipDefaultLibCheck": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
     "importHelpers": true,
-    "module": "NodeNext",
+    "module": "ESNext",
     "preserveConstEnums": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true

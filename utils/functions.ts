@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import shelljs from 'shelljs';
 
-import {__dirname} from '../bin/root';
+import {__dirname} from '../bin/root.js';
 
 export type TemplateFileType = {
   file: string;
