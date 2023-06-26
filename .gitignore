@@ -9,4 +9,4 @@ utils/functions.js
 utils/functions.js.map
 
 yarn.lock
-# package-lock.json
+package-lock.json

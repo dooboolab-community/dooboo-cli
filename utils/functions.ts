@@ -1,51 +1,53 @@
 'use strict';
 
-import {__dirname} from '../bin/root';
 import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 import shelljs from 'shelljs';
 
-export interface TemplateType {
+import {__dirname} from '../bin/root.js';
+
+export type TemplateFileType = {
   file: string;
   testFile: string;
-}
+};
 
-export const resolveTemplate = (
-  projectType: string,
-  componentType: string,
-  componentName: string,
+export type ComponentType =
+  | 'app'
+  | 'uis'
+  | 'providers'
+  | 'modals'
+  | 'hooks'
+  | 'fragments';
+
+export type ProjectType = 'expo';
+
+export const resolveTemplate = ({
+  projectType,
+  componentType,
+  componentName,
   fileExt = 'tsx',
-): TemplateType => {
+}: {
+  projectType: ProjectType;
+  componentType: ComponentType;
+  componentName: string;
+  fileExt?: string;
+}): TemplateFileType => {
   const template = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}s/${componentName}.${fileExt}`,
+    `templates/${projectType}/${componentType}/${componentName}.${fileExt}`,
   );
 
   const testTemplate = path.resolve(
     __dirname,
     '..',
-    `templates/${projectType}/${componentType}s/${componentName}.test.${fileExt}`,
+    `templates/${projectType}/${componentType}/${componentName}.test.${fileExt}`,
   );
 
   return {
     file: template,
     testFile: testTemplate,
-  };
-};
-
-export const resolveComponent = (
-  componentType: string,
-  name: string,
-  fileExt = 'tsx',
-): TemplateType => {
-  const component = `./src/components/${componentType}s/${name}.${fileExt}`;
-  const testComponent = `./test/components/${componentType}s/${name}.test.${fileExt}`;
-
-  return {
-    file: component,
-    testFile: testComponent,
   };
 };
 
@@ -56,22 +58,6 @@ export const exitIfNotDoobooRepo = async (): Promise<void> => {
     shelljs.echo(
       chalk.redBright(
         '\nproject is not compatible with dooboo-cli v5. Are you sure you are in correct dir?',
-      ),
-    );
-
-    process.exit(0);
-  }
-};
-
-export const exitIfNotV5 = async (): Promise<void> => {
-  const exists = fs.existsSync('.dooboo/v5');
-
-  if (!exists) {
-    shelljs.echo(
-      chalk.redBright(
-        `\nproject is not compatible with dooboo-cli v5.
-        Maybe you are using older projects.
-        Then please install version lower than dooboo-cli@5`,
       ),
     );
 
@@ -105,7 +91,7 @@ export const camelize = (str: string): string => {
   });
 };
 
-export const upperCamelize = (str: string): string => {
+export const toPascalCase = (str: string): string => {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match) => {
     if (+match === 0) {
       return '';
@@ -115,6 +101,12 @@ export const upperCamelize = (str: string): string => {
     return match.toUpperCase();
   });
 };
+
+export function pascalToKebabCase(str: string): string {
+  return str
+    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // split before uppercase letters
+    .toLowerCase(); // convert to lower case
+}
 
 export const exec = (command: string): Promise<string> => {
   return new Promise((resolve, reject): unknown =>
@@ -128,4 +120,33 @@ export const exec = (command: string): Promise<string> => {
       resolve(value);
     }),
   );
+};
+
+export const resolveComponent = ({
+  type,
+  name,
+  fileExt = 'tsx',
+}: {
+  type: ComponentType;
+  name: string;
+  fileExt?: string;
+}): TemplateFileType => {
+  if (type === 'app') {
+    const kebab = pascalToKebabCase(name);
+    const component = `./${type}/${kebab}.${fileExt}`;
+    const testComponent = `./test/${type}/${kebab}.test.${fileExt}`;
+
+    return {
+      file: component,
+      testFile: testComponent,
+    };
+  }
+
+  const component = `./src/${type}/${name}.${fileExt}`;
+  const testComponent = `./test/${type}/${name}.test.${fileExt}`;
+
+  return {
+    file: component,
+    testFile: testComponent,
+  };
 };

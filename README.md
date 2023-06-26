@@ -1,65 +1,28 @@
 # dooboo-cli
 
-## Deprecation Notice
-We're updating the way you access dooboo-cli! The global package has been deprecated and we've moved to npx for a more streamlined experience. To use dooboo-cli now, simply run `npx dooboo`. We kindly suggest that you uninstall the previous global package. This change is part of our continuous effort to make your developer experience more efficient and convenient.
+The cli tool for building faster app with [Expo](http://expo.io) and [Expo Router](https://expo.github.io/router).
 
-
-[![CI](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/ci.yml)
-[![deploy pkg](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab-community/dooboo-cli/actions/workflows/deploy.yml)
-[![Npm Version](http://img.shields.io/npm/v/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
-[![Downloads](http://img.shields.io/npm/dm/dooboo-cli.svg?style=flat-square)](https://npmjs.org/package/dooboo-cli)
-[![Build Status](https://travis-ci.com/dooboolab-community/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab-community/dooboo-cli)
-![License](http://img.shields.io/npm/l/dooboo-cli.svg?style=flat-square)
+[![CI](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/ci.yml)
+[![deploy pkg](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml/badge.svg)](https://github.com/dooboolab/dooboo-cli/actions/workflows/deploy.yml)
+[![Npm Version](http://img.shields.io/npm/v/dooboo.svg?style=flat-square)](https://npmjs.org/package/dooboo)
+[![Downloads](http://img.shields.io/npm/dm/dooboo.svg?style=flat-square)](https://npmjs.org/package/dooboo)
+[![Build Status](https://travis-ci.com/dooboolab/dooboo-cli.svg?branch=main)](https://travis-ci.com/dooboolab/dooboo-cli)
+![License](http://img.shields.io/npm/l/dooboo.svg?style=flat-square)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dooboolab-community/dooboo-cli.svg)](https://greenkeeper.io/)
 
-## Quick News
+## Announcement
 
-- [v3 release announcement](https://medium.com/dooboolab-community/announcing-dooboo-cli-v3-5c9fceeb2ac4)
-- Latest stable version is `3.2.0`.
-- Please install `3.1.0` if you'd like to cover the [post install step](https://reactnavigation.org/docs/en/getting-started.html) for `react-navigation`.
+The new CLI tool, dooboo, is now available and can be used with the [npx](https://docs.npmjs.com/cli/commands/npx) command as shown.
+```sh
+npx dooboo init
+```
 
-## Compatibility
+We planned to deprecate [`dooboo-cli`](https://www.npmjs.com/package/dooboo-cli) :wrench:, a tool for speeding up React Native, React, and Expo development. Since Expo :rocket: supports development across Android, iOS, and web, we decided to concentrate our efforts on a single codebase and tool within this ecosystem, and we chose [Expo](https://expo.io) :tada:!
 
-- React Native & Expo Templates
-
-  | dooboo-cli      | RN template             | Expo template |
-  | --------------- | ----------------------- | ------------- |
-  | 3.3.11          | 0.61.5                  | 36            |
-  | 3.4.+           | 0.62.+                  | 37            |
-  | 3.5.+           | 0.62.+                  | 38            |
-  | 3.6.+           | 0.63.+                  | 38            |
-  | 4.0.+           | 0.63.+                  | 39            |
-  | 5.0.+           | 0.63.+ (web support)    | 40            |
-  | 6.0.+           | 0.63.+ (atomic design)  | 40            |
-  | 6.1.1+          | 0.63.+ (removed atomic) | 40            |
-  | 6.2.+           | 0.64.+                  | 40            |
-  | 6.3.+ (Emotion) | 0.64.+ (emotion)        | 41            |
-  | 6.3.+           | 0.64.+                  | 41            |
-  | 6.6.+           | 0.64.+                  | 42            |
-  | 6.7.+           | 0.65.+                  | 42            |
-  | 7.0.+           | 0.66.+                  | 43            |
-  | 7.2.+           | 0.66.+                  | 44            |
-  | 7.3.+           | 0.66.+ (expo modules)   | 44            |
-  | 7.7.+           | 0.68.+ (expo modules)   | 45            |
-
-## Stacks we use
-
-#### Web based project
-
-- [react](https://github.com/facebook/react)
-- [react-router](https://github.com/ReactTraining/react-router)
-- [emotion](https://emotion.sh)
-- [jest](https://github.com/facebook/jest)
-- [react-testing-library](https://github.com/kentcdodds/react-testing-library)
-- [typescript](https://github.com/Microsoft/TypeScript)
-- [ts-jest](https://github.com/kulshekhar/ts-jest)
-- [prettier](https://prettier.io)
-- [localization (fbt)](https://github.com/facebook/fbt)
-
-#### Native mobile based project
+## Stacks used
 
 - [react-native](https://github.com/facebook/react-native)
-- [react-navigation](https://github.com/react-navigation/react-navigation)
+- [expo-router](https://expo.github.io/router)
 - [emotion](https://emotion.sh)
 - [dooboo-ui](https://github.com/dooboolab-community/dooboo-ui)
 - [jest](https://github.com/facebook/jest)
@@ -67,37 +30,22 @@ We're updating the way you access dooboo-cli! The global package has been deprec
 - [typescript](https://github.com/Microsoft/TypeScript)
 - [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [prettier](https://prettier.io)
-- [expo-modules](https://docs.expo.dev/bare/installing-expo-modules)
 - [react-native-web](https://github.com/necolas/react-native-web)
-- [localization (fbt)](https://github.com/facebook/fbt)
+- [expo-localization](https://docs.expo.dev/versions/latest/sdk/localization)
 
 ## Quick News
 
-- In `v7`, [dooboo-ui](https://github.com/dooboolab-community/dooboo-ui) ui framework is preinstalled in `react-native` and `expo` project. Hope you like it 🧡.
-
-- Starting from `v6`, we manage our boilerplate folder name similar to [atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2) but not exactly.
-
-  - Main changes in all projects
-    - `screen` dir moved to `pages`.
-    - `shared` dir moved to `uis`.
-
-- In `v5`, we drive `react-native` project to support `react-native-web`.
-  - Main changes in react-native project
-    - The `screen` component should be wrapped with `withScreen` provided in `wrapper.tsx`.
-
-## Installation
-
-- with npm
-  ```
-    npm install -g dooboo-cli
-  ```
-- with yarn
-  ```
-    yarn global add dooboo-cli
-  ```
+- In default, [dooboo-ui](https://github.com/dooboolab/dooboo-ui) ui framework is preinstalled in the project. Hope you like it 🧡.
 
 ## Usage
 
+No installation required.
+
+```sh
+npx dooboo init
+```
+
+### More commands
 ```
   Usage: dooboo [source file]
 
@@ -110,7 +58,7 @@ We're updating the way you access dooboo-cli! The global package has been deprec
     start                start the project
     test                 run test for your project
     page <c>             generate page (aka screen) component.
-    template <c>         generate template (aka shared) component.
+    ui <c>               generate ui (aka shared) component.
     api <c>              generate file for api call format.
 ```
 
@@ -120,8 +68,4 @@ We're updating the way you access dooboo-cli! The global package has been deprec
 
 ## Contribution
 
-- [React App with Flow](https://github.com/react-native-seoul/dooboo-frontend-js) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js) `Deprecated`
-- [React Native App with Flow](https://github.com/react-native-seoul/dooboo-native-js) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-native-js) `Deprecated`
-- [React App with Typescript](https://github.com/react-native-seoul/dooboo-frontend-ts) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-frontend-ts)
-- [React Native App with Typescript](https://github.com/react-native-seoul/dooboo-native-ts) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-frontend-js.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-native-ts)
-- [Expo with Typescript](https://github.com/react-native-seoul/dooboo-expo) [![CircleCI](https://circleci.com/gh/dooboolab-community/dooboo-expo.svg?style=shield)](https://circleci.com/gh/dooboolab-community/dooboo-expo)
+- [Expo Router Starter](https://github.com/dooboolab-community/expo-router-starter)

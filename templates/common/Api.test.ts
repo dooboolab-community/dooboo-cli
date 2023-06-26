@@ -9,32 +9,17 @@ describe('testing sample api', () => {
     fetchMock.resetMocks();
   });
 
-  it('should fetch sample and returns data to me', (): Promise<Response | void> => {
+  it('should fetch sample and returns data', (): Promise<Response | void> => {
     const mockedResult = JSON.stringify({data: '12345'});
-
     fetchMock.mockResponseOnce(mockedResult);
 
-    return sample({zoyi: 'zoyi'}).then(async (res) => {
+    return sample({dooboo: 'dooboo'}).then(async (res) => {
       const result = await res.text();
 
       expect(result).toEqual(mockedResult);
-
       expect(fetchMock.mock.calls.length).toEqual(1);
       expect(fetchMock.mock.calls[0][0]).toEqual(`${ROOT_URL}/sample`);
     });
-  });
-
-  it('throws an error if object is null', () => {
-    const onResponse = jest.fn();
-    const onError = jest.fn();
-
-    sample()
-      .then(onResponse)
-      .catch(onError)
-      .then(() => {
-        expect(onResponse).not.toHaveBeenCalled();
-        expect(onError).toHaveBeenCalled();
-      });
   });
 
   it('throws an error if error occurs', () => {

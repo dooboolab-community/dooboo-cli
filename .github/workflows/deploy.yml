@@ -7,24 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    # Setup .npmrc file to publish to npm
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-    - run: npm install
-    - run: npm run build
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run build
 
-    - name: Sed build files
-      run: |
-        sed -i "s/.\/const/.\/const.js/gi" lib/bin/root.js
-        sed -i "s/\/functions/\/functions.js/gi" lib/bin/root.js
-        sed -i "s/.\/cb/.\/cb.js/gi" lib/bin/root.js
-        sed -i "s/.\/const/.\/const.js/gi" lib/bin/cb.js
-        sed -i "s/\/functions/\/functions.js/gi" lib/bin/cb.js
-        sed -i "s/\/root/\/root.js/gi" lib/utils/functions.js
-
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

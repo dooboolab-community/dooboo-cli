@@ -1,7 +1,7 @@
 import type {Dispatch, ReactElement, SetStateAction} from 'react';
 
-import createCtx from '../utils/createCtx';
 import {useState} from 'react';
+import createCtx from '../utils/createCtx';
 
 interface User {
   displayName: string;
@@ -22,8 +22,8 @@ interface Props {
 
 function StateProvider({children}: Props): ReactElement {
   const [user, setUser] = useState<User>({
-    displayName: '',
-    age: 0,
+    displayName: 'dooboolab',
+    age: 18,
     job: 'dev',
   });
 

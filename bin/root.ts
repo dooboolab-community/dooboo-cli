@@ -2,34 +2,30 @@
 
 'use strict';
 
-import {EXPO_PROJECT_BRANCH, RN_PROJECT_BRANCH} from './const';
-import type {TemplateType} from '../utils/functions';
-import {
-  camelize,
-  exitIfNotDoobooRepo,
-  exitIfNotV5,
-  resolveComponent,
-  resolveTemplate,
-  upperCamelize,
-} from '../utils/functions';
-import {cbResultExpo, cbResultReact, cbResultReactNative} from './cb';
-
-import {Command} from 'commander';
 import boxen from 'boxen';
 import chalk from 'chalk';
+import {Command} from 'commander';
 import fs from 'fs';
 import inquirer from 'inquirer';
 import ora from 'ora';
-import os from 'os';
 import path from 'path';
-import pkg from '../package.json' assert {type: 'json'};
-// @ts-ignore
 import selectShell from 'select-shell';
 import shell from 'shelljs';
-// @ts-ignore
 import updateNotifier from 'update-notifier';
-
 import {fileURLToPath} from 'url';
+
+import pkg from '../package.json' assert {type: 'json'};
+import type {ComponentType} from '../utils/functions.js';
+import {
+  camelize,
+  exitIfNotDoobooRepo,
+  resolveComponent,
+  resolveTemplate,
+  toPascalCase,
+} from '../utils/functions.js';
+
+import {cbResultExpo} from './cb.js';
+import {EXPO_PROJECT_BRANCH} from './const.js';
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -104,11 +100,7 @@ program
     );
     // const stream = process.stdin;
 
-    list
-      .option(' React App (typescript) ', TYPE_OF_APP.REACT)
-      .option(' React Native App (typescript) ', TYPE_OF_APP.REACT_NATIVE)
-      .option(' Expo App (typescript) ', TYPE_OF_APP.EXPO)
-      .list();
+    list.option(' Expo App (Typescript) ', TYPE_OF_APP.EXPO).list();
 
     list.on('select', (options: any[]) => {
       shell.echo(chalk.yellow('select the name of the app.'));
@@ -117,7 +109,7 @@ program
         .prompt([
           {
             name: 'value',
-            message: 'name of your app (alphaNumeric): ',
+            message: 'name of your app: ',
           },
         ])
         .then((answer) => {
@@ -126,25 +118,13 @@ program
           if (!nameOfApp) {
             shell.echo(chalk.redBright('please provide name of your app.'));
             process.exit(0);
-          } else if (!/^[a-z0-9]+$/i.test(nameOfApp)) {
-            shell.echo(chalk.redBright('app name should be alphaNumeric.'));
-            process.exit(0);
           }
 
           let template = '';
 
           switch (options[0].value) {
-            case TYPE_OF_APP.REACT:
-              template =
-                '-b main https://github.com/dooboolab-community/dooboo-frontend-ts.git';
-
-              break;
-            case TYPE_OF_APP.REACT_NATIVE:
-              template = `-b ${RN_PROJECT_BRANCH} https://github.com/dooboolab-community/dooboo-native-ts.git`;
-
-              break;
             case TYPE_OF_APP.EXPO:
-              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab-community/dooboo-expo.git`;
+              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
 
               break;
           }
@@ -163,55 +143,39 @@ program
 
           spinner.start();
 
-          if (options[0].value === TYPE_OF_APP.REACT_NATIVE) {
-            if (!shell.which('npx')) {
-              shell.echo(
-                chalk.redBright(
-                  'Sorry, this script requires npx to be installed.',
-                ),
-              );
+          // Check programs are installed
+          if (!shell.which('npx')) {
+            shell.echo(
+              chalk.redBright(
+                'Sorry, this script requires npx to be installed.',
+              ),
+            );
 
-              shell.exit(1);
-            }
+            shell.exit(1);
+          }
 
-            if (!shell.which('git')) {
-              shell.echo(
-                chalk.redBright(
-                  'Sorry, this script requires git to be installed.',
-                ),
-              );
+          if (!shell.which('git')) {
+            shell.echo(
+              chalk.redBright(
+                'Sorry, this script requires git to be installed.',
+              ),
+            );
 
-              shell.exit(1);
-            }
+            shell.exit(1);
+          }
 
-            if (!shell.which('yarn')) {
-              shell.echo(
-                chalk.redBright(
-                  'Sorry, this script requires yarn to be installed.',
-                ),
-              );
+          if (!shell.which('yarn')) {
+            shell.echo(
+              chalk.redBright(
+                'Sorry, this script requires yarn to be installed.',
+              ),
+            );
 
-              shell.exit(1);
-            }
+            shell.exit(1);
+          }
 
-            if (os.type() === 'Darwin') {
-              if (!shell.which('pod')) {
-                shell.echo(
-                  chalk.redBright(
-                    `Sorry, this script requires cocoapod to be installed.
-                    Are you on mac OS (darwin)?`,
-                  ),
-                );
-
-                shell.exit(1);
-              }
-            }
-
-            cbResultReactNative(template, nameOfApp, answer, options, spinner);
-          } else if (options[0].value === TYPE_OF_APP.EXPO) {
+          if (options[0].value === TYPE_OF_APP.EXPO) {
             cbResultExpo(template, nameOfApp, answer, options, spinner);
-          } else {
-            cbResultReact(template, nameOfApp, answer, options, spinner);
           }
         });
     });
@@ -227,9 +191,9 @@ program
 
 program
   .command('start')
-  .description('start the project.')
+  .description('Run the project')
   .action(async () => {
-    const spinner = ora('configuring project...\n');
+    const spinner = ora('Configuring project...\n');
 
     spinner.start();
 
@@ -239,7 +203,7 @@ program
       if (!exists) {
         shell.echo(
           chalk.redBright(
-            '\nproject is not in dooboo repository. Are you sure you are in correct dir?',
+            '\nProject is not in dooboo repository. Are you sure you are in correct dir?',
           ),
         );
 
@@ -250,39 +214,30 @@ program
       exists = fs.existsSync('node_modules');
 
       if (!exists) {
-        shell.echo(chalk.cyanBright('installing dependencies...'));
-
-        // childProcess.execSync(`yarn`, {stdio: 'inherit'})
+        shell.echo(chalk.cyanBright('Installing dependencies...'));
 
         shell.exec('yarn', (code) => {
           if (code === 0) {
-            shell.echo(chalk.cyanBright('running project...\n'));
-            shell.exec('yarn run dev');
+            shell.echo(chalk.cyanBright('Running project...\n'));
+            shell.exec('yarn start');
 
-            // childProcess.execSync(`yarn run dev`, {stdio: 'inherit'});
             return;
           }
 
-          shell.echo(
-            chalk.redBright(
-              'failed installing dependencies. Please try again with yarn.',
-            ),
-          );
+          throw new Error();
         });
 
         return;
       }
 
-      shell.echo(chalk.cyanBright('running project...'));
-      // shell.exec(`yarn start`);
-      shell.exec('yarn run dev');
-      // childProcess.execFileSync('yarn', ['start'], {stdio: 'inherit'});
+      shell.echo(chalk.cyanBright('Running project...'));
+      shell.exec('yarn start');
     } catch (err) {
       shell.echo(chalk.red(err));
 
       shell.echo(
         chalk.redBright(
-          'failed installing dependencies. Please try again with yarn.',
+          'Failed while installing dependencies. Please try again with yarn.',
         ),
       );
     } finally {
@@ -293,24 +248,21 @@ program
 
 program
   .command('test')
-  .description('run test for your project.')
+  .description('Run all tests in your project.')
   .action(async () => {
-    const spinner = ora('configuring project...');
-
+    const spinner = ora('Configuring project...');
     spinner.start();
-
     exitIfNotDoobooRepo();
-
-    shell.echo(chalk.cyanBright('\nchecking packages...'));
+    shell.echo(chalk.cyanBright('\nChecking packages...'));
 
     const exists = fs.existsSync('node_modules');
 
     if (!exists) {
-      shell.echo(chalk.cyanBright('installing dependencies...'));
+      shell.echo(chalk.cyanBright('Installing dependencies...'));
 
       shell.exec('yarn', (code) => {
         if (code === 0) {
-          shell.echo(chalk.cyanBright('running project...'));
+          shell.echo(chalk.cyanBright('Running project...'));
           shell.exec('yarn test');
           spinner.stop();
 
@@ -320,7 +272,7 @@ program
 
         shell.echo(
           chalk.redBright(
-            'failed installing dependencies. Please try again with yarn.',
+            'Failed installing dependencies. Please try again with yarn.',
           ),
         );
       });
@@ -328,130 +280,27 @@ program
       return;
     }
 
-    shell.echo(chalk.cyanBright('testing project...'));
-    // shell.exec(`yarn start`);
+    shell.echo(chalk.cyanBright('Testing project...'));
     shell.exec('yarn test');
     spinner.stop();
     // process.exit(0);
   });
 
 program
-  .command('navigation <c>')
-  .description('generate navigation component.')
-  .action(async (c) => {
-    exitIfNotDoobooRepo();
-
-    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
-    const component = resolveComponent('navigation', upperCamel);
-
-    let exists = fs.existsSync(component.file);
-
-    if (exists) {
-      shell.echo(
-        chalk.redBright(
-          `${upperCamel} navigation already exists. Delete or rename existing component first.`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
-    exists = fs.existsSync('.dooboo/react');
-
-    if (exists) {
-      const template = resolveTemplate(
-        'react',
-        'navigation',
-        'SwitchNavigator',
-      );
-
-      shell.echo(chalk.cyanBright('creating navigation component...'));
-      shell.cp(template.file, component.file);
-      shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'SwitchNavigator', `${upperCamel}`, component.testFile);
-
-      shell.sed(
-        '-i',
-        '../SwithNavigator',
-        `../${upperCamel}`,
-        component.testFile,
-      );
-
-      shell.echo(
-        chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
-    exists = fs.existsSync('.dooboo/react-native');
-
-    if (exists) {
-      list
-        .option(
-          ' BottomTabNavigator ',
-          TYPE_OF_RN_NAVIGATION.BottomTabNavigator,
-        )
-        .option(' DrawerNavigator ', TYPE_OF_RN_NAVIGATION.DrawerNavigator)
-        .option(
-          ' MaterialBottomTabNavigator ',
-          TYPE_OF_RN_NAVIGATION.MaterialBottomTabNavigator,
-        )
-        .option(
-          ' MaterialTopTabNavigator ',
-          TYPE_OF_RN_NAVIGATION.MaterialTopTabNavigator,
-        )
-        .option(
-          ' NativeStackNavigator ',
-          TYPE_OF_RN_NAVIGATION.NativeStackNavigator,
-        )
-        .option(' StackNavigator ', TYPE_OF_RN_NAVIGATION.StackNavigator)
-        .list();
-
-      let template: TemplateType;
-
-      list.on('select', (options: any[]) => {
-        const navigationType = options[0].value;
-
-        template = resolveTemplate(
-          'react-native',
-          'navigation',
-          navigationType,
-        );
-
-        shell.echo(chalk.cyanBright('creating navigation component...'));
-        shell.cp(template.file, component.file);
-        shell.cp(template.testFile, component.testFile);
-
-        shell.echo(
-          chalk.green(
-            `generated: ${component.file}${'\n'}testFile: ${
-              component.testFile
-            }`,
-          ),
-        );
-
-        process.exit(0);
-      });
-    }
-  });
-
-program
   .command('page <c>')
-  .description('generate page (aka screen) component.')
+  .description(
+    'Generate page component in `app` directory. The file name is converted to kebab-case from PascalCase which is user input.',
+  )
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    // const camel = camelize(c); // inside component is camelCase.
-    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
+    const componentType: ComponentType = 'app';
+    const upperCamel = toPascalCase(c); // file name is upperCamelCase.
 
-    // const isTypescript = await fsExists('.dooboo/typescript');
-    // const fileExt = isTypescript ? 'tsx' : 'js';
-    const fileExt = 'tsx';
-
-    const component = resolveComponent('page', upperCamel, fileExt);
+    const component = resolveComponent({
+      type: componentType,
+      name: upperCamel,
+    });
 
     let exists = fs.existsSync(component.file);
 
@@ -465,99 +314,54 @@ program
       process.exit(0);
     }
 
-    exists = fs.existsSync('.dooboo/react');
-
-    if (exists) {
-      const template = resolveTemplate('react', 'page', 'Page');
-
-      shell.echo(chalk.cyanBright('creating page component...'));
-      shell.cp(template.file, component.file);
-      shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
-
-      shell.echo(
-        chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
-    /**
-     * Below is the case where the templates are different between
-     * expo and react-native project.
-     *
-     * This should be checked beforehand if there is differences
-     * since react-native overlaps all conditions.
-     */
     exists = fs.existsSync('.dooboo/expo');
 
     if (exists) {
-      exitIfNotV5();
+      const template = resolveTemplate({
+        componentName: upperCamel,
+        projectType: 'expo',
+        componentType,
+      });
 
-      const template = resolveTemplate('react-native-expo', 'page', 'Page');
-
-      shell.echo(chalk.cyanBright('creating page component...'));
+      shell.echo(
+        chalk.cyanBright('Creating page component in app directory...'),
+      );
       shell.cp(template.file, component.file);
       shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
+      shell.sed('-i', 'Page', `${upperCamel}`, component.testFile);
+      shell.sed(
+        '-i',
+        `../../${componentType}/Page`,
+        `../../${componentType}/${upperCamel}`,
+        component.testFile,
+      );
 
       shell.echo(
         chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
+          `Generated files.${'\n'}Component: ${component.file}${'\n'}Test: ${
+            component.testFile
+          }`,
         ),
       );
 
       process.exit(0);
     }
-
-    exists = fs.existsSync('.dooboo/react-native');
-
-    if (exists) {
-      exitIfNotV5();
-
-      const template = resolveTemplate('react-native', 'page', 'Page');
-
-      shell.echo(chalk.cyanBright('creating page component...'));
-      shell.cp(template.file, component.file);
-      shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Page', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Page', `'../${upperCamel}`, component.testFile);
-
-      shell.echo(
-        chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
-    shell.echo(
-      chalk.redBright(
-        `\nproject is not under dooboo repository.
-        If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
-      ),
-    );
-
-    process.exit(0);
   });
 
 program
   .command('ui <c>')
-  .description('generate ui component.')
+  .description('Generate ui component.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    // const camel = camelize(c); // inside component is camelCase.
-    const upperCamel = upperCamelize(c); // file name is upperCamelCase.
+    const componentType: ComponentType = 'uis';
+    const camel = camelize(c);
+    const upperCamel = toPascalCase(camel);
 
-    // const isTypescript = await fsExists('.dooboo/typescript');
-    // const fileExt = isTypescript ? 'tsx' : 'js';
-    const component = resolveComponent('ui', upperCamel);
+    const component = resolveComponent({
+      type: componentType,
+      name: upperCamel,
+    });
 
     let exists = fs.existsSync(component.file);
 
@@ -571,49 +375,9 @@ program
       process.exit(0);
     }
 
-    exists = fs.existsSync('.dooboo/react');
-
-    if (exists) {
-      const template = resolveTemplate('react', 'template', 'Template');
-
-      shell.echo(chalk.cyanBright('creating template component...'));
-      shell.cp(template.file, component.file);
-      shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Template', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Template', `'../${upperCamel}`, component.testFile);
-
-      shell.echo(
-        chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
-    exists = fs.existsSync('.dooboo/react-native');
-
-    if (exists) {
-      const template = resolveTemplate('react-native', 'template', 'Template');
-
-      shell.echo(chalk.cyanBright('creating template component...'));
-      shell.cp(template.file, component.file);
-      shell.cp(template.testFile, component.testFile);
-      shell.sed('-i', 'Template', `${upperCamel}`, component.file);
-      shell.sed('-i', '../Template', `'../${upperCamel}`, component.testFile);
-
-      shell.echo(
-        chalk.green(
-          `generated: ${component.file}${'\n'}testFile: ${component.testFile}`,
-        ),
-      );
-
-      process.exit(0);
-    }
-
     shell.echo(
       chalk.redBright(
-        `\nproject is not in dooboo repository.
+        `\nProject is not in dooboo repository.
         If you deleted any of file in .dooboo, you are not able to use dooboo-cli.`,
       ),
     );
@@ -623,39 +387,43 @@ program
 
 program
   .command('api <c>')
-  .description('generate file for api call format.')
+  .description('Generate file for api call format.')
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    const isTypescript = fs.existsSync('.dooboo/typescript');
-    const fileExt = isTypescript ? 'tsx' : 'js';
-
     const camel = camelize(c);
-    const upperCamel = upperCamelize(c);
-
-    const apiFile = `./src/apis/${camel}.${fileExt}`;
-
+    const upperCamel = toPascalCase(c);
+    const apiFile = `./src/apis/${camel}.ts`;
+    const apiTestFile = `./test/src/apis/${camel}.ts`;
     const exists = fs.existsSync(apiFile);
 
     if (exists) {
       shell.echo(
         chalk.redBright(
-          `${upperCamel} store already exists. Delete or rename existing file first.`,
+          `${upperCamel} file already exists. Delete or rename existing file first.`,
         ),
       );
 
       process.exit(0);
     }
 
-    const template = path.resolve(
+    const template = path.resolve(__dirname, '..', `templates/common/Api.ts`);
+
+    const testTemplate = path.resolve(
       __dirname,
       '..',
-      `templates/common/Api.${fileExt}`,
+      `templates/common/Api.test.ts`,
     );
 
     shell.cp(template, apiFile);
-    shell.echo(chalk.cyanBright('creating api file...'));
-    shell.echo(chalk.green(`generated: src/apis/${camel}.${fileExt}`));
+    shell.cp(testTemplate, apiTestFile);
+    shell.echo(chalk.cyanBright('Creating api file...'));
+
+    shell.echo(
+      chalk.green(
+        `Generated files.${'\n'}File: ${apiFile}${'\n'}Test: ${apiTestFile}`,
+      ),
+    );
 
     process.exit(0);
   });
@@ -666,10 +434,11 @@ program
   .action(async (c) => {
     exitIfNotDoobooRepo();
 
-    const upperCamel = upperCamelize(c);
+    const componentType: ComponentType = 'providers';
+    const upperCamel = toPascalCase(c);
 
-    const providerFile = `./src/providers/${upperCamel}.tsx`;
-    const providerTestFile = `./test/providers/__tests__/${upperCamel}.test.tsx`;
+    const providerFile = `./src/${componentType}/${upperCamel}.tsx`;
+    const providerTestFile = `./test/${componentType}/${upperCamel}.test.tsx`;
     const exists = fs.existsSync(providerFile);
 
     if (exists) {
@@ -693,13 +462,13 @@ program
       const template = path.resolve(
         __dirname,
         '..',
-        `templates/common/providers/${providerType}.tsx`,
+        `templates/expo/providers/${providerType}.tsx`,
       );
 
       const testTemplate = path.resolve(
         __dirname,
         '..',
-        `templates/common/providers/${providerType}.test.tsx`,
+        `templates/expo/providers/${providerType}.test.tsx`,
       );
 
       shell.cp(template, providerFile);
@@ -714,11 +483,11 @@ program
         providerTestFile,
       );
 
-      shell.echo(chalk.cyanBright('creating provider file...'));
+      shell.echo(chalk.cyanBright('Creating provider file...'));
 
       shell.echo(
         chalk.green(
-          `generated: ${providerFile}${'\n'}testFile: ${providerTestFile}`,
+          `Generated:${'\n'}File: ${providerFile}${'\n'}testFile: ${providerTestFile}`,
         ),
       );
 
@@ -741,9 +510,8 @@ if (validCommands.length && process.argv[2]) {
     case 'init':
     case 'start':
     case 'test':
-    case 'navigation':
     case 'page':
-    case 'template':
+    case 'ui':
     case 'provider':
     case 'api':
       break;
