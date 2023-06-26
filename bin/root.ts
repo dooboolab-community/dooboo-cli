@@ -733,6 +733,10 @@ let validCommands = program.commands.map((cmd) => {
 });
 
 if (validCommands.length && process.argv[2]) {
+  shell.echo(
+    `Global cli is deprecated. Please use "npx dooboo" instead and remove global dooboo-cli package from your local computer.`,
+  );
+
   switch (process.argv[2]) {
     case 'init':
     case 'start':
