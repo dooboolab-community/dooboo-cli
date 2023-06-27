@@ -19,6 +19,7 @@ import type {ComponentType} from '../utils/functions.js';
 import {
   camelize,
   exitIfNotDoobooRepo,
+  pascalToKebabCase,
   resolveComponent,
   resolveTemplate,
   toPascalCase,
@@ -336,7 +337,7 @@ program
       shell.sed(
         '-i',
         `../../${componentType}/Page`,
-        `../../${componentType}/${upperCamel}`,
+        `../../${componentType}/${pascalToKebabCase(upperCamel)}`,
         component.testFile,
       );
 
@@ -372,7 +373,7 @@ program
     if (exists) {
       shell.echo(
         chalk.redBright(
-          `${upperCamel} template already exists. Delete or rename existing component first.`,
+          `${upperCamel} file already exists. Delete or rename existing component first.`,
         ),
       );
 

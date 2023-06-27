@@ -4,8 +4,8 @@ import * as React from 'react';
 import type {RenderAPI} from '@testing-library/react-native';
 import {render, waitFor} from '@testing-library/react-native';
 
-import {createTestElement, createTestProps} from '../testUtils';
 import Page from '../../app/Page';
+import {createTestElement, createTestProps} from '../testUtils';
 
 let props: any;
 let component: React.ReactElement;
