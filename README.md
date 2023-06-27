@@ -55,12 +55,14 @@ npx dooboo init
     -h, --help           output usage information
 
   Commands:
-    init                 init boilerplate of dooboo generated app.
-    start                start the project
-    test                 run test for your project
-    page <c>             generate page (aka screen) component.
-    ui <c>               generate ui (aka shared) component.
-    api <c>              generate file for api call format.
+    init            Create project from dooboo boilerplate.
+    start           Run the project
+    test            Run all tests in your project.
+    page <c>        Generate page component in `app` directory. The file name is converted to kebab-case from PascalCase which is user
+                    input.
+    ui <c>          Generate ui component.
+    api <c>         Generate file for api call format.
+    provider <c>    generate provider file to use context api
 ```
 
 ## Preview

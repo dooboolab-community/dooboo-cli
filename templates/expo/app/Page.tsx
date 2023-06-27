@@ -24,7 +24,7 @@ export default function Page(): ReactElement {
         }}
       />
       <Content>
-        <Typography.Body1>{t('Page')}</Typography.Body1>
+        <Typography.Body1>{t('PAGE')}</Typography.Body1>
       </Content>
     </Container>
   );

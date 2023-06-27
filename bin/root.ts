@@ -65,7 +65,10 @@ const notifier = updateNotifier({
 if (notifier.update) {
   shell.echo(
     chalk.blueBright(
-      boxen(`Update available: ${notifier.update.latest}`, {padding: 1}),
+      boxen(
+        `Update available: ${notifier.update.latest}.\nTry with npx dooboo@latest.`,
+        {padding: 1},
+      ),
     ),
   );
 }
@@ -100,7 +103,7 @@ program
     );
     // const stream = process.stdin;
 
-    list.option(' Expo App (Typescript) ', TYPE_OF_APP.EXPO).list();
+    list.option('Expo App (Typescript) ', TYPE_OF_APP.EXPO).list();
 
     list.on('select', (options: any[]) => {
       shell.echo(chalk.yellow('select the name of the app.'));
@@ -109,14 +112,14 @@ program
         .prompt([
           {
             name: 'value',
-            message: 'name of your app: ',
+            message: 'Name of your app: ',
           },
         ])
         .then((answer) => {
           const nameOfApp = answer.value;
 
           if (!nameOfApp) {
-            shell.echo(chalk.redBright('please provide name of your app.'));
+            shell.echo(chalk.redBright('Please provide name of your app.'));
             process.exit(0);
           }
 
