@@ -58,8 +58,8 @@ npx dooboo init
     init            Create project from dooboo boilerplate.
     start           Run the project
     test            Run all tests in your project.
-    page <c>        Generate page component in `app` directory. The file name is converted to kebab-case from PascalCase which is user
-                    input.
+    page <c>        Generate page component in `app` directory. The file name is converted
+                    to kebab-case from PascalCase which is user input.
     ui <c>          Generate ui component.
     api <c>         Generate file for api call format.
     provider <c>    generate provider file to use context api
