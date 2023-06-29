@@ -1,6 +1,6 @@
 {
   "name": "dooboo",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Expo and expo router starter kit maintained by dooboolab.",
   "bin": {
     "dooboo": "lib/bin/root.js"

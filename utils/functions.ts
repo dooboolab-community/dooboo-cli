@@ -58,7 +58,7 @@ export const exitIfNotDoobooRepo = async (): Promise<void> => {
   if (!exists) {
     shelljs.echo(
       chalk.redBright(
-        '\nproject is not compatible with dooboo-cli v5. Are you sure you are in correct dir?',
+        '\nproject is not compatible with dooboo-cli. Are you sure you are in correct dir?',
       ),
     );
 
