@@ -2,10 +2,9 @@ import {Button, View} from 'react-native';
 import {StateProvider, useStateContext} from '../../../src/providers/StateProvider';
 import {act, fireEvent, render} from '@testing-library/react-native';
 
-import type {ReactElement} from 'react';
 import type {RenderAPI} from '@testing-library/react-native';
 
-const FakeChild = (): ReactElement => {
+const FakeChild = (): JSX.Element => {
   const {setUser} = useStateContext();
 
   return (
