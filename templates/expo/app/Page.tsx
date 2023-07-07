@@ -14,7 +14,9 @@ const Content = styled.View`
   padding: 16px;
 `;
 
-export default function Page(): JSX.Element {
+type Props = {};
+
+export default function Page({}: Props): JSX.Element {
   return (
     <Container>
       <Stack.Screen

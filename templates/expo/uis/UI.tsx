@@ -7,7 +7,9 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-function Component({style}: {style?: ViewStyle}): JSX.Element {
+type Props = {style?: ViewStyle};
+
+function Component({style}: Props): JSX.Element {
   const {theme} = useDooboo();
 
   return (
