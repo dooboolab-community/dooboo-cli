@@ -26,7 +26,7 @@ import {
 } from '../utils/functions.js';
 
 import {cbResultExpo} from './cb.js';
-import {EXPO_PROJECT_BRANCH} from './const.js';
+import {EXPO_48_BRANCH, EXPO_49_BRANCH, LATEST} from './const.js';
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -37,9 +37,8 @@ const welcome = `
 `;
 
 export enum TYPE_OF_APP {
-  REACT = 1,
-  REACT_NATIVE = 2,
-  EXPO = 3,
+  EXPO_48 = 1,
+  EXPO_49 = 2,
 }
 
 export enum TYPE_OF_RN_NAVIGATION {
@@ -104,7 +103,11 @@ program
     );
     // const stream = process.stdin;
 
-    list.option('Expo App (Typescript) ', TYPE_OF_APP.EXPO).list();
+    list
+      .option(' Current (49) ', 0)
+      .option(' Expo SDK 49 ', TYPE_OF_APP.EXPO_49)
+      .option(' Expo SDK 48 ', TYPE_OF_APP.EXPO_48)
+      .list();
 
     list.on('select', (options: any[]) => {
       shell.echo(chalk.yellow('select the name of the app.'));
@@ -127,9 +130,16 @@ program
           let template = '';
 
           switch (options[0].value) {
-            case TYPE_OF_APP.EXPO:
-              template = `-b ${EXPO_PROJECT_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
+            case TYPE_OF_APP.EXPO_48:
+              template = `-b ${EXPO_48_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
 
+              break;
+            case TYPE_OF_APP.EXPO_49:
+              template = `-b ${EXPO_49_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
+
+              break;
+            default:
+              template = `-b ${LATEST} https://github.com/dooboolab-community/expo-router-starter.git`;
               break;
           }
 
@@ -178,7 +188,7 @@ program
             shell.exit(1);
           }
 
-          if (options[0].value === TYPE_OF_APP.EXPO) {
+          if (options[0].value === TYPE_OF_APP.EXPO_48 || TYPE_OF_APP.EXPO_49) {
             cbResultExpo(template, nameOfApp, answer, options, spinner);
           }
         });

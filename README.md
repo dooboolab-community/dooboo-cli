@@ -71,4 +71,14 @@ npx dooboo init
 
 ## Contribution
 
+```sh
+npm run link
+```
+
+### When recompiling
+```sh
+npm uninstall -g dooboo
+npm run link
+```
+
 - [Expo Router Starter](https://github.com/dooboolab-community/expo-router-starter)
