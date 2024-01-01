@@ -84,6 +84,10 @@ export const camelCaseToDash = (str: string): string => {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
 };
 
+export const camelCaseToLowerLetters = (str: string): string => {
+  return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1').toLowerCase();
+};
+
 export const camelize = (str: string): string => {
   return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
     // or if (/\s+/.test(match)) for white spaces

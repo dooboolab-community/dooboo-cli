@@ -3,7 +3,7 @@ import type {Ora} from 'ora';
 import shell from 'shelljs';
 import {setTimeout} from 'timers';
 
-import {camelCaseToDash} from '../utils/functions.js';
+import {camelCaseToDash, camelCaseToLowerLetters} from '../utils/functions.js';
 
 export const cbResultExpo = (
   template: string,
@@ -35,7 +35,7 @@ export const cbResultExpo = (
         shell.sed(
           '-i',
           'dooboo',
-          camelCaseToDash(`${nameOfApp}`),
+          camelCaseToLowerLetters(`${nameOfApp}`),
           `./${nameOfApp}/app.config.ts`,
         );
 
