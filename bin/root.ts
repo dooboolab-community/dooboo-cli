@@ -178,10 +178,10 @@ program
             shell.exit(1);
           }
 
-          if (!shell.which('yarn')) {
+          if (!shell.which('bun')) {
             shell.echo(
               chalk.redBright(
-                'Sorry, this script requires yarn to be installed.',
+                'Sorry, this script requires bun to be installed. Install bun with `npm install -g bun`.',
               ),
             );
 
@@ -230,10 +230,10 @@ program
       if (!exists) {
         shell.echo(chalk.cyanBright('Installing dependencies...'));
 
-        shell.exec('yarn', (code) => {
+        shell.exec('bun install', (code) => {
           if (code === 0) {
             shell.echo(chalk.cyanBright('Running project...\n'));
-            shell.exec('yarn start');
+            shell.exec('bun start');
 
             return;
           }
@@ -245,13 +245,13 @@ program
       }
 
       shell.echo(chalk.cyanBright('Running project...'));
-      shell.exec('yarn start');
+      shell.exec('bun start');
     } catch (err) {
       shell.echo(chalk.red(err));
 
       shell.echo(
         chalk.redBright(
-          'Failed while installing dependencies. Please try again with yarn.',
+          'Failed while installing dependencies. Please try again after `bun install`.',
         ),
       );
     } finally {
@@ -274,10 +274,10 @@ program
     if (!exists) {
       shell.echo(chalk.cyanBright('Installing dependencies...'));
 
-      shell.exec('yarn', (code) => {
+      shell.exec('bun', (code) => {
         if (code === 0) {
           shell.echo(chalk.cyanBright('Running project...'));
-          shell.exec('yarn test');
+          shell.exec('bun run test');
           spinner.stop();
 
           // process.exit(0);
@@ -286,7 +286,7 @@ program
 
         shell.echo(
           chalk.redBright(
-            'Failed installing dependencies. Please try again with yarn.',
+            'Failed installing dependencies. Please try again after `bun install`.',
           ),
         );
       });
@@ -295,7 +295,7 @@ program
     }
 
     shell.echo(chalk.cyanBright('Testing project...'));
-    shell.exec('yarn test');
+    shell.exec('bun run test');
     spinner.stop();
     // process.exit(0);
   });

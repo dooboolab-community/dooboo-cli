@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-yarn && yarn build
+npm install && npm run build
 ```
 
 ## Link package

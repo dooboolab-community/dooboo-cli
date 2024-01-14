@@ -46,7 +46,9 @@ export const cbResultExpo = (
         shell.echo(chalk.greenBright(`Created ${nameOfApp} successfully.`));
 
         shell.echo(
-          chalk.greenBright(`Run cd ${nameOfApp} and yarn && yarn start.`),
+          chalk.greenBright(
+            `Run cd ${nameOfApp} and bun install && bun start.`,
+          ),
         );
 
         spinner.stop();
