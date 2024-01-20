@@ -39,6 +39,7 @@ const welcome = `
 export enum TYPE_OF_APP {
   EXPO_48 = 1,
   EXPO_49 = 2,
+  EXPO_50 = 3,
 }
 
 export enum TYPE_OF_RN_NAVIGATION {
@@ -104,7 +105,8 @@ program
     // const stream = process.stdin;
 
     list
-      .option(' Current (49) ', 0)
+      .option(' Latest ', 0)
+      .option(' Expo SDK 50 ', TYPE_OF_APP.EXPO_50)
       .option(' Expo SDK 49 ', TYPE_OF_APP.EXPO_49)
       .option(' Expo SDK 48 ', TYPE_OF_APP.EXPO_48)
       .list();
@@ -188,7 +190,11 @@ program
             shell.exit(1);
           }
 
-          if (options[0].value === TYPE_OF_APP.EXPO_48 || TYPE_OF_APP.EXPO_49) {
+          if (
+            options[0].value === TYPE_OF_APP.EXPO_48 ||
+            TYPE_OF_APP.EXPO_49 ||
+            TYPE_OF_APP.EXPO_50
+          ) {
             cbResultExpo(template, nameOfApp, answer, options, spinner);
           }
         });
