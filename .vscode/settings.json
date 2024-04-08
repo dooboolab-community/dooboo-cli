@@ -22,5 +22,8 @@
   },
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "prettier.configPath": ".prettierrc.cjs"
+  "prettier.configPath": ".prettierrc.cjs",
+  "cSpell.words": [
+    "myapp"
+  ]
 }

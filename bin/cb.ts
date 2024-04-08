@@ -34,7 +34,7 @@ export const cbResultExpo = (
 
         shell.sed(
           '-i',
-          'dooboo',
+          'myapp',
           camelCaseToLowerLetters(`${nameOfApp}`),
           `./${nameOfApp}/app.config.ts`,
         );
