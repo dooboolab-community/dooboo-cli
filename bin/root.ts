@@ -26,7 +26,12 @@ import {
 } from '../utils/functions.js';
 
 import {cbResultExpo} from './cb.js';
-import {EXPO_48_BRANCH, EXPO_49_BRANCH, LATEST} from './const.js';
+import {
+  EXPO_48_BRANCH,
+  EXPO_49_BRANCH,
+  EXPO_50_BRANCH,
+  LATEST,
+} from './const.js';
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -40,6 +45,7 @@ export enum TYPE_OF_APP {
   EXPO_48 = 1,
   EXPO_49 = 2,
   EXPO_50 = 3,
+  EXPO_51 = 4,
 }
 
 export enum TYPE_OF_RN_NAVIGATION {
@@ -106,6 +112,7 @@ program
 
     list
       .option(' Latest ', 0)
+      .option(' Expo SDK 51 ', TYPE_OF_APP.EXPO_51)
       .option(' Expo SDK 50 ', TYPE_OF_APP.EXPO_50)
       .option(' Expo SDK 49 ', TYPE_OF_APP.EXPO_49)
       .option(' Expo SDK 48 ', TYPE_OF_APP.EXPO_48)
@@ -138,6 +145,10 @@ program
               break;
             case TYPE_OF_APP.EXPO_49:
               template = `-b ${EXPO_49_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
+
+              break;
+            case TYPE_OF_APP.EXPO_50:
+              template = `-b ${EXPO_50_BRANCH} https://github.com/dooboolab-community/expo-router-starter.git`;
 
               break;
             default:
